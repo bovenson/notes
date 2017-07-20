@@ -1,0 +1,1 @@
+java -jar mybatis-generator-core-1.3.5.jar -configfile generator_object_stamp.xml -overwrite

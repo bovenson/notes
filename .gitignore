@@ -1,0 +1,40 @@
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+__pycache__
+
+# log
+*.log
+*.tmp
+log/*
+
+# data
+MNIST_data
+cifar10_data
+DeepLearning/Tensorflow/Tutorial/resnet_mnist_test/model/*
+
+# pycharm project
+.idea
+
+# Java class files
+*.class
+
+# Gradle files
+.gradle/
+build/
+*/build/
+gradlew
+gradlew.bat
+
+# Intellij
+*.iml
+*/*.iml
+
+#.swp
+*.*~
+~*.*
+
+# wps
+.~*
