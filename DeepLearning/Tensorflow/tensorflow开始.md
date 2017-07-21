@@ -48,6 +48,14 @@
 
   ​
 
+## 基本用法
+
+- 使用图（graph）来表示计算任务；
+- 在被称之为回话（Session）的上下文（context）中执行图；
+- 使用tensor表示数据；
+- 使用变量（Variable）维护状态；
+- 使用feed和fetch可以为任意的操作（arbitrary operation）赋值或者从其中获取数据。
+
 ## Tensors
 
 - The central unit of data in TensorFlow is the **tensor**. 
@@ -158,38 +166,5 @@ print(sess.run(loss, {x:[1,2,3,4], y:[0,-1,-2,-3]}))
 
 # We guessed the "perfect" values of W and b, but the whole point of machine learning is to find the correct model parameters automatically. We will show how to accomplish this in the next section.
 ```
-
-**放到一起**
-
-```python
-#!/usr/bin python3
-# coding: utf-8
-
-"""
-AUTHOR: bovenson
-EMAIL: szhkai@qq.com
-FILE: t2.py
-DATE: 17-7-14 上午10:32
-DESC: 
-"""
-import tensorflow as tf
-
-
-node1 = tf.constant(3.0, dtype=tf.float32)
-node2 = tf.constant(4.0)
-print(node1, node2)
-
-sess = tf.Session()
-print(sess.run([node1, node2]))
-```
-
-**输出**
-
-```shell
-/home/bovenson/anaconda3/envs/tensorflow/bin/python /home/bovenson/Git/notes/Tensorflow/Tutorial/t2.py
-Tensor("Const:0", shape=(), dtype=float32) Tensor("Const_1:0", shape=(), dtype=float32)
-[3.0, 4.0]
-```
-
 
 
