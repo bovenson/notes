@@ -1,0 +1,13 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+TimeSpan	../numpy_test/random_test.py	/^class TimeSpan():$/;"	kind:class	line:23
+TimeSpanWithoutRepr	../numpy_test/random_test.py	/^class TimeSpanWithoutRepr():$/;"	kind:class	line:33
+__init__	../numpy_test/random_test.py	/^    def __init__(self, hours=0, minutes=0, seconds=0):$/;"	kind:member	line:24
+__init__	../numpy_test/random_test.py	/^    def __init__(self, hours=0, minutes=0, seconds=0):$/;"	kind:member	line:34
+__repr__	../numpy_test/random_test.py	/^    def __repr__(self):$/;"	kind:member	line:29
+pic_example.py	../pic/pic_example.py	1;"	kind:file	line:1
+random_test.py	../numpy_test/random_test.py	1;"	kind:file	line:1
