@@ -1,3 +1,9 @@
+---
+title: manage.py使用
+date: 2017-07-24 17:48:54
+tags: Python, Django, manage.py
+---
+
 # manage.py使用
 
 ## 创建项目超级用户

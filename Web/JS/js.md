@@ -24,3 +24,5 @@ for (var i=0; i < book["tag"].length; ++i) {
 arr.push("A");	// 尾部添加
 ```
 
+## 删除元素
+

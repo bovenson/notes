@@ -1,3 +1,9 @@
+---
+title: 设置media路径
+date: 2017-07-24 17:48:54
+tags: Python, Django, 设置media路径, media path
+---
+
 # 设置media路径
 
 ## setting中添加

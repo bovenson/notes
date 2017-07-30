@@ -1,4 +1,8 @@
-[TOC]
+---
+title: making queries
+date: 2017-07-24 17:48:54
+tags: Python, Django, Making queries
+---
 
 # making queries
 
@@ -53,3 +57,13 @@ Blog.objects.filter(entry__authors__isnull=False, entry__authors__name__isnull=T
 ### 注意
 
 - 负数索引不支持, 比如: `Entry.objects.all()[-1]`
+
+## many to many field
+
+### 按照数量过滤
+
+```python
+# 得到空
+Category.objects.filter(parent__isnull=True)
+```
+

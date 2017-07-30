@@ -1,3 +1,9 @@
+---
+title: setting.py 文件配置说明
+date: 2017-07-24 17:48:54
+tags: Python, Django, setting.py, 配置文件
+---
+
 # setting.py 文件配置说明
 
 ## 设置中文

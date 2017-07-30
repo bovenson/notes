@@ -1,3 +1,9 @@
+---
+title: admin-interface
+date: 2017-07-24 17:48:54
+tags: Python, Django, Admin
+---
+
 # admin-interface
 
 ## 保存

@@ -1,4 +1,8 @@
-[TOC]
+---
+title: models
+date: 2017-07-24 17:48:54
+tags: Python, Django, models
+---
 
 # models
 

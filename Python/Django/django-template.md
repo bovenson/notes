@@ -1,3 +1,9 @@
+---
+title: template
+date: 2017-07-24 17:48:54
+tags: Python, Django, Template
+---
+
 # template
 
 ## 返回404
@@ -30,5 +36,11 @@ except Book.DoesNotExist:
 {% for tag in booklist.tags.all|slice:":5" %}
     <a href="{% url 'tag' tag.id %}" class="booklist-tag">#{{ tag.name }}</a>
 {% endfor %}
+```
+
+## 格式化Datetime
+
+```python
+{{ wpis.entry.lastChangeDate|date:'Y-m-d H:i' }}
 ```
 

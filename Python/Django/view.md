@@ -1,3 +1,9 @@
+---
+title: views
+date: 2017-07-24 17:48:54
+tags: Python, Django, views
+---
+
 # 获取客户端ip
 
 ```python

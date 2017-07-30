@@ -572,5 +572,9 @@ alias ls="ls --show-control-chars --color"
 git diff 51d036ca9b9e62bbc4b4c3b3797d5499dd0a8b5c a935927dacec250c9643bdb64bf148138a88bbeb --name-only
 ```
 
+# 回退版本
 
+```shell
+git reset --hard 07deff6907565f08f1013201e78d3fae1609937f
+```
 
