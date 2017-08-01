@@ -18,3 +18,15 @@ def get_remote_ip(request):
     return ip
 ```
 
+# 限制HTTP请求方法
+
+```python
+from django.views.decorators.http import require_http_methods
+
+@require_http_methods(["GET", "POST"])
+def my_view(request):
+    # I can assume now that only GET or POST requests make it this far
+    # ...
+    pass
+```
+
