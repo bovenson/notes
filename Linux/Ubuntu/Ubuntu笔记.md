@@ -12,3 +12,14 @@
 -   `uname -a`
 -   `lsb_release -a`
 
+
+## 软件管理命令
+
+### 查看已经安装的软件
+
+```shell
+dpkg -l
+# dpkg --help
+# -l|--list [<pattern> ...]        List packages concisely.
+```
+
