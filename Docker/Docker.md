@@ -68,3 +68,13 @@ root@VirtualBox:/home/conpot# docker stop $(docker ps -q)
 root@VirtualBox:/home/conpot# docker ps -q
 ```
 
+## 镜像管理
+
+### 加载镜像
+
+```shell
+docker load < docker_app_file
+```
+
+
+
