@@ -1,0 +1,12 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0001.py	../0001.py	1;"	kind:file	line:1
+Solution	../0001.py	/^class Solution:$/;"	kind:class	line:17
+res	../0001.py	/^    res = Solution().twoSum([1, 2, 3, 4, 5], 8)$/;"	kind:variable	line:32
+res	../test.py	/^res = [1, 2, 3]$/;"	kind:variable	line:3
+test.py	../test.py	1;"	kind:file	line:1
+twoSum	../0001.py	/^    def twoSum(self, nums, target):$/;"	kind:member	line:18
