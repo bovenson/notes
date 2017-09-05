@@ -1,5 +1,13 @@
 [TOC]
+# 编译运行
+
+```shell
+$ scalac Test.scala
+$ scala Test
+```
+
 # 保留字
+
 | 保留字       | 说明                                       |
 | --------- | ---------------------------------------- |
 | abstract  | 抽象声明                                     |
@@ -41,7 +49,7 @@
 | while     | 用于while循环                                |
 | with      | 表示所声明的类或实例化的对象包括后面的trait                 |
 | yield     | 在for循环中返回元素,这些元素会构成一个序列                  |
-| _ (下划线)     | 占位符,使用imort,函数字面量中                       |
+| _ (下划线)   | 占位符,使用imort,函数字面量中                       |
 | :         | 分隔标识符和类型注解                               |
 | =         | 赋值                                       |
 | =>        | 在函数字面量中分隔参数列表与函数体                        |
@@ -54,10 +62,80 @@
 
 **Scala不存在`break`和`continue`关键字**
 
+# 程序入口
+
+`scala`程序从`main()`方法开始处理.
+
+`def main(args: Array[String])`
+
+# 注释
+
+```scala
+1.多行多行注释
+/*
+*/
+
+2.单行注释
+//
+```
+
+# 换行符
+
+- Scala是面向行的语言
+- 语句可以用分号（;）结束或换行符
+- 语句末尾的分号通常是可选的
+
 # 分号
 
 - 分号是表达式之间的间隔
 - 当一行结束时,Scala就认为表达式结束了,除非它可以判断出该表达式尚未结束
+
+## 实例
+
+```scala
+val s = "ABCD"; println(s)
+```
+
+# 包
+
+## 定义包
+
+### 一
+
+```scala
+package cn.edu.neu
+class HelloWorld
+```
+
+### 二
+
+```scala
+package cn.edu.neu {
+  class HelloWorld
+}
+```
+
+- 这种方式可以在一个文件中定义多个包
+
+# 引用
+
+- 使用`import`引用包
+- import语句可以出现在任何地方，而不是只能在文件顶部
+- import的效果从开始延伸到语句块的结束
+
+```scala
+import java.awt.Color  // 引入Color
+import java.awt._  // 引入包内所有成员
+def handler(evt: event.ActionEvent) { // java.awt.event.ActionEvent
+  ...  // 因为引入了java.awt，所以可以省去前面的部分
+}
+
+/**** 使用选取器 ****/
+import java.awt.{Color, Font}
+import java.util.{HashMap => JavaHashMap}	// 重命名成员
+import java.util.{HashMap => _, _} // 隐藏成员: 引入了util包的所有成员，但是HashMap被隐藏了
+```
+
 
 # 变量声明
 - Scala允许声明变量是可变的还是不可变的
@@ -67,6 +145,7 @@
 ```scala
 // 声明不可变变量,这里只是array不可再更改,但是数组内容可以更改
 val array:Array[String] = new Array(5)
+
 // 可变
 var price: Double = 1.1
 ```
@@ -473,3 +552,9 @@ import java.util.{Map, HashMap}	// 选择性导入
 
 -   导入是相对的
 
+
+
+
+# 参考
+
+- [菜鸟教程](http://www.runoob.com/scala/scala-basic-syntax.html)
