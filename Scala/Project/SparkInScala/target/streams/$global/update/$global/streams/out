@@ -1,0 +1,1079 @@
+[info] Updating {file:/home/bovenson/Git/notes/Scala/Project/SparkInScala/}sparkinscala...
+[debug] :: resolving dependencies :: default#sparkinscala_2.12;1.0
+[debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
+[debug] 	validate = true
+[debug] 	refresh = false
+[debug] resolving dependencies for configuration 'compile'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->default(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[info] Resolving org.scala-lang#scala-library;2.12.1 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[info] Resolving org.scala-lang#scala-library;2.12.1 ...
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang/scala-library/2.12.1/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang#scala-library;2.12.1
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.pom
+[debug] 	public: found md file for org.scala-lang#scala-library;2.12.1
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.pom (2.12.1)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.1!scala-library.pom(pom.original) (1018ms)
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang/scala-library/2.12.1/jars/scala-library.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.jar
+[debug] 	found org.scala-lang#scala-library;2.12.1 in public
+[debug] 	[2.12.1] org.scala-lang#scala-library;2.12.1
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] resolving dependencies for configuration 'runtime'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [runtime]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->default(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] resolving dependencies for configuration 'test'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [test]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [runtime]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->default(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] resolving dependencies for configuration 'provided'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [provided]
+[debug] resolving dependencies for configuration 'optional'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [optional]
+[debug] resolving dependencies for configuration 'compile-internal'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile-internal]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->default(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [optional]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [provided]
+[debug] resolving dependencies for configuration 'runtime-internal'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [runtime-internal]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [runtime]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->default(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [optional]
+[debug] resolving dependencies for configuration 'test-internal'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [test-internal]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [test]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [runtime]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->default(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [optional]
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [provided]
+[debug] resolving dependencies for configuration 'plugin'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [plugin]
+[debug] resolving dependencies for configuration 'sources'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [sources]
+[debug] resolving dependencies for configuration 'docs'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [docs]
+[debug] resolving dependencies for configuration 'pom'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [pom]
+[debug] resolving dependencies for configuration 'scala-tool'
+[debug] == resolving dependencies for default#sparkinscala_2.12;1.0 [scala-tool]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-compiler;2.12.1 [scala-tool->default]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[info] Resolving org.scala-lang#scala-compiler;2.12.1 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[info] Resolving org.scala-lang#scala-compiler;2.12.1 ...
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang/scala-compiler/2.12.1/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang#scala-compiler;2.12.1
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.pom
+[debug] 	public: found md file for org.scala-lang#scala-compiler;2.12.1
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.pom (2.12.1)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.1!scala-compiler.pom(pom.original) (1028ms)
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang/scala-compiler/2.12.1/jars/scala-compiler.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.jar
+[debug] 	found org.scala-lang#scala-compiler;2.12.1 in public
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-compiler;2.12.1 [scala-tool->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-compiler;2.12.1 [scala-tool->compile]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->master(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->default]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->runtime]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->master]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->optional(default)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-reflect;2.12.1 [compile->master(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[info] Resolving org.scala-lang#scala-reflect;2.12.1 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[info] Resolving org.scala-lang#scala-reflect;2.12.1 ...
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang/scala-reflect/2.12.1/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang#scala-reflect;2.12.1
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.pom
+[debug] 	public: found md file for org.scala-lang#scala-reflect;2.12.1
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.pom (2.12.1)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.1!scala-reflect.pom(pom.original) (1048ms)
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang/scala-reflect/2.12.1/jars/scala-reflect.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.jar
+[debug] 	found org.scala-lang#scala-reflect;2.12.1 in public
+[debug] 	[2.12.1] org.scala-lang#scala-reflect;2.12.1
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-reflect;2.12.1 [compile->compile(*)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->master(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.12.1->org.scala-lang#scala-library;2.12.1 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-reflect;2.12.1 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-reflect;2.12.1 [compile->compile]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.12.1->org.scala-lang#scala-library;2.12.1 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-reflect;2.12.1->org.scala-lang#scala-library;2.12.1 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang.modules#scala-xml_2.12;1.0.6 [compile->master(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[info] Resolving org.scala-lang.modules#scala-xml_2.12;1.0.6 ...
+[debug] sbt-chain: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.12;1.0.6 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[info] Resolving org.scala-lang.modules#scala-xml_2.12;1.0.6 ...
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.scala-lang.modules#scala-xml_2.12;1.0.6 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang.modules/scala-xml_2.12/1.0.6/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.scala-lang.modules#scala-xml_2.12;1.0.6
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.pom
+[debug] 	public: found md file for org.scala-lang.modules#scala-xml_2.12;1.0.6
+[debug] 		=> https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.pom (1.0.6)
+[debug] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.pom
+[debug] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.pom(pom.original) (1018ms)
+[debug] 		tried /home/bovenson/.ivy2/local/org.scala-lang.modules/scala-xml_2.12/1.0.6/bundles/scala-xml_2.12.jar
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar
+[debug] 	found org.scala-lang.modules#scala-xml_2.12;1.0.6 in public
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang.modules#scala-xml_2.12;1.0.6 [compile->compile(*)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.12;1.0.6->org.scala-lang#scala-library;2.12.1 [compile->master(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.12;1.0.6->org.scala-lang#scala-library;2.12.1 [compile->compile(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang.modules#scala-xml_2.12;1.0.6 [compile->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang.modules#scala-xml_2.12;1.0.6 [compile->compile]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.0 {test=[runtime(*), master(compile)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {test=[runtime(*), master(compile)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.0 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.12;1.0.6->org.scala-lang#scala-library;2.12.1 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang.modules#scala-xml_2.12;1.0.6->org.scala-lang#scala-library;2.12.1 [runtime->compile]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-library;2.12.1 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-reflect;2.12.1 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang#scala-reflect;2.12.1 [runtime->compile]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang.modules#scala-xml_2.12;1.0.6 [runtime->runtime(*)]
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->org.scala-lang.modules#scala-xml_2.12;1.0.6 [runtime->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-compiler;2.12.1 [scala-tool->master]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-compiler;2.12.1 [scala-tool->optional(default)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->jline#jline;2.14.1 [optional->master(compile)]
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-library;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]} => dependency: org.scala-lang#scala-reflect;2.12.1 {compile=[compile(*), master(compile)], runtime=[runtime(*)]}
+[debug] dependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]} => dependency: org.scala-lang#scala-compiler;2.12.1 {scala-tool=[default, optional(default)]}
+[debug] dependency descriptor has been mediated: MergedDescriptors(dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)]},dependency: org.scala-lang#scala-library;2.12.1 {compile=[default(compile)]}) => dependency: org.scala-lang#scala-library;2.12.1 {scala-tool=[default, optional(default)], compile=[default(compile)]}
+[info] Resolving jline#jline;2.14.1 ...
+[debug] sbt-chain: Checking cache for: dependency: jline#jline;2.14.1 {optional=[compile(*), master(compile)]}
+[info] Resolving jline#jline;2.14.1 ...
+[debug] sbt-chain-delegate: Checking cache for: dependency: jline#jline;2.14.1 {optional=[compile(*), master(compile)]}
+[debug] 		tried /home/bovenson/.ivy2/local/jline/jline/2.14.1/ivys/ivy.xml
+[debug] 	local: no ivy file found for jline#jline;2.14.1
+[debug] 		tried https://repo1.maven.org/maven2/jline/jline/2.14.1/jline-2.14.1.pom
+[debug] 	public: found md file for jline#jline;2.14.1
+[debug] 		=> https://repo1.maven.org/maven2/jline/jline/2.14.1/jline-2.14.1.pom (2.14.1)
+[debug] downloading https://repo1.maven.org/maven2/jline/jline/2.14.1/jline-2.14.1.pom ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/jline/jline/2.14.1/jline-2.14.1.pom
+[debug] 	public: downloading https://repo1.maven.org/maven2/jline/jline/2.14.1/jline-2.14.1.pom.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/jline/jline/2.14.1/jline-2.14.1.pom
+[debug] 	[SUCCESSFUL ] jline#jline;2.14.1!jline.pom(pom.original) (1337ms)
+[info] Resolving org.sonatype.oss#oss-parent;9 ...
+[debug] sbt-chain: Checking cache for: dependency: org.sonatype.oss#oss-parent;9 {}
+[info] Resolving org.sonatype.oss#oss-parent;9 ...
+[debug] sbt-chain-delegate: Checking cache for: dependency: org.sonatype.oss#oss-parent;9 {}
+[debug] 		tried /home/bovenson/.ivy2/local/org.sonatype.oss/oss-parent/9/ivys/ivy.xml
+[debug] 	local: no ivy file found for org.sonatype.oss#oss-parent;9
+[debug] 		tried https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[debug] 	public: found md file for org.sonatype.oss#oss-parent;9
+[debug] 		=> https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom (9)
+[debug] problem occurred while resolving dependency: org.sonatype.oss#oss-parent;9 {} with public: java.lang.IllegalArgumentException: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[debug] 	at org.apache.ivy.util.Checks.checkAbsolute(Checks.java:57)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getArchiveFileInCache(DefaultRepositoryCacheManager.java:387)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.download(DefaultRepositoryCacheManager.java:851)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1171)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseOtherPom(PomModuleDescriptorParser.java:382)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:143)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:112)
+[debug] 	at sbt.CustomPomParser.parseDescriptor(CustomPomParser.scala:20)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager$MyModuleDescriptorProvider.provideModule(DefaultRepositoryCacheManager.java:716)
+[debug] 	at org.apache.ivy.core.cache.ModuleDescriptorMemoryCache.getStale(ModuleDescriptorMemoryCache.java:68)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getStaledMd(DefaultRepositoryCacheManager.java:733)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1195)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.core.resolve.IvyNode.loadData(IvyNode.java:169)
+[debug] 	at org.apache.ivy.core.resolve.VisitNode.loadData(VisitNode.java:292)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:714)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.getDependencies(ResolveEngine.java:594)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.resolve(ResolveEngine.java:234)
+[debug] 	at org.apache.ivy.Ivy.resolve(Ivy.java:517)
+[debug] 	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:301)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:191)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:168)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$$anonfun$withIvy$1.apply(Ivy.scala:133)
+[debug] 	at sbt.IvySbt.sbt$IvySbt$$action$1(Ivy.scala:57)
+[debug] 	at sbt.IvySbt$$anon$4.call(Ivy.scala:65)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:93)
+[debug] 	at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:78)
+[debug] 	at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:97)
+[debug] 	at xsbt.boot.Using$.withResource(Using.scala:10)
+[debug] 	at xsbt.boot.Using$.apply(Using.scala:9)
+[debug] 	at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:58)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:48)
+[debug] 	at xsbt.boot.Locks$.apply0(Locks.scala:31)
+[debug] 	at xsbt.boot.Locks$.apply(Locks.scala:28)
+[debug] 	at sbt.IvySbt.withDefaultLogger(Ivy.scala:65)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:128)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:125)
+[debug] 	at sbt.IvySbt$Module.withModule(Ivy.scala:156)
+[debug] 	at sbt.IvyActions$.updateEither(IvyActions.scala:168)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1541)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1537)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1572)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1570)
+[debug] 	at sbt.Tracked$$anonfun$lastOutput$1.apply(Tracked.scala:37)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1575)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1569)
+[debug] 	at sbt.Tracked$$anonfun$inputChanged$1.apply(Tracked.scala:60)
+[debug] 	at sbt.Classpaths$.cachedUpdate(Defaults.scala:1592)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1519)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1471)
+[debug] 	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+[debug] 	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+[debug] 	at sbt.std.Transform$$anon$4.work(System.scala:63)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+[debug] 	at sbt.Execute.work(Execute.scala:237)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+[debug] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+[debug] 	at java.lang.Thread.run(Thread.java:745)
+[debug] problem occurred while resolving dependency: org.sonatype.oss#oss-parent;9 {} with sbt-chain-delegate: java.lang.IllegalArgumentException: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[debug] 	at org.apache.ivy.util.Checks.checkAbsolute(Checks.java:57)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getArchiveFileInCache(DefaultRepositoryCacheManager.java:387)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.download(DefaultRepositoryCacheManager.java:851)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1171)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseOtherPom(PomModuleDescriptorParser.java:382)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:143)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:112)
+[debug] 	at sbt.CustomPomParser.parseDescriptor(CustomPomParser.scala:20)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager$MyModuleDescriptorProvider.provideModule(DefaultRepositoryCacheManager.java:716)
+[debug] 	at org.apache.ivy.core.cache.ModuleDescriptorMemoryCache.getStale(ModuleDescriptorMemoryCache.java:68)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getStaledMd(DefaultRepositoryCacheManager.java:733)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1195)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.core.resolve.IvyNode.loadData(IvyNode.java:169)
+[debug] 	at org.apache.ivy.core.resolve.VisitNode.loadData(VisitNode.java:292)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:714)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.getDependencies(ResolveEngine.java:594)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.resolve(ResolveEngine.java:234)
+[debug] 	at org.apache.ivy.Ivy.resolve(Ivy.java:517)
+[debug] 	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:301)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:191)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:168)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$$anonfun$withIvy$1.apply(Ivy.scala:133)
+[debug] 	at sbt.IvySbt.sbt$IvySbt$$action$1(Ivy.scala:57)
+[debug] 	at sbt.IvySbt$$anon$4.call(Ivy.scala:65)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:93)
+[debug] 	at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:78)
+[debug] 	at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:97)
+[debug] 	at xsbt.boot.Using$.withResource(Using.scala:10)
+[debug] 	at xsbt.boot.Using$.apply(Using.scala:9)
+[debug] 	at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:58)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:48)
+[debug] 	at xsbt.boot.Locks$.apply0(Locks.scala:31)
+[debug] 	at xsbt.boot.Locks$.apply(Locks.scala:28)
+[debug] 	at sbt.IvySbt.withDefaultLogger(Ivy.scala:65)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:128)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:125)
+[debug] 	at sbt.IvySbt$Module.withModule(Ivy.scala:156)
+[debug] 	at sbt.IvyActions$.updateEither(IvyActions.scala:168)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1541)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1537)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1572)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1570)
+[debug] 	at sbt.Tracked$$anonfun$lastOutput$1.apply(Tracked.scala:37)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1575)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1569)
+[debug] 	at sbt.Tracked$$anonfun$inputChanged$1.apply(Tracked.scala:60)
+[debug] 	at sbt.Classpaths$.cachedUpdate(Defaults.scala:1592)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1519)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1471)
+[debug] 	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+[debug] 	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+[debug] 	at sbt.std.Transform$$anon$4.work(System.scala:63)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+[debug] 	at sbt.Execute.work(Execute.scala:237)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+[debug] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+[debug] 	at java.lang.Thread.run(Thread.java:745)
+[debug] problem occurred while resolving dependency: jline#jline;2.14.1 {optional=[compile(*), master(compile)]} with public: java.lang.IllegalArgumentException: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[debug] 	at org.apache.ivy.util.Checks.checkAbsolute(Checks.java:57)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getArchiveFileInCache(DefaultRepositoryCacheManager.java:387)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.download(DefaultRepositoryCacheManager.java:851)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1171)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseOtherPom(PomModuleDescriptorParser.java:382)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:143)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:112)
+[debug] 	at sbt.CustomPomParser.parseDescriptor(CustomPomParser.scala:20)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager$MyModuleDescriptorProvider.provideModule(DefaultRepositoryCacheManager.java:716)
+[debug] 	at org.apache.ivy.core.cache.ModuleDescriptorMemoryCache.getStale(ModuleDescriptorMemoryCache.java:68)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getStaledMd(DefaultRepositoryCacheManager.java:733)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1195)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.core.resolve.IvyNode.loadData(IvyNode.java:169)
+[debug] 	at org.apache.ivy.core.resolve.VisitNode.loadData(VisitNode.java:292)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:714)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.getDependencies(ResolveEngine.java:594)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.resolve(ResolveEngine.java:234)
+[debug] 	at org.apache.ivy.Ivy.resolve(Ivy.java:517)
+[debug] 	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:301)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:191)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:168)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$$anonfun$withIvy$1.apply(Ivy.scala:133)
+[debug] 	at sbt.IvySbt.sbt$IvySbt$$action$1(Ivy.scala:57)
+[debug] 	at sbt.IvySbt$$anon$4.call(Ivy.scala:65)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:93)
+[debug] 	at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:78)
+[debug] 	at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:97)
+[debug] 	at xsbt.boot.Using$.withResource(Using.scala:10)
+[debug] 	at xsbt.boot.Using$.apply(Using.scala:9)
+[debug] 	at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:58)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:48)
+[debug] 	at xsbt.boot.Locks$.apply0(Locks.scala:31)
+[debug] 	at xsbt.boot.Locks$.apply(Locks.scala:28)
+[debug] 	at sbt.IvySbt.withDefaultLogger(Ivy.scala:65)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:128)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:125)
+[debug] 	at sbt.IvySbt$Module.withModule(Ivy.scala:156)
+[debug] 	at sbt.IvyActions$.updateEither(IvyActions.scala:168)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1541)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1537)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1572)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1570)
+[debug] 	at sbt.Tracked$$anonfun$lastOutput$1.apply(Tracked.scala:37)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1575)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1569)
+[debug] 	at sbt.Tracked$$anonfun$inputChanged$1.apply(Tracked.scala:60)
+[debug] 	at sbt.Classpaths$.cachedUpdate(Defaults.scala:1592)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1519)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1471)
+[debug] 	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+[debug] 	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+[debug] 	at sbt.std.Transform$$anon$4.work(System.scala:63)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+[debug] 	at sbt.Execute.work(Execute.scala:237)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+[debug] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+[debug] 	at java.lang.Thread.run(Thread.java:745)
+[debug] problem occurred while resolving dependency: jline#jline;2.14.1 {optional=[compile(*), master(compile)]} with sbt-chain-delegate: java.lang.IllegalArgumentException: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[debug] 	at org.apache.ivy.util.Checks.checkAbsolute(Checks.java:57)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getArchiveFileInCache(DefaultRepositoryCacheManager.java:387)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.download(DefaultRepositoryCacheManager.java:851)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1171)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseOtherPom(PomModuleDescriptorParser.java:382)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:143)
+[debug] 	at org.apache.ivy.plugins.parser.m2.PomModuleDescriptorParser.parseDescriptor(PomModuleDescriptorParser.java:112)
+[debug] 	at sbt.CustomPomParser.parseDescriptor(CustomPomParser.scala:20)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager$MyModuleDescriptorProvider.provideModule(DefaultRepositoryCacheManager.java:716)
+[debug] 	at org.apache.ivy.core.cache.ModuleDescriptorMemoryCache.getStale(ModuleDescriptorMemoryCache.java:68)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.getStaledMd(DefaultRepositoryCacheManager.java:733)
+[debug] 	at org.apache.ivy.core.cache.DefaultRepositoryCacheManager.cacheModuleDescriptor(DefaultRepositoryCacheManager.java:1195)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.parse(BasicResolver.java:536)
+[debug] 	at org.apache.ivy.plugins.resolver.BasicResolver.getDependency(BasicResolver.java:271)
+[debug] 	at org.apache.ivy.plugins.resolver.IBiblioResolver.getDependency(IBiblioResolver.java:538)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.sbt$ConvertResolver$DescriptorRequired$$super$getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ConvertResolver$DescriptorRequired$class.getDependency(ConvertResolver.scala:185)
+[debug] 	at sbt.ConvertResolver$$anonfun$defaultConvert$1$PluginCapableResolver$1.getDependency(ConvertResolver.scala:115)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:135)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$results$lzycompute$1$1.apply(SbtChainResolver.scala:123)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.TraversableLike$$anonfun$map$1.apply(TraversableLike.scala:244)
+[debug] 	at scala.collection.Iterator$class.foreach(Iterator.scala:727)
+[debug] 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1157)
+[debug] 	at scala.collection.IterableLike$class.foreach(IterableLike.scala:72)
+[debug] 	at scala.collection.AbstractIterable.foreach(Iterable.scala:54)
+[debug] 	at scala.collection.TraversableLike$class.map(TraversableLike.scala:244)
+[debug] 	at scala.collection.AbstractTraversable.map(Traversable.scala:105)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$lzycompute$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.results$1(SbtChainResolver.scala:123)
+[debug] 	at sbt.ivyint.SbtChainResolver.foundRevisions$1(SbtChainResolver.scala:161)
+[debug] 	at sbt.ivyint.SbtChainResolver.sbt$ivyint$SbtChainResolver$$sorted$1(SbtChainResolver.scala:200)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver$$anonfun$7.apply(SbtChainResolver.scala:202)
+[debug] 	at scala.Option.orElse(Option.scala:257)
+[debug] 	at sbt.ivyint.SbtChainResolver.doGetDependency(SbtChainResolver.scala:202)
+[debug] 	at sbt.ivyint.SbtChainResolver.getDependency(SbtChainResolver.scala:73)
+[debug] 	at org.apache.ivy.core.resolve.IvyNode.loadData(IvyNode.java:169)
+[debug] 	at org.apache.ivy.core.resolve.VisitNode.loadData(VisitNode.java:292)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:714)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.doFetchDependencies(ResolveEngine.java:799)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.fetchDependencies(ResolveEngine.java:722)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.getDependencies(ResolveEngine.java:594)
+[debug] 	at org.apache.ivy.core.resolve.ResolveEngine.resolve(ResolveEngine.java:234)
+[debug] 	at org.apache.ivy.Ivy.resolve(Ivy.java:517)
+[debug] 	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:301)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:191)
+[debug] 	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:168)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+[debug] 	at sbt.IvySbt$$anonfun$withIvy$1.apply(Ivy.scala:133)
+[debug] 	at sbt.IvySbt.sbt$IvySbt$$action$1(Ivy.scala:57)
+[debug] 	at sbt.IvySbt$$anon$4.call(Ivy.scala:65)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:93)
+[debug] 	at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:78)
+[debug] 	at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:97)
+[debug] 	at xsbt.boot.Using$.withResource(Using.scala:10)
+[debug] 	at xsbt.boot.Using$.apply(Using.scala:9)
+[debug] 	at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:58)
+[debug] 	at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:48)
+[debug] 	at xsbt.boot.Locks$.apply0(Locks.scala:31)
+[debug] 	at xsbt.boot.Locks$.apply(Locks.scala:28)
+[debug] 	at sbt.IvySbt.withDefaultLogger(Ivy.scala:65)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:128)
+[debug] 	at sbt.IvySbt.withIvy(Ivy.scala:125)
+[debug] 	at sbt.IvySbt$Module.withModule(Ivy.scala:156)
+[debug] 	at sbt.IvyActions$.updateEither(IvyActions.scala:168)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1541)
+[debug] 	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1537)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1572)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1570)
+[debug] 	at sbt.Tracked$$anonfun$lastOutput$1.apply(Tracked.scala:37)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1575)
+[debug] 	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1569)
+[debug] 	at sbt.Tracked$$anonfun$inputChanged$1.apply(Tracked.scala:60)
+[debug] 	at sbt.Classpaths$.cachedUpdate(Defaults.scala:1592)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1519)
+[debug] 	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1471)
+[debug] 	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+[debug] 	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+[debug] 	at sbt.std.Transform$$anon$4.work(System.scala:63)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+[debug] 	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+[debug] 	at sbt.Execute.work(Execute.scala:237)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+[debug] 	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+[debug] 	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+[debug] 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+[debug] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+[debug] 	at java.lang.Thread.run(Thread.java:745)
+[debug] == resolving dependencies org.scala-lang#scala-compiler;2.12.1->jline#jline;2.14.1 [optional->compile(*)]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [scala-tool->default]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [scala-tool->runtime]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [scala-tool->compile]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [scala-tool->master]
+[debug] == resolving dependencies default#sparkinscala_2.12;1.0->org.scala-lang#scala-library;2.12.1 [scala-tool->optional(default)]
+[debug] ignoring unhandled DependencyDescriptorMediator: class sbt.IvyScala$OverrideScalaMediator
+[debug] 	resolved ivy file produced in cache
+[debug] :: downloading artifacts ::
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-library/2.12.1/scala-library-2.12.1.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-library;2.12.1!scala-library.jar (32946ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.12.1/scala-compiler-2.12.1.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.12.1!scala-compiler.jar (37050ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.12.1/scala-reflect-2.12.1.jar
+[info] 	[SUCCESSFUL ] org.scala-lang#scala-reflect;2.12.1!scala-reflect.jar (18591ms)
+[debug] 		tried https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar
+[info] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar ...
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar
+[debug] 	public: downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar.sha1
+[debug] sha1 OK for https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.0.6/scala-xml_2.12-1.0.6.jar
+[info] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(bundle) (4728ms)
+[debug] :: resolution report :: resolve 8594ms :: artifacts dl 93318ms
+[warn] 	::::::::::::::::::::::::::::::::::::::::::::::
+[warn] 	::          UNRESOLVED DEPENDENCIES         ::
+[warn] 	::::::::::::::::::::::::::::::::::::::::::::::
+[warn] 	:: jline#jline;2.14.1: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+[warn] 	::::::::::::::::::::::::::::::::::::::::::::::
+[debug] 	report for default#sparkinscala_2.12;1.0 compile produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-compile.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 runtime produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-runtime.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 test produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-test.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 provided produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-provided.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 optional produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-optional.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 compile-internal produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-compile-internal.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 runtime-internal produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-runtime-internal.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 test-internal produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-test-internal.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 plugin produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-plugin.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 sources produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-sources.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 docs produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-docs.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 pom produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-pom.xml
+[debug] 	report for default#sparkinscala_2.12;1.0 scala-tool produced in /home/bovenson/Git/notes/Scala/Project/SparkInScala/target/scala-2.12/resolution-cache/reports/default-sparkinscala_2.12-scala-tool.xml
+[debug] 	resolve done (8594ms resolve - 93318ms download)
+[warn] 
+[warn] 	Note: Unresolved dependencies path:
+[warn] 		jline:jline:2.14.1
+[warn] 		  +- org.scala-lang:scala-compiler:2.12.1
+[warn] 		  +- default:sparkinscala_2.12:1.0
+sbt.ResolveException: unresolved dependency: jline#jline;2.14.1: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+	at sbt.IvyActions$.sbt$IvyActions$$resolve(IvyActions.scala:313)
+	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:191)
+	at sbt.IvyActions$$anonfun$updateEither$1.apply(IvyActions.scala:168)
+	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+	at sbt.IvySbt$Module$$anonfun$withModule$1.apply(Ivy.scala:156)
+	at sbt.IvySbt$$anonfun$withIvy$1.apply(Ivy.scala:133)
+	at sbt.IvySbt.sbt$IvySbt$$action$1(Ivy.scala:57)
+	at sbt.IvySbt$$anon$4.call(Ivy.scala:65)
+	at xsbt.boot.Locks$GlobalLock.withChannel$1(Locks.scala:93)
+	at xsbt.boot.Locks$GlobalLock.xsbt$boot$Locks$GlobalLock$$withChannelRetries$1(Locks.scala:78)
+	at xsbt.boot.Locks$GlobalLock$$anonfun$withFileLock$1.apply(Locks.scala:97)
+	at xsbt.boot.Using$.withResource(Using.scala:10)
+	at xsbt.boot.Using$.apply(Using.scala:9)
+	at xsbt.boot.Locks$GlobalLock.ignoringDeadlockAvoided(Locks.scala:58)
+	at xsbt.boot.Locks$GlobalLock.withLock(Locks.scala:48)
+	at xsbt.boot.Locks$.apply0(Locks.scala:31)
+	at xsbt.boot.Locks$.apply(Locks.scala:28)
+	at sbt.IvySbt.withDefaultLogger(Ivy.scala:65)
+	at sbt.IvySbt.withIvy(Ivy.scala:128)
+	at sbt.IvySbt.withIvy(Ivy.scala:125)
+	at sbt.IvySbt$Module.withModule(Ivy.scala:156)
+	at sbt.IvyActions$.updateEither(IvyActions.scala:168)
+	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1541)
+	at sbt.Classpaths$$anonfun$sbt$Classpaths$$work$1$1.apply(Defaults.scala:1537)
+	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1572)
+	at sbt.Classpaths$$anonfun$doWork$1$1$$anonfun$121.apply(Defaults.scala:1570)
+	at sbt.Tracked$$anonfun$lastOutput$1.apply(Tracked.scala:37)
+	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1575)
+	at sbt.Classpaths$$anonfun$doWork$1$1.apply(Defaults.scala:1569)
+	at sbt.Tracked$$anonfun$inputChanged$1.apply(Tracked.scala:60)
+	at sbt.Classpaths$.cachedUpdate(Defaults.scala:1592)
+	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1519)
+	at sbt.Classpaths$$anonfun$updateTask$1.apply(Defaults.scala:1471)
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:47)
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40)
+	at sbt.std.Transform$$anon$4.work(System.scala:63)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:228)
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:17)
+	at sbt.Execute.work(Execute.scala:237)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:228)
+	at sbt.ConcurrentRestrictions$$anon$4$$anonfun$1.apply(ConcurrentRestrictions.scala:159)
+	at sbt.CompletionService$$anon$2.call(CompletionService.scala:28)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[error] (*:update) sbt.ResolveException: unresolved dependency: jline#jline;2.14.1: org.sonatype.oss#oss-parent;9!oss-parent.pom(pom.original) origin location must be absolute: file:/home/bovenson/.m2/repository/org/sonatype/oss/oss-parent/9/oss-parent-9.pom

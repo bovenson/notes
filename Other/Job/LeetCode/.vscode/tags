@@ -5,9 +5,17 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 0001.py	../0001.py	1;"	kind:file	line:1
-0003.py	../0002/0003.py	1;"	kind:file	line:1
+0003.py	../0003.py	1;"	kind:file	line:1
+0005.py	../0005.py	1;"	kind:file	line:1
 Solution	../0001.py	/^class Solution:$/;"	kind:class	line:17
+Solution	../0003.py	/^class Solution(object):$/;"	kind:class	line:1
+Solution	../0005.py	/^class Solution(object):$/;"	kind:class	line:1
+lengthOfLongestSubstring	../0003.py	/^    def lengthOfLongestSubstring(self, s):$/;"	kind:member	line:2
+longestPalindrome	../0005.py	/^    def longestPalindrome(self, s):$/;"	kind:member	line:2
 res	../0001.py	/^    res = Solution().twoSum([1, 2, 3, 4, 5], 8)$/;"	kind:variable	line:32
+res	../0005.py	/^    res = s.longestPalindrome("abcdasdfghjkldcba")$/;"	kind:variable	line:25
 res	../test.py	/^res = [1, 2, 3]$/;"	kind:variable	line:3
+s	../0003.py	/^    s = Solution()$/;"	kind:variable	line:23
+s	../0005.py	/^    s = Solution()$/;"	kind:variable	line:24
 test.py	../test.py	1;"	kind:file	line:1
 twoSum	../0001.py	/^    def twoSum(self, nums, target):$/;"	kind:member	line:18
