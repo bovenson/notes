@@ -38,3 +38,50 @@ object FunctionExample {
 3
 ```
 
+## 函数传名调用和传值调用
+
+Scala的解释器在解析函数参数(function arguments)时有两种方式：
+
+- 传值调用（call-by-value）：先计算参数表达式的值，再应用到函数内部
+- 传名调用（call-by-name）：将未计算的参数表达式直接应用到函数内部
+
+```scala
+// 代码
+object FunctionExample {
+    def main(args: Array[String]): Unit = {
+        delayedByName(time())
+        println("\n" + "*" * 30 + "\n")
+        delayedByValue(time())
+    }
+
+    def time(): Long = {
+        println("获取时间")
+        System.nanoTime
+    }
+  
+	// 传名调用
+    def delayedByName(t: => Long): Long = {
+        println("In delayedByName")
+        t
+    }
+  
+	// 传值调用
+    def delayedByValue(t: Long): Long = {
+        print("In delayedByValue")
+        t
+    }
+}
+
+// 输出
+In delayedByName
+获取时间
+
+******************************
+
+获取时间
+In delayedByValue
+
+/* 说明
+ delayed 方法中，在变量名和变量类型使用 => 符号来设置传名调用
+ */
+```
