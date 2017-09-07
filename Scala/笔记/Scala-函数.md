@@ -85,3 +85,72 @@ In delayedByValue
  delayed 方法中，在变量名和变量类型使用 => 符号来设置传名调用
  */
 ```
+
+
+
+## 调用时指定参数名
+
+```scala
+object TestAA {
+    def main(args: Array[String]): Unit = {
+        def sub(a:Int, b:Int): Int = {
+            a - b
+        }
+
+        println(sub(b = 4, a = 10))
+    }
+}
+
+// 输出
+6
+```
+
+
+
+## 可变参数
+
+```scala
+object TestAB {
+    def main(args: Array[String]): Unit = {
+        def varParams(a:Int, ss:String*) = {
+            var res = "" + a + "\t"
+            for (s <- ss) {
+                res += s + "\t"
+            }
+            res
+        }
+        println(varParams(1, "hello", "world"))
+    }
+}
+
+// 输出
+1	hello	world	
+```
+
+
+
+## 默认参数值
+
+```scala
+object TestAA {
+    def main(args: Array[String]): Unit = {
+        def sub(a:Int=20, b:Int): Int = {
+            a - b
+        }
+
+        println(sub(b = 4, a = 10))
+        println(sub(b = 4))
+    }
+}
+
+// 输出
+6
+16
+```
+
+
+
+## 闭包
+
+- 闭包是一个函数
+- 返回值依赖于声明在函数外部的一个或多个变量

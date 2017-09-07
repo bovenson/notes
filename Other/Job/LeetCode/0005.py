@@ -4,23 +4,25 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        re_s = s[::-1]
-        res = ''
+        start = 0
+        end = 0
+        
+        def getMaxPalindrome(_s, l, r):
+            while l >= 0 and r < len(s) and _s[l] == _s[r]:
+                l -= 1
+                r += 1
+            return r - l -1
+        
         for i in range(len(s)):
-            for j in range(len(re_s)):
-                if s[i] == re_s[j]:
-                    _i = i
-                    _j = j
-                    _k = 0
-                    while _i < len(s) and _j < len(re_s) and s[_i] == re_s[_j]:
-                        _i += 1
-                        _j += 1
-                        _k += 1
-                    res = s[i:i+_k] if len(res) < _k else res
-        return res
-                
+            max_len = max(getMaxPalindrome(s, i, i), getMaxPalindrome(s, i, i+1))
+            if max_len > end - start:
+                start = i - (max_len - 1) / 2
+                end = i + max_len / 2
+        return s[start:end+1]
+
                 
 if __name__ == '__main__':
     s = Solution()
-    res = s.longestPalindrome("abcdasdfghjkldcba")
+    res = s.longestPalindrome("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    # res = s.longestPalindrome("babad")
     print(res)

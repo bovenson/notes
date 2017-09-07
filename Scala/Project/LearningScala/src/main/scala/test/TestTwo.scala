@@ -1,3 +1,5 @@
+package test
+
 object TestTwo {
     def main(args: Array[String]): Unit = {
         val v = {}
