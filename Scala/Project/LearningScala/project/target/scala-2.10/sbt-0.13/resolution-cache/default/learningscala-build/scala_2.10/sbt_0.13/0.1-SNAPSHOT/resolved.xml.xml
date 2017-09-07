@@ -4,7 +4,7 @@
 		module="learningscala-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20170905153318"
+		publication="20170907164533"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

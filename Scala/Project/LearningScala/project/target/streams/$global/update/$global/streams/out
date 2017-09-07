@@ -1,4 +1,4 @@
-[info] Updating {file:/home/bovenson/Git/notes/Scala/Project/LearningScala/project/}learningscala-build...
+[info] Updating {file:/D:/Git/notes/Scala/Project/LearningScala/project/}learningscala-build...
 [debug] :: resolving dependencies :: default#learningscala-build;0.1-SNAPSHOT
 [debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
 [debug] 	validate = true
@@ -6009,19 +6009,19 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 958ms :: artifacts dl 12ms
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT compile produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-compile.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT runtime produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-runtime.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT test produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-test.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT provided produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-provided.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT optional produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-optional.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT compile-internal produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-compile-internal.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT runtime-internal produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-runtime-internal.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT test-internal produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-test-internal.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT plugin produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-plugin.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT sources produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-sources.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT docs produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-docs.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT pom produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-pom.xml
-[debug] 	report for default#learningscala-build;0.1-SNAPSHOT scala-tool produced in /home/bovenson/Git/notes/Scala/Project/LearningScala/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-learningscala-build-scala-tool.xml
-[debug] 	resolve done (958ms resolve - 12ms download)
+[debug] :: resolution report :: resolve 1095ms :: artifacts dl 36ms
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT compile produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-compile.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT runtime produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-runtime.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT test produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-test.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT provided produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-provided.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT optional produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-optional.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT compile-internal produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-compile-internal.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT runtime-internal produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-runtime-internal.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT test-internal produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-test-internal.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT plugin produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-plugin.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT sources produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-sources.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT docs produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-docs.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT pom produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-pom.xml
+[debug] 	report for default#learningscala-build;0.1-SNAPSHOT scala-tool produced in D:\Git\notes\Scala\Project\LearningScala\project\target\scala-2.10\sbt-0.13\resolution-cache\reports\default-learningscala-build-scala-tool.xml
+[debug] 	resolve done (1095ms resolve - 36ms download)
 [info] Done updating.
