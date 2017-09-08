@@ -8,7 +8,8 @@ public class EsperInsertRemoveStreamLambda {
 
         engine.getEPAdministrator().getConfiguration().addEventType(Withdrawal.class);
 
-        String epl = String.format("select * from %s#length(4)", Withdrawal.class.getName());
+        // String epl = String.format("select * from %s#length(4)", Withdrawal.class.getName());
+        String epl = "select * from Withdrawal#length(4)";
         EPStatement statement = engine.getEPAdministrator().createEPL(epl);
 
         // 添加 update listener
