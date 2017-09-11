@@ -12,24 +12,26 @@ public class EsperInsertRemoveStream {
         EPStatement statement = engine.getEPAdministrator().createEPL(epl);
 
         // 添加 update listener
-        statement.addListener(new WithdrawalUpdateListener());
-//        statement.addListener((newData, oldData) -> {
-//            if (newData != null) {
-//                String name = (String) newData[0].get("name");
-//                int amount = (int) newData[0].get("amount");
-//                System.out.println(String.format("newData info - Name: %s, Amount: %d", name, amount));
-//            } else {
-//                System.out.println("newData is null.");
-//            }
-//
-//            if (oldData != null) {
-//                String name = (String) oldData[0].get("name");
-//                int amount = (int) oldData[0].get("amount");
-//                System.out.println(String.format("oldData info - Name: %s, Amount: %d", name, amount));
-//            } else {
-//                System.out.println("oldData is null.");
-//            }
-//        });
+        statement.addListener(new UpdateListener() {
+            @Override
+            public void update(EventBean[] newEvents, EventBean[] oldEvents) {
+                if (newEvents != null) {
+                    String name = (String) newEvents[0].get("name");
+                    int amount = (int) newEvents[0].get("amount");
+                    System.out.println(String.format("newEvents info - Name: %s, Amount: %d", name, amount));
+                } else {
+                    System.out.println("newEvents is null.");
+                }
+
+                if (oldEvents != null) {
+                    String name = (String) oldEvents[0].get("name");
+                    int amount = (int) oldEvents[0].get("amount");
+                    System.out.println(String.format("oldEvents info - Name: %s, Amount: %d", name, amount));
+                } else {
+                    System.out.println("oldEvents is null.");
+                }
+            }
+        });
 
         // 发送事件
         EPRuntime runtime = engine.getEPRuntime();

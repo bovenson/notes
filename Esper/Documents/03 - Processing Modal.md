@@ -36,7 +36,7 @@ EventBean接口的`getUnderlying`方法允许更新监听器获取`underlying ev
 
 上面的例子中, Esper引擎只对语句的监听者推送了new events, 没有old events.
 
-### 实例代码
+### 示例代码
 
 `EsperInsertStream.java`
 
@@ -130,6 +130,78 @@ oldData is null.
 `select rstream * from Withdrawal#time(30 sec)`
 
 该语句将最近30秒内的Withdrawal事件保存在事件窗口中. 随着时间流逝, 事件窗口的事件会被推出, 并被当做old events推送给监听者.
+
+### 示例代码
+
+```java
+package com.bovenson.esper;
+
+import com.espertech.esper.client.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class EsperInsertRemoveStreamLambda {
+    private static final Logger log = LoggerFactory.getLogger(EsperInsertRemoveStreamLambda.class);
+
+    public static void main(String args[]) {
+        EPServiceProvider engine = EPServiceProviderManager.getDefaultProvider();
+
+        engine.getEPAdministrator().getConfiguration().addEventType(Withdrawal.class);
+
+        String epl = String.format("select irstream * from %s#length(4)", Withdrawal.class.getName());
+        // String epl = "select * from Withdrawal.win:length(2)";
+        EPStatement statement = engine.getEPAdministrator().createEPL(epl);
+
+        // 添加 update listener
+        statement.addListener((EventBean[] newEvents, EventBean[] oldEvents) -> {
+            if (newEvents != null) {
+                // System.out.println("Length:" + newEvents.length);
+                String name = (String) newEvents[0].get("name");
+                int amount = (int) newEvents[0].get("amount");
+                System.out.println(String.format("newEvents info - Name: %s, Amount: %d", name, amount));
+            } else {
+                System.out.println("newEvents is null.");
+            }
+
+            if (oldEvents != null) {
+                String name = (String) oldEvents[0].get("name");
+                int amount = (int) oldEvents[0].get("amount");
+                System.out.println(String.format("oldEvents info - Name: %s, Amount: %d", name, amount));
+            } else {
+                System.out.println("oldEvents is null.");
+            }
+        });
+
+        // 发送事件
+        EPRuntime runtime = engine.getEPRuntime();
+        runtime.sendEvent(new Withdrawal("W1", 500));
+        runtime.sendEvent(new Withdrawal("W2", 100));
+        runtime.sendEvent(new Withdrawal("W3", 200));
+        runtime.sendEvent(new Withdrawal("W4", 300));
+        runtime.sendEvent(new Withdrawal("W5", 50));
+        runtime.sendEvent(new Withdrawal("W6", 150));
+    }
+}
+```
+
+**输出:**
+
+```java
+newEvents info - Name: W1, Amount: 500
+oldEvents is null.
+newEvents info - Name: W2, Amount: 100
+oldEvents is null.
+newEvents info - Name: W3, Amount: 200
+oldEvents is null.
+newEvents info - Name: W4, Amount: 300
+oldEvents is null.
+newEvents info - Name: W5, Amount: 50
+oldEvents info - Name: W1, Amount: 500
+newEvents info - Name: W6, Amount: 150
+oldEvents info - Name: W2, Amount: 100
+```
+
+
 
 ## Terms(术语)
 
