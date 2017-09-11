@@ -17,89 +17,6 @@ bovenson@ThinkCentre:~/Git/neu-ip-gateway-manager$ bash hello.sh
 Hello World!
 ```
 
-## shell变量
-
-### 定义
-
-```shell
-v="This is a variable."
-```
-
-### 注意
-
-- 变量名和等号之间不能有空格
-- 首个字符必须为字母（a-z，A-Z）
-- 中间不能有空格，可以使用下划线（_）
-- 不能使用标点符号
-- 不能使用bash里的关键字（可用help命令查看保留关键字）
-- 已定义的变量，可以被重新定义
-
-### 使用
-
-使用一个定义过的变量，只要在变量名前面加美元符号即可
-
-```shell
-#!/bin/bash
-# File: hello.sh
-
-v="This is a variable."
-
-echo $v
-echo ${v}	# 变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界
-```
-
-```shell
-bovenson@ThinkCentre:~/Tmp$ bash hello.sh 
-This is a variable.
-This is a variable.
-bovenson@ThinkCentre:~/Tmp$ 
-```
-
-**变量名外面的花括号是可选的，加不加都行，加花括号是为了帮助解释器识别变量的边界**, 推荐给所有变量加上花括号，这是个好的编程习惯, 比如下面这种情况:
-
-```shell
-for skill in Ada Coffe Action Java; do
-    echo "I am good at ${skill}Script"
-done
-```
-
-### 只读变量
-
-使用 readonly 命令可以将变量定义为只读变量，只读变量的值不能被改变。
-
-```shell
-#!/bin/bash
-# File: hello.sh
-
-my_name="szk"
-readonly my_name
-my_name="bovenson"
-```
-
-```shell
-bovenson@ThinkCentre:~/Tmp$ bash hello.sh 
-hello.sh:行6: my_name: 只读变量
-bovenson@ThinkCentre:~/Tmp$ 
-```
-
-### 删除变量
-
-```shell
-unset variable_name
-```
-
-**注意**:
-
-- 变量被删除后不能再次使用
-- unset命令不能删除只读变量
-
-### 变量类型
-
-- **局部变量:** 局部变量在脚本或命令中定义，仅在当前shell实例中有效，其他shell启动的程序不能访问局部变量
-- **环境变量:** 所有的程序，包括shell启动的程序，都能访问环境变量，有些程序需要环境变量来保证其正常运行。必要的时候shell脚本也可以定义环境变量
-- **shell变量:** shell变量是由shell程序设置的特殊变量。shell变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了shell的正常运行
-
-
 ## shell字符串
 
 字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似。
@@ -553,44 +470,6 @@ echo "两数之和为 : $val"
 | -x file | 检测文件是否可执行，如果是，则返回 true。                  | [ -x $file ] 返回 true。  |
 | -s file | 检测文件是否为空（文件大小是否大于0），不为空返回 true。          | [ -s $file ] 返回 true。  |
 | -e file | 检测文件（包括目录）是否存在，如果是，则返回 true。             | [ -e $file ] 返回 true。  |
-
-## test 命令
-
-Shell中的 test 命令用于检查某个条件是否成立，它可以进行数值、字符和文件三个方面的测试。
-
-###　数值测试
-
-| 参数   | 说明      |
-| ---- | ------- |
-| -eq  | 等于则为真   |
-| -ne  | 不等于则为真  |
-| -gt  | 大于则为真   |
-| -ge  | 大于等于则为真 |
-| -lt  | 小于则为真   |
-| -le  | 小于等于则为真 |
-
-### 字符串测试
-
-| 参数     | 说明           |
-| ------ | ------------ |
-| =      | 等于则为真        |
-| !=     | 不相等则为真       |
-| -z 字符串 | 字符串的长度为零则为真  |
-| -n 字符串 | 字符串的长度不为零则为真 |
-
-### 文件测试
-
-| 参数     | 说明                 |
-| ------ | ------------------ |
-| -e 文件名 | 如果文件存在则为真          |
-| -r 文件名 | 如果文件存在且可读则为真       |
-| -w 文件名 | 如果文件存在且可写则为真       |
-| -x 文件名 | 如果文件存在且可执行则为真      |
-| -s 文件名 | 如果文件存在且至少有一个字符则为真  |
-| -d 文件名 | 如果文件存在且为目录则为真      |
-| -f 文件名 | 如果文件存在且为普通文件则为真    |
-| -c 文件名 | 如果文件存在且为字符型特殊文件则为真 |
-| -b 文件名 | 如果文件存在且为块特殊文件则为真   |
 
 
 ## 控制结构
