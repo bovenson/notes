@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ ! ${1} ]
+then
+	echo "USAGE: ${0} source-code-file.[c or cpp]"
+	exit 1
+fi
+
+g++ -o .mkcpp-out `pwd`/${1}
+./.mkcpp-out
+
+rm .macpp-out
+
