@@ -201,6 +201,101 @@ newEvents info - Name: W6, Amount: 150
 oldEvents info - Name: W2, Amount: 100
 ```
 
+## Filters and Where-clauses
+
+事件流过滤器允许在事件进入数据窗口之前, 对给定的流进行过滤. 下面的语句是一个选择amount>=200的Withdrawal事件的过滤器.
+
+```
+select * from Withdrawal(amount >= 200)#length(5)
+```
+
+利用这个过滤器, 任何amount小于200的Withdrawal事件都不会进入长度窗口, 也因此不会推送给更新监听器.
+
+![](img/03-05.gif)
+
+### 示例代码
+
+```java
+package com.bovenson.esper.example;
+
+import com.bovenson.esper.Withdrawal;
+import com.espertech.esper.client.*;
+
+public class EsperFilterExample {
+    public static void main(String args[]) {
+        EPServiceProvider engine = EPServiceProviderManager.getDefaultProvider();
+
+        engine.getEPAdministrator().getConfiguration().addEventType(Withdrawal.class);
+
+        String epl = String.format("select irstream * from %s(amount >= 200)", Withdrawal.class.getName());
+        EPStatement statement = engine.getEPAdministrator().createEPL(epl);
+
+        // 添加 update listener
+        statement.addListener((EventBean[] newEvents, EventBean[] oldEvents) -> {
+            if (newEvents != null) {
+                String name = (String) newEvents[0].get("name");
+                int amount = (int) newEvents[0].get("amount");
+                System.out.println(String.format("newEvents info - Name: %s, Amount: %d", name, amount));
+            } else {
+                System.out.println("newEvents is null.");
+            }
+
+            if (oldEvents != null) {
+                String name = (String) oldEvents[0].get("name");
+                int amount = (int) oldEvents[0].get("amount");
+                System.out.println(String.format("oldEvents info - Name: %s, Amount: %d", name, amount));
+            } else {
+                System.out.println("oldEvents is null.");
+            }
+            System.out.println("**********************************");
+        });
+
+        // 发送事件
+        EPRuntime runtime = engine.getEPRuntime();
+        runtime.sendEvent(new Withdrawal("W1", 500));
+        runtime.sendEvent(new Withdrawal("W2", 100));
+        runtime.sendEvent(new Withdrawal("W3", 200));
+        runtime.sendEvent(new Withdrawal("W4", 300));
+        runtime.sendEvent(new Withdrawal("W5", 50));
+        runtime.sendEvent(new Withdrawal("W6", 150));
+    }
+}
+```
+
+**输出:**
+
+```shell
+newEvents info - Name: W1, Amount: 500
+oldEvents is null.
+**********************************
+newEvents info - Name: W3, Amount: 200
+oldEvents is null.
+**********************************
+newEvents info - Name: W4, Amount: 300
+oldEvents is null.
+**********************************
+```
+
+
+
+EPL语句中的where子句和having子句, 在更晚的阶段对数据进行过滤, 在此之前, 事件已经到达了数据窗口或其他视图.
+
+下面的语句是使用where子句的示例.
+
+```
+select * from WithDrawal#length(5) where amount >= 200
+```
+
+where子句同时适用于new events 和 old events. 新事件到达时(new events),  只有满足where子句, 事件才会被推送个更新监听器; 当事件(old events)离开数据窗口时, 只有满足where子句的事件, 才会推送给更新监听器.
+
+![](img/03-06.gif)
+
+## Time Windows
+
+### Time Windows
+
+
+
 
 
 ## Terms(术语)

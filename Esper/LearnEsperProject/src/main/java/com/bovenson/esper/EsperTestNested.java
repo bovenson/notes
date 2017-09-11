@@ -9,8 +9,11 @@ public class EsperTestNested {
 
         engine.getEPAdministrator().getConfiguration().addEventType(Withdrawal.class);
 
+        // 属性过滤
         // String epl = String.format("select irstream * from %s(person.age>30)", Withdrawal.class.getName());
+        // 嵌套过滤
         // String epl = String.format("select irstream * from %s(persons[0].age>30)", Withdrawal.class.getName());
+        // 列表过滤
         String epl = String.format("select irstream * from %s(persons.allOf( v => v.age > 20))", Withdrawal.class.getName());
         EPStatement statement = engine.getEPAdministrator().createEPL(epl);
 
