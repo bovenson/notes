@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/*
+ * fork test
+ * */
 int main()
 {
     int i;
