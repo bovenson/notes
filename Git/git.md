@@ -374,6 +374,78 @@ Git也允许手动建立追踪关系。
 > $ git push origin --tags
 > ```
 
+## cherry-pick
+
+- 用于把另一个本地分支的commit修改应用到当前分支
+- 用法: `git cherry-pick <commit id>`
+
+**实际问题描述**
+
+- 在本地 master 分支上做了一个commit ( 38361a681381 ) ， 把它放到本地 cur_branch 分支上
+
+  ```shell
+  git checkout cur_branch
+  git cherry-pick 38361a681381
+  ```
+
+
+
+## blame
+
+- 执行`git blame`命令时，会逐行显示文件，并在每一行的行首显示commit号,提交者,最早的提交日期
+
+  ```shell
+  bovenson@ThinkCentre:~/Git/notes/Esper/LearnEsperProject/src/main/java/com/bovenson/esper/example$ git blame EsperFilterExample.java
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  1) package com.bovenson.esper.example;
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  2) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  3) import com.bovenson.esper.Withdrawal;
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  4) import com.espertech.esper.client.*;
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  5) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  6) public class EsperFilterExample {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  7)     public static void main(String args[]) {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  8)         EPServiceProvider engine = EPServiceProviderManager.getDefaultProvider();
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800  9) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 10)         engine.getEPAdministrator().getConfiguration().addEventType(Withdrawal.class);
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 11) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 12)         String epl = String.format("select irstream * from %s(amount >= 200)", Withdrawal.class.getName());
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 13)         EPStatement statement = engine.getEPAdministrator().createEPL(epl);
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 14) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 15)         // 添加 update listener
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 16)         statement.addListener((EventBean[] newEvents, EventBean[] oldEvents) -> {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 17)             if (newEvents != null) {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 18)                 String name = (String) newEvents[0].get("name");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 19)                 int amount = (int) newEvents[0].get("amount");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 20)                 System.out.println(String.format("newEvents info - Name: %s, Amount: %d", name, amount));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 21)             } else {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 22)                 System.out.println("newEvents is null.");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 23)             }
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 24) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 25)             if (oldEvents != null) {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 26)                 String name = (String) oldEvents[0].get("name");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 27)                 int amount = (int) oldEvents[0].get("amount");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 28)                 System.out.println(String.format("oldEvents info - Name: %s, Amount: %d", name, amount));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 29)             } else {
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 30)                 System.out.println("oldEvents is null.");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 31)             }
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 32)             System.out.println("**********************************");
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 33)         });
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 34) 
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 35)         // 发送事件
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 36)         EPRuntime runtime = engine.getEPRuntime();
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 37)         runtime.sendEvent(new Withdrawal("W1", 500));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 38)         runtime.sendEvent(new Withdrawal("W2", 100));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 39)         runtime.sendEvent(new Withdrawal("W3", 200));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 40)         runtime.sendEvent(new Withdrawal("W4", 300));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 41)         runtime.sendEvent(new Withdrawal("W5", 50));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 42)         runtime.sendEvent(new Withdrawal("W6", 150));
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 43)     }
+  484cf086 (bovenson 2017-09-11 20:36:09 +0800 44) }
+  ```
+
+  ​
+
+
+
 ## 忽略文件
 
 有些时候，你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等，每次`git status`都会显示`Untracked files ...`，有强迫症的童鞋心里肯定不爽。
