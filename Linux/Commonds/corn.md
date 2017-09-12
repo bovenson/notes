@@ -7,7 +7,15 @@
 ## 配置文件
 
 - `/etc/crontab`: 系统任务
-- `/etc/spool/cron`下的文件: 用户任务
+- `/var/spool/cron`下的文件: 用户任务
+
+| 文件                                       | 说明                         |
+| ---------------------------------------- | -------------------------- |
+| `/etc/cron.deny`                         | 该文件中所列用户不允许使用crontab命令     |
+| `/etc/cron.allow`                        | 该文件中所列用户允许使用crontab命令      |
+| `/var/spool/cron/` or `/var/spool/cron/crontabs` | 所有用户crontab文件存放的目录, 以用户名命名 |
+
+
 
 ## 查看用户定时任务
 
@@ -50,7 +58,7 @@ bovenson@ThinkCentre:~$ sudo cat /var/spool/cron/crontabs/bovenson
 ## 任务格式
 
 ```shell
-	*  			*　 		*　			*　 			*　　			command
+* * * * * command
 分钟(0-59)　小时(0-23)　日期(1-31)　月份(1-12)　星期(0-6,0代表星期天)　 命令
 
 第1列表示分钟1～59 每分钟用*或者 */1表示
