@@ -1,5 +1,20 @@
 # fork
 
+- **fork()给子进程返回一个零值，而给父进程返回一个非零值**
+
+  fork()是一个分叉函数， 返回值： 若成功调用一次则返回两个值，子进程返回0，父进程   返回子进程标记；否则，出错返回-1
+
+  ```c
+  int main{
+      fork() || fork()
+  }
+
+  // 共创建了3个进程
+  ```
+
+  ​
+
+
 - 一个进程，包括代码、数据和分配给进程的资源。fork（）函数通过系统调用创建一个与原来进程几乎完全相同的进程，也就是两个进程可以做完全相同的事，但如果初始参数或者传入的变量不同，两个进程也可以做不同的事。
 - 一个进程调用fork（）函数后，系统先给新的进程分配资源，例如存储数据和代码的空间。然后把原来的进程的所有值都复制到新的新进程中，只有少数值与原来的进程的值不同。相当于克隆了一个自己。
 - 使用fork函数得到的子进程从父进程的继承了整个进程的地址空间，包括：
@@ -81,6 +96,7 @@ int main()
 
 - [参考一](http://blog.csdn.net/myarrow/article/details/8995091)
 - [参考二](https://www.nowcoder.com/questionTerminal/553c29f704434152b2e2ebacb979a211)
+- [参考三](http://www.cnblogs.com/bastard/archive/2012/08/31/2664896.html)
 
 
 
@@ -135,6 +151,59 @@ Linux下对文件操作有两种方式：
 
 
 
+# 数据类型
 
+| 数据类型          | 占用空间                             | 范围   |
+| ------------- | -------------------------------- | ---- |
+| char          | 1字节                              |      |
+| * (指针变量)      | 等于系统字长(32位操作系统为4字节; 64位操作系统为8字节) |      |
+| short int     | 2字节                              |      |
+| int           | 4字节                              |      |
+| unsigned int  | 4字节                              |      |
+| float         | 4字节                              |      |
+| double        | 8字节                              |      |
+| long          | 8字节                              |      |
+| unsigned long | 8字节                              |      |
+| long long     | 8字节                              |      |
+
+# sizeof
+
+```c
+#include <stdio.h>
+
+int main()
+{
+	int intValue = 1024;
+	char str[] = "hello";
+	const char* ch = str;
+	printf("%d\n", sizeof(intValue));	// 4
+	printf("%d\n", sizeof(str));		// 6
+	printf("%d\n", sizeof(ch));			// 8
+	return 0;
+}
+
+// 输出:
+4
+6
+8
+```
+
+
+
+# new/delete/malloc/free
+
+- malloc/free 是C/C++语言的标准库函数，new/delete是C++的运算符
+
+- new 能自动分配空间大小
+
+- new初始化对象，调用对象的构造函数，malloc仅仅分配内存
+
+- new、delete返回的是所分配类型变量（对象）的指针，malloc、free返回的是void指针
+
+- 对于用户自定义的对象而言，用malloc/free无法满足动态管理对象的要求对象在创建的时候会自动调用构造函数，对象在消亡之前自动执行析构函数由于malloc/free是库函数而不是运算符，不在编译器的控制范围，不能把构造函数和析构函数的任务强加于malloc/free 。一次C++需要一个能够对对象完
+
+  成动态分配内存和初始化工作的运算符new，以及一个释放内存的运算符delete。简单来说就是new/delete能完成跟家详细的对内存的操作，而malloc/
+
+  free不能。
 
 # END
