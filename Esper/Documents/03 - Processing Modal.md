@@ -294,7 +294,52 @@ where子句同时适用于new events 和 old events. 新事件到达时(new even
 
 ### Time Windows
 
+事件窗口是一个移动的窗口, 基于系统时间扩展特定的时间间隔到刚刚过去的时间. 时间窗口允许我们限制事件的数量.
 
+有这样一个需求: 确定最后4秒提款的每个帐户的平均提款量大于1000的所有帐户, 实现的语句可以这样写:
+
+```sql
+select account, avg(amount)
+from Withdrawal#time(4 sec)
+group by account
+having amount > 1000
+```
+
+下面的图, 展示了`select irstream * from Withdrawal#time(4 sec)`的过程.
+
+![](img/03-07.gif)
+
+### Time Batch
+
+Time Batch view (批时间处理视图) 缓存事件, 并以一定的时间间隔释放在一个更新中.
+
+简单语句 `select * from Withdrawal#time_batch(4 sec)` 图示如下:
+
+![](img/03-08.gif)
+
+## Batch windows
+
+批处理窗口.
+
+对事件进行分组的内置数据窗口是win：time_batch和win：length_batch视图等。
+
+win：time_batch数据窗口收集在给定时间间隔内到达的事件，并在时间间隔结束时将收集的事件作为批处理发送给侦听器。
+
+win：length_batch数据窗口收集给定数量的事件，并在收集给定数量的事件时将收集的事件作为批处理发送给侦听器。
+
+以包含时间窗口的语句: `select account, amount from Withdrawal#time_batch(1 sec)`为例: 该语句收集一秒钟内到达的事件, 在一秒结束时Esper引擎把收集到的事件作为new events(insert stream)推送给监听器, 同时把上个时间间隔收集到的事件作为old events(remove stream)推送给监听器.
+
+对于包含聚合函数或者group by子句的语句, Esper引擎把每个分组统一的聚合结果推送给监听器. 例如:
+
+`select sum(amount) as mysum from Withdrawal#time_batch(1 sec)`
+
+
+
+## Aggregation and Grouping
+
+聚合及分组.
+
+### Insert and Remove Stream
 
 
 
