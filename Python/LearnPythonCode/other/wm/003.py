@@ -9,7 +9,6 @@ DATE: 17-9-14 上午10:35
 DESC: 
 """
 
-
 n, k = (int(i) for i in str(input()).split())
 nums = sorted([int(i) for i in str(input()).split()])
 c = [None for _ in range(100)]
@@ -24,7 +23,7 @@ def solve(num, cur, cnt):
             if i == cnt-1:
                 print(c[i])
             else:
-                print(c[i], end=' ')
+                print(c[i], ' ',)
         return True
     elif cur >= len(nums) or num < nums[cur]:
         return False
