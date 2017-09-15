@@ -1,0 +1,1 @@
+0 23 * * * bash /home/bovenson/Git/notes/git-push.sh
