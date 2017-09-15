@@ -1,4 +1,4 @@
 #!/bin/bash
-git add *
+git add --all
 git commit -m "auto commit"
 git push origin master

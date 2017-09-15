@@ -68,3 +68,4 @@ sudo usermod -a -G sudo yourusername
   | -U           | 解除密码锁定            |      |
 
   ​
+
