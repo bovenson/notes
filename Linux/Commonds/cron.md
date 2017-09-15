@@ -145,5 +145,8 @@ $ cat cron-task-conf-file.cron
 $ crontab cron-task-conf-file.cron
 $ crontab -l
 * * * * * /home//home/public/Git/notes/Linux/Codes/cron-test-01.sh
+
+### 从文件添加:指定用户
+crontab [-u user] file
 ```
 
