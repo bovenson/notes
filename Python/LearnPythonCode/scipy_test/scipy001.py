@@ -24,5 +24,9 @@ print(result)
 
 from scipy import integrate # 导入积分函数
 
+
 def g(x):
-    
+    return (1-x**2)**0.5
+
+pi_2, err = integrate.quad(g, -1, 1)    # 积分结果和误差
+print(pi_2, err)
