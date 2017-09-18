@@ -1,6 +1,5 @@
 package com.bovenson.esper.example;
 
-import com.bovenson.esper.Withdrawal;
 import com.espertech.esper.client.*;
 
 public class EsperFilterExample {

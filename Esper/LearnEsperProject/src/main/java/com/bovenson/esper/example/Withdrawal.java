@@ -1,4 +1,4 @@
-package com.bovenson.esper;
+package com.bovenson.esper.example;
 
 import java.util.ArrayList;
 import java.util.List;

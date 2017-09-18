@@ -1,4 +1,4 @@
-package com.bovenson.esper;
+package com.bovenson.esper.example;
 
 import com.espertech.esper.client.EPServiceProvider;
 import com.espertech.esper.client.EPServiceProviderManager;

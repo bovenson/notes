@@ -1,4 +1,4 @@
-package com.bovenson.esper;
+package com.bovenson.esper.example;
 
 public class TestEvent {
     private String name;
