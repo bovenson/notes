@@ -6,6 +6,37 @@
 conda create --name envname python=3.6	# 指定环境名及python版本
 ```
 
+从文件新建环境
+
+```shell
+conda env create -f environment.yml
+```
+
+配置文件示例
+
+```yaml
+name: stats
+dependencies:
+  - numpy
+  - pandas
+```
+
+```yaml
+name: stats2
+channels:
+  - javascript
+dependencies:
+  - python=3.4   # or 2.7
+  - bokeh=0.9.2
+  - numpy=1.9.*
+  - nodejs=0.10.*
+  - flask
+  - pip:
+    - Flask-Testing
+```
+
+
+
 **激活**
 
 ```shell
