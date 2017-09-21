@@ -1,15 +1,13 @@
-# 网络
-
-## 网卡配置文件
+# 网卡配置文件
 
 ```shell
 # 目录
 /etc/sysconfig/network-scripts/ 
 ```
 
-### 配置示例
+## 配置示例
 
-#### 多个IP地址
+### 多个IP地址
 
 ```config
 TYPE="Ethernet"
@@ -33,4 +31,6 @@ DNS1="192.168.1.1"
 IPV6_PEERDNS="yes"
 IPV6_PEERROUTES="yes"
 ```
+
+# 配置静态IP
 
