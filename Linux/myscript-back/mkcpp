@@ -9,5 +9,5 @@ fi
 g++ -o .mkcpp-out `pwd`/${1}
 ./.mkcpp-out
 
-rm .mkcpp-out
+rm .macpp-out
 
