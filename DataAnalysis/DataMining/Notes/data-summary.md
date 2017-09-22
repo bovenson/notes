@@ -225,3 +225,52 @@ plt.show()
 
 其值越大, 说明数据的变异程度越大; 反之, 说明变异程度越小.
 
+```python
+#!/usr/bin python3
+# coding: utf-8
+
+"""
+AUTHOR: bovenson
+EMAIL: szhkai@qq.com
+FILE: 003.py
+DATE: 17-9-22 下午3:58
+DESC: Analysis on sales data of catering
+"""
+
+
+import pandas as pd
+
+catering_sale = './data/catering_sale.xls'  # sales data of catering
+data = pd.read_excel(catering_sale, index_col='日期')     # read data; specify the data as index
+data = data[(data['销量'] > 400) & (data['销量'] < 5000)]   # filter out the exception data
+
+statistics = data.describe()
+
+statistics.loc['range'] = statistics.loc['max'] - statistics.loc['min']
+statistics.loc['var'] = statistics.loc['std'] / statistics.loc['mean']
+statistics.loc['dis'] = statistics.loc['75%'] - statistics.loc['25%']
+
+print(statistics)
+
+
+### 输出
+count   195.000000
+mean   2744.595385
+std     424.739407
+min     865.000000
+25%    2460.600000
+50%    2655.900000
+75%    3023.200000
+max    4065.200000
+range  3200.200000
+var       0.154755
+dis     562.600000
+```
+
+## 周期性分析
+
+周期性分析是探索某个变量是否随时间变化而呈现某种周期性变化的趋势.
+
+## 贡献度分析
+
+贡献度分析又称帕累托分析, 它的原理是帕累托法则, 又称20/80定律.
