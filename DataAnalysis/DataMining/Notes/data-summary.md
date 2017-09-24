@@ -274,3 +274,61 @@ dis     562.600000
 ## 贡献度分析
 
 贡献度分析又称帕累托分析, 它的原理是帕累托法则, 又称20/80定律.
+
+```python
+#!/usr/bin python3
+# coding: utf-8
+
+"""
+AUTHOR: bovenson
+EMAIL: szhkai@qq.com
+FILE: 004.py
+DATE: 17-9-24 下午6:57
+DESC: Dish profit pareto chart (帕累托图)
+"""
+from __future__ import print_function
+import pandas as pd
+
+# 初始化参数
+dish_profit = './data/catering_dish_profit.xls'  # 餐饮菜品盈利数据
+data = pd.read_excel(dish_profit, index_col=u'菜品名')
+print(data.__class__)
+data = data[u'盈利'].copy()
+print(data.__class__)
+# data.sort(ascending=False)
+
+import matplotlib.pyplot as plt  # 导入图像库
+
+# plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
+
+plt.figure()
+data.plot(kind='bar')
+plt.ylabel(u'盈利（元）')
+p = 1.0 * data.cumsum() / data.sum()
+p.plot(color='r', secondary_y=True, style='-o', linewidth=2)
+plt.annotate(format(p[6], '.4%'), xy=(6, p[6]), xytext=(6 * 0.9, p[6] * 0.9),
+             arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2"))  # 添加注释，即85%处的标记。这里包括了指定箭头样式。
+plt.ylabel(u'盈利（比例）')
+plt.show()
+```
+
+![](img/data-summary-02.png)
+
+## 相关性分析
+
+分析连续变量之间线性相关程度的强弱, 并用适当的统计指标表示出来的过程成为相关分析.
+
+- 绘制散点图
+
+  判断两个变量是否具有线性相关关系的最直观的方法是直接绘制散点图
+
+- 绘制散点图矩阵
+
+  需要同时考虑多个变量间的相关关系时, 利用散点图矩阵同时绘制各变量间的散点图, 从而快速发现多个变量间的主要相关性, 这在进行多元线性回归时显得尤为重要
+
+- 计算相关系数
+
+  - Pearson相关系数
+  - Spearman秩相关系数: 要求连续变量的取值服从正态分布
+  - 判定系数: 判定系数是相关系数的平方
