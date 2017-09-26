@@ -112,29 +112,45 @@
 
 ### 替换
 
-| 命令                      | 说明                                       |
-| ----------------------- | ---------------------------------------- |
-| `:%s/old/new/g`         | Replace all occurences of *old* by *new* in file |
-| `:%s/onward/forward/gi` | Replace onward by forward, case unsensitive |
-| `:%s/old/new/gc`        | Replace all occurences with confirmation |
-| `:2,35s/old/new/g`      | Replace all occurences between lines 2 and 35 |
-| `:5,$s/old/new/g`       | Replace all occurences from line 5 to EOF |
-| `:%s/^/hello/g`         | Replace the begining of each line by *hello* |
-| `:%s/$/Harry/g`         | Replace the end of each line by *Harry*  |
-| `:%s/onward/forward/gi` | Replace *onward* by *forward*, case unsensitive |
-| `:%s/ *$//g`            | Delete all white spaces                  |
-| `:g/string/d`           | Delete all lines containing *string*     |
-| `:v/string/d`           | Delete all lines containing which didn’t contain *string* |
-| `:s/Bill/Steve/`        | Replace the first occurence of *Bill* by *Steve* in current line |
-| `:s/Bill/Steve/g`       | Replace *Bill* by *Steve* in current line |
-| `:%s/Bill/Steve/g`      | Replace *Bill* by *Steve* in all the file |
-| `:%s/^M//g`             | Delete DOS carriage returns (^M)         |
-| `:%s/\r/\r/g`           | Transform DOS carriage returns in returns |
-| `:%s#<[^>]\+>##g`       | Delete HTML tags but keeps text          |
-| `:%s/^\(.*\)\n\1$/\1/`  | Delete lines which appears twice         |
-| `Ctrl+a`                | Increment number under the cursor        |
-| `Ctrl+x`                | Decrement number under cursor            |
-| `ggVGg?`                | Change text to Rot13                     |
+| 命令                      | 说明                                       | 中文                           |
+| ----------------------- | ---------------------------------------- | :--------------------------- |
+| `:%s/old/new/g`         | Replace all occurences of *old* by *new* in file | 使用 new 替换文件所有出现的 old         |
+| `:%s/onward/forward/gi` | Replace onward by forward, case unsensitive | 使用 forward 替换掉 onward，大小写不敏感 |
+| `:%s/old/new/gc`        | Replace all occurences with confirmation |                              |
+| `:2,35s/old/new/g`      | Replace all occurences between lines 2 and 35 |                              |
+| `:5,$s/old/new/g`       | Replace all occurences from line 5 to EOF |                              |
+| `:%s/^/hello/g`         | Replace the begining of each line by *hello* |                              |
+| `:%s/$/Harry/g`         | Replace the end of each line by *Harry*  |                              |
+| `:%s/onward/forward/gi` | Replace *onward* by *forward*, case unsensitive |                              |
+| `:%s/ *$//g`            | Delete all white spaces                  |                              |
+| `:g/string/d`           | Delete all lines containing *string*     |                              |
+| `:v/string/d`           | Delete all lines containing which didn’t contain *string* |                              |
+| `:s/Bill/Steve/`        | Replace the first occurence of *Bill* by *Steve* in current line | 用Steve替换每一行的第一个Bill          |
+| `:s/Bill/Steve/g`       | Replace *Bill* by *Steve* in current line |                              |
+| `:%s/Bill/Steve`        |                                          | 使用Steve替换所有行的第一个Bill         |
+| `:%s/Bill/Steve/g`      | Replace *Bill* by *Steve* in all the file |                              |
+| `:%s/^M//g`             | Delete DOS carriage returns (^M)         |                              |
+| `:%s/\r/\r/g`           | Transform DOS carriage returns in returns |                              |
+| `:%s#<[^>]\+>##g`       | Delete HTML tags but keeps text          |                              |
+| `:%s/^\(.*\)\n\1$/\1/`  | Delete lines which appears twice         |                              |
+| `Ctrl+a`                | Increment number under the cursor        |                              |
+| `Ctrl+x`                | Decrement number under cursor            |                              |
+| `ggVGg?`                | Change text to Rot13                     |                              |
+
+**说明**
+
+- `:s`：当前行
+- `g`： 对应范围内所有
+- `:%s`： 表示整个文档（所有行）
+
+**示例**
+
+```shell
+:s/Linux/RHEL5		# 指将当前行中的第一个linux换为RHEL5
+:s/Linux/RHEL5/g	# 指将当前行中所有的linux换为RHEL5
+:%s/Linux/RHEL5		# 指将文件中每一行的第一个linux换为RHEL5
+:%s/Linux/RHEL5/g	# 整个文档范围内的linux换为RHEL5
+```
 
 
 
