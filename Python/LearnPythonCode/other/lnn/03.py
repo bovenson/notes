@@ -39,7 +39,7 @@ def f(n):
             for j in _c1.keys():
                 if i > 0:
                     for _item in _res[i-1]:
-                        
+
                         pass
                 else:
                     pass
