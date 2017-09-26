@@ -105,6 +105,18 @@ freetype                  2.5.5                         2    https://mirrors.tun
 ...
 ```
 
+## 安装包
+
+```shell
+### 1
+# 向当前激活的环境安装包
+conda install scipy
+
+### 2
+# 向指定环境安装包
+conda install -n myenv scipy
+```
+
 
 
 # 设置国内源
