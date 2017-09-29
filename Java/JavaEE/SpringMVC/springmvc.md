@@ -40,3 +40,7 @@ String newPasswordRepeat = request.getParameter("newPasswordRepeat");
 	}
 ```
 
+# 将接收到的参数转换为Java对象
+
+- [参考一](http://www.cnblogs.com/zj0208/p/6290252.html)
+
