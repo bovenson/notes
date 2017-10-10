@@ -136,3 +136,14 @@ int count = XxxMapper.countByExample(example);
 //相当于：select count(*) from user where username='wyw'
 ```
 
+# 错误
+
+## 一
+
+```java
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.reflection.ReflectionException: There is no getter for property named '__frch_criterion_1' in 'class com.neu.cse.powercloud.pojo.sysmanage.SysUserExample'
+```
+
+**原因：**
+
+- 判断条件类型不正确（例如：criteria.andStatusNotEqualTo（"Wrong Type"））
