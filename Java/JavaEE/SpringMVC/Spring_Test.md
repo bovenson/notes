@@ -1,8 +1,8 @@
 # 配置
 
-**pom文件**
+## pom文件
 
-相关
+### 相关
 
 ```xml
 <!-- 单元测试 -->
@@ -37,9 +37,16 @@
   <artifactId>spring-test</artifactId>
   <version>${spring.version}</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+<dependency>
+  <groupId>com.jayway.jsonpath</groupId>
+  <artifactId>json-path</artifactId>
+  <version>${json-path.version}</version>
+</dependency>	<!-- ./单元测试 -->
 ```
 
-全部
+### 全部
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -75,6 +82,7 @@
 		<commons-fileupload.version>1.3.1</commons-fileupload.version>
         <mockito.core.version>2.10.0</mockito.core.version>
         <hamcrest.core.version>1.3</hamcrest.core.version>
+		<json-path.version>2.4.0</json-path.version>
 	</properties>
 
 	<dependencies>
@@ -112,20 +120,14 @@
 			<artifactId>httpclient</artifactId>
 			<version>${httpclient.version}</version>
 		</dependency>
-		<!-- 单元测试 -->
+
+		<!-- 单元测试相关 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
@@ -138,6 +140,13 @@
             <version>${mockito.core.version}</version>
             <scope>test</scope>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>${json-path.version}</version>
+		</dependency>	<!-- ./单元测试 -->
+
         <!-- 日志处理 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -299,9 +308,10 @@
 		</resources>
 	</build>
 </project>
+
 ```
 
-**applicationContext.xml**
+## **applicationContext.xml**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -367,7 +377,7 @@
 </beans>
 ```
 
-**springmvc.xml**
+## **springmvc.xml**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -412,7 +422,7 @@
 </beans>
 ```
 
-**SqlMapConfig.xml**
+## **SqlMapConfig.xml**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -434,15 +444,22 @@
 
 # 示例
 
+## 一
+
 ```java
 package com.neu.cse.powercloud.serviceImpl.sysmanage;
 
+import com.github.pagehelper.Page;
+import com.neu.cse.powercloud.pojo.sysmanage.SysUser;
 import com.neu.cse.powercloud.service.sysmanage.UserManageService;
+import com.neu.cse.powercloud.util.ResponseResult;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -452,7 +469,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.http.HttpSession;
+import java.util.Random;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -466,20 +487,29 @@ public class UserManageServiceImplTest {
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
+    private MockHttpSession session;
 
     @Before
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+        session = new MockHttpSession();
     }
 
 
     @Test
     public void addUser() throws Exception {
-        String sysUserJson = "{ \"username\": \"admin24\", \"password\": \"admin1\", \"passwordrepeat\": \"admin1\", " +
+        // 需要登录
+        // 发送请求
+        String sysUserJson = "{ \"username\": \"admin" + new Random().nextInt() + "\", \"password\": \"admin1\", \"passwordrepeat\": \"admin1\", " +
                 "\"customerid\": \"100010\", \"tel\": \"191717171\", \"status\": \"1\"}";
-        MvcResult result = this.mockMvc.perform(post("/user/add").contentType(MediaType.APPLICATION_JSON)
-                .content(sysUserJson))
-                .andDo(MockMvcResultHandlers.print())
+        System.out.println(sysUserJson);
+
+        MvcResult result = this.mockMvc.perform(
+                post("/user/add")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(sysUserJson)
+                        .session((MockHttpSession)getLoginSession()))
+                .andDo(print())
                 .andExpect(status().isOk())
 //                .andExpect(jsonPath("$.msg").value("OK"))
                 .andReturn();
@@ -490,6 +520,123 @@ public class UserManageServiceImplTest {
 
     @Test
     public void getUsers() throws Exception {
+        ResponseResult result = userManageService.getUsers(0, 3);
+        Page page = (Page)result.getData();
+        System.out.println(page.getTotal());
+        System.out.println(page.getResult());
+        System.out.println(page.size());    // 该页记录数量
+
+        for (int i=0; i < page.size(); ++i) {
+            SysUser tUser = (SysUser) page.get(i);
+            System.out.println(tUser);
+        }
+    }
+
+    @Test
+    public void deleteUser() throws Exception {
+        ResponseResult result = userManageService.getUsers(0, 3);
+        System.out.println(result.getData());
+        Assert.assertTrue(result.getData() instanceof Page);
+        Page page = (Page)result.getData();
+        System.out.println(page);
+        long totalBefore = page.getTotal();
+        if (page.size() > 0) {
+            SysUser deleteUser = (SysUser) page.get(0);
+            System.out.println("删除用户:" + deleteUser);
+            userManageService.deleteUser(deleteUser.getId());
+
+            result = userManageService.getUsers(0, 3);
+            page = (Page)result.getData();
+            if (page.size() > 0) {
+                Assert.assertNotEquals(((SysUser) page.get(0)).getId(), deleteUser.getId());
+            }
+            Assert.assertEquals(totalBefore, page.getTotal() + 1);
+        }
+    }
+
+    /**
+     * 获取登录session
+     * @return  Session
+     * @throws Exception E
+     */
+    private HttpSession getLoginSession() throws Exception {
+        MvcResult result = this.mockMvc.perform(
+                post("/login/userLogin")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("account", "admin")
+                        .param("password", "admin"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andReturn();
+
+        return result.getRequest().getSession();
+    }
+}
+```
+
+## 二
+
+```java
+package com.neu.cse.powercloud.serviceImpl;
+
+import com.neu.cse.powercloud.service.LoginService;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * 登录测试类
+ * @author szk
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration(value = "src/main/webapp")
+@ContextConfiguration(locations = { "classpath:spring/springmvc.xml", "classpath:mybatis/SqlMapConfig.xml", "classpath:spring/applicationContext.xml"})
+public class LoginServiceImplTest {
+    @Autowired
+    private LoginService loginService;
+
+    @Autowired
+    private WebApplicationContext wac;
+    private MockMvc mockMvc;
+    private MockHttpSession session;
+
+    @Before
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+        session = new MockHttpSession();
+    }
+    @Test
+    public void getUserByID() throws Exception {
+    }
+
+    @Test
+    public void userLogin() throws Exception {
+        MvcResult result = this.mockMvc.perform(
+                post("/login/userLogin")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("account", "admin")
+                        .param("password", "admin"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$.ok").value(true))
+                .andReturn();
+        System.out.println(result.getResponse());
     }
 
 }
