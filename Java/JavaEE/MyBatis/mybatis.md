@@ -54,11 +54,11 @@ User user = XxxMapper.selectByPrimaryKey(100); //相当于select * from user whe
 // 查询二 selectByExample() 和 selectByExampleWithBLOGs()
 UserExample example = new UserExample();
 Criteria criteria = example.createCriteria();
-criteria.andUsernameEqualTo("wyw");
+criteria.andUsernameEqualTo("bovenson");
 criteria.andUsernameIsNull();
 example.setOrderByClause("username asc,email desc");
 List<?>list = XxxMapper.selectByExample(example);
-//相当于：select * from user where username = 'wyw' and  username is null order by username asc,email desc
+//相当于：select * from user where username = 'bovenson' and  username is null order by username asc,email desc
 
 // 注：在iBator逆向工程生成的文件XxxExample.Java中包含一个static的内部类Criteria，Criteria中的方法是定义SQL 语句where后的查询条件。
 ```
@@ -71,9 +71,9 @@ User user = new User();
 user.setId("dsfgsdfgdsfgds");
 user.setUsername("admin");
 user.setPassword("admin")
-user.setEmail("wyw@163.com");
+user.setEmail("bovenson@163.com");
 XxxMapper.insert(user);
-//相当于：insert into user(ID,username,password,email) values ('dsfgsdfgdsfgds','admin','admin','wyw@126.com');
+//相当于：insert into user(ID,username,password,email) values ('dsfgsdfgdsfgds','admin','admin','bovenson@126.com');
 ```
 
 ### 更新数据
@@ -82,27 +82,27 @@ XxxMapper.insert(user);
 // 一 使用 updateByPrimaryKey()
 User user =new User();
 user.setId("dsfgsdfgdsfgds");
-user.setUsername("wyw");
-user.setPassword("wyw");
-user.setEmail("wyw@163.com");
+user.setUsername("bovenson");
+user.setPassword("bovenson");
+user.setEmail("bovenson@163.com");
 XxxMapper.updateByPrimaryKey(user);
-//相当于：update user set username='wyw', password='wyw', email='wyw@163.com' where id='dsfgsdfgdsfgds'
+//相当于：update user set username='bovenson', password='bovenson', email='bovenson@163.com' where id='dsfgsdfgdsfgds'
 
 // 二 使用 updateByPrimaryKeySelective
 User user = new User();
 user.setId("dsfgsdfgdsfgds");
-user.setPassword("wyw");
+user.setPassword("bovenson");
 XxxMapper.updateByPrimaryKey(user);
-//相当于：update user set password='wyw' where id='dsfgsdfgdsfgds'
+//相当于：update user set password='bovenson' where id='dsfgsdfgdsfgds'
 
 // 三 updateByExample() 和 updateByExampleSelective()
 UserExample example = new UserExample();
 Criteria criteria = example.createCriteria();
 criteria.andUsernameEqualTo("admin");
 User user = new User();
-user.setPassword("wyw");
+user.setPassword("bovenson");
 XxxMapper.updateByPrimaryKeySelective(user,example);
-//相当于：update user set password='wyw' where username='admin'
+//相当于：update user set password='bovenson' where username='admin'
 // updateByExample()更新所有的字段，包括字段为null的也更新，建议使用 updateByExampleSelective()更新想更新的字段
 ```
 
@@ -131,9 +131,9 @@ userMapper.updateByExampleSelective(user, example);
 // countByExample()
 UserExample example = new UserExample();
 Criteria criteria = example.createCriteria();
-criteria.andUsernameEqualTo("wyw");
+criteria.andUsernameEqualTo("bovenson");
 int count = XxxMapper.countByExample(example);
-//相当于：select count(*) from user where username='wyw'
+//相当于：select count(*) from user where username='bovenson'
 ```
 
 # 错误

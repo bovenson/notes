@@ -53,5 +53,8 @@ local.properties
 
 # svn
 .svn/
+
+# idea 
+.idea/
 ```
 
