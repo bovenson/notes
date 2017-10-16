@@ -22,7 +22,7 @@ public class SysFunction {
     }
 
     public void setFunctionname(String functionname) {
-        this.functionname = functionname == null ? null : functionname.trim();
+        this.functionname = functionname;
     }
 
     public String getFunctionurl() {
@@ -30,7 +30,7 @@ public class SysFunction {
     }
 
     public void setFunctionurl(String functionurl) {
-        this.functionurl = functionurl == null ? null : functionurl.trim();
+        this.functionurl = functionurl;
     }
 
     public String getStatus() {
@@ -38,6 +38,6 @@ public class SysFunction {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 }

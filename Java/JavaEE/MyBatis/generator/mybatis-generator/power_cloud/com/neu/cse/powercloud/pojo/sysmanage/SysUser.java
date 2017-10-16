@@ -26,7 +26,7 @@ public class SysUser {
     }
 
     public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+        this.username = username;
     }
 
     public String getPassword() {
@@ -34,7 +34,7 @@ public class SysUser {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public Integer getCustomerid() {
@@ -50,7 +50,7 @@ public class SysUser {
     }
 
     public void setTel(String tel) {
-        this.tel = tel == null ? null : tel.trim();
+        this.tel = tel;
     }
 
     public String getStatus() {
@@ -58,6 +58,6 @@ public class SysUser {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 }

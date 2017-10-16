@@ -1,9 +1,9 @@
 package com.neu.cse.powercloud.pojo.sysmanage;
 
-public class SysRole {
+public class SysDataAuthority {
     private Integer id;
 
-    private String rolename;
+    private String dataauthorityvalue;
 
     private String status;
 
@@ -15,12 +15,12 @@ public class SysRole {
         this.id = id;
     }
 
-    public String getRolename() {
-        return rolename;
+    public String getDataauthorityvalue() {
+        return dataauthorityvalue;
     }
 
-    public void setRolename(String rolename) {
-        this.rolename = rolename;
+    public void setDataauthorityvalue(String dataauthorityvalue) {
+        this.dataauthorityvalue = dataauthorityvalue;
     }
 
     public String getStatus() {

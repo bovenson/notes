@@ -98,17 +98,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysRole">
-    insert into sys_role (id, roleName, status
-      )
-    values (#{id,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_role (roleName, status)
+    values (#{rolename,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysRole">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into sys_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="rolename != null">
         roleName,
       </if>
@@ -117,9 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="rolename != null">
         #{rolename,jdbcType=VARCHAR},
       </if>

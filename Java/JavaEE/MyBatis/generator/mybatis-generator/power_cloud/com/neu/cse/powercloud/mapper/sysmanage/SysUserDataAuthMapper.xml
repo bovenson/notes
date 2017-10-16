@@ -99,17 +99,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserDataAuth">
-    insert into sys_user_data_auth (id, userID, dataID, 
-      status)
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{dataid,jdbcType=INTEGER}, 
-      #{status,jdbcType=VARCHAR})
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_user_data_auth (userID, dataID, status
+      )
+    values (#{userid,jdbcType=INTEGER}, #{dataid,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserDataAuth">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into sys_user_data_auth
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="userid != null">
         userID,
       </if>
@@ -121,9 +124,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="userid != null">
         #{userid,jdbcType=INTEGER},
       </if>

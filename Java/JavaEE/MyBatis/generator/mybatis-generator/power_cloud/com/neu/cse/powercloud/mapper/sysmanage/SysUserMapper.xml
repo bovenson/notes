@@ -101,19 +101,20 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUser">
-    insert into sys_user (id, userName, password, 
-      customerID, tel, status
-      )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{customerid,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
-      )
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_user (userName, password, customerID, 
+      tel, status)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{customerid,jdbcType=INTEGER}, 
+      #{tel,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUser">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="username != null">
         userName,
       </if>
@@ -131,9 +132,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>

@@ -642,3 +642,434 @@ public class LoginServiceImplTest {
 }
 ```
 
+# 常用
+
+## 对返回Json数据进行验证
+
+### Java代码
+
+#### 相关
+
+```java
+@Test
+public void userLogin() throws Exception {
+  MvcResult result = this.mockMvc.perform(
+    post("/login/userLogin")
+    .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+    .param("account", "admin")
+    .param("password", "admin"))
+    .andExpect(status().isOk())
+    .andDo(print())
+    .andExpect(jsonPath("$.ok").value(true))
+    .andReturn();
+  System.out.println(result.getResponse());
+}
+```
+
+#### 全部
+
+#####  测试类
+
+```java
+package com.neu.cse.powercloud.serviceImpl;
+
+import com.neu.cse.powercloud.service.LoginService;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+/**
+ * 登录测试类
+ * @author szk
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration(value = "src/main/webapp")
+@ContextConfiguration(locations = { "classpath:spring/springmvc.xml", "classpath:mybatis/SqlMapConfig.xml", "classpath:spring/applicationContext.xml"})
+public class LoginServiceImplTest {
+    @Autowired
+    private LoginService loginService;
+
+    @Autowired
+    private WebApplicationContext wac;
+    private MockMvc mockMvc;
+    private MockHttpSession session;
+
+    @Before
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+        session = new MockHttpSession();
+    }
+    @Test
+    public void getUserByID() throws Exception {
+    }
+
+    @Test
+    public void userLogin() throws Exception {
+        MvcResult result = this.mockMvc.perform(
+                post("/login/userLogin")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("account", "admin")
+                        .param("password", "admin"))
+                .andExpect(status().isOk())
+                .andDo(print())
+                .andExpect(jsonPath("$.ok").value(true))
+                .andReturn();
+        System.out.println(result.getResponse());
+    }
+
+}
+```
+
+##### 服务实现类
+
+```java
+package com.neu.cse.powercloud.serviceImpl;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.neu.cse.powercloud.util.MD5Encoder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.neu.cse.powercloud.mapper.sysmanage.SysUserMapper;
+import com.neu.cse.powercloud.pojo.sysmanage.SysUser;
+import com.neu.cse.powercloud.pojo.sysmanage.SysUserExample;
+import com.neu.cse.powercloud.pojo.sysmanage.SysUserExample.Criteria;
+import com.neu.cse.powercloud.service.LoginService;
+import com.neu.cse.powercloud.util.ResponseResult;
+
+@Service
+public class LoginServiceImpl implements LoginService {	
+	
+	@Autowired
+	private SysUserMapper sysUserMapper;
+
+	@Override
+	public SysUser getUserByID(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ResponseResult userLogin(String account, String password, HttpServletRequest request,
+			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		// 创建查询条件
+		SysUserExample example = new SysUserExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andUsernameEqualTo(account);
+		criteria.andPasswordEqualTo(MD5Encoder.encoderStringByMD5(password));	// 对密码加密校验
+		// 根据条件查询
+		List<SysUser> list = sysUserMapper.selectByExample(example);
+		if(list.isEmpty()){
+			return ResponseResult.no();
+		}else{
+			request.getSession().setAttribute("user", list.get(0));
+			return ResponseResult.ok();		
+		}		
+	}
+}
+
+```
+
+#### 配置及依赖
+
+相较于上述测试，需要的额外以来有：
+
+- `com.jayway.jsonpath`
+
+`pom.xml`相关配置
+
+```xml
+<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+<dependency>
+  <groupId>com.jayway.jsonpath</groupId>
+  <artifactId>json-path</artifactId>
+  <version>${json-path.version}</version>
+</dependency>	<!-- ./单元测试 -->
+```
+
+`pom.xml`全部配置
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.neu.cse</groupId>
+	<artifactId>PowerCloud</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>PowerCloud Maven Webapp</name>
+
+	<!-- 集中定义依赖版本号 -->
+	<properties>
+		<junit.version>4.12</junit.version>
+		<spring.version>4.1.3.RELEASE</spring.version>
+		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.spring.version>1.2.2</mybatis.spring.version>
+		<mybatis.paginator.version>1.2.15</mybatis.paginator.version>
+		<mysql.version>5.1.32</mysql.version>
+		<slf4j.version>1.6.4</slf4j.version>
+		<jackson.version>2.4.2</jackson.version>
+		<druid.version>1.0.9</druid.version>
+		<httpclient.version>4.3.5</httpclient.version>
+		<jstl.version>1.2</jstl.version>
+		<servlet-api.version>3.0.1</servlet-api.version>
+		<jsp-api.version>2.0</jsp-api.version>
+		<joda-time.version>2.5</joda-time.version>
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-io.version>1.3.2</commons-io.version>
+		<commons-net.version>3.3</commons-net.version>
+		<pagehelper.version>3.4.2</pagehelper.version>
+		<jsqlparser.version>0.9.1</jsqlparser.version>
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <mockito.core.version>2.10.0</mockito.core.version>
+        <hamcrest.core.version>1.3</hamcrest.core.version>
+		<json-path.version>2.4.0</json-path.version>
+	</properties>
+
+	<dependencies>
+		<!-- 时间操作组件 -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
+		</dependency>
+		<!-- Apache工具组件 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>${commons-net.version}</version>
+		</dependency>
+		<!-- Jackson Json处理工具包 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+
+		<!-- 单元测试相关 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${hamcrest.core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.core.version}</version>
+            <scope>test</scope>
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path -->
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>${json-path.version}</version>
+		</dependency>	<!-- ./单元测试 -->
+
+        <!-- 日志处理 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<!-- Mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.miemiedev</groupId>
+			<artifactId>mybatis-paginator</artifactId>
+			<version>${mybatis.paginator.version}</version>
+		</dependency>
+		
+		<!-- Pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>${pagehelper.version}</version>
+		</dependency>
+		
+ 		<!-- MySql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+		<!-- 连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- JSP相关 -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 文件上传组件 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<!-- 资源文件拷贝插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<!-- java编译插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- 配置Tomcat插件 -->
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+					<port>8080</port>
+					<path>/</path>
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<username>tomcat</username>
+					<password>tomcat</password>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<!-- 由于以上修改了resource目录，如果不添加此节点将无法扫描到applicationContext文件都会被漏掉。 -->
+			<resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>			
+		</resources>
+	</build>
+</project>
+```
+

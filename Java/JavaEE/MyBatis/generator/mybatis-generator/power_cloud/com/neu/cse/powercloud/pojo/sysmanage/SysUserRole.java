@@ -38,6 +38,6 @@ public class SysUserRole {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 }

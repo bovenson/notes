@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.neu.cse.powercloud.mapper.sysmanage.SysUserRoleMapper">
-  <resultMap id="BaseResultMap" type="com.neu.cse.powercloud.pojo.sysmanage.SysUserRole">
+<mapper namespace="com.neu.cse.powercloud.mapper.sysmanage.SysDataAuthorityMapper">
+  <resultMap id="BaseResultMap" type="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthority">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="userID" jdbcType="INTEGER" property="userid" />
-    <result column="roleID" jdbcType="INTEGER" property="roleid" />
+    <result column="dataAuthorityValue" jdbcType="VARCHAR" property="dataauthorityvalue" />
     <result column="status" jdbcType="VARCHAR" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -66,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, userID, roleID, status
+    id, dataAuthorityValue, status
   </sql>
-  <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRoleExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthorityExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_user_role
+    from sys_data_authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,73 +84,62 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from sys_user_role
+    from sys_data_authority
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from sys_user_role
+    delete from sys_data_authority
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRoleExample">
-    delete from sys_user_role
+  <delete id="deleteByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthorityExample">
+    delete from sys_data_authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRole">
+  <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthority">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sys_user_role (userID, roleID, status
-      )
-    values (#{userid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}
-      )
+    insert into sys_data_authority (dataAuthorityValue, status)
+    values (#{dataauthorityvalue,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRole">
+  <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthority">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sys_user_role
+    insert into sys_data_authority
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        userID,
-      </if>
-      <if test="roleid != null">
-        roleID,
+      <if test="dataauthorityvalue != null">
+        dataAuthorityValue,
       </if>
       <if test="status != null">
         status,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=INTEGER},
+      <if test="dataauthorityvalue != null">
+        #{dataauthorityvalue,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRoleExample" resultType="java.lang.Long">
-    select count(*) from sys_user_role
+  <select id="countByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthorityExample" resultType="java.lang.Long">
+    select count(*) from sys_data_authority
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update sys_user_role
+    update sys_data_authority
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.userid != null">
-        userID = #{record.userid,jdbcType=INTEGER},
-      </if>
-      <if test="record.roleid != null">
-        roleID = #{record.roleid,jdbcType=INTEGER},
+      <if test="record.dataauthorityvalue != null">
+        dataAuthorityValue = #{record.dataauthorityvalue,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=VARCHAR},
@@ -162,23 +150,19 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update sys_user_role
+    update sys_data_authority
     set id = #{record.id,jdbcType=INTEGER},
-      userID = #{record.userid,jdbcType=INTEGER},
-      roleID = #{record.roleid,jdbcType=INTEGER},
+      dataAuthorityValue = #{record.dataauthorityvalue,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRole">
-    update sys_user_role
+  <update id="updateByPrimaryKeySelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthority">
+    update sys_data_authority
     <set>
-      <if test="userid != null">
-        userID = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        roleID = #{roleid,jdbcType=INTEGER},
+      <if test="dataauthorityvalue != null">
+        dataAuthorityValue = #{dataauthorityvalue,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR},
@@ -186,10 +170,9 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysUserRole">
-    update sys_user_role
-    set userID = #{userid,jdbcType=INTEGER},
-      roleID = #{roleid,jdbcType=INTEGER},
+  <update id="updateByPrimaryKey" parameterType="com.neu.cse.powercloud.pojo.sysmanage.SysDataAuthority">
+    update sys_data_authority
+    set dataAuthorityValue = #{dataauthorityvalue,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
