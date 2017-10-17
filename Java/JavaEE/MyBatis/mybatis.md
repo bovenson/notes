@@ -61,6 +61,9 @@ List<?>list = XxxMapper.selectByExample(example);
 //相当于：select * from user where username = 'bovenson' and  username is null order by username asc,email desc
 
 // 注：在iBator逆向工程生成的文件XxxExample.Java中包含一个static的内部类Criteria，Criteria中的方法是定义SQL 语句where后的查询条件。
+
+// 查询三 模糊查询
+sysUserExample.createCriteria().andUsernameLike(String.format("%%%s%%", "username");
 ```
 
 ### 插入数据
@@ -92,7 +95,7 @@ XxxMapper.updateByPrimaryKey(user);
 User user = new User();
 user.setId("dsfgsdfgdsfgds");
 user.setPassword("bovenson");
-XxxMapper.updateByPrimaryKey(user);
+XxxMapper.updateByPrimaryKeySelective(user);
 //相当于：update user set password='bovenson' where id='dsfgsdfgdsfgds'
 
 // 三 updateByExample() 和 updateByExampleSelective()
@@ -101,7 +104,7 @@ Criteria criteria = example.createCriteria();
 criteria.andUsernameEqualTo("admin");
 User user = new User();
 user.setPassword("bovenson");
-XxxMapper.updateByPrimaryKeySelective(user,example);
+XxxMapper.updateByExampleSelective(user,example);
 //相当于：update user set password='bovenson' where username='admin'
 // updateByExample()更新所有的字段，包括字段为null的也更新，建议使用 updateByExampleSelective()更新想更新的字段
 ```
