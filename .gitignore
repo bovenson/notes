@@ -38,3 +38,5 @@ gradlew.bat
 
 # wps
 .~*
+
+*.cache
