@@ -515,213 +515,213 @@ public class BizCustomerExample {
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameIsNull() {
-            addCriterion("bizOwerName is null");
+        public Criteria andBizownernameIsNull() {
+            addCriterion("bizOwnerName is null");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameIsNotNull() {
-            addCriterion("bizOwerName is not null");
+        public Criteria andBizownernameIsNotNull() {
+            addCriterion("bizOwnerName is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameEqualTo(String value) {
-            addCriterion("bizOwerName =", value, "bizowername");
+        public Criteria andBizownernameEqualTo(String value) {
+            addCriterion("bizOwnerName =", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameNotEqualTo(String value) {
-            addCriterion("bizOwerName <>", value, "bizowername");
+        public Criteria andBizownernameNotEqualTo(String value) {
+            addCriterion("bizOwnerName <>", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameGreaterThan(String value) {
-            addCriterion("bizOwerName >", value, "bizowername");
+        public Criteria andBizownernameGreaterThan(String value) {
+            addCriterion("bizOwnerName >", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameGreaterThanOrEqualTo(String value) {
-            addCriterion("bizOwerName >=", value, "bizowername");
+        public Criteria andBizownernameGreaterThanOrEqualTo(String value) {
+            addCriterion("bizOwnerName >=", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameLessThan(String value) {
-            addCriterion("bizOwerName <", value, "bizowername");
+        public Criteria andBizownernameLessThan(String value) {
+            addCriterion("bizOwnerName <", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameLessThanOrEqualTo(String value) {
-            addCriterion("bizOwerName <=", value, "bizowername");
+        public Criteria andBizownernameLessThanOrEqualTo(String value) {
+            addCriterion("bizOwnerName <=", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameLike(String value) {
-            addCriterion("bizOwerName like", value, "bizowername");
+        public Criteria andBizownernameLike(String value) {
+            addCriterion("bizOwnerName like", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameNotLike(String value) {
-            addCriterion("bizOwerName not like", value, "bizowername");
+        public Criteria andBizownernameNotLike(String value) {
+            addCriterion("bizOwnerName not like", value, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameIn(List<String> values) {
-            addCriterion("bizOwerName in", values, "bizowername");
+        public Criteria andBizownernameIn(List<String> values) {
+            addCriterion("bizOwnerName in", values, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameNotIn(List<String> values) {
-            addCriterion("bizOwerName not in", values, "bizowername");
+        public Criteria andBizownernameNotIn(List<String> values) {
+            addCriterion("bizOwnerName not in", values, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameBetween(String value1, String value2) {
-            addCriterion("bizOwerName between", value1, value2, "bizowername");
+        public Criteria andBizownernameBetween(String value1, String value2) {
+            addCriterion("bizOwnerName between", value1, value2, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowernameNotBetween(String value1, String value2) {
-            addCriterion("bizOwerName not between", value1, value2, "bizowername");
+        public Criteria andBizownernameNotBetween(String value1, String value2) {
+            addCriterion("bizOwnerName not between", value1, value2, "bizownername");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelIsNull() {
-            addCriterion("bizOwerTel is null");
+        public Criteria andBizownertelIsNull() {
+            addCriterion("bizOwnerTel is null");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelIsNotNull() {
-            addCriterion("bizOwerTel is not null");
+        public Criteria andBizownertelIsNotNull() {
+            addCriterion("bizOwnerTel is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelEqualTo(String value) {
-            addCriterion("bizOwerTel =", value, "bizowertel");
+        public Criteria andBizownertelEqualTo(String value) {
+            addCriterion("bizOwnerTel =", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelNotEqualTo(String value) {
-            addCriterion("bizOwerTel <>", value, "bizowertel");
+        public Criteria andBizownertelNotEqualTo(String value) {
+            addCriterion("bizOwnerTel <>", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelGreaterThan(String value) {
-            addCriterion("bizOwerTel >", value, "bizowertel");
+        public Criteria andBizownertelGreaterThan(String value) {
+            addCriterion("bizOwnerTel >", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelGreaterThanOrEqualTo(String value) {
-            addCriterion("bizOwerTel >=", value, "bizowertel");
+        public Criteria andBizownertelGreaterThanOrEqualTo(String value) {
+            addCriterion("bizOwnerTel >=", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelLessThan(String value) {
-            addCriterion("bizOwerTel <", value, "bizowertel");
+        public Criteria andBizownertelLessThan(String value) {
+            addCriterion("bizOwnerTel <", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelLessThanOrEqualTo(String value) {
-            addCriterion("bizOwerTel <=", value, "bizowertel");
+        public Criteria andBizownertelLessThanOrEqualTo(String value) {
+            addCriterion("bizOwnerTel <=", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelLike(String value) {
-            addCriterion("bizOwerTel like", value, "bizowertel");
+        public Criteria andBizownertelLike(String value) {
+            addCriterion("bizOwnerTel like", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelNotLike(String value) {
-            addCriterion("bizOwerTel not like", value, "bizowertel");
+        public Criteria andBizownertelNotLike(String value) {
+            addCriterion("bizOwnerTel not like", value, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelIn(List<String> values) {
-            addCriterion("bizOwerTel in", values, "bizowertel");
+        public Criteria andBizownertelIn(List<String> values) {
+            addCriterion("bizOwnerTel in", values, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelNotIn(List<String> values) {
-            addCriterion("bizOwerTel not in", values, "bizowertel");
+        public Criteria andBizownertelNotIn(List<String> values) {
+            addCriterion("bizOwnerTel not in", values, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelBetween(String value1, String value2) {
-            addCriterion("bizOwerTel between", value1, value2, "bizowertel");
+        public Criteria andBizownertelBetween(String value1, String value2) {
+            addCriterion("bizOwnerTel between", value1, value2, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowertelNotBetween(String value1, String value2) {
-            addCriterion("bizOwerTel not between", value1, value2, "bizowertel");
+        public Criteria andBizownertelNotBetween(String value1, String value2) {
+            addCriterion("bizOwnerTel not between", value1, value2, "bizownertel");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneIsNull() {
-            addCriterion("bizOwerPhone is null");
+        public Criteria andBizownerphoneIsNull() {
+            addCriterion("bizOwnerPhone is null");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneIsNotNull() {
-            addCriterion("bizOwerPhone is not null");
+        public Criteria andBizownerphoneIsNotNull() {
+            addCriterion("bizOwnerPhone is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneEqualTo(String value) {
-            addCriterion("bizOwerPhone =", value, "bizowerphone");
+        public Criteria andBizownerphoneEqualTo(String value) {
+            addCriterion("bizOwnerPhone =", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneNotEqualTo(String value) {
-            addCriterion("bizOwerPhone <>", value, "bizowerphone");
+        public Criteria andBizownerphoneNotEqualTo(String value) {
+            addCriterion("bizOwnerPhone <>", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneGreaterThan(String value) {
-            addCriterion("bizOwerPhone >", value, "bizowerphone");
+        public Criteria andBizownerphoneGreaterThan(String value) {
+            addCriterion("bizOwnerPhone >", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneGreaterThanOrEqualTo(String value) {
-            addCriterion("bizOwerPhone >=", value, "bizowerphone");
+        public Criteria andBizownerphoneGreaterThanOrEqualTo(String value) {
+            addCriterion("bizOwnerPhone >=", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneLessThan(String value) {
-            addCriterion("bizOwerPhone <", value, "bizowerphone");
+        public Criteria andBizownerphoneLessThan(String value) {
+            addCriterion("bizOwnerPhone <", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneLessThanOrEqualTo(String value) {
-            addCriterion("bizOwerPhone <=", value, "bizowerphone");
+        public Criteria andBizownerphoneLessThanOrEqualTo(String value) {
+            addCriterion("bizOwnerPhone <=", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneLike(String value) {
-            addCriterion("bizOwerPhone like", value, "bizowerphone");
+        public Criteria andBizownerphoneLike(String value) {
+            addCriterion("bizOwnerPhone like", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneNotLike(String value) {
-            addCriterion("bizOwerPhone not like", value, "bizowerphone");
+        public Criteria andBizownerphoneNotLike(String value) {
+            addCriterion("bizOwnerPhone not like", value, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneIn(List<String> values) {
-            addCriterion("bizOwerPhone in", values, "bizowerphone");
+        public Criteria andBizownerphoneIn(List<String> values) {
+            addCriterion("bizOwnerPhone in", values, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneNotIn(List<String> values) {
-            addCriterion("bizOwerPhone not in", values, "bizowerphone");
+        public Criteria andBizownerphoneNotIn(List<String> values) {
+            addCriterion("bizOwnerPhone not in", values, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneBetween(String value1, String value2) {
-            addCriterion("bizOwerPhone between", value1, value2, "bizowerphone");
+        public Criteria andBizownerphoneBetween(String value1, String value2) {
+            addCriterion("bizOwnerPhone between", value1, value2, "bizownerphone");
             return (Criteria) this;
         }
 
-        public Criteria andBizowerphoneNotBetween(String value1, String value2) {
-            addCriterion("bizOwerPhone not between", value1, value2, "bizowerphone");
+        public Criteria andBizownerphoneNotBetween(String value1, String value2) {
+            addCriterion("bizOwnerPhone not between", value1, value2, "bizownerphone");
             return (Criteria) this;
         }
 

@@ -15,11 +15,11 @@ public class BizCustomer {
 
     private String location;
 
-    private String bizowername;
+    private String bizownername;
 
-    private String bizowertel;
+    private String bizownertel;
 
-    private String bizowerphone;
+    private String bizownerphone;
 
     private String taxpayeridentification;
 
@@ -91,28 +91,28 @@ public class BizCustomer {
         this.location = location;
     }
 
-    public String getBizowername() {
-        return bizowername;
+    public String getBizownername() {
+        return bizownername;
     }
 
-    public void setBizowername(String bizowername) {
-        this.bizowername = bizowername;
+    public void setBizownername(String bizownername) {
+        this.bizownername = bizownername;
     }
 
-    public String getBizowertel() {
-        return bizowertel;
+    public String getBizownertel() {
+        return bizownertel;
     }
 
-    public void setBizowertel(String bizowertel) {
-        this.bizowertel = bizowertel;
+    public void setBizownertel(String bizownertel) {
+        this.bizownertel = bizownertel;
     }
 
-    public String getBizowerphone() {
-        return bizowerphone;
+    public String getBizownerphone() {
+        return bizownerphone;
     }
 
-    public void setBizowerphone(String bizowerphone) {
-        this.bizowerphone = bizowerphone;
+    public void setBizownerphone(String bizownerphone) {
+        this.bizownerphone = bizownerphone;
     }
 
     public String getTaxpayeridentification() {

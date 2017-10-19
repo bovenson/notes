@@ -8,9 +8,9 @@
     <result column="companyCode" jdbcType="VARCHAR" property="companycode" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="location" jdbcType="VARCHAR" property="location" />
-    <result column="bizOwerName" jdbcType="VARCHAR" property="bizowername" />
-    <result column="bizOwerTel" jdbcType="VARCHAR" property="bizowertel" />
-    <result column="bizOwerPhone" jdbcType="VARCHAR" property="bizowerphone" />
+    <result column="bizOwnerName" jdbcType="VARCHAR" property="bizownername" />
+    <result column="bizOwnerTel" jdbcType="VARCHAR" property="bizownertel" />
+    <result column="bizOwnerPhone" jdbcType="VARCHAR" property="bizownerphone" />
     <result column="taxpayerIdentification" jdbcType="VARCHAR" property="taxpayeridentification" />
     <result column="bank" jdbcType="VARCHAR" property="bank" />
     <result column="bankAccount" jdbcType="VARCHAR" property="bankaccount" />
@@ -82,8 +82,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, shortName, company, companyCode, address, location, bizOwerName, bizOwerTel, 
-    bizOwerPhone, taxpayerIdentification, bank, bankAccount, financeChiefName, financeChiefTel, 
+    id, shortName, company, companyCode, address, location, bizOwnerName, bizOwnerTel, 
+    bizOwnerPhone, taxpayerIdentification, bank, bankAccount, financeChiefName, financeChiefTel, 
     financeChiefPhone, companyTypeCode, dataAuthorityID, isSpecialPower, superiorUnitCode, 
     endTime
   </sql>
@@ -122,15 +122,15 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into biz_customer (shortName, company, companyCode, 
-      address, location, bizOwerName, 
-      bizOwerTel, bizOwerPhone, taxpayerIdentification, 
+      address, location, bizOwnerName, 
+      bizOwnerTel, bizOwnerPhone, taxpayerIdentification, 
       bank, bankAccount, financeChiefName, 
       financeChiefTel, financeChiefPhone, companyTypeCode, 
       dataAuthorityID, isSpecialPower, superiorUnitCode, 
       endTime)
     values (#{shortname,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{bizowername,jdbcType=VARCHAR}, 
-      #{bizowertel,jdbcType=VARCHAR}, #{bizowerphone,jdbcType=VARCHAR}, #{taxpayeridentification,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{bizownername,jdbcType=VARCHAR}, 
+      #{bizownertel,jdbcType=VARCHAR}, #{bizownerphone,jdbcType=VARCHAR}, #{taxpayeridentification,jdbcType=VARCHAR}, 
       #{bank,jdbcType=VARCHAR}, #{bankaccount,jdbcType=VARCHAR}, #{financechiefname,jdbcType=VARCHAR}, 
       #{financechieftel,jdbcType=VARCHAR}, #{financechiefphone,jdbcType=VARCHAR}, #{companytypecode,jdbcType=VARCHAR}, 
       #{dataauthorityid,jdbcType=INTEGER}, #{isspecialpower,jdbcType=TINYINT}, #{superiorunitcode,jdbcType=INTEGER}, 
@@ -157,14 +157,14 @@
       <if test="location != null">
         location,
       </if>
-      <if test="bizowername != null">
-        bizOwerName,
+      <if test="bizownername != null">
+        bizOwnerName,
       </if>
-      <if test="bizowertel != null">
-        bizOwerTel,
+      <if test="bizownertel != null">
+        bizOwnerTel,
       </if>
-      <if test="bizowerphone != null">
-        bizOwerPhone,
+      <if test="bizownerphone != null">
+        bizOwnerPhone,
       </if>
       <if test="taxpayeridentification != null">
         taxpayerIdentification,
@@ -216,14 +216,14 @@
       <if test="location != null">
         #{location,jdbcType=VARCHAR},
       </if>
-      <if test="bizowername != null">
-        #{bizowername,jdbcType=VARCHAR},
+      <if test="bizownername != null">
+        #{bizownername,jdbcType=VARCHAR},
       </if>
-      <if test="bizowertel != null">
-        #{bizowertel,jdbcType=VARCHAR},
+      <if test="bizownertel != null">
+        #{bizownertel,jdbcType=VARCHAR},
       </if>
-      <if test="bizowerphone != null">
-        #{bizowerphone,jdbcType=VARCHAR},
+      <if test="bizownerphone != null">
+        #{bizownerphone,jdbcType=VARCHAR},
       </if>
       <if test="taxpayeridentification != null">
         #{taxpayeridentification,jdbcType=VARCHAR},
@@ -287,14 +287,14 @@
       <if test="record.location != null">
         location = #{record.location,jdbcType=VARCHAR},
       </if>
-      <if test="record.bizowername != null">
-        bizOwerName = #{record.bizowername,jdbcType=VARCHAR},
+      <if test="record.bizownername != null">
+        bizOwnerName = #{record.bizownername,jdbcType=VARCHAR},
       </if>
-      <if test="record.bizowertel != null">
-        bizOwerTel = #{record.bizowertel,jdbcType=VARCHAR},
+      <if test="record.bizownertel != null">
+        bizOwnerTel = #{record.bizownertel,jdbcType=VARCHAR},
       </if>
-      <if test="record.bizowerphone != null">
-        bizOwerPhone = #{record.bizowerphone,jdbcType=VARCHAR},
+      <if test="record.bizownerphone != null">
+        bizOwnerPhone = #{record.bizownerphone,jdbcType=VARCHAR},
       </if>
       <if test="record.taxpayeridentification != null">
         taxpayerIdentification = #{record.taxpayeridentification,jdbcType=VARCHAR},
@@ -342,9 +342,9 @@
       companyCode = #{record.companycode,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       location = #{record.location,jdbcType=VARCHAR},
-      bizOwerName = #{record.bizowername,jdbcType=VARCHAR},
-      bizOwerTel = #{record.bizowertel,jdbcType=VARCHAR},
-      bizOwerPhone = #{record.bizowerphone,jdbcType=VARCHAR},
+      bizOwnerName = #{record.bizownername,jdbcType=VARCHAR},
+      bizOwnerTel = #{record.bizownertel,jdbcType=VARCHAR},
+      bizOwnerPhone = #{record.bizownerphone,jdbcType=VARCHAR},
       taxpayerIdentification = #{record.taxpayeridentification,jdbcType=VARCHAR},
       bank = #{record.bank,jdbcType=VARCHAR},
       bankAccount = #{record.bankaccount,jdbcType=VARCHAR},
@@ -378,14 +378,14 @@
       <if test="location != null">
         location = #{location,jdbcType=VARCHAR},
       </if>
-      <if test="bizowername != null">
-        bizOwerName = #{bizowername,jdbcType=VARCHAR},
+      <if test="bizownername != null">
+        bizOwnerName = #{bizownername,jdbcType=VARCHAR},
       </if>
-      <if test="bizowertel != null">
-        bizOwerTel = #{bizowertel,jdbcType=VARCHAR},
+      <if test="bizownertel != null">
+        bizOwnerTel = #{bizownertel,jdbcType=VARCHAR},
       </if>
-      <if test="bizowerphone != null">
-        bizOwerPhone = #{bizowerphone,jdbcType=VARCHAR},
+      <if test="bizownerphone != null">
+        bizOwnerPhone = #{bizownerphone,jdbcType=VARCHAR},
       </if>
       <if test="taxpayeridentification != null">
         taxpayerIdentification = #{taxpayeridentification,jdbcType=VARCHAR},
@@ -430,9 +430,9 @@
       companyCode = #{companycode,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       location = #{location,jdbcType=VARCHAR},
-      bizOwerName = #{bizowername,jdbcType=VARCHAR},
-      bizOwerTel = #{bizowertel,jdbcType=VARCHAR},
-      bizOwerPhone = #{bizowerphone,jdbcType=VARCHAR},
+      bizOwnerName = #{bizownername,jdbcType=VARCHAR},
+      bizOwnerTel = #{bizownertel,jdbcType=VARCHAR},
+      bizOwnerPhone = #{bizownerphone,jdbcType=VARCHAR},
       taxpayerIdentification = #{taxpayeridentification,jdbcType=VARCHAR},
       bank = #{bank,jdbcType=VARCHAR},
       bankAccount = #{bankaccount,jdbcType=VARCHAR},
