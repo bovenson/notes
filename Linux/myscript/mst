@@ -9,6 +9,7 @@ do
         command="$command \"$arg\""
     fi
 done
+command="$command 1>~/.myapp.log 2>&1 &"
 # echo $command
 eval $command
 #$* 1>~/.myapp.log 2>&1 &
