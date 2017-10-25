@@ -3,8 +3,8 @@
 
 if [ ${1} ]
 then
-	open_path=${1}
+	open_path="${1}"
 else
-	open_path=`pwd`
+	open_path="`pwd`"
 fi
-xdg-open ${open_path} 2>~/.myscript.log 1>&2
+xdg-open "${open_path}" 2>~/.myscript.log 1>&2

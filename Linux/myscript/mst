@@ -1,2 +1,15 @@
 #!/bin/bash
-$@ 1>~/.myapp.log 2>&1 &
+command=""
+for arg in "$@"
+do 
+    if [ "${arg/ /}" = "$arg" ] # 如果参数包含空格
+    then
+        command="$command""$arg"
+    else
+        command="$command \"$arg\""
+    fi
+done
+# echo $command
+eval $command
+#$* 1>~/.myapp.log 2>&1 &
+# eval $* 1>~/.myapp.log 2>&1 &
