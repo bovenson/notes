@@ -30,3 +30,12 @@ def my_view(request):
     pass
 ```
 
+# 从request获取用户
+
+```python
+request.user
+
+#### 判断是否登录
+request.user.is_authenticated()
+```
+
