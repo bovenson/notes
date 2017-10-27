@@ -40,8 +40,8 @@ then
 	echo "mayun exits"
 else
 	echo "mayun not exits"
-	eval "git remote add origin '$MAYUN_ADDR'"
-	echo "added mayun $ORIGIN_ADDR"
+	eval "git remote add mayun '$MAYUN_ADDR'"
+	echo "added mayun $MAYUN_ADDR"
 fi
 
 # exit
