@@ -26,20 +26,14 @@ MAYUN_ADDR="git@gitee.com:bovenson/notes.git"
 # echo $remote_origin_exits
 # echo $remote_mayun_exits
 
-if [ "`git remote -v | grep '^origin'`" ]
-then
-	echo "origin exits"
-else
-	echo "origin not exits"
+if [ ! "`git remote -v | grep '^origin'`" ] ; then
+	echo "remote repo origin not exits"
 	eval "git remote add origin '$ORIGIN_ADDR'"
 	echo "added origin $ORIGIN_ADDR"
 fi
 
-if [ "`git remote -v | grep '^mayun'`" ]
-then
-	echo "mayun exits"
-else
-	echo "mayun not exits"
+if [ ! "`git remote -v | grep '^mayun'`" ] ; then
+	echo "remote repo mayun not exits"
 	eval "git remote add mayun '$MAYUN_ADDR'"
 	echo "added mayun $MAYUN_ADDR"
 fi
