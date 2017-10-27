@@ -1,0 +1,21 @@
+#!/bin/bash
+# @author bovenson
+# @description open typora on os x
+# @usage typora md-file.md
+command=""
+
+for arg in "$@"
+do
+	if [ "${arg/ /}" = "$arg" ]
+	then
+		command="$command $arg"
+	else
+		command="$command \"$arg\""
+	fi
+done
+
+command="open /Applications/Typora.app/ $command"
+
+# echo $command
+# eval $command
+eval $command

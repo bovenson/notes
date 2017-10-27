@@ -40,3 +40,6 @@ gradlew.bat
 .~*
 
 *.cache
+
+# os x
+.DS_Store
