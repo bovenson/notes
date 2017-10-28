@@ -1,3 +1,4 @@
+package ch1;
 /**
  * GCD
  * @author bovenson
