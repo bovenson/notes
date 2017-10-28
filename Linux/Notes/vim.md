@@ -1,3 +1,10 @@
+---
+title: vim
+tags: Linux, vim
+---
+
+[TOC]
+
 # vim
 
 **三种模式**: 输入模式, 末行模式, 命令模式.
@@ -65,6 +72,18 @@
 | `bufdo %s/something/somethingelse/g` | Search *something* in all the open buffers and replace it with*somethingelse* |
 
 ### 剪切(删除)
+
+```shell
+#### 删除某行至文件结尾
+G		# 转到文件结尾
+:10,.d	# 删除第10行至当前行(文件结尾)
+
+#### 删除10行至20行
+20G		# 跳转至第20行
+:10,.d	# 删除第10行至当前行
+```
+
+
 
 | 命令     | 说明                       | 示例             |
 | ------ | ------------------------ | -------------- |
@@ -365,6 +384,10 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 ### 文本缩进
 
+#### 缩进多行
+
+- 按v进入visual状态，选择多行，用>或<缩进或缩出.
+
 | 命令                  | 说明                                  |
 | ------------------- | ----------------------------------- |
 | `:set autoindent`   | Turn on auto-indent                 |
@@ -528,6 +551,18 @@ func! Rungdb()
 	exec "!gdb ./%<"
 endfunc
 ```
+
+# 插件
+
+## vbundle
+
+### 参考
+
+- [vbundle](http://www.jianshu.com/p/0e85e7c9e543)
+
+## Java
+
+ 
 
 # 操作示例
 

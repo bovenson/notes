@@ -1,0 +1,6 @@
+#!/bin/bash
+# @author bovenson
+# @description compile java file
+
+# echo "$@"
+javac "$1.java" && java "$@" && rm "$1.class"
