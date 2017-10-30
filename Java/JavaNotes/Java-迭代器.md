@@ -1,3 +1,18 @@
+---
+title: Java迭代器接口
+tags: Java迭代器接口
+author: bovenson
+---
+
+[TOC]
+
+# 继承Iterator接口
+
+# 示例
+
+## 背包
+
+```java
 package utils;
 
 import java.util.Iterator;
@@ -111,3 +126,5 @@ public class Bag<Item> implements Iterable<Item> {
         }
     }
 }
+```
+
