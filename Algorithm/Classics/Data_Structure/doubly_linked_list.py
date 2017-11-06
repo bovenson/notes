@@ -17,3 +17,17 @@ class Node:
         self.prev = None
 
 
+class DoublyLinkedList:
+    """双链表"""
+    def __init__(self):
+        self._head = None
+        self._tail = None
+        self._size = 0
+
+    def is_empty(self):
+        """链表是否为空"""
+        return self._size == 0
+
+    def insert_head(self, data):
+        """头部插入数据"""
+        
