@@ -14,6 +14,13 @@
 ### 示例
 
 ```python
+#!/bin/python3
+# coding:utf-8
+
+"""
+INTRODUCTION
+"""
+
 __author__ = "Rob Knight, Gavin Huttley, and Peter Maxwell"
 __copyright__ = "Copyright 2007, The Cogent Project"
 __credits__ = ["Rob Knight", "Peter Maxwell", "Gavin Huttley",
