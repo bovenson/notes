@@ -13,5 +13,12 @@ print 'abc'
 
 #### python3
 print('abc')
+
+#### 在2.6+中使用3的print函数
+from __future__ import print_function
+
+#### python2 中print不换行
+## 以逗号结束
+print 1,
 ```
 

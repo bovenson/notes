@@ -27,10 +27,17 @@ tags: 音乐
 
 ## 爵士
 
+- Louis Armstrong
+
 ## 摇滚
 
 ## 说唱
 
 ## 流行
+
+## 歌手
+
+- Taylor Swift
+- Adele
 
 # 纯音
