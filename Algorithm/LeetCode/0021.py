@@ -41,7 +41,10 @@ class Solution(object):
                 l1 = l1.next
             else:
                 l2 = l2.next
-        _cursor.next = l1 if l1 else l2
+        if _cursor:
+            _cursor.next = l1 if l1 else l2
+        else:
+            _head = l1 if l1 else l2
         return _head
 
 
@@ -56,6 +59,8 @@ if __name__ == "__main__":
     li1 = ListNode(1)
     li1.next = ListNode(3)
     li1.next.next = ListNode(5)
+    li1.next.next.next = ListNode(7)
+    li1.next.next.next.next = ListNode(9)
     print_ll(li1)
 
     li2 = ListNode(2)
@@ -64,4 +69,8 @@ if __name__ == "__main__":
     print_ll(li2)
 
     print_ll(Solution().mergeTwoLists(li1, li2))
+    print_ll(Solution().mergeTwoLists(None, None))
+
+    l3 = ListNode(1)
+    print_ll(Solution().mergeTwoLists(l3, None))
     
