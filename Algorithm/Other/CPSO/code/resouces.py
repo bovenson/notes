@@ -29,3 +29,4 @@ class Auditor:
         初始化
         :param speed: 该审核人员每分钟次数
         """
+        self.speed = speed
