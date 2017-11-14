@@ -7,19 +7,16 @@
 """
 from enum import Enum
 
+from resouces import Translator, Auditor
+
 __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-13 17:06"
 
 
-class TaskType(Enum):
-    Translation = 1
-    Audition = 2
-
-
 class Task:
     """任务"""
-    def __init__(self, words: int, previous, task_type: TaskType):
+    def __init__(self, words: int, previous, task_type):
         """
         任务类
         :param words: 单词数
@@ -29,6 +26,11 @@ class Task:
         self.previous = previous
         self.task_type = task_type
         self.done = False
+        self.start_time = None
+        self.end_time = None
+
+    def __str__(self):
+        return str(self.words)
 
 
 class WorkFlow:
@@ -44,8 +46,8 @@ class WorkFlow:
 
     def init_tasks(self):
         """初始化工作流的任务流"""
-        self.tasks.append(Task(self.words, previous=None, task_type=TaskType.Translation))
-        self.tasks.append(Task(self.words, previous=self.tasks[-1], task_type=TaskType.Audition))
+        self.tasks.append(Task(self.words, previous=None, task_type=Translator))
+        self.tasks.append(Task(self.words, previous=self.tasks[-1], task_type=Auditor))
 
     def __str__(self):
         return str(self.words)

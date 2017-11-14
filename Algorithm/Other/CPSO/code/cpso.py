@@ -4,6 +4,9 @@
 """
 基于粒子群优化算法的工作流中任务调度算法设计
 """
+from fitness_figure import fitness
+from resouces import Translator
+from resouces import Auditor
 from workflow import WorkFlow
 import random
 
@@ -31,8 +34,24 @@ def cpso(wf_words: list):
     for word_cnt in wf_words:
         wfs.append(WorkFlow(word_cnt))
 
+    # 初始化资源
+    resources = [[] for _ in range(2)]
+    resources[0] = []
+    resources[1] = []
+    resources[0].append(Translator(speed=400))
+    resources[0].append(Translator(speed=400))
+    resources[0].append(Translator(speed=400))
+    resources[0].append(Translator(speed=400))
+    resources[0].append(Translator(speed=500))
+    resources[1].append(Auditor(speed=800))
+    resources[1].append(Auditor(speed=800))
+    resources[1].append(Auditor(speed=800))
+
     # 初始化粒子数
-    particles = [[random.sample(wfs, len(wfs))] for _ in range(N)]
+    particles = [random.sample(wfs, len(wfs)) for _ in range(N)]
+    # print(len(particles))
+    # print(particles[0])
+    fitness(particles[0], resources)
     # for wf in particles:
     #     for _wf in wf:
     #         for __wf in _wf:

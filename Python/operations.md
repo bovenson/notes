@@ -8,7 +8,7 @@ title: Python操作
 #### 1
 random.sample(range(20), 10)
 
-#### 2
+#### 2 
 a = numpy.arange(20)
 numpy.random.shuffle(a)
 print a[:10]
