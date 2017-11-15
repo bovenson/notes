@@ -5,9 +5,7 @@
 基于粒子群优化算法的工作流中任务调度算法设计
 """
 from fitness_figure import fitness
-from resouces import Translator
-from resouces import Auditor
-from workflow import WorkFlow
+from workflow import WorkFlow, Translator, Auditor
 import random
 
 __author__ = "bovenson"
@@ -42,27 +40,34 @@ def cpso(wf_words: list):
     resources[0].append(Translator(speed=400))
     resources[0].append(Translator(speed=400))
     resources[0].append(Translator(speed=400))
-    resources[0].append(Translator(speed=500))
+    resources[0].append(Translator(speed=400))
     resources[1].append(Auditor(speed=800))
     resources[1].append(Auditor(speed=800))
-    resources[1].append(Auditor(speed=800))
+    # resources[1].append(Auditor(speed=800))
 
     # 初始化粒子数
     particles = [random.sample(wfs, len(wfs)) for _ in range(N)]
     # print(len(particles))
     # print(particles[0])
-    fitness(particles[0], resources)
-    # for wf in particles:
-    #     for _wf in wf:
-    #         for __wf in _wf:
-    #             print(__wf, end=' ')
-    #     print()
 
+    # 迭代
+    for i in range(L):
+        _min = None
+        for _particle in particles:
+            _res = fitness(_particle, resources)
+            if _min is None or _min > _res:
+                _min = _res
 
+        # 使用速度集合更新位置
+        # 更新速度
+        # 计算适应度
+        print(_min)
 
 
 if __name__ == "__main__":
     wf_words_input = "579	276	7	408	408	243	422	20	650	839	717	283	249	865	925	606	54	825	513	440	786	225	214	" \
-                     "740	719	614	760	2000 816	443	766	611	519	207	820	483	703	740	294	274	608	586	887	841	798	" \
-                     "229	247	318	829	978"
+                      "740	719	614	760	2000 816	443	766	611	519	207	820	483	703	740	294	274	608	586	887	841	798	" \
+                      "229	247	318	829	978"
+    # wf_words_input = "400 400 800 800 1200 1200 800"
+    # wf_words_input = "800 800 400 400"
     cpso([int(i) for i in wf_words_input.split()])

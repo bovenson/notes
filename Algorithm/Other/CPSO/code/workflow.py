@@ -5,13 +5,51 @@
 基于粒子群优化算法的工作流中任务调度算法设计
 任务流
 """
-from enum import Enum
-
-from resouces import Translator, Auditor
 
 __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-13 17:06"
+
+
+class Resource:
+    def __init__(self, speed: int):
+        """
+        初始化
+        :param speed: 该翻译人员每分钟翻译单词次数
+        """
+        self.speed = speed
+        self.tasks = []
+        self.start_time = 0
+        self.end_time = 0
+
+    def append_task(self, task: 'Task', start_time: int):
+        """添加任务"""
+        _time = task.words / self.speed
+        task.start_time = start_time
+        task.end_time = start_time + _time
+        if self.start_time is None:
+            self.start_time = start_time
+        self.end_time = task.end_time
+        self.tasks.append(task)
+        task.done = True
+        task.process_resource = self
+
+        # print('resource:', self, ' task:', task)
+
+    def reset(self):
+        self.tasks = []
+        self.start_time = 0
+        self.end_time = 0
+
+
+class Translator(Resource):
+    """翻译人员"""
+    pass
+
+
+class Auditor(Resource):
+    """审核人员"""
+    pass
 
 
 class Task:
@@ -26,8 +64,18 @@ class Task:
         self.previous = previous
         self.task_type = task_type
         self.done = False
-        self.start_time = None
-        self.end_time = None
+        self.start_time = 0
+        self.end_time = 0
+        self.process_resource = None
+
+    def get_previous_end_time(self):
+        return 0 if self.previous is None else self.previous.end_time
+
+    def reset(self):
+        self.done = False
+        self.start_time = 0
+        self.end_time = 0
+        self.process_resource = None
 
     def __str__(self):
         return str(self.words)
@@ -51,3 +99,9 @@ class WorkFlow:
 
     def __str__(self):
         return str(self.words)
+
+
+if __name__ == "__main__":
+    t = Translator(speed=400)
+    a = Auditor(speed=400)
+    print(t.speed)
