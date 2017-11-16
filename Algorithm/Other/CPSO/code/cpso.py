@@ -4,6 +4,8 @@
 """
 基于粒子群优化算法的工作流中任务调度算法设计
 """
+import copy
+
 from fitness_figure import fitness
 from workflow import WorkFlow, Translator, Auditor
 import random
@@ -15,10 +17,6 @@ __date__ = "2017-11-12 12:00"
 # 初始化变量
 L = 20  # 最大迭代次数
 N = 10  # 初始粒子数量
-C1 = 2  # 学习因子
-C2 = 2  # 学习因子
-W_MAX = 0.9  # 惯性因子
-W_MIN = 0.4  # 惯性因子
 
 
 def cpso(wf_words: list):
@@ -47,21 +45,46 @@ def cpso(wf_words: list):
 
     # 初始化粒子数
     particles = [random.sample(wfs, len(wfs)) for _ in range(N)]
+
+    # 初始化速度集合
+
+    # print(id(particles))
+    # print(id(particles[0]))
+    # particles_copy = copy.deepcopy(particles)
+    # print(id(particles_copy[0]))
     # print(len(particles))
     # print(particles[0])
 
+    # 局部最优解
+    local_optimal_solution = copy.deepcopy(particles)
+    local_optimal_solution_value = [None for _ in range(len(wfs))]
+
+    # 全局最优解
+    global_optimal_solution = None
+    global_optimal_solution_value = None
+
     # 迭代
     for i in range(L):
-        _min = None
-        for _particle in particles:
+        for j in range(len(particles)):
+            _particle = particles[j]
+            # 当前粒子适应度
             _res = fitness(_particle, resources)
-            if _min is None or _min > _res:
-                _min = _res
+            if local_optimal_solution_value[j] is None or local_optimal_solution_value > _res:  # 更新局部最优解
+                local_optimal_solution[j] = copy.deepcopy(_particle)
+                local_optimal_solution_value[j] = _res
+
+            if global_optimal_solution_value is None or global_optimal_solution_value > _res:   # 更新全局最优解
+                global_optimal_solution = copy.deepcopy(_particle)
+                global_optimal_solution_value = _res
 
         # 使用速度集合更新位置
+
         # 更新速度
         # 计算适应度
-        print(_min)
+
+        # 打印全局最优解
+        print(global_optimal_solution)
+        print(global_optimal_solution)
 
 
 if __name__ == "__main__":
