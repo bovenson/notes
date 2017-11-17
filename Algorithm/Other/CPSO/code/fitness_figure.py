@@ -43,8 +43,8 @@ def fitness(wfs: list, resources: list):
             for _task in _cur_level_tasks:
                 if _task.previous is not None and _task.previous.done is False:
                     continue
-                if _selected_task is None or _task.previous is None or \
-                                _task.get_previous_end_time() < _selected_task.get_previous_end_time():
+                if _selected_task is None or _task.previous is None \
+                        or _task.get_previous_end_time() < _selected_task.get_previous_end_time():
                     _selected_task = _task
 
             _cur_level_tasks.remove(_selected_task)

@@ -97,7 +97,13 @@ class WorkFlow:
         self.tasks.append(Task(self.words, previous=None, task_type=Translator))
         self.tasks.append(Task(self.words, previous=self.tasks[-1], task_type=Auditor))
 
+    def __eq__(self, other):
+        return self.words == other.words
+
     def __str__(self):
+        return str(self.words)
+
+    def __repr__(self):
         return str(self.words)
 
 
