@@ -18,8 +18,8 @@ __date__ = "2017-11-12 12:00"
 # 初始化变量
 W_MAX = 0.9  # 惯性因子
 W_MIN = 0.4  # 惯性因子
-L = 10  # 最大迭代次数
-N = 50  # 初始粒子数量
+L = 200  # 最大迭代次数
+N = 15  # 初始粒子数量
 
 
 def get_w(cur_l: int)->float:
@@ -36,6 +36,7 @@ def cpso(wf_words: list):
     """
     # 初始化工作流
     fitness_res = []
+    particle_res = []
 
     wfs = []
     for word_cnt in wf_words:
@@ -47,12 +48,20 @@ def cpso(wf_words: list):
     resources[1] = []
     # resources[0].append(Translator(speed=400))
     # resources[0].append(Translator(speed=400))
-    resources[0].append(Translator(speed=450))
+    resources[0].append(Translator(speed=400))
+    resources[0].append(Translator(speed=400))
+    resources[0].append(Translator(speed=400))
     resources[0].append(Translator(speed=500))
-    resources[0].append(Translator(speed=600))
-    resources[1].append(Auditor(speed=600))
-    resources[1].append(Auditor(speed=700))
+    # resources[0].append(Translator(speed=450))
+    # resources[0].append(Translator(speed=500))
+    # resources[0].append(Translator(speed=600))
+    # resources[0].append(Translator(speed=700))
     resources[1].append(Auditor(speed=800))
+    resources[1].append(Auditor(speed=800))
+    # resources[1].append(Auditor(speed=800))
+    # resources[2].append(Auditor(speed=600))
+    # resources[2].append(Auditor(speed=700))
+    # resources[2].append(Auditor(speed=800))
     # resources[1].append(Auditor(speed=800))
 
     # 初始化粒子数
@@ -88,6 +97,7 @@ def cpso(wf_words: list):
             _particle = particles[j]
             # 当前粒子适应度
             _res = fitness(_particle.wf_seq, resources)
+            # print('FITNESS: ', _res)
             if local_optimal_solution[j].fitness is None or local_optimal_solution[j].fitness > _res:  # 更新局部最优解
                 local_optimal_solution[j] = copy.deepcopy(_particle)
                 local_optimal_solution[j].fitness = _res
@@ -118,17 +128,32 @@ def cpso(wf_words: list):
         # 打印全局最优解
         # print('全局最优解: ', global_optimal_solution)
         fitness_res.append(global_optimal_solution.fitness)
+        particle_res.append(global_optimal_solution)
         # print(global_optimal_solution)
 
     # for _v in velocities: print(_v)
-    for f in fitness_res:
+    # for f in fitness_res:
+    #     print(f)
+
+    for f in sorted(list(set(fitness_res)), reverse=True):
         print(f)
+    #
+    # for f in particle_res:
+    #     print(f)
 
 
 if __name__ == "__main__":
-    wf_words_input = "579	276	7	408	408	243	422	20	650	839	717	283	249	865	925	606	54	825	513	440	786	225	214	" \
+    wf_words_input = "579	276	7	1	408	243	422	20	650	839	717	283	249	865	925	606	54	825	513	440	786	225	214	" \
                      "740	719	614	760	2000 816	443	766	611	519	207	820	483	703	740	294	274	608	586	887	841	798	" \
                      "229	247	318	829	978"
+
+    # sample_input = [33, 25, 29, 32, 17, 43, 37, 28, 34, 27, 47, 40, 46, 35, 12, 36, 19, 13, 22, 20]
+    # random.sample(range(10, 50), 20)
+    sample_input = random.sample(range(100, 5000), 200)
+    # sample_input.extend(random.sample(range(2001, 8000), 10))
+    # sample_input.extend(random.sample(range(8001, 10000), 70))
+    print(sample_input)
     # wf_words_input = "400 400 800 800 1200 1200 800"
     # wf_words_input = "800 800 400 400"
-    cpso([int(i) for i in wf_words_input.split()])
+    # cpso([int(i) for i in wf_words_input.split()])
+    cpso(sample_input)

@@ -17,8 +17,8 @@ __date__ = "2017-11-15 14:49"
 
 C1 = 2  # 学习因子
 C2 = 2  # 学习因子
-# V_SET_MAX_LEN_FACTOR = 0.8  # 速度集合交换对数最大数量比例
-# V_SET_MAX_LEN = 50
+V_SET_MAX_LEN_FACTOR = 1  # 速度集合交换对数最大数量比例
+# V_SET_MAX_LEN = 30
 
 
 class ReplacingFactor:
@@ -114,7 +114,7 @@ class Velocity:
         self.plus(_res)
         # _t_v = Velocity(wf_cnt=self.wf_cnt, random_generate_rf=True, max_cnt=V_SET_MAX_LEN)
         # self.plus(_t_v)
-        # _max_len = int(V_SET_MAX_LEN_FACTOR * self.wf_cnt + 0.000001)
+        _max_len = int(V_SET_MAX_LEN_FACTOR * len(self.replacing_factor) + 0.000001)
         # print(self.__str__())
         # print(len(self.replacing_factor))
         # print(_max_len)
@@ -122,8 +122,8 @@ class Velocity:
         # _max_len = min(_max_len, len(self.replacing_factor), V_SET_MAX_LEN)
         # _max_len = min(V_SET_MAX_LEN, len(self.replacing_factor))
         # print(_max_len)
-        # if len(self.replacing_factor) > V_SET_MAX_LEN:
-        #     self.replacing_factor = random.sample(self.replacing_factor, V_SET_MAX_LEN)
+        if len(self.replacing_factor) > _max_len:
+            self.replacing_factor = random.sample(self.replacing_factor, _max_len)
 
     def plus(self, other: 'Velocity'):
         # print('PLUS: ', other)
