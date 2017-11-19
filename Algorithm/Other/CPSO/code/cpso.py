@@ -48,16 +48,16 @@ def cpso(wf_words: list):
     resources[1] = []
     # resources[0].append(Translator(speed=400))
     # resources[0].append(Translator(speed=400))
-    resources[0].append(Translator(speed=400))
-    resources[0].append(Translator(speed=400))
-    resources[0].append(Translator(speed=400))
-    resources[0].append(Translator(speed=500))
+    resources[0].append(Translator(speed=400, name="翻译1"))
+    resources[0].append(Translator(speed=400, name="翻译2"))
+    resources[0].append(Translator(speed=400, name="翻译3"))
+    resources[0].append(Translator(speed=500, name="翻译4"))
     # resources[0].append(Translator(speed=450))
     # resources[0].append(Translator(speed=500))
     # resources[0].append(Translator(speed=600))
     # resources[0].append(Translator(speed=700))
-    resources[1].append(Auditor(speed=800))
-    resources[1].append(Auditor(speed=800))
+    resources[1].append(Auditor(speed=800, name="审核1"))
+    resources[1].append(Auditor(speed=800, name="审核2"))
     # resources[1].append(Auditor(speed=800))
     # resources[2].append(Auditor(speed=600))
     # resources[2].append(Auditor(speed=700))
@@ -137,6 +137,11 @@ def cpso(wf_words: list):
 
     for f in sorted(list(set(fitness_res)), reverse=True):
         print(f)
+    print(global_optimal_solution)
+
+    for _resource_li in resources:
+        for _resource in _resource_li:
+            _resource.print_tasks()
     #
     # for f in particle_res:
     #     print(f)
@@ -149,7 +154,9 @@ if __name__ == "__main__":
 
     # sample_input = [33, 25, 29, 32, 17, 43, 37, 28, 34, 27, 47, 40, 46, 35, 12, 36, 19, 13, 22, 20]
     # random.sample(range(10, 50), 20)
-    sample_input = random.sample(range(100, 5000), 200)
+    # sample_input = random.sample(range(100, 5000), 200)
+    sample_input = [458, 1493, 1965, 1865, 977, 1574, 1119, 931, 1553, 108, 1293, 880, 1575, 264, 1500, 1232, 1485, 1801, 250, 1159, 946, 1928, 1309, 1632, 856, 1206, 1646, 679, 1957, 1844, 1745, 1832, 647, 742, 1854, 1130, 698, 537, 309, 992, 1565, 726, 592, 452, 1079, 1993, 405, 300, 1697, 1878]
+    # sample_input = [906, 1811, 807, 513, 534, 1356, 1331, 852, 471, 768, 310, 399, 1063, 1620, 1497, 656, 1015, 1311, 1669, 1756, 1261, 993, 824, 395, 1322, 143, 129, 1679, 1242, 1892, 1235, 1650, 1539, 1187, 485, 766, 1844, 1281, 1423, 1632, 747, 1731, 975, 873, 194, 316, 1910, 407, 1890, 351, 1996, 949, 1809, 1579, 917, 1320, 205, 1554, 290, 980, 1318, 943, 1196, 1767, 1908, 1354, 1203, 1646, 872, 763, 1414, 1878, 815, 1889, 211, 1592, 1914, 854, 1566, 1321, 998, 1854, 944, 1617, 283, 189, 1768, 1759, 259, 1253, 1245, 1956, 402, 403, 1770, 997, 384, 969, 959, 1477]
     # sample_input.extend(random.sample(range(2001, 8000), 10))
     # sample_input.extend(random.sample(range(8001, 10000), 70))
     print(sample_input)

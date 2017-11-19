@@ -12,7 +12,7 @@ __date__ = "2017-11-13 17:06"
 
 
 class Resource:
-    def __init__(self, speed: int):
+    def __init__(self, speed: int, name: str = ""):
         """
         初始化
         :param speed: 该翻译人员每分钟翻译单词次数
@@ -21,6 +21,7 @@ class Resource:
         self.tasks = []
         self.start_time = 0
         self.end_time = 0
+        self.name = name
 
     def append_task(self, task: 'Task', start_time: int):
         """添加任务"""
@@ -35,6 +36,12 @@ class Resource:
         task.process_resource = self
 
         # print('resource:', self, ' task:', task)
+
+    def print_tasks(self):
+        print(self.name, ' ', self.tasks)
+
+    def __str__(self):
+        return self.name
 
     def reset(self):
         self.tasks = []
@@ -79,6 +86,9 @@ class Task:
 
     def __str__(self):
         return str(self.words)
+
+    def __repr__(self):
+        return self.__str__()
 
 
 class WorkFlow:

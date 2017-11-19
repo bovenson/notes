@@ -13,16 +13,23 @@ __date__ = "2017-11-12 12:06"
 
 
 class TrashResource:
-    def __init__(self, speed: int):
+    def __init__(self, speed: int, name: str = ""):
         """
         初始化
         :param speed: 该翻译人员每分钟翻译单词次数
         """
         self.speed = speed
         self.tasks = []
+        self.name = name
 
     def append_task(self, task: Task):
-        pass
+        self.tasks.append(task)
+
+    def print_tasks(self):
+        print(self.name, ' ', self.tasks)
+
+    def __str__(self):
+        return self.name
 
 
 class TrashTranslator(TrashResource):
