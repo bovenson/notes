@@ -109,7 +109,7 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[int]
         """
-        
+
 
 
 if __name__ == "__main__":
