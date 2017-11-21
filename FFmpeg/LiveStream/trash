@@ -1,0 +1,57 @@
+<Text style={styles.welcome}>
+  Welcome to React Native!
+    Bye!
+</Text>
+<Text style={styles.instructions}>
+  To get started, edit App.js
+</Text>
+<Text style={styles.instructions}>
+  {instructions}
+</Text>
+
+<View style={styles.container}>
+    <Video
+        // source= {{uri: './media/video/1.mp4'}}
+        // source= {require('./media/video/1.mp4')}
+        source={{uri: "http://192.168.0.102:8090/feed.m3u8"}}
+        ref={(ref) => {
+            this.player = ref
+        }}
+        style={styles.myPlayer}
+    />
+</View>
+
+<View style={styles.container}>
+    <Video
+        // source= {{uri: './media/video/1.mp4'}}
+        // source= {require('./media/video/1.mp4')}
+        source={{uri: "http://hls.open.ys7.com/openlive/a511685fa2a44a1aae1373157322538a.m3u8"}}
+        // source={require('./media/video/1.mp4')}
+        hls={true}
+        // paused={false}
+        ref={(ref) => {
+            this.player = ref
+        }}
+        style={styles.myPlayer}
+    />
+</View>
+
+<WebView
+    source={{uri: "http://192.168.0.102:8090/feed.webm"}}
+    style={{width: 100, height: 100}}
+/>
+// <WebView
+// source={{uri: "http://192.168.0.102/other/tmp/t.html"}}
+    // source={{uri: "https://open.ys7.com/view/h5/a511685fa2a44a1aae1373157322538a"}}
+    // source={require('./media/video/1.mp4')}
+///>
+
+<key>NSAppTransportSecurity</key>
+  <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+  </dict>
+
+rtmp://rtmp.open.ys7.com/openlive/a511685fa2a44a1aae1373157322538a
+http://hls.open.ys7.com/openlive/a511685fa2a44a1aae1373157322538a.m3u8
+https://open.ys7.com/view/h5/a511685fa2a44a1aae1373157322538a

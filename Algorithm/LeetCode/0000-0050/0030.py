@@ -111,7 +111,6 @@ class Solution(object):
         """
 
 
-
 if __name__ == "__main__":
     # print Solution().findSubstring("barfoothefoobarman", ["foo", "bar"])
     # print Solution().findSubstring("barfoofoobarthefoobarman", ["bar", "foo", "the"])
