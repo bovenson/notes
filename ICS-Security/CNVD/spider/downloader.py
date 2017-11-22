@@ -18,7 +18,7 @@ __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-21 16:35"
 
-BROWSER_NUMS = 5
+BROWSER_NUMS = 1
 
 COOKIES = None
 # COOKIES = {'__jsluid': 'dddfb3f731e5085641e063b082d8c52c',

@@ -17,23 +17,23 @@ __date__ = "2017-11-21 16:56"
 
 # 字段提示及字段名
 FIELDS_MAP = {
-    '漏洞名称': 'Vulnerability_name',
-    '报送者': 'Discoverer',
+    '漏洞名称': 'vulnerability_name',
+    '报送者': 'discoverer',
     'CNVD-ID': 'CNVD_ID',
-    '发布时间': 'Release_time',
-    '危害级别': 'Level',
-    '影响产品': 'Device',
+    '发布时间': 'release_date',
+    '危害级别': 'level',
+    '影响产品': 'device',
     'CVEID': 'CVE_ID',
-    '漏洞描述': 'Description',
-    '参考链接': 'Refer_link',
-    '漏洞解决方案': '漏洞解决方案',
-    '漏洞发现者': 'Vendor',
-    '厂商补丁': '厂商补丁',
-    '验证信息': '验证信息',
-    '报送时间': '报送时间',
-    '收录时间': '收录时间',
-    '更新时间': 'Update_time',
-    '漏洞附件': '漏洞附件'
+    '漏洞描述': 'description',
+    '参考链接': 'refer_link',
+    '漏洞解决方案': 'solution',
+    '漏洞发现者': 'vendor',
+    '厂商补丁': 'patch',
+    '验证信息': 'verification_info',
+    '报送时间': 'submission_date',
+    '收录时间': 'record_date',
+    '更新时间': 'update_date',
+    '漏洞附件': 'attachment'
 }
 
 

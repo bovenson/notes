@@ -27,17 +27,18 @@ class CNVDOperator:
     def insert(self, meta_data):
         """向表CNVD中插入记录"""
         table_fields = self.get_table_fields(self.table_name)
+        legal_fields = []
         field_values = []
         for field in table_fields:
             if meta_data.get(field):
+                legal_fields.append(field)
                 field_values.append(meta_data.get(field).replace("'", "\\'"))
-            else:
-                field_values.append('')
         sql_statement = "INSERT INTO " + self.table_name + "("
-        sql_statement += ', '.join(table_fields)
+        sql_statement += ', '.join(legal_fields)
         sql_statement += ") VALUES('"
         sql_statement += "', '".join(field_values)
         sql_statement += "')"
+        # print(sql_statement)
         # print(sql_statement)
         self.cursor.execute(sql_statement)
         self.db.commit()
