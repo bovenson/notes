@@ -18,7 +18,7 @@ __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-21 16:35"
 
-BROWSER_NUMS = 0
+BROWSER_NUMS = 5
 
 COOKIES = None
 # COOKIES = {'__jsluid': 'dddfb3f731e5085641e063b082d8c52c',
@@ -58,7 +58,8 @@ class HtmlDownloader:
     def __init__(self):
         self.browser = webdriver.Firefox()
         self.browsers = [self.browser]
-        for i in range(BROWSER_NUMS):
+        self.cur_browser = 0
+        for i in range(BROWSER_NUMS-1):
             profile = webdriver.FirefoxProfile()
             profile.set_preference("general.useragent.override", random.choice(USER_AGENTS))
             self.browsers.append(webdriver.Firefox(profile))
@@ -96,9 +97,19 @@ class HtmlDownloader:
             return req.content
             # print(req.content)
 
+    def next_browser(self):
+        if len(self.browsers) > 0:
+            browser = self.browsers[self.cur_browser]
+            self.cur_browser += 1
+            if self.cur_browser >= len(self.browsers):
+                self.cur_browser = self.cur_browser % len(self.browsers)
+            return browser
+        else:
+            return None
+
     def selenium_download(self, url):
         try:
-            delay = 3
+            delay = 5
             browser = random.choice(self.browsers)
             browser.get(url)
             # print(self.browser)
@@ -107,7 +118,7 @@ class HtmlDownloader:
             res = browser.page_source
             return res
         except Exception as e:
-            print('下载页面失败, 错误:', e, ' 资源地址:', url)
+            print('下载页面失败, 错误:', str(e).replace('\n', ' '), ' 资源地址:', url)
             return None
 
 

@@ -39,10 +39,19 @@ class CNVDOperator:
         sql_statement += "', '".join(field_values)
         sql_statement += "')"
         # print(sql_statement)
-        result = self.cursor.execute(sql_statement)
+        self.cursor.execute(sql_statement)
         self.db.commit()
         print('插入记录:', meta_data.get('CNVD_ID'))
         # print(result)
+
+    def get_all_cnvd_id(self)->set:
+        """获取数据库所有漏洞的cnvd id"""
+        res = set()
+        sql_statement = 'SELECT CNVD_ID FROM ' + self.table_name
+        self.cursor.execute(sql_statement)
+        for row in self.cursor.fetchall():
+            res.add(row[0])
+        return res
 
     def get_table_fields(self, table_name: str)->list:
         """
@@ -79,7 +88,8 @@ if __name__ == "__main__":
     # sql = 'SELECT * from cnvd'
     # cursor.execute(sql)
     # for i in cursor.description:
-        # print(i)
+    # print(i)
     #    print(i[0])
     cnvd = CNVDOperator()
-    cnvd.insert(meta_data=meta_data_sample)
+    # cnvd.insert(meta_data=meta_data_sample)
+    print(cnvd.get_all_cnvd_id())

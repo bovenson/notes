@@ -6,6 +6,8 @@ CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 """
 from time import sleep
 
+import re
+
 from db import CNVDOperator
 from parser import list_page_parser, info_page_parser
 from downloader import HtmlDownloader
@@ -22,6 +24,14 @@ def url_generator(max_len: int, offset: int):
     return "http://ics.cnvd.org.cn/?max=%d&offset=%d" % (max_len, offset)
 
 
+def get_cnvd_id_from_url(info_url: str):
+    res = re.findall(r'CNVD-\d+-\d+', info_url)
+    if len(res) > 0:
+        return res[0]
+    else:
+        return None
+
+
 def spider():
     failed_list_urls = set()    # 下载失败的列表页
     failed_info_urls = set()    # 下载失败的漏洞详情页
@@ -30,6 +40,7 @@ def spider():
     offset = 0
     downloader = HtmlDownloader()
     cnvd = CNVDOperator()
+    finished_cnvd_ids = cnvd.get_all_cnvd_id()
     while True:
         if len(failed_list_urls) > 0:
             list_url = failed_list_urls.pop()
@@ -47,14 +58,22 @@ def spider():
                 break
 
             for info_url in info_urls:
+                cur_cnvd_id = get_cnvd_id_from_url(info_url)
+                if cur_cnvd_id in finished_cnvd_ids:
+                    print('记录存在: ', cur_cnvd_id)
+                    continue
                 if info_url in finished_info_urls:  # 如果详情页面已经处理完成
                     continue
                 sleep(REQUEST_DELAY)
                 html_content = downloader.selenium_download(info_url)
                 if html_content:    # 页面下载成功
-                    gg_detail = info_page_parser(html_content)  # 漏洞详情
-                    cnvd.insert(meta_data=gg_detail)
-                    finished_info_urls.add(info_url)
+                    try:
+                        gg_detail = info_page_parser(html_content)  # 漏洞详情
+                        cnvd.insert(meta_data=gg_detail)
+                        finished_info_urls.add(info_url)
+                        finished_cnvd_ids.add(cur_cnvd_id)
+                    except Exception as e:
+                        print('插入 ', cur_cnvd_id, ' 失败:', e)
                 else:
                     failed_info_urls.add(info_url)
         else:
