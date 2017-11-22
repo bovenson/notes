@@ -11,10 +11,10 @@ __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-22 10:11"
 
-HOST = 'localhost'
+HOST = '202.118.26.156'
 USER = 'root'
 PASSWORD = 'root'
-DB_SCHEMA = 'test'
+DB_SCHEMA = 'vulnerability_detection_db'
 
 
 class CNVDOperator:
