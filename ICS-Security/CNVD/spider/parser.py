@@ -6,7 +6,6 @@ CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 页面解析器
 """
 import re
-from functools import reduce
 
 from bs4 import BeautifulSoup
 from bs4.element import Tag, NavigableString
@@ -18,22 +17,22 @@ __date__ = "2017-11-21 16:56"
 
 # 字段提示及字段名
 FIELDS_MAP = {
-    '漏洞名称': 'Vulnerability name',
-    '报送者': '报送者',
-    'CNVD-ID': 'CNVD-ID',
-    '发布时间': 'Release time',
+    '漏洞名称': 'Vulnerability_name',
+    '报送者': 'Discoverer',
+    'CNVD-ID': 'CNVD_ID',
+    '发布时间': 'Release_time',
     '危害级别': 'Level',
     '影响产品': 'Device',
-    'CVEID': 'CVE-ID',
+    'CVEID': 'CVE_ID',
     '漏洞描述': 'Description',
-    '参考链接': 'Refer link',
+    '参考链接': 'Refer_link',
     '漏洞解决方案': '漏洞解决方案',
     '漏洞发现者': 'Vendor',
     '厂商补丁': '厂商补丁',
     '验证信息': '验证信息',
     '报送时间': '报送时间',
     '收录时间': '收录时间',
-    '更新时间': '更新时间',
+    '更新时间': 'Update_time',
     '漏洞附件': '漏洞附件'
 }
 
@@ -86,7 +85,7 @@ def info_page_parser(html_content):
                 tds = tr.find_all('td')
                 if len(tds) < 2:
                     raise Exception('信息错误')
-                td_field_name = str(tds[0].string).strip()
+                td_field_name = re.sub(r'\s+', '', str(tds[0].string))
                 td_filed_value = ''
                 for elem in tds[1].contents:
                     if isinstance(elem, Tag):
@@ -106,5 +105,5 @@ def info_page_parser(html_content):
                 pass
     except Exception as e:
         print(e)
-    print(meta_data)
+    # print(meta_data)
     return meta_data

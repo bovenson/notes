@@ -1,5 +1,37 @@
 # mysql
 
+## CLI登录
+
+```shell
+mysql -h localhost -u root -p
+
+#### 示例
+bovenson@MBP:~/Git/notes/MySQL$ mysql -h localhost -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 5.7.20 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+```
+
+## 启动/停止
+
+```shell
+### Mac
+sudo /usr/local/mysql/support-files/mysql.server start	# 启动
+sudo /usr/local/mysql/support-files/mysql.server stop	# 停止
+sudo /usr/local/mysql/support-files/mysql.server restart	# 重启
+```
+
 ## 修改密码
 
 ### SET PASSWORD
@@ -25,8 +57,6 @@ GRANT ALL ON *.* TO 'myuser'@'localhost';
 GRANT ALL ON *.* TO 'myuser'@'%';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
-
-
 
 ## 允许远程连接
 

@@ -42,6 +42,21 @@ except TimeoutException:
     print "Loading took too much time!"
 ```
 
+## 设置headers
+
+```python
+#### 更改 user agent
+from selenium import webdriver
+profile = webdriver.FirefoxProfile()
+profile.set_preference("general.useragent.override", "whatever you want")
+driver = webdriver.Firefox(profile)
+```
+
+### 参考
+
+- [参考一](https://stackoverflow.com/questions/29916054/change-user-agent-for-selenium-driver)
+- [参考二](https://stackoverflow.com/questions/15645093/setting-request-headers-in-selenium)
+
 ## 参考
 
 - [获取页面源代码](https://stackoverflow.com/questions/7263824/get-html-source-of-webelement-in-selenium-webdriver-using-python)

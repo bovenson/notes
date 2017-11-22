@@ -18,6 +18,8 @@ __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-21 16:35"
 
+BROWSER_NUMS = 0
+
 COOKIES = None
 # COOKIES = {'__jsluid': 'dddfb3f731e5085641e063b082d8c52c',
 #            # 'bdshare_firstime': '1511253034454',
@@ -55,7 +57,12 @@ class HtmlDownloader:
 
     def __init__(self):
         self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(5)
+        self.browsers = [self.browser]
+        for i in range(BROWSER_NUMS):
+            profile = webdriver.FirefoxProfile()
+            profile.set_preference("general.useragent.override", random.choice(USER_AGENTS))
+            self.browsers.append(webdriver.Firefox(profile))
+        # self.browser.implicitly_wait(5)
 
     @staticmethod
     def download(url, data=None, cookies=None, headers=None):
@@ -78,24 +85,30 @@ class HtmlDownloader:
             # headers['user-agent'] = random.choice(USER_AGENTS)
 
         req = requests.get(url, params=data, headers=headers, cookies=COOKIES)
-        print(req.headers)
+        # print(req.headers)
 
         if req.status_code != 200:
             print('下载页面失败, 错误代码:', req.status_code, ' 资源地址:', url)
             print(str(req.content, encoding='utf-8'))
             return None
         else:
-            print('页面下载完成', ' 资源地址:', url)
+            # print('页面下载完成', ' 资源地址:', url)
             return req.content
             # print(req.content)
 
     def selenium_download(self, url):
-        delay = 1
-        self.browser.get(url)
-        # print(self.browser)
-        WebDriverWait(self.browser, delay).until(EC.presence_of_element_located((By.ID, 'J_Comment_Wrap')))
-        # print(self.browser.page_source)
-        return self.browser.page_source
+        try:
+            delay = 3
+            browser = random.choice(self.browsers)
+            browser.get(url)
+            # print(self.browser)
+            WebDriverWait(browser, delay).until(EC.presence_of_element_located((By.ID, 'J_Comment_Wrap')))
+            # print(self.browser.page_source)
+            res = browser.page_source
+            return res
+        except Exception as e:
+            print('下载页面失败, 错误:', e, ' 资源地址:', url)
+            return None
 
 
 if __name__ == "__main__":

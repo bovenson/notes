@@ -37,4 +37,10 @@ title: README
   # linux/mac 放到 /usr/local/bin
   ```
 
+- pymysql
+
+  ```shell
+  pip3 install pymysql
+  ```
+
   ​
