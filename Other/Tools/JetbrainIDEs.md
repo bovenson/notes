@@ -2,7 +2,7 @@
 
 [File and Code Templates](https://www.jetbrains.com/help/idea/file-and-code-templates.html)
 
-## pycharm
+## PyCharm
 
 ```
 #!/usr/bin python3
@@ -22,4 +22,6 @@ __date__ = "${DATE}"
 
 
 ```
+
+# Idea
 
