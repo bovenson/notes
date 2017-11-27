@@ -32,11 +32,9 @@ public class ExplicitStatic {
     // static Cups cups2 = new Cups();
     // static Cups cups3;
 } /** Output
+Inside main()
 Cup(1)
 Cup(2)
 Cup(3)
-Cups()
-Cups()
-Inside main()
 f(99)
 */
