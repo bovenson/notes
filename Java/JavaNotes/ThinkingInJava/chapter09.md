@@ -158,3 +158,173 @@ public interface RandVals {
 
 ## 嵌套接口
 
+接口可以嵌套在类或其他接口中。
+
+```java
+//: InterfaceC.java
+
+public class InterfaceC {
+    public class BImp implements A.B {
+        public void f() {}
+    }
+
+    class CImp implements A.C {
+        public void f() {}
+    }
+
+    //! Cannot implements a private interface except within that interface's defining classes;
+    //! class DImp implements A.D {
+    //! }
+
+    class EImp implements E {
+        public void g() {}
+    }
+
+    class EGImp implements E.G {
+        public void f() { }
+    }
+
+    class EImp2 implements E {
+        public void g() {}
+        class EG implements E.G {
+            public void f() { }
+        }
+    }
+
+    public static void main(String args[]) {
+        A a = new A();
+        // Can't access A.D;
+        //! A.D ad = a.getD();
+        // Doesn't return anything but A.D;
+        //! A.DImp2 di2 = a.getD(); // 不兼容的类型: A.D无法转换为A.DImp2
+        //! a.getD().f();   // A.D中的f()是在不可访问的类或接口中定义的
+        A a2 = new A();
+        a2.receiveD(a.getD());  // !!!
+    }
+}
+
+class A {
+    interface B {
+        void f();
+    }
+
+    public class BImp implements B {
+        public void f() { }
+    }
+
+    private class BImp2 implements B {
+        public void f() {}
+    }
+
+    public interface C {
+        void f();
+    }
+
+    class CImp implements C {
+        public void f() { }
+    }
+
+    private class CImp2 implements C {
+        public void f() { }
+    }
+
+    private interface D {
+        void f();
+    }
+
+    private class DImp implements D {
+        public void f() { }
+    }
+
+    public class DImp2 implements D {
+        public void f() { }
+    }
+
+    public D getD() { 
+        return new DImp();
+    }
+
+    private D dRef;
+
+    public void receiveD(D d) {
+        dRef = d;
+        dRef.f();
+    }
+}
+
+interface E {
+    interface G {
+        void f();
+    }
+
+    // 多余的public修饰符
+    public interface H {
+        void f();
+    }
+
+    void g();
+    // Cannot be private whthin an interface
+    //! private interface I { }
+}
+```
+
+嵌套在另一个接口中的接口自动就是public。
+
+当实现一个接口时，并不需要实现嵌套在其内部的接口。
+
+## 接口与工厂
+
+```java
+//: InterfaceFactories.java
+interface Service {
+    void method1();
+    void method2();
+}
+
+interface ServiceFactory {
+    Service getService();
+}
+
+class Imp1 implements Service {
+    Imp1() { }
+    public void method1() { System.out.println("Imp1 method1"); }
+    public void method2() { System.out.println("Imp1 method2");  }
+}
+
+class Imp1Factory implements ServiceFactory {
+    public Service getService() {
+        return new Imp1();
+    }
+}
+
+class Imp2 implements Service {
+    Imp2() { }
+    public void method1() { System.out.println("Imp2 method1"); }
+    public void method2() { System.out.println("Imp2 method2");  }
+}
+
+class Imp2Factory implements ServiceFactory {
+    public Service getService() {
+        return new Imp2();
+    }
+}
+
+public class InterfaceFactories {
+    public static void serviceConsumer(ServiceFactory fact) {
+        Service s = fact.getService();
+        s.method1();
+        s.method2();
+    }
+
+    public static void main(String args[]) {
+        serviceConsumer(new Imp1Factory());
+        serviceConsumer(new Imp2Factory());
+    }
+} /** Output
+Imp1 method1
+Imp1 method2
+Imp2 method1
+Imp2 method2
+*/
+```
+
