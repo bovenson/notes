@@ -7,6 +7,24 @@ tags: React Native
 
 # React native
 
+## 自定义组件
+
+```javascript
+class UselessTextInput extends Component {
+  render() {
+    return (
+      <TextInput
+        {...this.props} // 将父组件传递来的所有props传递给TextInput;比如下面的multiline和numberOfLines
+        editable = {true}
+        maxLength = {40}
+      />
+    );
+  }
+}
+```
+
+
+
 ## 问题
 
 Watchman crawl failed. Retrying once with node crawler.
