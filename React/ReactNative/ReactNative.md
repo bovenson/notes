@@ -23,7 +23,38 @@ class UselessTextInput extends Component {
 }
 ```
 
+### 调用父节点方法
 
+```javascript
+export default class Button extends Component {
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return(
+      <TouchOpacity
+      onPress={this.props.onPress}
+      >
+        <Text> Button </Text>
+      </TouchOpacity>
+    )
+  }
+}
+```
+
+```javascript
+export default class MainPage extends Component {
+  render(){
+    return(
+      <Button onPress={ ()=>this.doSomething }></Button>
+    )
+  }
+}
+```
+
+#### 参考
+
+- [参考一](https://stackoverflow.com/questions/39037705/how-to-use-onpress-on-a-custom-component)
 
 ## 问题
 

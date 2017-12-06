@@ -1,3 +1,8 @@
+---
+title: MySQL常用配置
+tags: MySQL
+---
+
 # mysql
 
 ## CLI登录
