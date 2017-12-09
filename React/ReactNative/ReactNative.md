@@ -23,6 +23,28 @@ class UselessTextInput extends Component {
 }
 ```
 
+### 传递父节点属性
+
+```javascript
+<TextInput
+	{...this.props} // 将父组件传递来的所有props传递给TextInput;比如下面的multiline和		numberOfLines
+	editable = {true}
+	maxLength = {40}
+/>
+```
+
+OR
+
+```javascript
+<TextInput
+	style={this.props.style}	// 仅使用父节点定义的style属性
+	editable = {true}
+	maxLength = {40}
+/>
+```
+
+
+
 ### 调用父节点方法
 
 ```javascript
@@ -70,5 +92,40 @@ echo fs.inotify.max_queued_events=524288 | sudo tee -a /etc/sysctl.conf && sudo 
 react-native run-android
 react-native start
 react-native log-android
+```
+
+## IOS 允许 http 连接
+
+允许所有http请求，`info.plist`中添加：
+
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
+</dict>
+```
+
+允许特定域名http请求，`info.plist`中添加：
+
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+  <key>NSExceptionDomains</key>
+  <dict>
+    <key>域名.com</key>
+    <dict>
+      <!--允许子域名:subdomains-->
+      <key>NSIncludesSubdomains</key>
+      <true/>
+      <!--允许App进行不安全的HTTP请求-->
+      <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+      <true/>
+      <!--在这里声明所支持的 TLS 最低版本-->
+      <key>NSTemporaryExceptionMinimumTLSVersion</key>
+      <string>TLSv1.1</string>
+    </dict>
+  </dict>
+</dict>
 ```
 
