@@ -260,3 +260,132 @@ Beijing
 
 **private内部类给类设计者提供了一种途径，通过这种方式可以完全阻止任何依赖于类型的编码，并且完全隐藏了实现的细节。**
 
+## 在方法和作用域内的内部类
+
+可以在一个方法里面或者在任意的作用域内定义内部类，这有两个理由：
+
+- 实现了某类型得劲接口，于是可以创建并返回对其的引用
+- 要解决一个复杂的问题，想创建一个类来辅助解决方案，但是又不希望这个类是公用的
+
+在方法的作用域内（而不是在其他类的作用域内）创建一个完整的类，这被称作**局部内部类**。
+
+```java
+//: Destination.java
+
+public interface Destination {
+    String readLabel();
+}
+
+//: Parcel5.java
+public class Parcel5 {
+    public Destination destination(String s) {
+        class PDestination implements Destination {
+            private String label;
+            private PDestination(String whereTo) {
+                label = whereTo;
+            }
+            public String readLabel() { return label; }
+        }
+        return new PDestination(s);
+    }
+
+    public static void main(String args[]) {
+        Parcel5 p = new Parcel5();
+        Destination d = p.destination("Tasmania");
+        System.out.println(d.readLabel());
+    }
+} /** Output
+Tasmania
+ */
+```
+
+上例：
+
+- `PDestination`类是`destination()`方法的一部分，而不是`Parcel5`的一部分。所以`destination()`之外就不能访问`PDestination`。
+- 可以在同一个目录下的任意类中对某个内部类使用类标识符`PDestination`，且不会产生命名冲突。
+
+## 匿名内部类
+
+```java
+//: Contents.java
+
+public interface Contents {
+    int value();
+}
+
+//: Parcel7.java
+// returning an instance of an anonymous inner class
+
+public class Parcel7 {
+    public Contents contents() {
+        return new Contents() { // insert a class definition
+            private int i = 11;
+            public int value() { return i; }
+        };  // 这种情况下分号是必须的
+    }
+
+    public static void main(String args[]) {
+        Parcel7 p = new Parcel7();
+        Contents c = p.contents();
+        System.out.println(c.value());
+    }
+} /** Output
+11
+*/
+```
+
+`contents()` 方法将返回值的生成与表示这个返回值的类的定义结合在一起。另外，这个类是匿名的，它没有名字。这种方式叫做：创建一个继承自Contents的匿名类的对象。通过new表达式返回的引用被自动向上转型为对Contents的引用，上述匿名内部类的语法是下述形式的简化形式：
+
+```java
+//: Parcel7b.java
+public class Parcel7b {
+    class MyContents implements Contents {
+        private int i = 11;
+        public int value() { return i; }
+    }
+
+    public Contents contents() { return new MyContents(); }
+
+    public static void main(String args[]) {
+        Parcel7b p = new Parcel7b();
+        Contents c = p.contents();
+        System.out.println(c.value());
+    }
+} /** Output
+11
+ */
+```
+
+如何给匿名内部类使用带有参数的构造器：
+
+```java
+//: Parcel8.java
+
+public class Parcel8 {
+    public Wrapping wrapping(int x) {
+        // Base constructor call
+        return new Wrapping(x) {    // pass Constructor argument
+            public int value() {
+                return super.value() * 47;
+            }
+        };
+    }
+
+    public static void main(String args[]) {
+        Parcel8 p = new Parcel8();
+        Wrapping w = p.wrapping(10);
+        System.out.println(w.value());
+    }
+} /** Output
+470
+*/
+
+class Wrapping {
+    private int i;
+    public Wrapping(int x) { i = x; }
+    public int value() { return i; }
+}
+```
+
+在匿名类中定义字段时，还能够对其进行初始化操作：
+
