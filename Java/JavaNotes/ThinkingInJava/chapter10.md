@@ -356,7 +356,7 @@ public class Parcel7b {
  */
 ```
 
-如何给匿名内部类使用带有参数的构造器：
+如何在匿名内部类中向基类构造器传递参数：
 
 ```java
 //: Parcel8.java
@@ -387,5 +387,239 @@ class Wrapping {
 }
 ```
 
-在匿名类中定义字段时，还能够对其进行初始化操作：
+在匿名类中定义字段时，还能够对其进行初始化操作。
+
+如果定义一个匿名内部类，并且希望它使用一个在其外部定义的对象，那么编译器会要求其参数引用是final的。
+
+在匿名内部类中不可能有命名的构造器（因为它根本没有名字），但通过实例初始化，能够达到为匿名内部类创建一个构造器的效果。
+
+```java
+//: Destination.java
+
+public interface Destination {
+    String readLabel();
+}
+
+//: Parcel10.java
+
+public class Parcel10 {
+    public Destination destination(final String dest, final float price) {
+        return new Destination() {
+            private int cost;
+            // Instance initialization for each object;
+            {
+                System.out.println("Inside instance initializer");
+                cost = Math.round(price);
+                if (cost > 100) {
+                    System.out.println("Over budget!");
+                }
+            }
+            private String label = dest;
+            public String readLabel() { return label; }
+        };
+    }
+
+    public static void main(String[] args) {
+        Parcel10 p = new Parcel10();
+        Destination d = p.destination("Tasmania", 101.223F);
+        System.out.println(d.readLabel());
+    }
+} /** Output
+Inside instance initializer
+Over budget!
+Tasmania
+ */
+```
+
+匿名内部类与正规的继承相比有些受限，因为匿名内部类即可以扩展类，也可以实现接口，但是不能两者兼备。而且，如果是实现接口，也只能实现一个接口。
+
+## 嵌套类
+
+如果不需要内部类对象与其他外围类对象之间有联系，那么可以将内部类声明为static，这通常称为**嵌套类**。
+
+普通的内部类对象隐式地保存了一个引用，指向创建它的外围类对象，然而在内部类是static时，就不这样了：
+
+- 要创建嵌套类对象，并不需要外围类的对象
+- 不能从嵌套类的对象中访问非静态的外围类对象
+
+普通内部类的字段与方法，只能放在类的外部层次上，所以普通的内部类不能有static数据和static字段，也不能包含嵌套类，但是嵌套类可以。
+
+### 接口内部的类
+
+正常情况下，不能在接口内部放置任何代码，但嵌套类可以作为接口的一部分。放到接口中的任何类都自动地是public和static的。因为类是static的，只是将嵌套类置于接口的命名空间内，这并不违反接口的规则。可以在内部类中实现其外围接口。
+
+```java
+//: ClassInInterface.java
+// {main: ClassInInterface$Test}
+
+public interface ClassInInterface {
+    void howdy();
+    class Test implements ClassInInterface {
+        public void howdy() {
+            System.out.println("Howdy!");
+        }
+
+        public static void main(String args[]) {
+            new Test().howdy();
+        }
+    }
+} /** Output
+$ java ClassInInterface\$Test
+Howdy!
+*/
+```
+
+### 多层嵌套类中访问外部类的成员
+
+一个内部类被嵌套多少层并不重要，它能透明地访问所有它嵌入的外围类的所有成员。
+
+```java
+//: MultiNestingAccess.java
+class MNA {
+    private void e() {
+        System.out.println("MNA.e()");
+    }
+    private void f() {
+        System.out.println("MNA.f()");
+    }
+    class A {
+        private void g() {
+            System.out.println("MNA.A.g()");            
+        }
+        private void f() {
+            System.out.println("MNA.A.f()");            
+        }
+        public class B {
+            void h() {
+                System.out.println("MNA.A.B.h()");
+                e();   
+                MNA.this.f();      // 访问最外围类成员         
+                f();
+                g();
+            }
+        }
+    }
+}
+
+public class MultiNestingAccess {
+    public static void main(String args[]) {
+        MNA mna = new MNA();
+        MNA.A mnaa = mna.new A();
+        MNA.A.B mnaab = mnaa.new B();
+        mnaab.h();
+    }
+} /** Output
+MNA.A.B.h()
+MNA.e()
+MNA.f()
+MNA.A.f()
+MNA.A.g()
+ */
+```
+
+## 为什么需要内部类
+
+### 闭包与回调
+
+闭包是一个可调用的对象，它记录了一些信息，这些信息来自于创建它的作用域。
+
+通过内部类提供闭包的功能来实现回调，比指针更灵活、更安全。
+
+```java
+//: Callbacks.java
+
+interface Incrementable {
+    void increment();
+}
+
+class Callee1 implements Incrementable {
+    private int i = 0;
+    public void increment() {
+        i++;
+        System.out.println(i);
+    }
+}
+
+class MyIncrement {
+    public void increment() {
+        System.out.println("Other operation");
+    }
+    static void f(MyIncrement mi) {
+        mi.increment();
+    }
+}
+
+class Callee2 extends MyIncrement {
+    private int i = 0;
+    public void increment() {
+        super.increment();
+        i++;
+        System.out.println(i);
+    }
+    private class Closure implements Incrementable {
+        public void increment() {
+            Callee2.this.increment();
+        }
+    }
+    Incrementable getCallbackReference() {
+        return new Closure();
+    }
+}
+
+class Caller {
+    private Incrementable callbackReference;
+    Caller(Incrementable cbh) {
+        callbackReference = cbh;
+    }
+    void go() {
+        callbackReference.increment();
+    }
+}
+
+public class Callbacks {
+    public static void main(String[] args) {
+        Callee1 c1 = new Callee1();
+        Callee2 c2 = new Callee2();
+        MyIncrement.f(c2);
+        Caller caller1 = new Caller(c1);
+        Caller caller2 = new Caller(c2.getCallbackReference());
+        caller1.go();
+        caller1.go();
+        caller2.go();
+        caller2.go();
+    }
+} /** Output
+Other operation
+1
+1
+2
+Other operation
+2
+Other operation
+3
+ */
+```
+
+内部类`Closure`实现了`Incrementable`，以提供一个返回`Callee2`的 **钩子** ，无论谁获得此`Incrementable`的引用，都只能调用`increment()`。
+
+## 内部类的继承
+
+```java
+//: InheritInner.java
+
+class WithInner {
+    class Inner {}
+}
+
+public class InheritInner extends WithInner.Inner {
+    //! InheritInner() { } // Error: 需要包含WithInner.Inner的封闭实例
+    InheritInner(WithInner wi) {
+        wi.super();
+    }
+    public static void main(String args[]) {
+        WithInner wi = new WithInner();
+        InheritInner ii = new InheritInner(wi);
+    }
+}
+```
 
