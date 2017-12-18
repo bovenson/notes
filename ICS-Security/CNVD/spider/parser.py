@@ -60,6 +60,9 @@ def info_page_parser(html_content):
     """
     meta_data = {}
     soup = BeautifulSoup(html_content, 'html.parser')
+
+    # 把 <br> 替换为 \n
+    list(map(lambda x: x.replace_with('\\n'), soup.find_all('br')))
     # print(soup.prettify())
 
     # 提取信息
@@ -101,8 +104,7 @@ def info_page_parser(html_content):
                 elif FIELDS_MAP.get(td_field_name):
                     meta_data[FIELDS_MAP.get(td_field_name)] = td_filed_value
             except Exception as e:
-                # print(e)
-                pass
+                print(e)
     except Exception as e:
         print(e)
     # print(meta_data)

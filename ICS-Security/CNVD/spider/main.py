@@ -16,8 +16,8 @@ __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-21 16:33"
 
-
-REQUEST_DELAY = 3
+# 请求延时，网站防爬虫
+REQUEST_DELAY = 5
 
 
 def url_generator(max_len: int, offset: int):

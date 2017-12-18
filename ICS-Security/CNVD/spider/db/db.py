@@ -14,7 +14,8 @@ __date__ = "2017-11-22 10:11"
 HOST = '202.118.26.156'
 USER = 'root'
 PASSWORD = 'root'
-DB_SCHEMA = 'vulnerability_detection_db'
+# DB_SCHEMA = 'vulnerability_detection_db'
+DB_SCHEMA = 'cnvd_test'
 
 
 class CNVDOperator:
