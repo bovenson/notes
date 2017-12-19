@@ -12,7 +12,8 @@ __date__ = "2017-12-18 14:39"
 
 rules = [
     '^\s*(?P<manufacturer>Philips)\s*(?P<device>[a-zA-Z ]+)\s*(?P<version>([<=>]*[0-9]+[.0-9]*[， ]*)+)\s*$',
-    '^\s*(?P<manufacturer>\s*Rockwell Automation Allen-Bradley\s*)(?P<device>MicroLogix\s*\d+)\s*(?P<type>\d+-[a-zA-Z0-9]+)\s*(?P<version>[<=>]*[0-9]+[.0-9]*)\s*$',
+    '^\s*(?P<manufacturer>\s*Rockwell Automation Allen-Bradley\s*)(?P<device>MicroLogix\s*\d+)\s*(?P<type>\d+-'
+    '[a-zA-Z0-9]+)\s*(?P<version>[<=>]*[0-9]+[.0-9]*)\s*$',
     '^\s*(?P<manufacturer>\s*siemens\s*)(?P<device>[a-zA-Z 0-9\-]+)(?P<version>[<=>]*[0-9]+[.0-9]*)?\s*$',
     '^\s*(?P<manufacturer>\s*siemens\s*)(?P<device>[a-zA-Z 0-9\-]+)(?P<version>[><+v]*[.0-9 ]+(SP[.0-9]*)?)?\s*$',
     '^\s*(?P<manufacturer>\s*Boston\s*)(?P<device>[a-zA-Z 0-9\-]+)(?P<version>Model\s*[0-9]+)\s*$',
