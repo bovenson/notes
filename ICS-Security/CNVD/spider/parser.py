@@ -88,6 +88,7 @@ def info_page_parser(html_content):
             try:
                 tds = tr.find_all('td')
                 if len(tds) < 2:
+                    print(tds)
                     raise Exception('信息错误')
                 td_field_name = re.sub(r'\s+', '', str(tds[0].string))
                 td_filed_value = ''
@@ -105,8 +106,9 @@ def info_page_parser(html_content):
                 elif FIELDS_MAP.get(td_field_name):
                     meta_data[FIELDS_MAP.get(td_field_name)] = td_filed_value
             except Exception as e:
-                print(e)
-                traceback.print_exc()
+                pass
+                # print(e)
+                # traceback.print_exc()
     except Exception as e:
         print(e)
         traceback.print_exc()

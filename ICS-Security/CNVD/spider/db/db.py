@@ -6,18 +6,17 @@ CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 数据库操作
 """
 from time import sleep
-
 import pymysql
 
 __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-22 10:11"
 
-HOST = '202.118.26.156'
-USER = 'root'
-PASSWORD = 'root'
+HOST = 'localhost'
+USER = 'localhost'
+PASSWORD = 'localhost'
 # DB_SCHEMA = 'vulnerability_detection_db'
-DB_SCHEMA = 'vulnerability_detection_db'
+DB_SCHEMA = 'cnvd'
 
 
 class CNVDOperator:
@@ -113,6 +112,12 @@ class CNVDOperator:
         self.cursor.execute(sql_statement)
         self.db.commit()
 
+    def update_device_info(self):
+        sql_statement = "SELECT id, product_name from cnvddetail"
+        self.cursor.execute(sql_statement)
+        for row in self.cursor.fetchall():
+            print(row)
+
 
 if __name__ == "__main__":
     meta_data_sample = {'Vulnerability_name': 'Cisco IOS Software拒绝服务漏洞（CNVD-2017-34216）',
@@ -136,6 +141,7 @@ if __name__ == "__main__":
     cnvd = CNVDOperator()
     # cnvd.insert(meta_data=meta_data_sample)
     # print(cnvd.get_all_cnvd_id())
-    cnvd.get_device_parser_rules()
-    rule = "''''^\s*(?P<manufacturer>\s*Rockwell Automation Allen-Bradley\s*)(?P<device>MicroLogix\s*\d+)\s*(?P<type>\d+-[a-zA-Z0-9]+)\s*(?P<version>[<=>]*[0-9]+[.0-9]*)\s*$"
-    cnvd.insert_device_parser_rules(rule)
+    # cnvd.get_device_parser_rules()
+    # rule = "''''^\s*(?P<manufacturer>\s*Rockwell Automation Allen-Bradley\s*)(?P<device>MicroLogix\s*\d+)\s*(?P<type>\d+-[a-zA-Z0-9]+)\s*(?P<version>[<=>]*[0-9]+[.0-9]*)\s*$"
+    # cnvd.insert_device_parser_rules(rule)
+    cnvd.update_device_info()
