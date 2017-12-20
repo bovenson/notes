@@ -6,6 +6,7 @@ CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 页面解析器
 """
 import re
+import traceback
 
 from bs4 import BeautifulSoup
 from bs4.element import Tag, NavigableString
@@ -105,7 +106,10 @@ def info_page_parser(html_content):
                     meta_data[FIELDS_MAP.get(td_field_name)] = td_filed_value
             except Exception as e:
                 print(e)
+                traceback.print_exc()
     except Exception as e:
         print(e)
+        traceback.print_exc()
+        pass
     # print(meta_data)
     return meta_data

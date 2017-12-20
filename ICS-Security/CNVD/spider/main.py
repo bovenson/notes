@@ -4,11 +4,12 @@
 """
 CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 """
+import traceback
 from time import sleep
 
 import re
 
-from db import CNVDOperator
+from db.db import CNVDOperator
 from parser import list_page_parser, info_page_parser
 from downloader import HtmlDownloader
 
@@ -73,6 +74,7 @@ def spider():
                         finished_info_urls.add(info_url)
                         finished_cnvd_ids.add(cur_cnvd_id)
                     except Exception as e:
+                        traceback.print_exc()
                         print('插入 ', cur_cnvd_id, ' 失败:', e)
                 else:
                     failed_info_urls.add(info_url)

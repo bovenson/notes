@@ -28,6 +28,7 @@ class DeviceParser:
         1. 加载规则库
         :return:
         """
+        # 从数据库加载规则库
         self.rules = [re.compile(rule, re.IGNORECASE) for rule in rules]
         pass
 

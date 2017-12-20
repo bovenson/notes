@@ -5,6 +5,8 @@
 CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 数据库操作
 """
+from time import sleep
+
 import pymysql
 
 __author__ = "bovenson"
@@ -15,7 +17,7 @@ HOST = '202.118.26.156'
 USER = 'root'
 PASSWORD = 'root'
 # DB_SCHEMA = 'vulnerability_detection_db'
-DB_SCHEMA = 'cnvd_test'
+DB_SCHEMA = 'vulnerability_detection_db'
 
 
 class CNVDOperator:
@@ -23,10 +25,32 @@ class CNVDOperator:
         self.db = pymysql.connect(host=HOST, user=USER, passwd=PASSWORD, db=DB_SCHEMA, charset='utf8')
         self.cursor = self.db.cursor()
         self.table_fields = {}
-        self.table_name = 'cnvd'
+        self.table_name = 'cnvddetail'
 
-    def insert(self, meta_data):
+    def insert(self, meta_data, separate_device=True):
         """向表CNVD中插入记录"""
+        if separate_device:
+            self.insert_cnvd_record(meta_data)
+            return
+
+        self.insert_cnvd_record_per(meta_data)
+
+    def insert_cnvd_record(self, meta_data):
+        devices_str = meta_data.get('device')
+        if devices_str:
+            print(devices_str)
+            devices = devices_str.split('\\n')
+            print(devices)
+            # sleep(100000)
+            for device in devices:
+                device = device.strip()
+                if len(device) > 0:
+                    meta_data['product_name'] = device
+                    self.insert_cnvd_record_per(meta_data)
+        else:
+            self.insert_cnvd_record_per(meta_data)
+
+    def insert_cnvd_record_per(self, meta_data):
         table_fields = self.get_table_fields(self.table_name)
         legal_fields = []
         field_values = []
@@ -44,7 +68,6 @@ class CNVDOperator:
         self.cursor.execute(sql_statement)
         self.db.commit()
         print('插入记录:', meta_data.get('CNVD_ID'))
-        # print(result)
 
     def get_all_cnvd_id(self)->set:
         """获取数据库所有漏洞的cnvd id"""
@@ -72,6 +95,24 @@ class CNVDOperator:
             self.table_fields[table_name] = res
             return res
 
+    def get_device_parser_rules(self):
+        """获取提取设备型号等信息规则"""
+        res = []
+        sql_statement = "SELECT reg_exp FROM device_reg_exp"
+        self.cursor.execute(sql_statement)
+        for row in self.cursor.fetchall():
+            print(row[0])
+            res.append(row[0])
+        return res
+
+    def insert_device_parser_rules(self, reg_exp):
+        """插入设备型号提取正则表达式"""
+        reg_exp.replace("'", "\'")
+        sql_statement = "INSERT INTO device_reg_exp (reg_exp) VALUES ('%s')" % reg_exp
+        print(sql_statement)
+        self.cursor.execute(sql_statement)
+        self.db.commit()
+
 
 if __name__ == "__main__":
     meta_data_sample = {'Vulnerability_name': 'Cisco IOS Software拒绝服务漏洞（CNVD-2017-34216）',
@@ -94,4 +135,7 @@ if __name__ == "__main__":
     #    print(i[0])
     cnvd = CNVDOperator()
     # cnvd.insert(meta_data=meta_data_sample)
-    print(cnvd.get_all_cnvd_id())
+    # print(cnvd.get_all_cnvd_id())
+    cnvd.get_device_parser_rules()
+    rule = "''''^\s*(?P<manufacturer>\s*Rockwell Automation Allen-Bradley\s*)(?P<device>MicroLogix\s*\d+)\s*(?P<type>\d+-[a-zA-Z0-9]+)\s*(?P<version>[<=>]*[0-9]+[.0-9]*)\s*$"
+    cnvd.insert_device_parser_rules(rule)

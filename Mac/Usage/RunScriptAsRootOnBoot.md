@@ -31,6 +31,25 @@ author: bovenson
       </dict>
   </plist>
   ```
+  ```xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+      <dict>
+          <key>Label</key>
+          <string>com.example.app</string>
+          <key>ProgramArguments</key>
+          <array>
+              <string>/bin/sh</string>
+              <string>/path/to/script</string>
+          </array>
+          <key>RunAtLoad</key>
+          <true/>
+          <key>KeepAlive</key>
+          <false/>
+      </dict>
+  </plist>
+  ```
 
 - 把配置文件放到`/Library/LaunchDeamons/`下
 
@@ -42,7 +61,19 @@ author: bovenson
   launchctl start com.example.app	# 这里也需要修改
   ```
 
+- 尝试保证脚本正确运行
+
+  ```xml
+  <key>KeepAlive</key>
+  <dict>
+       <key>SuccessfulExit</key>
+       <false/>
+  </dict>
+  ```
+
   ​
+
+
 
 ## 参考
 
