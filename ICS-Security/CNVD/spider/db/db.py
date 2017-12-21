@@ -8,6 +8,8 @@ CNVD漏洞列表(http://ics.cnvd.org.cn/) 爬虫
 from time import sleep
 import pymysql
 
+from device_parser.device_parser import DeviceParser
+
 __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "2017-11-22 10:11"
@@ -116,7 +118,9 @@ class CNVDOperator:
         sql_statement = "SELECT id, product_name from cnvddetail"
         self.cursor.execute(sql_statement)
         for row in self.cursor.fetchall():
-            print(row)
+            record_id, product_name = row
+            parse_result = DeviceParser.parse(product_name)
+            parse_result if parse_result is None else list(map(lambda x: print(x.groupdict()), parse_result))
 
 
 if __name__ == "__main__":

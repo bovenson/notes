@@ -19,26 +19,20 @@ rules = [
     '^\s*(?P<manufacturer>\s*Abbott\s*)(?P<device>[a-zA-Z 0-9\-]+)(?P<version>[<>=]*[a-zA-Z]+\s+[0-9]+，[0-9]+)\s*$',
 ]
 
+rules_re_compile = [re.compile(rule, re.IGNORECASE) for rule in rules ]
+
 
 class DeviceParser:
-    def __init__(self):
-        """
-        初始化
-        1. 加载规则库
-        :return:
-        """
-        # 从数据库加载规则库
-        self.rules = [re.compile(rule, re.IGNORECASE) for rule in rules]
-        pass
-
-    def parse(self, device_info):
+    @staticmethod
+    def parse(device_info):
         best_match = None
-        for rule in self.rules:
+        for rule in rules_re_compile:
             res = list(rule.finditer(device_info))
             if len(res) > 0:
                 best_match = res
                 break
-        print(best_match) if best_match is None else list(map(lambda x: print(x.groupdict()), best_match))
+        # print(best_match) if best_match is None else list(map(lambda x: print(x.groupdict()), best_match))
+        return best_match
     pass
 
 
