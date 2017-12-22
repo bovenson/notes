@@ -44,3 +44,35 @@ String newPasswordRepeat = request.getParameter("newPasswordRepeat");
 
 - [参考一](http://www.cnblogs.com/zj0208/p/6290252.html)
 
+
+# @RequestMapping
+
+```java
+// Sample 1
+@RequestMapping(value = "/api/user/login", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+
+// Sample 2
+@RequestMapping(value = "catalog.do", params = "fn=saveUsers")  
+// 请求地址：/catalog.do?fn=saveUsers
+```
+
+# 打印请求参数
+
+```java
+@RequestMapping(value = "/api/user/login", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
+@ResponseBody
+private ResponseResult apiUserLogin(String account,
+                                    String password,
+                                    HttpServletRequest request,
+                                    HttpServletResponse response) {
+  Enumeration names = request.getParameterNames();
+  logger.debug("I am here.");
+  while (names.hasMoreElements()) {
+    String name = (String)names.nextElement();
+    String value = request.getParameter(name);
+    logger.debug("Name: " + name + "   Value:" + value);
+  }
+  return this.userLogin(account, password, request, response);
+}
+```
+

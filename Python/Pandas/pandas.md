@@ -16,6 +16,13 @@
 - 相当于一张二维的表格, 类似二维数组
 - 每一列都是一个Series
 
+# 处理CSV文件
+
+```python
+#### 读取csv文件，并转化为DataFrame
+train_df = pd.read_csv('../data/train.csv')
+```
+
 # 方法
 
 ## `iloc`
