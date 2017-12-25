@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.cse.powercloud.mapper.sysmanage.BizDeviceLowcabinetMapper">
+  <resultMap id="BaseResultMap" type="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinet">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="electricitySubstationID" jdbcType="INTEGER" property="electricitysubstationid" />
+    <result column="lowCabinetType" jdbcType="VARCHAR" property="lowcabinettype" />
+    <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <result column="lowCabinetModel" jdbcType="VARCHAR" property="lowcabinetmodel" />
+    <result column="manufacturDate" jdbcType="DATE" property="manufacturdate" />
+    <result column="specifications" jdbcType="VARCHAR" property="specifications" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
+    <result column="diagram" jdbcType="VARCHAR" property="diagram" />
+    <result column="inCableModel" jdbcType="VARCHAR" property="incablemodel" />
+    <result column="outCableModel" jdbcType="VARCHAR" property="outcablemodel" />
+    <result column="mainBusModel" jdbcType="VARCHAR" property="mainbusmodel" />
+    <result column="NLineModel" jdbcType="VARCHAR" property="nlinemodel" />
+    <result column="PELineModel" jdbcType="VARCHAR" property="pelinemodel" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, electricitySubstationID, lowCabinetType, manufacturer, lowCabinetModel, manufacturDate, 
+    specifications, pic, diagram, inCableModel, outCableModel, mainBusModel, NLineModel, 
+    PELineModel, status
+  </sql>
+  <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinetExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from biz_device_lowcabinet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from biz_device_lowcabinet
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from biz_device_lowcabinet
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinetExample">
+    delete from biz_device_lowcabinet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinet">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_device_lowcabinet (electricitySubstationID, lowCabinetType, 
+      manufacturer, lowCabinetModel, manufacturDate, 
+      specifications, pic, diagram, 
+      inCableModel, outCableModel, mainBusModel, 
+      NLineModel, PELineModel, status
+      )
+    values (#{electricitysubstationid,jdbcType=INTEGER}, #{lowcabinettype,jdbcType=VARCHAR}, 
+      #{manufacturer,jdbcType=VARCHAR}, #{lowcabinetmodel,jdbcType=VARCHAR}, #{manufacturdate,jdbcType=DATE}, 
+      #{specifications,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{diagram,jdbcType=VARCHAR}, 
+      #{incablemodel,jdbcType=VARCHAR}, #{outcablemodel,jdbcType=VARCHAR}, #{mainbusmodel,jdbcType=VARCHAR}, 
+      #{nlinemodel,jdbcType=VARCHAR}, #{pelinemodel,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinet">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_device_lowcabinet
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="electricitysubstationid != null">
+        electricitySubstationID,
+      </if>
+      <if test="lowcabinettype != null">
+        lowCabinetType,
+      </if>
+      <if test="manufacturer != null">
+        manufacturer,
+      </if>
+      <if test="lowcabinetmodel != null">
+        lowCabinetModel,
+      </if>
+      <if test="manufacturdate != null">
+        manufacturDate,
+      </if>
+      <if test="specifications != null">
+        specifications,
+      </if>
+      <if test="pic != null">
+        pic,
+      </if>
+      <if test="diagram != null">
+        diagram,
+      </if>
+      <if test="incablemodel != null">
+        inCableModel,
+      </if>
+      <if test="outcablemodel != null">
+        outCableModel,
+      </if>
+      <if test="mainbusmodel != null">
+        mainBusModel,
+      </if>
+      <if test="nlinemodel != null">
+        NLineModel,
+      </if>
+      <if test="pelinemodel != null">
+        PELineModel,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="electricitysubstationid != null">
+        #{electricitysubstationid,jdbcType=INTEGER},
+      </if>
+      <if test="lowcabinettype != null">
+        #{lowcabinettype,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="lowcabinetmodel != null">
+        #{lowcabinetmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturdate != null">
+        #{manufacturdate,jdbcType=DATE},
+      </if>
+      <if test="specifications != null">
+        #{specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="diagram != null">
+        #{diagram,jdbcType=VARCHAR},
+      </if>
+      <if test="incablemodel != null">
+        #{incablemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="outcablemodel != null">
+        #{outcablemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="mainbusmodel != null">
+        #{mainbusmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="nlinemodel != null">
+        #{nlinemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="pelinemodel != null">
+        #{pelinemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinetExample" resultType="java.lang.Long">
+    select count(*) from biz_device_lowcabinet
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update biz_device_lowcabinet
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.electricitysubstationid != null">
+        electricitySubstationID = #{record.electricitysubstationid,jdbcType=INTEGER},
+      </if>
+      <if test="record.lowcabinettype != null">
+        lowCabinetType = #{record.lowcabinettype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturer != null">
+        manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lowcabinetmodel != null">
+        lowCabinetModel = #{record.lowcabinetmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturdate != null">
+        manufacturDate = #{record.manufacturdate,jdbcType=DATE},
+      </if>
+      <if test="record.specifications != null">
+        specifications = #{record.specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pic != null">
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diagram != null">
+        diagram = #{record.diagram,jdbcType=VARCHAR},
+      </if>
+      <if test="record.incablemodel != null">
+        inCableModel = #{record.incablemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outcablemodel != null">
+        outCableModel = #{record.outcablemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainbusmodel != null">
+        mainBusModel = #{record.mainbusmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nlinemodel != null">
+        NLineModel = #{record.nlinemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pelinemodel != null">
+        PELineModel = #{record.pelinemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update biz_device_lowcabinet
+    set id = #{record.id,jdbcType=INTEGER},
+      electricitySubstationID = #{record.electricitysubstationid,jdbcType=INTEGER},
+      lowCabinetType = #{record.lowcabinettype,jdbcType=VARCHAR},
+      manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      lowCabinetModel = #{record.lowcabinetmodel,jdbcType=VARCHAR},
+      manufacturDate = #{record.manufacturdate,jdbcType=DATE},
+      specifications = #{record.specifications,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR},
+      diagram = #{record.diagram,jdbcType=VARCHAR},
+      inCableModel = #{record.incablemodel,jdbcType=VARCHAR},
+      outCableModel = #{record.outcablemodel,jdbcType=VARCHAR},
+      mainBusModel = #{record.mainbusmodel,jdbcType=VARCHAR},
+      NLineModel = #{record.nlinemodel,jdbcType=VARCHAR},
+      PELineModel = #{record.pelinemodel,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinet">
+    update biz_device_lowcabinet
+    <set>
+      <if test="electricitysubstationid != null">
+        electricitySubstationID = #{electricitysubstationid,jdbcType=INTEGER},
+      </if>
+      <if test="lowcabinettype != null">
+        lowCabinetType = #{lowcabinettype,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturer != null">
+        manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="lowcabinetmodel != null">
+        lowCabinetModel = #{lowcabinetmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturdate != null">
+        manufacturDate = #{manufacturdate,jdbcType=DATE},
+      </if>
+      <if test="specifications != null">
+        specifications = #{specifications,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="diagram != null">
+        diagram = #{diagram,jdbcType=VARCHAR},
+      </if>
+      <if test="incablemodel != null">
+        inCableModel = #{incablemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="outcablemodel != null">
+        outCableModel = #{outcablemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="mainbusmodel != null">
+        mainBusModel = #{mainbusmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="nlinemodel != null">
+        NLineModel = #{nlinemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="pelinemodel != null">
+        PELineModel = #{pelinemodel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceLowcabinet">
+    update biz_device_lowcabinet
+    set electricitySubstationID = #{electricitysubstationid,jdbcType=INTEGER},
+      lowCabinetType = #{lowcabinettype,jdbcType=VARCHAR},
+      manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      lowCabinetModel = #{lowcabinetmodel,jdbcType=VARCHAR},
+      manufacturDate = #{manufacturdate,jdbcType=DATE},
+      specifications = #{specifications,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      diagram = #{diagram,jdbcType=VARCHAR},
+      inCableModel = #{incablemodel,jdbcType=VARCHAR},
+      outCableModel = #{outcablemodel,jdbcType=VARCHAR},
+      mainBusModel = #{mainbusmodel,jdbcType=VARCHAR},
+      NLineModel = #{nlinemodel,jdbcType=VARCHAR},
+      PELineModel = #{pelinemodel,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

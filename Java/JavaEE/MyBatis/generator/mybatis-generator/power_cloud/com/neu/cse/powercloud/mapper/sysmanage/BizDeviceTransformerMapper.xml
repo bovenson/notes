@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.cse.powercloud.mapper.sysmanage.BizDeviceTransformerMapper">
+  <resultMap id="BaseResultMap" type="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="manufacturer" jdbcType="VARCHAR" property="manufacturer" />
+    <result column="manufacturerCode" jdbcType="VARCHAR" property="manufacturercode" />
+    <result column="transformerModel" jdbcType="VARCHAR" property="transformermodel" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="workEnviorment" jdbcType="VARCHAR" property="workenviorment" />
+    <result column="workType" jdbcType="VARCHAR" property="worktype" />
+    <result column="ratedVoltage" jdbcType="VARCHAR" property="ratedvoltage" />
+    <result column="ratedFrequency" jdbcType="VARCHAR" property="ratedfrequency" />
+    <result column="connectionGroupLabel" jdbcType="VARCHAR" property="connectiongrouplabel" />
+    <result column="InsulationClass" jdbcType="VARCHAR" property="insulationclass" />
+    <result column="manufacturDate" jdbcType="DATE" property="manufacturdate" />
+    <result column="gatewayCode" jdbcType="INTEGER" property="gatewaycode" />
+    <result column="bizType" jdbcType="VARCHAR" property="biztype" />
+    <result column="gatewayID" jdbcType="INTEGER" property="gatewayid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, manufacturer, manufacturerCode, transformerModel, weight, workEnviorment, workType, 
+    ratedVoltage, ratedFrequency, connectionGroupLabel, InsulationClass, manufacturDate, 
+    gatewayCode, bizType, gatewayID
+  </sql>
+  <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from biz_device_transformer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from biz_device_transformer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from biz_device_transformer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformerExample">
+    delete from biz_device_transformer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_device_transformer (manufacturer, manufacturerCode, transformerModel, 
+      weight, workEnviorment, workType, 
+      ratedVoltage, ratedFrequency, connectionGroupLabel, 
+      InsulationClass, manufacturDate, gatewayCode, 
+      bizType, gatewayID)
+    values (#{manufacturer,jdbcType=VARCHAR}, #{manufacturercode,jdbcType=VARCHAR}, #{transformermodel,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=INTEGER}, #{workenviorment,jdbcType=VARCHAR}, #{worktype,jdbcType=VARCHAR}, 
+      #{ratedvoltage,jdbcType=VARCHAR}, #{ratedfrequency,jdbcType=VARCHAR}, #{connectiongrouplabel,jdbcType=VARCHAR}, 
+      #{insulationclass,jdbcType=VARCHAR}, #{manufacturdate,jdbcType=DATE}, #{gatewaycode,jdbcType=INTEGER}, 
+      #{biztype,jdbcType=VARCHAR}, #{gatewayid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into biz_device_transformer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="manufacturer != null">
+        manufacturer,
+      </if>
+      <if test="manufacturercode != null">
+        manufacturerCode,
+      </if>
+      <if test="transformermodel != null">
+        transformerModel,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="workenviorment != null">
+        workEnviorment,
+      </if>
+      <if test="worktype != null">
+        workType,
+      </if>
+      <if test="ratedvoltage != null">
+        ratedVoltage,
+      </if>
+      <if test="ratedfrequency != null">
+        ratedFrequency,
+      </if>
+      <if test="connectiongrouplabel != null">
+        connectionGroupLabel,
+      </if>
+      <if test="insulationclass != null">
+        InsulationClass,
+      </if>
+      <if test="manufacturdate != null">
+        manufacturDate,
+      </if>
+      <if test="gatewaycode != null">
+        gatewayCode,
+      </if>
+      <if test="biztype != null">
+        bizType,
+      </if>
+      <if test="gatewayid != null">
+        gatewayID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="manufacturer != null">
+        #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturercode != null">
+        #{manufacturercode,jdbcType=VARCHAR},
+      </if>
+      <if test="transformermodel != null">
+        #{transformermodel,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="workenviorment != null">
+        #{workenviorment,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null">
+        #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="ratedvoltage != null">
+        #{ratedvoltage,jdbcType=VARCHAR},
+      </if>
+      <if test="ratedfrequency != null">
+        #{ratedfrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="connectiongrouplabel != null">
+        #{connectiongrouplabel,jdbcType=VARCHAR},
+      </if>
+      <if test="insulationclass != null">
+        #{insulationclass,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturdate != null">
+        #{manufacturdate,jdbcType=DATE},
+      </if>
+      <if test="gatewaycode != null">
+        #{gatewaycode,jdbcType=INTEGER},
+      </if>
+      <if test="biztype != null">
+        #{biztype,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayid != null">
+        #{gatewayid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformerExample" resultType="java.lang.Long">
+    select count(*) from biz_device_transformer
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update biz_device_transformer
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.manufacturer != null">
+        manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturercode != null">
+        manufacturerCode = #{record.manufacturercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transformermodel != null">
+        transformerModel = #{record.transformermodel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weight != null">
+        weight = #{record.weight,jdbcType=INTEGER},
+      </if>
+      <if test="record.workenviorment != null">
+        workEnviorment = #{record.workenviorment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.worktype != null">
+        workType = #{record.worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ratedvoltage != null">
+        ratedVoltage = #{record.ratedvoltage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ratedfrequency != null">
+        ratedFrequency = #{record.ratedfrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.connectiongrouplabel != null">
+        connectionGroupLabel = #{record.connectiongrouplabel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.insulationclass != null">
+        InsulationClass = #{record.insulationclass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.manufacturdate != null">
+        manufacturDate = #{record.manufacturdate,jdbcType=DATE},
+      </if>
+      <if test="record.gatewaycode != null">
+        gatewayCode = #{record.gatewaycode,jdbcType=INTEGER},
+      </if>
+      <if test="record.biztype != null">
+        bizType = #{record.biztype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gatewayid != null">
+        gatewayID = #{record.gatewayid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update biz_device_transformer
+    set id = #{record.id,jdbcType=INTEGER},
+      manufacturer = #{record.manufacturer,jdbcType=VARCHAR},
+      manufacturerCode = #{record.manufacturercode,jdbcType=VARCHAR},
+      transformerModel = #{record.transformermodel,jdbcType=VARCHAR},
+      weight = #{record.weight,jdbcType=INTEGER},
+      workEnviorment = #{record.workenviorment,jdbcType=VARCHAR},
+      workType = #{record.worktype,jdbcType=VARCHAR},
+      ratedVoltage = #{record.ratedvoltage,jdbcType=VARCHAR},
+      ratedFrequency = #{record.ratedfrequency,jdbcType=VARCHAR},
+      connectionGroupLabel = #{record.connectiongrouplabel,jdbcType=VARCHAR},
+      InsulationClass = #{record.insulationclass,jdbcType=VARCHAR},
+      manufacturDate = #{record.manufacturdate,jdbcType=DATE},
+      gatewayCode = #{record.gatewaycode,jdbcType=INTEGER},
+      bizType = #{record.biztype,jdbcType=VARCHAR},
+      gatewayID = #{record.gatewayid,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformer">
+    update biz_device_transformer
+    <set>
+      <if test="manufacturer != null">
+        manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturercode != null">
+        manufacturerCode = #{manufacturercode,jdbcType=VARCHAR},
+      </if>
+      <if test="transformermodel != null">
+        transformerModel = #{transformermodel,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="workenviorment != null">
+        workEnviorment = #{workenviorment,jdbcType=VARCHAR},
+      </if>
+      <if test="worktype != null">
+        workType = #{worktype,jdbcType=VARCHAR},
+      </if>
+      <if test="ratedvoltage != null">
+        ratedVoltage = #{ratedvoltage,jdbcType=VARCHAR},
+      </if>
+      <if test="ratedfrequency != null">
+        ratedFrequency = #{ratedfrequency,jdbcType=VARCHAR},
+      </if>
+      <if test="connectiongrouplabel != null">
+        connectionGroupLabel = #{connectiongrouplabel,jdbcType=VARCHAR},
+      </if>
+      <if test="insulationclass != null">
+        InsulationClass = #{insulationclass,jdbcType=VARCHAR},
+      </if>
+      <if test="manufacturdate != null">
+        manufacturDate = #{manufacturdate,jdbcType=DATE},
+      </if>
+      <if test="gatewaycode != null">
+        gatewayCode = #{gatewaycode,jdbcType=INTEGER},
+      </if>
+      <if test="biztype != null">
+        bizType = #{biztype,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayid != null">
+        gatewayID = #{gatewayid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizDeviceTransformer">
+    update biz_device_transformer
+    set manufacturer = #{manufacturer,jdbcType=VARCHAR},
+      manufacturerCode = #{manufacturercode,jdbcType=VARCHAR},
+      transformerModel = #{transformermodel,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=INTEGER},
+      workEnviorment = #{workenviorment,jdbcType=VARCHAR},
+      workType = #{worktype,jdbcType=VARCHAR},
+      ratedVoltage = #{ratedvoltage,jdbcType=VARCHAR},
+      ratedFrequency = #{ratedfrequency,jdbcType=VARCHAR},
+      connectionGroupLabel = #{connectiongrouplabel,jdbcType=VARCHAR},
+      InsulationClass = #{insulationclass,jdbcType=VARCHAR},
+      manufacturDate = #{manufacturdate,jdbcType=DATE},
+      gatewayCode = #{gatewaycode,jdbcType=INTEGER},
+      bizType = #{biztype,jdbcType=VARCHAR},
+      gatewayID = #{gatewayid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1454,6 +1454,76 @@ public class BizCustomerExample {
             addCriterion("endTime not between", value1, value2, "endtime");
             return (Criteria) this;
         }
+
+        public Criteria andPicIsNull() {
+            addCriterion("pic is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicIsNotNull() {
+            addCriterion("pic is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicEqualTo(String value) {
+            addCriterion("pic =", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicNotEqualTo(String value) {
+            addCriterion("pic <>", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicGreaterThan(String value) {
+            addCriterion("pic >", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicGreaterThanOrEqualTo(String value) {
+            addCriterion("pic >=", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicLessThan(String value) {
+            addCriterion("pic <", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicLessThanOrEqualTo(String value) {
+            addCriterion("pic <=", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicLike(String value) {
+            addCriterion("pic like", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicNotLike(String value) {
+            addCriterion("pic not like", value, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicIn(List<String> values) {
+            addCriterion("pic in", values, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicNotIn(List<String> values) {
+            addCriterion("pic not in", values, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicBetween(String value1, String value2) {
+            addCriterion("pic between", value1, value2, "pic");
+            return (Criteria) this;
+        }
+
+        public Criteria andPicNotBetween(String value1, String value2) {
+            addCriterion("pic not between", value1, value2, "pic");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -113,6 +113,23 @@ dtype: float64
 Name: 2, dtype: float64
 ```
 
+## `mean`
+
+计算均值
+
+```python
+import pandas as pd
+
+# 加载数据
+train_df = pd.read_csv('./data/train.csv')
+
+# 计算所有数值均值
+train_df.mean()
+
+# 计算某一列均值
+train_df['Age'].mean()
+```
+
 
 
 # 示例程序

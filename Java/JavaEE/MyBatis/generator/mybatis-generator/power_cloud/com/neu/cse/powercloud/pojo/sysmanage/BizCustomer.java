@@ -43,6 +43,8 @@ public class BizCustomer {
 
     private Date endtime;
 
+    private String pic;
+
     public Integer getId() {
         return id;
     }
@@ -201,5 +203,13 @@ public class BizCustomer {
 
     public void setEndtime(Date endtime) {
         this.endtime = endtime;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }

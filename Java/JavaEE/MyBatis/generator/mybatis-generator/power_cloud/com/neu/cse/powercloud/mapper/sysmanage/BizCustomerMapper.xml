@@ -22,6 +22,7 @@
     <result column="isSpecialPower" jdbcType="TINYINT" property="isspecialpower" />
     <result column="superiorUnitCode" jdbcType="INTEGER" property="superiorunitcode" />
     <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="pic" jdbcType="VARCHAR" property="pic" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -85,7 +86,7 @@
     id, shortName, company, companyCode, address, location, bizOwnerName, bizOwnerTel, 
     bizOwnerPhone, taxpayerIdentification, bank, bankAccount, financeChiefName, financeChiefTel, 
     financeChiefPhone, companyTypeCode, dataAuthorityID, isSpecialPower, superiorUnitCode, 
-    endTime
+    endTime, pic
   </sql>
   <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizCustomerExample" resultMap="BaseResultMap">
     select
@@ -127,14 +128,14 @@
       bank, bankAccount, financeChiefName, 
       financeChiefTel, financeChiefPhone, companyTypeCode, 
       dataAuthorityID, isSpecialPower, superiorUnitCode, 
-      endTime)
+      endTime, pic)
     values (#{shortname,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{companycode,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{bizownername,jdbcType=VARCHAR}, 
       #{bizownertel,jdbcType=VARCHAR}, #{bizownerphone,jdbcType=VARCHAR}, #{taxpayeridentification,jdbcType=VARCHAR}, 
       #{bank,jdbcType=VARCHAR}, #{bankaccount,jdbcType=VARCHAR}, #{financechiefname,jdbcType=VARCHAR}, 
       #{financechieftel,jdbcType=VARCHAR}, #{financechiefphone,jdbcType=VARCHAR}, #{companytypecode,jdbcType=VARCHAR}, 
       #{dataauthorityid,jdbcType=INTEGER}, #{isspecialpower,jdbcType=TINYINT}, #{superiorunitcode,jdbcType=INTEGER}, 
-      #{endtime,jdbcType=TIMESTAMP})
+      #{endtime,jdbcType=TIMESTAMP}, #{pic,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizCustomer">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -199,6 +200,9 @@
       <if test="endtime != null">
         endTime,
       </if>
+      <if test="pic != null">
+        pic,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="shortname != null">
@@ -257,6 +261,9 @@
       </if>
       <if test="endtime != null">
         #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -329,6 +336,9 @@
       <if test="record.endtime != null">
         endTime = #{record.endtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.pic != null">
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -355,7 +365,8 @@
       dataAuthorityID = #{record.dataauthorityid,jdbcType=INTEGER},
       isSpecialPower = #{record.isspecialpower,jdbcType=TINYINT},
       superiorUnitCode = #{record.superiorunitcode,jdbcType=INTEGER},
-      endTime = #{record.endtime,jdbcType=TIMESTAMP}
+      endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      pic = #{record.pic,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -420,6 +431,9 @@
       <if test="endtime != null">
         endTime = #{endtime,jdbcType=TIMESTAMP},
       </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -443,7 +457,8 @@
       dataAuthorityID = #{dataauthorityid,jdbcType=INTEGER},
       isSpecialPower = #{isspecialpower,jdbcType=TINYINT},
       superiorUnitCode = #{superiorunitcode,jdbcType=INTEGER},
-      endTime = #{endtime,jdbcType=TIMESTAMP}
+      endTime = #{endtime,jdbcType=TIMESTAMP},
+      pic = #{pic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
