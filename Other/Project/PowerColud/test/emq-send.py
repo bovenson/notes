@@ -29,6 +29,7 @@ auth = {
 }
 
 for i in range(10):
-    print(publish.single('/test', 'payload', hostname='202.118.26.129', port=1883, auth=auth))
+    # print(publish.single('/test', 'payload', hostname='202.118.26.129', port=1883, auth=auth))
+    print(publish.single('/test', 'this is payload message', hostname='localhost', port=1883))
     sleep(1)
 
