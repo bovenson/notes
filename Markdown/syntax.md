@@ -16,3 +16,8 @@ cond(yes)->e
 cond(no)->op
 ```
 
+# 数学公式
+
+- $\hat{\theta}$
+- $ \prod \limits_{i=1} \limits^{n} p(x_i;\theta)$
+
