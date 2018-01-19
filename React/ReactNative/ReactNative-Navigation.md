@@ -28,6 +28,38 @@ this.props.navigation.dispatch(resetAction);
 
 - [参考一](http://blog.csdn.net/sinat_17775997/article/details/70176688)
 
+## 返回
+
+```react
+class HomeScreen extends React.Component {
+  render() {
+    const {goBack} = this.props.navigation;
+    return (
+      <View>
+        <Button
+          onPress={() => goBack()}
+          title="Go back from this HomeScreen"
+        />
+        <Button
+          onPress={() => goBack(null)}
+          title="Go back anywhere"
+        />
+        <Button
+          onPress={() => goBack('screen-123')}
+          title="Go back from screen-123"
+        />
+      </View>
+     )
+   }
+}
+```
+
+```react
+this.props.navigation.goBack()
+```
+
+
+
 ## 错误
 
 ### 一
@@ -56,4 +88,6 @@ export default class ECart extends Component {
 	onPress={this._onPress.bind(this)}
 />
 ```
+
+
 

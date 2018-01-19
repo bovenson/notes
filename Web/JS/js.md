@@ -24,5 +24,12 @@ for (var i=0; i < book["tag"].length; ++i) {
 arr.push("A");	// 尾部添加
 ```
 
-## 删除元素
+## 便利字典
+
+```javascript
+let a = {b: 1, c: 2};
+for (let key in a) {
+  console.log(key + " - " + a[key]);
+}
+```
 
