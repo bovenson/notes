@@ -67,5 +67,4 @@ sudo usermod -a -G sudo yourusername
   | `-u <uid>`   | 修改用户ID            |      |
   | -U           | 解除密码锁定            |      |
 
-  ​
 
