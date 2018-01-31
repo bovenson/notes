@@ -64,26 +64,46 @@ Theta2_grad = zeros(size(Theta2));
 
 % 
 
-a1 = [ones(m, 1), X];   % (m+1) * (n+1)
+% a1 = [ones(m, 1), X];   % (m+1) * (n+1)
 
-z2 = a1 * Theta1';      % ((m+1) * (n+1)) * ((n+1) * )
-a2 = [ones(m, 1), sigmoid(z2)];
+% z2 = a1 * Theta1';      % ((m+1) * (n+1)) * ((n+1) * )
+% a2 = [ones(m, 1), sigmoid(z2)];
 
-z3 = a2 * Theta2';
+% z3 = a2 * Theta2';
+% a3 = sigmoid(z3);
+
+% yv = zeros(m, num_labels);
+
+% for i = 1:m,
+%     th = y(i);
+%     yv(i, th) = 1;
+% end;
+
+% J = 1 / m * sum(sum((-yv .* log(a3) - (1 - yv) .* log(1 - a3))));
+% JReg = lambda / 2 / m * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2)));
+% J = J + JReg;
+
+a1 = [ones(m, 1), X]';
+
+z2 = Theta1 * a1;
+a2 = sigmoid(z2);
+a2 = [ones(1, m); a2];
+
+z3 = Theta2 * a2;
 a3 = sigmoid(z3);
 
-yv = zeros(m, num_labels);
+yv = zeros(num_labels, m);
 
 for i = 1:m,
     th = y(i);
-    yv(i, th) = 1;
+    yv(th, i) = 1;
 end;
 
 J = 1 / m * sum(sum((-yv .* log(a3) - (1 - yv) .* log(1 - a3))));
-JReg = lambda / 2 / m * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end) .^ 2)));
+
+JReg = lambda / 2 / m * (sum(sum(Theta1(:, 2:end) .^ 2)) + sum(sum(Theta2(:, 2:end)     .^ 2)));
+
 J = J + JReg;
-
-
 
 
 % Grad compute
@@ -99,9 +119,9 @@ for t = 1:m,
     tz3 = Theta2 * ta2;
     ta3 = sigmoid(tz3);
 
-    tDelta3 = ta3 - yv(t)';
+    tDelta3 = ta3 - yv(t);
 
-    tDelta2 = (Theta2' * tDelta3) .* [1; sigmoidGradient(tz2)];
+    tDelta2 = (Theta2' * tDelta3) .* [0; sigmoidGradient(tz2)];
     % tDelta2 = tDelta2(2:end);   % idden_layout_size
     tDelta2 = tDelta2(2:end);
 
