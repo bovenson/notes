@@ -33,5 +33,6 @@ msg = '''{"Data0":"0103800001010100010002000200004366ade24366bab84366a71043c7cbb
 while True:
     # print(publish.single('/test', 'payload', hostname='202.118.26.129', port=1883, auth=auth))
     print(publish.single('/data', msg, hostname='localhost', port=1883))
+    print(publish.single('/alert', "报警消息", hostname='localhost', port=1883))
     sleep(5)
 
