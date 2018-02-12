@@ -5,6 +5,8 @@ import java.util.Date;
 public class BizElectricitySubstation {
     private Integer id;
 
+    private String substationname;
+
     private Integer companyid;
 
     private String address;
@@ -37,6 +39,14 @@ public class BizElectricitySubstation {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getSubstationname() {
+        return substationname;
+    }
+
+    public void setSubstationname(String substationname) {
+        this.substationname = substationname;
     }
 
     public Integer getCompanyid() {

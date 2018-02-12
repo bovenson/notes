@@ -192,6 +192,76 @@ public class BizElectricitySubstationExample {
             return (Criteria) this;
         }
 
+        public Criteria andSubstationnameIsNull() {
+            addCriterion("subStationName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameIsNotNull() {
+            addCriterion("subStationName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameEqualTo(String value) {
+            addCriterion("subStationName =", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameNotEqualTo(String value) {
+            addCriterion("subStationName <>", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameGreaterThan(String value) {
+            addCriterion("subStationName >", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameGreaterThanOrEqualTo(String value) {
+            addCriterion("subStationName >=", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameLessThan(String value) {
+            addCriterion("subStationName <", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameLessThanOrEqualTo(String value) {
+            addCriterion("subStationName <=", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameLike(String value) {
+            addCriterion("subStationName like", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameNotLike(String value) {
+            addCriterion("subStationName not like", value, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameIn(List<String> values) {
+            addCriterion("subStationName in", values, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameNotIn(List<String> values) {
+            addCriterion("subStationName not in", values, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameBetween(String value1, String value2) {
+            addCriterion("subStationName between", value1, value2, "substationname");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubstationnameNotBetween(String value1, String value2) {
+            addCriterion("subStationName not between", value1, value2, "substationname");
+            return (Criteria) this;
+        }
+
         public Criteria andCompanyidIsNull() {
             addCriterion("companyID is null");
             return (Criteria) this;

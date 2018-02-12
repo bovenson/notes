@@ -3,6 +3,7 @@
 <mapper namespace="com.neu.cse.powercloud.mapper.sysmanage.BizElectricitySubstationMapper">
   <resultMap id="BaseResultMap" type="com.neu.cse.powercloud.pojo.sysmanage.BizElectricitySubstation">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="subStationName" jdbcType="VARCHAR" property="substationname" />
     <result column="companyID" jdbcType="INTEGER" property="companyid" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="longitude" jdbcType="VARCHAR" property="longitude" />
@@ -76,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, companyID, address, longitude, latitude, powerType, voltageClass, total, ConstructionUnit, 
-    ConstructionTime, inVoltage, outVoltage, pic, status
+    id, subStationName, companyID, address, longitude, latitude, powerType, voltageClass, 
+    total, ConstructionUnit, ConstructionTime, inVoltage, outVoltage, pic, status
   </sql>
   <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizElectricitySubstationExample" resultMap="BaseResultMap">
     select
@@ -113,16 +114,16 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into biz_electricity_substation (companyID, address, longitude, 
-      latitude, powerType, voltageClass, 
-      total, ConstructionUnit, ConstructionTime, 
-      inVoltage, outVoltage, pic, 
-      status)
-    values (#{companyid,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
-      #{latitude,jdbcType=VARCHAR}, #{powertype,jdbcType=VARCHAR}, #{voltageclass,jdbcType=VARCHAR}, 
-      #{total,jdbcType=INTEGER}, #{constructionunit,jdbcType=VARCHAR}, #{constructiontime,jdbcType=DATE}, 
-      #{involtage,jdbcType=VARCHAR}, #{outvoltage,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR})
+    insert into biz_electricity_substation (subStationName, companyID, address, 
+      longitude, latitude, powerType, 
+      voltageClass, total, ConstructionUnit, 
+      ConstructionTime, inVoltage, outVoltage, 
+      pic, status)
+    values (#{substationname,jdbcType=VARCHAR}, #{companyid,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, #{powertype,jdbcType=VARCHAR}, 
+      #{voltageclass,jdbcType=VARCHAR}, #{total,jdbcType=INTEGER}, #{constructionunit,jdbcType=VARCHAR}, 
+      #{constructiontime,jdbcType=DATE}, #{involtage,jdbcType=VARCHAR}, #{outvoltage,jdbcType=VARCHAR}, 
+      #{pic,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizElectricitySubstation">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -130,6 +131,9 @@
     </selectKey>
     insert into biz_electricity_substation
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="substationname != null">
+        subStationName,
+      </if>
       <if test="companyid != null">
         companyID,
       </if>
@@ -171,6 +175,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="substationname != null">
+        #{substationname,jdbcType=VARCHAR},
+      </if>
       <if test="companyid != null">
         #{companyid,jdbcType=INTEGER},
       </if>
@@ -224,6 +231,9 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.substationname != null">
+        subStationName = #{record.substationname,jdbcType=VARCHAR},
+      </if>
       <if test="record.companyid != null">
         companyID = #{record.companyid,jdbcType=INTEGER},
       </if>
@@ -271,6 +281,7 @@
   <update id="updateByExample" parameterType="map">
     update biz_electricity_substation
     set id = #{record.id,jdbcType=INTEGER},
+      subStationName = #{record.substationname,jdbcType=VARCHAR},
       companyID = #{record.companyid,jdbcType=INTEGER},
       address = #{record.address,jdbcType=VARCHAR},
       longitude = #{record.longitude,jdbcType=VARCHAR},
@@ -291,6 +302,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizElectricitySubstation">
     update biz_electricity_substation
     <set>
+      <if test="substationname != null">
+        subStationName = #{substationname,jdbcType=VARCHAR},
+      </if>
       <if test="companyid != null">
         companyID = #{companyid,jdbcType=INTEGER},
       </if>
@@ -335,7 +349,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizElectricitySubstation">
     update biz_electricity_substation
-    set companyID = #{companyid,jdbcType=INTEGER},
+    set subStationName = #{substationname,jdbcType=VARCHAR},
+      companyID = #{companyid,jdbcType=INTEGER},
       address = #{address,jdbcType=VARCHAR},
       longitude = #{longitude,jdbcType=VARCHAR},
       latitude = #{latitude,jdbcType=VARCHAR},

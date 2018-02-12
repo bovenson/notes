@@ -14,6 +14,9 @@
     <result column="commenter" jdbcType="INTEGER" property="commenter" />
     <result column="score" jdbcType="VARCHAR" property="score" />
     <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="acceptTime" jdbcType="TIMESTAMP" property="accepttime" />
+    <result column="finishedTime" jdbcType="TIMESTAMP" property="finishedtime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     id, exceptionCode, description, reason, processAction, pic, electricianID, companyID, 
-    electricitySubstationID, commenter, score, comment
+    electricitySubstationID, commenter, score, comment, startTime, acceptTime, finishedTime
   </sql>
   <select id="selectByExample" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizWorktaskFinishExample" resultMap="BaseResultMap">
     select
@@ -114,11 +117,13 @@
     insert into biz_worktask_finish (exceptionCode, description, reason, 
       processAction, pic, electricianID, 
       companyID, electricitySubstationID, commenter, 
-      score, comment)
+      score, comment, startTime, 
+      acceptTime, finishedTime)
     values (#{exceptioncode,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, 
       #{processaction,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{electricianid,jdbcType=INTEGER}, 
       #{companyid,jdbcType=INTEGER}, #{electricitysubstationid,jdbcType=INTEGER}, #{commenter,jdbcType=INTEGER}, 
-      #{score,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR})
+      #{score,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{accepttime,jdbcType=TIMESTAMP}, #{finishedtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.neu.cse.powercloud.pojo.sysmanage.BizWorktaskFinish">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -159,6 +164,15 @@
       <if test="comment != null">
         comment,
       </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="accepttime != null">
+        acceptTime,
+      </if>
+      <if test="finishedtime != null">
+        finishedTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="exceptioncode != null">
@@ -193,6 +207,15 @@
       </if>
       <if test="comment != null">
         #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accepttime != null">
+        #{accepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishedtime != null">
+        #{finishedtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -241,6 +264,15 @@
       <if test="record.comment != null">
         comment = #{record.comment,jdbcType=VARCHAR},
       </if>
+      <if test="record.starttime != null">
+        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.accepttime != null">
+        acceptTime = #{record.accepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.finishedtime != null">
+        finishedTime = #{record.finishedtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -259,7 +291,10 @@
       electricitySubstationID = #{record.electricitysubstationid,jdbcType=INTEGER},
       commenter = #{record.commenter,jdbcType=INTEGER},
       score = #{record.score,jdbcType=VARCHAR},
-      comment = #{record.comment,jdbcType=VARCHAR}
+      comment = #{record.comment,jdbcType=VARCHAR},
+      startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      acceptTime = #{record.accepttime,jdbcType=TIMESTAMP},
+      finishedTime = #{record.finishedtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -300,6 +335,15 @@
       <if test="comment != null">
         comment = #{comment,jdbcType=VARCHAR},
       </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accepttime != null">
+        acceptTime = #{accepttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="finishedtime != null">
+        finishedTime = #{finishedtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -315,7 +359,10 @@
       electricitySubstationID = #{electricitysubstationid,jdbcType=INTEGER},
       commenter = #{commenter,jdbcType=INTEGER},
       score = #{score,jdbcType=VARCHAR},
-      comment = #{comment,jdbcType=VARCHAR}
+      comment = #{comment,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      acceptTime = #{accepttime,jdbcType=TIMESTAMP},
+      finishedTime = #{finishedtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

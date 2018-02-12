@@ -1,5 +1,7 @@
 package com.neu.cse.powercloud.pojo.sysmanage;
 
+import java.util.Date;
+
 public class BizWorktaskFinish {
     private Integer id;
 
@@ -24,6 +26,12 @@ public class BizWorktaskFinish {
     private String score;
 
     private String comment;
+
+    private Date starttime;
+
+    private Date accepttime;
+
+    private Date finishedtime;
 
     public Integer getId() {
         return id;
@@ -119,5 +127,29 @@ public class BizWorktaskFinish {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Date getStarttime() {
+        return starttime;
+    }
+
+    public void setStarttime(Date starttime) {
+        this.starttime = starttime;
+    }
+
+    public Date getAccepttime() {
+        return accepttime;
+    }
+
+    public void setAccepttime(Date accepttime) {
+        this.accepttime = accepttime;
+    }
+
+    public Date getFinishedtime() {
+        return finishedtime;
+    }
+
+    public void setFinishedtime(Date finishedtime) {
+        this.finishedtime = finishedtime;
     }
 }

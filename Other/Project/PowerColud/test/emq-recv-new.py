@@ -20,4 +20,5 @@ def on_msg_recv(client, userdata, message):
     print("%s %s" % (message.topic, message.payload))
 
 
-subscribe.callback(on_msg_recv, '/ammeter', hostname='localhost', port=1883, auth=auth)
+# subscribe.callback(on_msg_recv, '/ammeter', hostname='202.118.26.129', port=1883, auth=auth)
+subscribe.callback(on_msg_recv, 'test', hostname='202.118.26.129', port=1883, auth=auth)
