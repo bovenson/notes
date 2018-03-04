@@ -1,5 +1,9 @@
 ---
 title: 情绪控制
+tags:
+	- 情绪控制
+categories:
+	- Care
 ---
 
 # 认识情绪

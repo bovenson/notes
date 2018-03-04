@@ -1,5 +1,9 @@
 ---
 title: 感冒
+tags:
+	- 感冒
+categories:
+	- Care
 ---
 
 # 简介

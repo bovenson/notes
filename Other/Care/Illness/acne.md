@@ -1,5 +1,9 @@
 ---
 title: 痤疮
+tags:
+	- 痤疮
+categories:
+	- Care
 ---
 
 [TOC]
