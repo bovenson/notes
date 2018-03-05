@@ -34,21 +34,22 @@ tags: Linux, vim
 
 ### 移动
 
-| 命令                | 说明                                       |
-| ----------------- | ---------------------------------------- |
-| `k or Up Arrow`   | move the cursor up one line              |
-| `j or Down Arrow` | move the cursor down one line            |
-| `e`               | move the cursor to the end of the word   |
+| 命令              | 说明                                        |
+| ----------------- | ------------------------------------------- |
+| `k or Up Arrow`   | move the cursor up one line                 |
+| `j or Down Arrow` | move the cursor down one line               |
+| `e`               | move the cursor to the end of the word      |
 | `b`               | move the cursor to the begining of the word |
-| `0`               | move the cursor to the begining of the line |
-| `G`               | move the cursor to the end of the line   |
-| `gg`              | move the cursor to the begining of the file |
-| `L`               | move the cursor to the end of the file   |
-| `:59`             | move cursor to line *59*. Replace *59* by the desired line number. |
-| `20\|`            | move cursor to column *20*.              |
-| `%`               | Move cursor to matching parenthesis      |
-| `[[`              | Jump to function start                   |
-| `[{`              | Jump to block start                      |
+| `0`               | 行首                                        |
+| `$`               | 行尾                                        |
+| `G`               | 文尾                                        |
+| `gg`              | 文首                                        |
+| `L`               | move the cursor to the end of the file      |
+| `:59`             | 跳转到指定（这里是第59）行                  |
+| `20|`             | 移动到第20列                                |
+| `%`               | Move cursor to matching parenthesis         |
+| `[[`              | Jump to function start                      |
+| `[{`              | Jump to block start                         |
 
 
 
@@ -143,7 +144,9 @@ G		# 转到文件结尾
 
 `:%s/from/to/g`
 
-其他的标记(flags)包括: 
+标记(flags)包括: 
+
+-   g(global): 将所有的字符都替换成给定字符
 
 - p(print): 是要求打印所做的改动
 - c(confirm): 是要求在做出改动以前先询问
