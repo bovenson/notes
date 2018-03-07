@@ -130,3 +130,13 @@ $ git reset --hard HEAD~3        回退到前3次提交之前，以此类推，�
 $ git reset --hard commit_id     退到/进到 指定commit的sha码
 ```
 
+# 删除某一commit
+
+```shell
+git log	# 获取commit信息 
+git rebase -i commit_id	# commit-id 为要删除的commit的下一个commit号 
+# 编辑文件，将要删除的commit之前的单词改为drop 
+# 保存文件退出大功告成 
+git log	# 查看
+```
+
