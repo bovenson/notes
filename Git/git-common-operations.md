@@ -55,6 +55,13 @@ Date:   Wed Nov 29 20:04:40 2017 +0800
 # 从历史版本检出某个文件
 
 ```shell
+bovenson@MBP:~/Git/notes$ git checkout d93d872 Git/git-common-operations.md ./Git/git-common-operations.md	# 指定目标目录
+bovenson@MBP:~/Git/notes$ git checkout d93d872 Git/git-common-operations.md	# 不指定目标目录
+```
+
+
+
+```shell
 bovenson@MBP:~/Tmp$ mkdir git
 bovenson@MBP:~/Tmp$ cd git/
 bovenson@MBP:~/Tmp/git$ ls
@@ -120,5 +127,23 @@ index ce01362..e69de29 100644
 +++ b/a
 @@ -1 +0,0 @@
 -hello
+```
+
+# 回退到某一版本
+
+```shell
+$ git reset --hard HEAD^         回退到上个版本
+$ git reset --hard HEAD~3        回退到前3次提交之前，以此类推，回退到n次提交之前
+$ git reset --hard commit_id     退到/进到 指定commit的sha码
+```
+
+# 删除某一commit
+
+```shell
+git log	# 获取commit信息 
+git rebase -i commit_id	# commit-id 为要删除的commit的下一个commit号 
+# 编辑文件，将要删除的commit之前的单词改为drop 
+# 保存文件退出大功告成 
+git log	# 查看
 ```
 
