@@ -59,3 +59,9 @@ ans =
   -0.050000   0.075000
 ```
 
+# 技巧
+
+```octave
+octave: > (cvPredictions == 1) & (yval == 0)	# 两向量对象元素相与
+```
+
