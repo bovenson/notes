@@ -90,6 +90,27 @@ categories:
     s.t. \sum\limits_{i=1}\limits^{m} \alpha_iy_i = 0,	\\
     \alpha_i \geqslant 0, i = 1,2,\cdots,m.
     $$
+
+    -   $$\alpha_i 对应着训练样本 (x_i,y_i)$$
+
+-   解出 $$\alpha$$ 后，求出 $$\omega$$ 和 $$b$$  即可得到模型
+    $$
+    f(x) = \omega^Tx + b \\
+    = \sum\limits_{i=1}^{m} \alpha_i y_i x_i^Tx + b
+    $$
+
+-   又不等式约束，因此上述过程需满足 KKT 条件
+    $$
+    \begin{equation}
+      \left\{
+       \begin{aligned}
+       \alpha_i \geqslant 0  \\
+       y_if(x_i) - 1 \geqslant 0 \\
+       \alpha_i(y_if(x_i) - 1) = 0
+       \end{aligned}
+       \right.
+      \end{equation}
+    $$
     ​
 
 # 附录
@@ -119,9 +140,14 @@ min [f(x) + \sum\limits_{i=1}^\limits{n}  \lambda_i h_i(x)]
 $$
 其中 $$\lambda_i \neq 0$$，称为拉格朗日乘子
 
+### KKT条件
+
+KKT条件是解决最优化问题的时用到的一种方法。我们这里提到的最优化问题通常是指对于给定的某一函数，求其在指定作用域上的全局最小值。
+
 # 参考
 
 ## 参考网址
 
 -   [拉格朗日乘子法及KKT条件](https://www.cnblogs.com/zhangchaoyang/articles/2726873.html)
+-   [KKT条件](http://blog.csdn.net/johnnyconstantine/article/details/46335763)
 
