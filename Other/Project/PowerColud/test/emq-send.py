@@ -38,13 +38,13 @@ while True:
         # print(msg)
         # print(publish.single('/test', 'payload', hostname='202.118.26.129', port=1883, auth=auth))
         # print(publish.single('data', msg, hostname='202.118.26.129', port=1883))
-        print(publish.single('test', msg1, hostname='202.118.26.129', port=1883,
+        print(publish.single('test', msg1, hostname='localhost', port=1883,
                              client_id="test_ammeter_" + str(random.random())))
         # print(publish.single('alert', '{ "firstName":"John" , "message":"这是警报消息" }',
         # hostname='202.118.26.129', port=1883))
         sleep(5)
         # print(publish.single('data', msg2, hostname='202.118.26.129', port=1883))
-        print(publish.single('test', msg2, hostname='202.118.26.129', port=1883))
+        print(publish.single('test', msg2, hostname='localhost', port=1883))
         sleep(5)
     except Exception as e:
         print(e)
