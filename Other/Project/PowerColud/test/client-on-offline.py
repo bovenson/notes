@@ -15,6 +15,6 @@ def on_message_print(client, user_data, message):
     print("%s %s %s" % (message.topic, message.payload, user_data))
 
 
-subscribe.callback(on_message_print, "/unique/撒U盾福时代峻峰建安费", hostname="localhost")
+subscribe.callback(on_message_print, "/unique", hostname="localhost")
 # subscribe.callback(on_message_print, "$SYS/brokers/emqttd@localhost/clients/testid/connected", hostname="localhost")
 # subscribe.callback(on_message_print, "$SYS/brokers/9299ceaae265@172.17.0.2/clients/#", hostname="localhost")
