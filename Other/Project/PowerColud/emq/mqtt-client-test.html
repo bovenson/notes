@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    </head>
+    <body onload="init();">
+    </body>
+    <script>
+        var client = new Paho.MQTT.Client("202.118.26.129", 8083, "client_id_random");
+        client.onConnectionLost = onConnectionLost;
+        client.onMessageArrived = onMessageArrived;
+        function init() {
+          client.connect({onSuccess:onConnect});
+
+        }
+        function onConnect() {
+          console.log("onConnect");
+          client.subscribe("/a");
+          message = new Paho.MQTT.Message("Hello");
+          message.destinationName = "/a";
+          client.send(message);
+        }
+        function onConnectionLost(responseObject) {
+          if (responseObject.errorCode !== 0) {
+            console.log("onConnectionLost:"+responseObject.errorMessage);
+          }
+        }
+        function onMessageArrived(message) {
+          console.log("onMessageArrived:"+message.payloadString);
+        }
+    </script>
+</html>
