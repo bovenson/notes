@@ -14,6 +14,6 @@ import paho.mqtt.publish as publish
 
 i = 0
 while True:
-    publish.single("/a", "this payload msg" + str(i), hostname="202.118.26.129")
+    publish.single("/gateway/domain", "this payload msg" + str(i), hostname="localhost")
     i += 1
     sleep(5)

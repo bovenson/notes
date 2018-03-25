@@ -15,6 +15,6 @@ public class StdInOut {
 
         double avg = sum / cnt;
 
-        StdOut.print("Average is %.5f\n", avg);
+        StdOut.print(String.format("Average is %.5f\n", avg));
     }
 }
