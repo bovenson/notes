@@ -1,3 +1,5 @@
+package learn.io;
+
 /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut

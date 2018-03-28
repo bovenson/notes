@@ -15,11 +15,18 @@ def ShellSort(l):
     n = len(l)
     h = len(l)  # 步长
     while h > 1:
-        h = h / 3 if h / 3 >= 1 else 1  # 更新步长
-        gap = n / h
-        # 分表排序
-        for i in range(gap):
+        h = h // 3 if h // 3 >= 1 else 1  # 更新步长
+        for i in range(h, n):
+            j = i
+            while j >= h and l[j] < l[j-h]:
+                t = l[j]
+                l[j] = l[j-h]
+                l[j-h] = t
+                j -= h
+    return l
 
-            for j in range(gap, n, gap):
 
+if __name__ == "__main__":
+    arr = [1, 6, 4, 3, 2, 5, 9, 0, 8, 7]
+    print(ShellSort(arr))
 

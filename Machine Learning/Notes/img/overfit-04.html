@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查看图片</title>
+<style type="text/css">
+img#image{border:1px solid #000;}
+</style>
+</head>
+<body>
+<script type="text/javascript">
+	// parse URL parameters
+	var params = unescape(location.hash.substr(1)).split("&");
+	var o = {};
+	for (var i = 0; i < params.length; i++){			
+		params[i].replace(/^([\w_]*)\=([\w_\/.\:]*)$/gi,function (a,n,v){
+			o[n]=v;
+		});
+	}
+	// get photo id
+	o.photoid = o.url.match(/(\w+)$/i)[1];
+	// get photo owner
+	o.pid = o.photoid.substr(0,8);
+	// get blog uid
+	if(typeof o.blogid != "undefined"){
+		o.uid = o.blogid.substr(0,8);
+		o.tuid = parseInt(o.uid,16);
+	}
+	// if photo owner is the blog owner, go to the album and show the picture, else show the picture in current page.
+	if(typeof o.uid != "undefined" && o.pid == o.uid){
+		window.location.href = "http://photo.blog.sina.com.cn/list/blogpic.php?pid=" + o.photoid + "&bid=" + o.blogid + "&uid=" + o.tuid;
+		document.write('<img id="image" src="' + o.url + '" />');
+	}
+	else{
+		document.write('<img id="image" src="' + o.url + '" />');
+	}
+</script>
+<!--<input type="button" onclick="location.hash='#'+('url=http://image2.sina.com.cn/blog/ccvb061216/yocc061216img/vlog_i_ws_001.gif');" /> -->
+<!-- <img src="http://secure-cn.imrworldwide.com/cgi-bin/m?ci=cn-sina2006&amp;cg=0" alt="" style="display:none;" />  -->
+</body>
+</html>
