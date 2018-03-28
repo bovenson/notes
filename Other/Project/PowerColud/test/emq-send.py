@@ -39,7 +39,7 @@ while True:
         # print(publish.single('/test', 'payload', hostname='202.118.26.129', port=1883, auth=auth))
         # print(publish.single('data', msg, hostname='202.118.26.129', port=1883))
         print(publish.single('/gateway/1', msg1, hostname='localhost', port=1883,
-                             client_id="test_ammeter_" + str(random.random())))
+                             client_id="/clients/elemeter" + str(random.random())))
         # print(publish.single('alert', '{ "firstName":"John" , "message":"这是警报消息" }',
         # hostname='202.118.26.129', port=1883))
         sleep(5)
