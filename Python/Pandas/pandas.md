@@ -31,7 +31,12 @@ s.values
 train_df = pd.read_csv('../data/train.csv')
 ```
 
-# 方法
+# DataFrame方法
+
+**选取数据**
+
+- `iloc`
+- `DF.clomun_name` : 通过列名选择
 
 ## `iloc`
 
@@ -137,6 +142,35 @@ train_df.mean()
 # 计算某一列均值
 train_df['Age'].mean()
 ```
+
+## `dropna`
+
+```python
+DataFrame.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
+```
+
+- `axis` 
+  - `0` : 行
+  - `1` : 列
+  - 元组/列表 : 处理多维数据
+- `how`
+  - `any` : 只要有一个值为`NA`，则删除该标签
+  - `all` : 所有值均为`NA`，则删除该标签
+- `thresh`
+  - 整数值，默认为空
+  - 如果非`NA`值数量大于该值，则保留该标签
+- `subset`
+  - 序列格式参数(`array-like`)
+  - 只考虑给定标签的值
+- `inplace`
+  - `True` : 在原始数据集上进行操作，返回`None`
+  - `False`  : 返回新的数据集，保持原始数据集不变
+
+## `drop`
+
+
+
+
 
 
 
