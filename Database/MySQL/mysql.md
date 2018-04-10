@@ -89,3 +89,20 @@ mysql -u root -p -h 10.154.0.43 -P 3306
 
 默认设置为`CURRENT_TIMESTAMP`
 
+## 添加管理账户
+
+- [参考1](https://stackoverflow.com/questions/6085455/restoring-deleted-root-user-and-password-for-mysql)
+- [参考2](http://www.kevssite.com/deleted-rootlocalhost-account-in-mysql/)
+
+## 错误
+
+### Can't get hostname from your ip address
+
+Just add below in `my.ini` or `my.cnf`.
+
+```
+[mysqld]
+skip-name-resolve 
+```
+
+- [参考](https://stackoverflow.com/questions/5118151/mysql-error-cant-get-hostname-from-your-ip-address)

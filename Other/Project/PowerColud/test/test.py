@@ -24,7 +24,3 @@ __date__ = "2018-01-12 09:04"
 #
 # print(add(1, 1))
 
-if 0 > 1:
-    print("对")
-else:
-    print("错")
