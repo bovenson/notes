@@ -1,9 +1,14 @@
 ---
-title: MySQL常用配置
-tags: MySQL
+title: MySQL笔记
+tags: 
+	- MySQL
+categories:
+	- MySQL
 ---
 
-# mysql
+# MySQL
+
+**注 : **有些操作和操作系统有关。
 
 ## CLI登录
 
@@ -106,3 +111,48 @@ skip-name-resolve
 ```
 
 - [参考](https://stackoverflow.com/questions/5118151/mysql-error-cant-get-hostname-from-your-ip-address)
+
+# CentOS安装MySQL
+
+```shell
+# 下载 rpm 源
+$ wget https://repo.mysql.com//mysql57-community-release-el7-11.noarch.rpm
+
+# 安装 rpm 源
+$ yum localinstall mysql57-community-release-el7-11.noarch.rpm
+
+# 安装 MySQL
+$ yum install mysql-community-server
+
+# 启动 MySQL
+$ systemctl start mysqld
+
+# 开机启动
+$ systemctl enable mysqld
+$ systemctl daemon-reload
+
+# 获取root密码
+$ cat /var/log/mysqld.log | grep password
+... [Note] A temporary password is generated for root@localhost:  ...
+
+# 登录mysql
+$ mysql -u root -p	
+# 输入获取到的临时密码
+
+# 重置root密码
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '{password}'; 
+
+# 新建远程登录用户
+mysql> CREATE USER 'root'@'%' IDENTIFIED BY '{password}';
+
+# 授权
+mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+
+# 刷新权限
+mysql> FLUSH PRIVILEGES;
+
+# 防火墙放行3306端口
+$ firewall-cmd --zone=public --add-port=3306/tcp --permanent
+$ firewall-cmd --reload
+```
+

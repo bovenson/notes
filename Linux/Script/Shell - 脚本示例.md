@@ -42,3 +42,32 @@ find . ! -name 'filename-pattern' -type f -exec rm -f {} +
 # 如果要删除文件夹, 把 -type f 改为 -type d, rm -f 改为 rm -rf
 ```
 
+# 解压多个文件
+
+```shell
+bovenson@ThinkCentre:~/Git/Tianchi/o2o/input$ ls
+ccf_offline_stage1_test_revised.zip  ccf_offline_stage1_train.zip  ccf_online_stage1_train.zip	sample_submission.zip
+bovenson@ThinkCentre:~/Git/Tianchi/o2o/input$ for i in $(ls *.zip); do
+> unzip $i
+> done
+Archive:  ccf_offline_stage1_test_revised.zip
+  inflating: ccf_offline_stage1_test_revised.csv  
+Archive:  ccf_offline_stage1_train.zip
+  inflating: ccf_offline_stage1_train.csv  
+Archive:  ccf_online_stage1_train.zip
+  inflating: ccf_online_stage1_train.csv  
+Archive:  sample_submission.zip
+  inflating: sample_submission.csv   
+bovenson@ThinkCentre:~/Git/Tianchi/o2o/input$ 
+```
+
+**单独Shell脚本**
+
+```shell
+#!/bin/bash
+for i in $(ls *.zip 2>/dev/null)
+do
+    unzip $i
+done
+```
+
