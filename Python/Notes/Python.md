@@ -1,4 +1,12 @@
-# Python
+---
+title: Python使用指南
+tags:
+	- Python
+categories:
+	- Python
+---
+
+# path
 
 ## 判断类型相同
 
@@ -43,6 +51,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 '/home/public/tmp/txtfile'
 ```
 
+# datetime
+
 ## 获取当前年月日
 
 ```python
@@ -63,6 +73,27 @@ Type "help", "copyright", "credits" or "license" for more information.
 3
 >>> datetime.datetime.now().day
 23
+```
+
+# list
+
+## 排序
+
+```python
+#### nums[:]
+## 注意id
+>>> nums = [1, 2, 2, 3, 3, 3, 3, 6]
+>>> id(nums)
+4362265608
+>>> nums[:] = sorted(set(nums))
+>>> id(nums)
+4362265608
+>>> nums = [1, 2, 2, 3, 3, 3, 3, 6]
+>>> id(nums)
+4362287304
+>>> nums = sorted(set(nums))
+>>> id(nums)
+4362265608
 ```
 
 ## 两个list 合并
@@ -100,5 +131,15 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> d1.update(d2)
 >>> d1
 {1: 1, 2: 3, 3: 3, 4: 4}
+```
+
+# Sys
+
+## 获取命令行参数
+
+```shell
+import sys					# 引入sys
+for arg in sys.argv[1:]:	# 遍历
+	print int(arg)			# 转型并打印
 ```
 
