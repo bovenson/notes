@@ -31,7 +31,7 @@ auth = {
 
 while True:
     try:
-        print(publish.single('/Alert/1', '''{"msg":"电流预警","electricitySubstationID":7,"worktaskID":309,"status":1}''', hostname='202.118.26.74', port=1883,
+        print(publish.single('/Alert/1', '''{"msg":"电流预警","electricitySubstationID":7,"worktaskID":311,"status":1}''', hostname='202.118.26.74', port=1883,
                              client_id="elemeter" + str(random.random())))
         # sleep(5)
         break
