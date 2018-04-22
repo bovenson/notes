@@ -1,9 +1,11 @@
 ---
 title: Numpy
-tags: Python, Numpy
+tags: 
+	- Python
+	- Numpy
+categories:
+	- Python
 ---
-
-
 
 # 简介
 
@@ -57,3 +59,16 @@ array([[[ 0.66151425,  0.66879573,  0.38385449,  0.33088673],
         [ 0.65628447,  0.37491602,  0.91287225,  0.37615829]]])
 ```
 
+# 生成服从正态分布随机数
+
+```python
+sampleNo = 1000
+mu = 3
+sigma = 0.1
+np.random.seed(0)
+s = np.random.normal(mu, sigma, sampleNo )
+```
+
+## **参考**
+
+- [参考一](https://www.zhihu.com/question/39823283)
