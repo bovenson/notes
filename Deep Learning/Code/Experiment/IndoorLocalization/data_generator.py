@@ -218,7 +218,7 @@ def generate_data_set(ap_positions: pd.DataFrame, rf_positions: pd.DataFrame,
 
 def generate_data():
     # 生成第一组
-    ap_data, rf_data = read_data('data.xlsx', 'ap_positions_1', 'rf_positions_1')
+    ap_data, rf_data = read_data('data.xlsx', 'ap_positions_2', 'rf_positions_2')
     data_set_1 = generate_data_set(ap_data, rf_data, P_sample_single_num, P_sample_single_item_count, display=True)
     print(data_set_1.labels)
 

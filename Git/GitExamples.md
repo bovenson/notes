@@ -147,3 +147,5 @@ git rebase -i commit_id	# commit-id 为要删除的commit的下一个commit号
 git log	# 查看
 ```
 
+# 搭建Git服务器
+

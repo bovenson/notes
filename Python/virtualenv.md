@@ -7,19 +7,31 @@ sudo apt install python3-pip # 安装pip3
 sudo pip3 install virtualenv # 安装virtualenv
 ```
 
+**OR**
+
+```shell
+$ sudo apt-get install python-pip python-dev python-virtualenv # for Python 2.7
+$ sudo apt-get install python3-pip python3-dev python-virtualenv # for Python 3.n
+```
+
 ## 新建虚拟环境
 
 ```shell
-virtualenv venv
+$ virtualenv venv	# sample
+$ virtualenv --system-site-packages targetDirectory # for Python 2.7
+$ virtualenv --system-site-packages -p python3 targetDirectory # for Python 3.n; 指定Python版本
 ```
 
 ## 激活新环境
 
 ```shell
 # 进入环境
-cd venv 
+$ cd venv 
 # 激活
-source bin/activate
+$ source bin/activate
+
+$ source bin/activate # bash, sh, ksh, or zsh
+$ source bin/activate.csh  # csh or tcsh
 ```
 
 ## 退出环境
