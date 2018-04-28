@@ -70,8 +70,7 @@ class DataCollection:
 
             self.images[i] = self.images[i].ravel()
             if div:
-                pass
-                # self.images[i] = self.images[i] / 255
+                self.images[i] = self.images[i] / 255
 
         self.images = np.array(self.images, dtype=np.float32)
         return self.images
