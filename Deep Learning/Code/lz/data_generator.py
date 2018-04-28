@@ -70,7 +70,8 @@ class DataCollection:
 
             self.images[i] = self.images[i].ravel()
             if div:
-                self.images[i] = self.images[i] / 255
+                pass
+                # self.images[i] = self.images[i] / 255
 
         self.images = np.array(self.images, dtype=np.float32)
         return self.images
@@ -303,6 +304,7 @@ def generate_data_set(ap_positions: pd.DataFrame, rf_positions: pd.DataFrame,
 
 def generate_data_solve():
     # 生成第一组
+    print('Train:' ,P_sample_single_num, ' Validate:', P_sample_single_validate)
     ap_data, rf_data = read_data('data.xlsx', 'ap_positions_1', 'rf_positions_1')
     train_data_set = generate_data_set(ap_data, rf_data, P_sample_single_num, P_sample_single_item_count, display=False)
     validate_data_set = generate_data_set(ap_data, rf_data, P_sample_single_validate, P_sample_single_item_count)
