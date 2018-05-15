@@ -28,6 +28,46 @@ this.props.navigation.dispatch(resetAction);
 
 - [参考一](http://blog.csdn.net/sinat_17775997/article/details/70176688)
 
+## 自定义页头
+
+```javascript
+class XXX extends Component {
+    ...
+    static navigationOptions = ({navigation}) => {
+        const {params} = navigation.state;	// 获取传递的参数
+
+        return {
+            title: params.data.company,
+            headerStyle: {
+                backgroundColor: '#444',
+                height: 40,
+            },
+            headerTintColor: 'white',
+            headerTitleStyle: {
+                textAlign: 'center',
+                flex: 1,
+            },
+            headerRight: <TouchableOpacity
+                style={{marginRight: 15}}
+                onPress={params.customerMenuTrigger}>
+                <Ionicons
+                    name={'ios-add'}
+                    size={30}
+                    style={{color: 'white',}}
+                />
+            </TouchableOpacity>,
+        }
+    };
+
+    componentWillMount() {
+        this.props.navigation.setParams({customerMenuTrigger: this.customerMenuTrigger.bind(this),});	// 设置参数
+    }
+	...
+}
+```
+
+
+
 ## 返回
 
 ```react
