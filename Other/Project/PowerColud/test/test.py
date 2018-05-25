@@ -3,6 +3,7 @@
 
 """
 """
+import re
 import random
 
 __author__ = "bovenson"

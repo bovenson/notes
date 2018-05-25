@@ -78,7 +78,7 @@ export default class MainPage extends Component {
 
 - [参考一](https://stackoverflow.com/questions/39037705/how-to-use-onpress-on-a-custom-component)
 
-## 问题
+# 问题
 
 Watchman crawl failed. Retrying once with node crawler.
 
@@ -127,5 +127,15 @@ react-native log-android
     </dict>
   </dict>
 </dict>
+```
+
+## React Native version mismatch
+
+```javascript
+console.error: "React Native version mismatch.
+JavaScript version: 0.54.2
+Native version: 0.55.3
+
+Make sure..."
 ```
 
