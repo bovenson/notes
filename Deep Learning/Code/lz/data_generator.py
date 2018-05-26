@@ -333,10 +333,10 @@ def display_saved_data():
 
 if __name__ == '__main__':
     data = generate_data(recreate=True)
-    images, labels = data.train.trans(div=False)
-    display_saved_data()
-    res = data.train.next_batch(10)
-    print()
+    # images, labels = data.train.trans(div=False)
+    # display_saved_data()
+    # res = data.train.next_batch(10)
+    print('OK')
     # display_saved_data()
     pass
     # pos_ap_1 = Point(12, 0, 4)
