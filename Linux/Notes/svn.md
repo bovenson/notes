@@ -3,6 +3,13 @@ title: SVN 命令行使用
 tags: svn使用 svn
 ---
 
+# 安装客户端
+
+```shell
+# Ubuntu
+$ sudo apt install subversion
+```
+
 # 检出
 
 ```shell
@@ -178,15 +185,15 @@ svn update
 
 - 注：如果手工在checkout出来的目录里创建了一个新文件夹newsubdir，
   　　再用svn mkdir newsubdir命令后，SVN会提示：
-  　　svn: 尝试用 “svn add”或 “svn add --non-recursive”代替？
-  　　svn: 无法创建目录“hello”: 文件已经存在
-  　　此时，用如下命令解决：
-  　　svn add --non-recursive newsubdir
-  　　在进入这个newsubdir文件夹，用ls -a查看它下面的全部目录与文件，会发现多了：.svn目录
-  　　再用 svn mkdir -m "添hello功能模块文件" [svn://localhost/test/newdir/newsubdir](svn://localhost/test/newdir/newsubdir) 命令，
-  　　SVN提示：
-  　　svn: File already exists: filesystem '/data/svnroot/test/db', transaction '4541-1',
-  　　path '/newdir/newsubdir '
+    　　svn: 尝试用 “svn add”或 “svn add --non-recursive”代替？
+    　　svn: 无法创建目录“hello”: 文件已经存在
+    　　此时，用如下命令解决：
+    　　svn add --non-recursive newsubdir
+    　　在进入这个newsubdir文件夹，用ls -a查看它下面的全部目录与文件，会发现多了：.svn目录
+    　　再用 svn mkdir -m "添hello功能模块文件" [svn://localhost/test/newdir/newsubdir](svn://localhost/test/newdir/newsubdir) 命令，
+    　　SVN提示：
+    　　svn: File already exists: filesystem '/data/svnroot/test/db', transaction '4541-1',
+    　　path '/newdir/newsubdir '
 
 # 恢复本地修改
 
