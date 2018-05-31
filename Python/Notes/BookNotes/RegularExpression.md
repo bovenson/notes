@@ -428,8 +428,206 @@ None
 - 正则表达式模式的重复出现
 - 使用圆括号对匹配模式的各部分进行分组和提取操作
 
+**特殊字符与重复出现**
 
+匹配`0~1`个中间子域名
+
+```shell
+>>> import re
+>>> patt = '\w+@(\w+\.)?\w+\.com'
+>>> m = re.match(patt, 'nobody@xxx.com')			# 匹配0个中间子域名
+>>> m.group() if m is not None else print(m)
+'nobody@xxx.com'
+>>> m = re.match(patt, 'nobody@xxx.yyy.com')		# 匹配1个中间子域名
+>>> m.group() if m is not None else print(m)
+'nobody@xxx.yyy.com'
+>>> m = re.match(patt, 'nobody@xxx.yyy.zzz.com')	# 不能匹配2个中间子域名
+>>> m.group() if m is not None else print(m)
+None
+```
+
+匹配任意多个子域名
+
+```shell
+>>> patt = '\w+@(\w+\.)*\w+\.com'					# 将 ? 替换为 *
+>>> m = re.match(patt, 'nobody@xxx.yyy.zzz.com')	# 匹配2个中间子域名
+>>> m.group() if m is not None else print(m)
+'nobody@xxx.yyy.zzz.com'
+```
+
+**分组**
+
+使用圆括号来匹配和保存子组，以便于后续处理。
+
+使用`group()`和`groups()`方法获取分组，其两者区别：
+
+- `group()`
+  - 访问每个独立的子组
+  - 获取完整匹配(不传递参数)
+- `groups()`
+  - 获取一个包含所有匹配子组的元组
+
+```shell
+>>> m = re.match('(\w\w\w)-(\d\d\d)', 'abc-123')
+>>> m.group()                   # 完整匹配
+'abc-123'
+>>> m.group(1)                  # 子组1
+'abc'
+>>> m.group(2)                  # 子组2
+'123'
+>>> m.groups()                  # 全部子组
+('abc', '123')
+```
+
+一个完整示例
+
+```shell
+>>> m = re.match('ab', 'ab')            # 没有分组
+>>> m.group()                           # 完整匹配
+'ab'
+>>> m = re.match('ab', 'ab')            # 没有分组
+>>> m.group()                           # 完整匹配
+'ab'
+>>> m.groups()                          # 所有子组
+()
+>>>
+>>> m = re.match('(ab)', 'ab')          # 一个子组
+>>> m.group()                           # 完整匹配
+'ab'
+>>> m.group(1)                          # 子组1
+'ab'
+>>> m.groups()                          # 全部子组
+('ab',)
+>>>
+>>> m = re.match('(a)(b)', 'ab')        # 两个子组
+>>> m.group()
+'ab'
+>>> m.group(1)                          # 子组1
+'a'
+>>> m.group(2)                          # 子组2
+'b'
+>>> m.groups()                          # 全部子组
+('a', 'b')
+>>>
+>>> m = re.match('(a(b))', 'ab')        # 两个嵌套子组
+>>> m.group()                           # 完整匹配
+'ab'
+>>> m.group(1)                          # 子组1
+'ab'
+>>> m.group(2)                          # 子组2
+'b'
+>>> m.groups()                          # 全部子组
+('ab', 'b')
+```
+
+## 匹配字符串的起始和结尾以及单词边界
+
+```shell
+>>> m = re.search('^The', 'The end.')   # 匹配
+>>> m.group() if m is not None else print(m)
+'The'
+>>> m = re.search('^The', 'end. The')   # 不做为开始
+>>> m.group() if m is not None else print(m)
+None
+>>> m = re.search(r'\bthe', 'bite the dog')     # 匹配左侧边界
+>>> m.group() if m is not None else print(m)
+'the'
+>>> m = re.search(r'\bthe', 'bitethe dog')      # 匹配左侧边界
+>>> m.group() if m is not None else print(m)
+None
+>>> m = re.search(r'\Bthe', 'bitethe dog')      # 匹配左侧没有边界
+>>> m.group() if m is not None else print(m)
+'the'
+>>> m = re.search(r'\Bthe\B', 'bitethe dog')    # 匹配两侧没有边界
+>>> m.group() if m is not None else print(m)
+None
+>>> m = re.search(r'\Bthe\b', 'bitethe dog')    # 匹配左侧没有边界，右侧有边界
+>>> m.group() if m is not None else print(m)
+'the'
+```
+
+## 使用findall和finditer查找每一次出现的位置
+
+**`findall()`**
+
+- 查询字符串中某个正则表达式模式全部的非重复出现情况
+- 与`match()`和`search()`的区别是，`findall()`总是返回一个列表
+
+`finditer()`与`findall()`类似，不过返回结果是一个迭代器。
+
+```shell
+>>> re.findall('car', 'car')
+['car']
+>>> re.findall('car', 'carry')
+['car']
+>>> re.findall('car', 'carry the barcardi to the car')
+['car', 'car', 'car']
+```
+
+**结合分组使用**
+
+```shell
+>>> s = 'This and that.'
+>>> re.findall(r'(th\w+) and (th\w+)', s, re.I)
+[('This', 'that')]
+>>> list(re.finditer(r'(th\w+) and (th\w+)', s, re.I))[0].groups()
+('This', 'that')
+>>> list(re.finditer(r'(th\w+) and (th\w+)', s, re.I))[0].group(1)
+'This'
+>>> list(re.finditer(r'(th\w+) and (th\w+)', s, re.I))[0].group(2)
+'that'
+```
+
+单个分组的多重匹配
+
+- 如果模式中只有一个分组，则匹配结果作为结果集合的单个元素
+- 如果模式中由多个分组，则匹配结果为元组，作为结果集的单个元素
+
+```shell
+>>> s = 'this and that'
+>>> re.findall(r'(th\w+) and (th\w+)', s, re.I)
+[('this', 'that')]
+>>> re.findall(r'(th\w+)', s, re.I)
+['this', 'that']
+>>>
+>>>
+>>> s = 'This and that. What, where, when, and who'
+>>> re.findall(r'th\w+|wh\w+', s, re.I)
+['This', 'that', 'What', 'where', 'when', 'who']
+>>> re.findall(r'(th\w+)|(wh\w+)', s, re.I)
+[('This', ''), ('that', ''), ('', 'What'), ('', 'where'), ('', 'when'), ('', 'who')]
+>>> re.findall(r'(wh\w+)', s, re.I)
+['What', 'where', 'when', 'who']
+>>>
+>>>
+>>> s = 'This where. That when. There who.'
+>>> re.findall(r'(th\w+)\s(wh\w+)', s, re.I)
+[('This', 'where'), ('That', 'when'), ('There', 'who')]
+```
+
+## 使用sub和subn搜索和替换
+
+有两个函数用于实现搜索和替换功能: `sub()` 和 `subn()`。
 
 # 参考
 
 - 《Python 核心编程》
+
+# 说明
+
+## Python版本
+
+```shell
+# 对于Python2
+bovenson@ThinkCentre:~$ python2
+Python 2.7.13+ (default, Jul 19 2017, 18:15:03) 
+[GCC 6.4.0 20170704] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+
+# 对于Python3
+bovenson@ThinkCentre:~$ python3
+Python 3.5.4rc1 (default, Jul 25 2017, 08:53:34) 
+[GCC 6.4.0 20170704] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+```
+
