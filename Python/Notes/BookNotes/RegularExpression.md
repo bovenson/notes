@@ -6,8 +6,6 @@ categories:
 	- Python
 ---
 
-
-
 [TOC]
 
 # 简介
@@ -607,7 +605,119 @@ None
 
 ## 使用sub和subn搜索和替换
 
-有两个函数用于实现搜索和替换功能: `sub()` 和 `subn()`。
+有两个函数用于实现搜索和替换功能: `sub()` 和 `subn()`。`sub()`返回一个替换后的字符串；`subn()`还返回一个表示替换的总数，替换后的字符串和替换总数作为元组返回。
+
+```shell
+>>> re.sub('X', 'Mr. Smith', 'attn: X\n\nDear X,\n')
+'attn: Mr. Smith\n\nDear Mr. Smith,\n'
+>>> re.subn('X', 'Mr. Smith', 'attn: X\n\nDear X,\n')
+('attn: Mr. Smith\n\nDear Mr. Smith,\n', 2)
+>>> re.sub('[ae]', 'X', 'abcdef')
+'XbcdXf'
+>>> re.subn('[ae]', 'X', 'abcdef')
+('XbcdXf', 2)
+```
+
+使用匹配对象的`group()`方法除了能够取出匹配分组编号外，还可以使用`\N`，其中`N`是在替换字符串中使用的分组编号。
+
+```shell
+>>> re.sub(r'(\d{1,2})/(\d{1,2})/(\d{2}|\d{4})', r'\2/\1/\3', '2/20/1992')
+'20/2/1992'
+>>> re.sub(r'(\d{1,2})/(\d{1,2})/(\d{2}|\d{4})', r'\2/\1/\3', '2/20/92')
+'20/2/92'
+```
+
+## 在限定模式上使用`split`分隔字符串
+
+`split` 基于正则表达式的模式分隔字符串。可以通过为`max`参数设定一个值（非零）来指定最大分割数。
+
+```shell
+>>> import re
+>>> DATA = ()
+>>> DATA = (
+...     'Mountain View, CA 94040',
+...     'Sunnyvale, CA',
+...     'Los Altos, 94023',
+...     'Cupertino 95014',
+...     'Palo Alto CA'
+... )
+>>> for datum in DATA:
+...     print(re.split(', |(?= (?:\d{5}|[A-Z]{2})) ', datum))
+...
+['Mountain View', 'CA', '94040']
+['Sunnyvale', 'CA']
+['Los Altos', '94023']
+['Cupertino', '95014']
+['Palo Alto', 'CA']
+```
+
+## 扩展符号
+
+通过使用`(?iLmsux)`系列选项，用户可以直接在正则表达式里面指定一个或者多个标记。
+
+**`re.I/re.IGNORECASE, re.M/MULTILINE`**
+
+```shell
+>>> re.findall(r'(?i)yes', 'yes? Yes. YES!~')		# 忽略大小写
+['yes', 'Yes', 'YES']
+>>> re.findall(r'(?i)th\w+', 'The quickest way is through this tunnel.')	# 忽略大小写
+['The', 'through', 'this']
+>>> re.findall(r'(?im)(^th[\w ]+)', """				# 忽略大小写；多行
+... This line is the first,
+... another line,
+... that line, it's the best.
+... """)
+['This line is the first', 'that line']
+```
+
+**`re.S/re.DOTALL`**
+
+使用`re.S,re.DOTALL`标记，使得点号`.`能够用来表示换行符。
+
+```shell
+>>> re.findall(r'th.+', '''
+... The first line
+... the second line
+... the third line
+... ''')
+['the second line', 'the third line']
+>>> re.findall(r'(?s)th.+', '''
+... The first line
+... the second line
+... the third line
+... ''')
+['the second line\nthe third line\n']
+```
+
+**`re.X/re.VERBOSE`**
+
+`re.X/re.VERBOSE`标记允许用户通过抑制在正则表达式中使用空白符（除了在字符类中或者在反斜线转义中）来创建更易读的正则表达式。
+
+```shell
+>>> re.search(r'''(?x)
+...     \((\d{3})\)     # 匹配区号
+...     [ ]             # 匹配空格
+...     (\d{3})         # 匹配前缀
+...     -               # 横线
+...     (\d{4})         # 终点数字
+... ''', '(800) 555-1212').groups()
+('800', '555', '1212')
+```
+
+**`(?:...)`**
+
+通过使用`(?:...)`符号，可以对部分正则表达式进行分组，但是并不会保存该分组用于后续的检索或应用。
+
+```shell
+>>> re.findall(r'http://(?:\w+\.)*(\w+\.com)',
+...             'http://goole.com http://www.google.com http://code.google.com')
+['goole.com', 'google.com', 'google.com']
+>>> re.search(r'\((?P<areacode>\d{3})\) (?P<prefix>\d{3})-(?:\d{4})',
+...             '(800) 555-1212').groupdict()
+{'areacode': '800', 'prefix': '555'}
+```
+
+
 
 # 参考
 
@@ -630,4 +740,3 @@ Python 3.5.4rc1 (default, Jul 25 2017, 08:53:34)
 [GCC 6.4.0 20170704] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 ```
-
