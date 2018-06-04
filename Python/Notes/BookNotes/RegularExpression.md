@@ -126,12 +126,6 @@ categories:
 | `\bthe\b`  |           仅仅匹配单词`the`           |
 |  `\Bthe`   | 任何包含但并不以`the`作为起始的字符串 |
 
-```python
-
-```
-
-
-
 ## 创建字符集
 
 使用`[]`创建字符集，可以匹配某些特定字符。
@@ -717,11 +711,190 @@ None
 {'areacode': '800', 'prefix': '555'}
 ```
 
+结合`\g`，使用`(?P<name>)` 和 `(?P=name)`符号。
 
+```shell
+>>> re.sub(r'\((?P<areacode>\d{3})\) (?P<prefix>\d{3})-(?:\d{4})',
+...     '(\g<areacode>) \g<prefix>-xxxx', '(800) 555-1212')
+'(800) 555-xxxx'
+```
+
+**检索元组**
+
+- 对于没有命名的元组，使用`\N`，其中`N`为数字
+- 对于命名的元组，可以使用`\g<name>`，也可以使用`\N`
+
+```shell
+>>> m = re.search(r'(\d{4}) (?P<prefix>\d{4}) (\d{3})', '0530 8023 123')
+>>> m.group()
+'0530 8023 123'
+>>> m.group(1)
+'0530'
+>>> m.group(2)
+'8023'
+>>> m.group(3)
+'123'
+>>> m.groupdict()
+{'prefix': '8023'}
+>>>
+>>> re.sub(r'(\d{4}) (\d{4}) (\d{3})', r'\3 \2 \1', '0530 8023 123')
+'123 8023 0530'
+>>> re.sub(r'(\d{4}) (?P<prefix>\d{4}) (\d{3})', r'\3 \2 \1 - \g<prefix>', '0530 8023 123')
+'123 8023 0530 - 8023'
+```
+
+在一个相同的正则表达式中**重用模式**。
+
+```shell
+>>> re.match(r'(?P<num>\d{2})(?P=num)', '1212')			# 只能匹配相同的内容
+>>> print(m) if m is None else m.group()
+'1212'
+>>> m = re.match(r'(?P<num>\d{2})(?P=num)', '1234')		# 不能匹配不同的内容
+>>> print(m) if m is None else m.group()
+None
+```
+
+```shell
+>>> bool(re.match(r'\((?P<areacode>\d{3})\) (?P<prefix>\d{3})-(?P<number>\d{4}) (?P=areacode)-(?P=prefix)-(?P=number)',
+...     '(800) 555-1212 800-555-1212'))
+True
+>>> bool(re.match(r'''(?x)
+...     # match (800) 555-1212, save areacode, prefix, no.
+...     \((?P<areacode>\d{3})\)[ ](?P<prefix>\d{3})-(?P<number>\d{4})
+... 
+...     # space
+...     [ ]
+... 
+...     # match 800-555-1212
+...     (?P=areacode)-(?P=prefix)-(?P=number)
+... 
+...     # space
+...     [ ]
+... 
+...     # match 18005551212
+...     1(?P=areacode)(?P=prefix)(?P=number)
+... ''', '(800) 555-1212 800-555-1212 18005551212'))
+True
+```
+
+**前视匹配**
+
+可以使用`(?=...)` 和 `(?!...)` 符号在目标字符串中实现一个前视匹配，而不必实际使用这些字符串。
+
+- `(?=...)` : 正向前视断言
+- `(?!...)` : 负向前视断言
+
+```shell
+>>> re.findall(r'\w+(?= van Rossum)',	# 正向前视断言
+... '''
+...     Guido van Rossum
+...     Tim Peters
+...     Alex Martelli
+...     Just van Rossum
+...     Raymond Hettinger
+... ''')
+['Guido', 'Just']
+>>> re.findall(r'(?m)^\s+(?!noreply|postmaster)(\w+)',	# 负向前视断言
+... '''
+...     sales@phptr.com
+...     postmaster@phptr.com
+...     eng@phptr.com
+...     noreply@phptr.com
+...     admin@phptr.com
+... ''')
+['sales', 'eng', 'admin']
+>>> ['%s@aw.com' % e.group(1) for e in \
+... re.finditer(r'(?m)^\s+(?!noreply|postmaster)(\w+)',
+... '''
+...     sales@phptr.com
+...     postmaster@phptr.com
+...     eng@phptr.com
+...     noreply@phptr.com
+...     admin@phptr.com
+... ''')]
+['sales@aw.com', 'eng@aw.com', 'admin@aw.com']
+```
+
+**条件正则表达式匹配 **
+
+`(?(id/name)yes-pattern|no-pattern)`
+
+> Will try to match with `yes-pattern` if the group with given *id* or *name* exists, and with `no-pattern` if it doesn’t. `no-pattern` is optional and can be omitted. For example, `(<)?(\w+@\w+(?:\.\w+)+)(?(1)>|$)` is a poor email matching pattern, which will match with `'<user@host.com>'` as well as `'user@host.com'`, but not with `'<user@host.com'` nor `'user@host.com>'`.
+
+```shell
+>>> r = r'(<)?(\w+@\w+(?:\.\w+)+)(?(1)>|$)'
+>>> m = re.match(r, '<user@host.com>')
+>>> print(m) if m is None else m.group()
+'<user@host.com>'
+>>> m = re.match(r, 'user@host.com')
+>>> print(m) if m is None else m.group()
+'user@host.com'
+>>> m = re.match(r, '<user@host.com')
+>>> print(m) if m is None else m.group()
+None
+>>> m = re.match(r, 'user@host.com>')
+>>> print(m) if m is None else m.group()
+```
+
+## 贪婪搜索
+
+加入由一系列类似如下格式的字符串
+
+```
+Thu Feb 15 17:32:12 2007::szhkai@qq.com::1123242-3-5
+```
+
+我们所感兴趣的是，数据记录内包含由连字符连接的三个整数的整行数据
+
+```shell
+>>> s = '''
+Thu Feb 15 17:41:42 2007::szhkai@qq.com::1123242-3
+Sun Jul 22 13:32:25 2007::szhkai@qq.com::1123242-5
+The May 12 17:02:52 2007::szhkai@qq.com::1123242-3-5
+Thu Apr 18 12:22:42 2007::szhkai@qq.com::12323-3-5
+'''
+>>> re.findall(r'(?m).+\d+-\d+-\d+', s)
+['\tThe May 12 17:02:52 2007::szhkai@qq.com::1123242-3-5', '\tThu Apr 18 12:22:42 2007::szhkai@qq.com::12323-3-5']
+```
+
+如果我们对`\d+-\d+-\d+`这一部分感兴趣，可以使用元组提取
+
+```shell
+>>> re.findall(r'(?m).+(\d+-\d+-\d+)', s)
+['2-3-5', '3-3-5']
+```
+
+但是不能提取第一个整数。这是因为正则表达式在实现上是采用贪婪匹配，试图匹配该模式尽可能多的字符。可以使用非贪婪操作符`?`解决这个问题。可以在`*, +, ?`后使用`?`。该操作符要求正则表达式引擎匹配尽可能少的字符。在`.+`后放置一个`?`可以获得期望的结果。
+
+```shell
+>>> re.findall(r'(?m).+?(\d+-\d+-\d+)', s)
+['1123242-3-5', '12323-3-5']
+```
+
+# 注意事项
+
+**ASCII码冲突**
+
+如果符号同时使用于ASCII码和正则表达式特殊符号，就会出现问题，如`\b`表示ASCII字符的退格符，但是`\b`同时也是一个正则表达式的特殊符号，表示匹配一个单词的边界。对于正则表达式编译器而言，若将`\b`视为正则表达式特殊字符，需要使用`\`进行转义。
+
+```shell
+>>> m = re.match('\bblow', 'blow')      # 退格键; 没有匹配
+>>> print(m) if m is None else m.group()
+None
+>>> m = re.match('\\bblow', 'blow')     # 匹配单词边界
+>>> print(m) if m is None else m.group()
+'blow'
+>>> m = re.match(r'\bblow', 'blow')     # 使用 raw string
+>>> print(m) if m is None else m.group()
+'blow'
+```
+
+**\w和\W字母数字字符集同时受`re.L/LOCALE`和`Unicode(re.U/UNICODE)`标记影响。**
 
 # 参考
 
 - 《Python 核心编程》
+- [Python文档](https://docs.python.org/3/library/re.html)
 
 # 说明
 
