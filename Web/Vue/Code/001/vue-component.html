@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Learn Vue Code 001 Component</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>组件化应用构建</h1>
+    <div id="app-1">
+        <ol>
+            <!-- 创建一个 todo-item 组件的实例 -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+        </ol>            
+    </div>
+
+    <script>
+        // 定义名为 todo-item 的新组件
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        });
+
+        var app7 = new Vue({
+            el: '#app-1',
+            data: {
+                groceryList: [
+                    {id: 0, text: '蔬菜'},
+                    {id: 1, text: '奶酪'},
+                    {id: 2, text: '饼干'},
+                    {id: 3, text: '其他'}
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
