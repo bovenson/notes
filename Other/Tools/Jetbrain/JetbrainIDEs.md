@@ -35,3 +35,20 @@ __version__ = "1.0"
 __email__ = "szhkai@qq.com"
 __date__ = "${DATE}"
 ```
+
+
+
+```python
+#!/bin/python3
+# coding: utf-8
+
+"""
+FILE: ${FILE_NAME}
+DESC: 
+"""
+
+__author__ = "bovenson"
+__email__ = "szhkai@qq.com"
+__date__ = "${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}"
+```
+
