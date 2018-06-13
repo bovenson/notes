@@ -27,4 +27,10 @@ categories:
   import 'bootstrap/dist/css/bootstrap.min.css'
   ```
 
-  
+
+# SCSS
+
+```shell
+npm install --save-dev sass-loader node-sass
+```
+
