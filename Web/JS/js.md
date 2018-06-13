@@ -41,3 +41,8 @@ for (let key in a) {
 - `vm.$watch('a', newValue => this.myMethod())`
 
 **因为箭头函数是和父级上下文绑定在一起的**，`this` 不会是如你所预期的 Vue 实例，经常导致 `Uncaught TypeError: Cannot read property of undefined` 或 `Uncaught TypeError: this.myMethod is not a function` 之类的错误。
+
+# Date
+
+## 格式化日期
+
