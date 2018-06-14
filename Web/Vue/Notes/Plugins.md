@@ -78,3 +78,16 @@ export default {
 </script>
 ```
 
+# Font Awesome
+
+## 旋转
+
+```html
+<icon name="spinner" spin/>
+```
+
+## 参考
+
+- [Github - vue-awesome](https://github.com/Justineo/vue-awesome)
+
+- [Font Awesome](https://fontawesome.com/icons)
