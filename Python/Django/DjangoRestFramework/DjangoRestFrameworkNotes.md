@@ -2,6 +2,7 @@
 title: Django Rest Framework 笔记
 tags:
 	- Django
+	- Django Rest Framework
 categories:
 	- Python
 ---
@@ -85,6 +86,60 @@ class Track(models.Model):
 ## 获取单个记录
 
 设置`ModelViewSet`之后，会默认增加`view_url/pk/`
+
+## 使用不同Serilizer同一模型
+
+`urls.py`
+
+```python
+# route
+router.register(r'book', BookViewSet)
+router.register(r'bookdetail', BookDetailViewSet, 'bookdetail')
+
+# view set
+class BookViewSet(viewsets.ModelViewSet):
+    """书籍 View Set"""
+    queryset = Book.objects.all().order_by('id')
+    serializer_class = BookSerializer
+    pagination_class = StandardResultSetPagination
+    
+    
+class BookDetailViewSet(viewsets.ModelViewSet):
+    """书籍详情"""
+    queryset = Book.objects.all().order_by('id')
+    serializer_class = BookDetailSerializer
+    pagination_class = StandardResultSetPagination
+    
+    
+# serilizer
+class BookSerializer(serializers.ModelSerializer):
+    """书籍"""
+    score = ScoreSerializer(many=False, read_only=True)
+    author = BookAuthorSerializer(many=True, read_only=True)
+    tags = BookTagSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Book
+        fields = ['id', 'name', 'summary', 'pic', 'score', 'author', 'tags']
+
+    def to_representation(self, instance):
+        # 修改图片URL
+        ret = super().to_representation(instance)
+        # 七牛储存
+        if IMAGE_SOURCE == 'QINIU':
+            ret['pic'] = IMG_URL + ret['pic'][len('/media'):]
+        return ret
+
+
+class BookDetailSerializer(BookSerializer):	# 这里继承 BookSerializer
+    info = BookInfoSerializer(many=False, read_only=True)
+    """书籍详情"""
+    class Meta:
+        model = Book
+        fields = ['id', 'name', 'summary', 'pic', 'score', 'author', 'tags', 'info']
+```
+
+
 
 **参考**
 
