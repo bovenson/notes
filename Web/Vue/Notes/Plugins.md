@@ -80,6 +80,15 @@ export default {
 
 # Font Awesome
 
+## 安装
+
+```shell
+$ npm install vue-awesome --save-dev
+$ npm 
+```
+
+
+
 ## 旋转
 
 ```html

@@ -144,3 +144,4 @@ class BookDetailSerializer(BookSerializer):	# 这里继承 BookSerializer
 **参考**
 
 - [Stack overflow](https://stackoverflow.com/questions/23501292/get-a-specific-object-in-django-rest-framework)
+

@@ -24,3 +24,7 @@ docker exec -it emq20 /bin/sh
 spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.2.0 ./spark-streaming-recv.py
 ```
 
+## paho
+```shell
+sudo pip3 install paho-mqtt
+```
