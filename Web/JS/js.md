@@ -1,6 +1,12 @@
-# js
+---
+title: JS 笔记
+tatgs:
+	- Javascript
+categories:
+	- Javascript
+---
 
-## 动态创建元素
+# 动态创建元素
 
 ```javascript
 // 标签
@@ -17,14 +23,16 @@ for (var i=0; i < book["tag"].length; ++i) {
 }
 ```
 
-## 数组
+# 数组
 
 ```javascript
 // 添加元素
 arr.push("A");	// 尾部添加
 ```
 
-## 便利字典
+# 字典
+
+## 遍历
 
 ```javascript
 let a = {b: 1, c: 2};
@@ -33,7 +41,7 @@ for (let key in a) {
 }
 ```
 
-## `=>`
+# `=>`
 
 不要在选项属性或回调上使用[箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，比如
 
@@ -45,4 +53,65 @@ for (let key in a) {
 # Date
 
 ## 格式化日期
+
+```javascript
+function formatDate(date) {
+  var monthNames = [
+    "January", "February", "March",
+    "April", "May", "June", "July",
+    "August", "September", "October",
+    "November", "December"
+  ];
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
+
+  return day + ' ' + monthNames[monthIndex] + ' ' + year;
+}
+
+console.log(formatDate(new Date()));  // show current date-time in console
+```
+
+```javascript
+var datestring = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+d.getHours() + ":" + d.getMinutes();
+```
+
+```javascript
+> new Date().toISOString().split(/[T.]/)		// 非本地时间
+> (3) ["2018-06-27", "01:48:19", "961Z"]
+```
+
+```javascript
+var today = new Date()
+today.toLocalString()
+...
+```
+
+
+
+**使用moment**
+
+```javascript
+/**
+ * 格式化时间
+ * @param stamp         时间戳
+ * @param withoutTime   false、undefined: 有时、分、秒; true: 截止到day
+ * @returns {string}
+ */
+export function formatDate(stamp, withoutTime) {
+    return isUndefinedOrNull(withoutTime) || !withoutTime ? moment(stamp).format('YYYY-MM-DD HH:mm') : moment(stamp).format('YYYY-MM-DD');
+}
+
+/**
+ * 格式化时间
+ * @param stamp         时间戳
+ * @param withoutTime   false、undefined: 有时、分、秒;
+ * @returns {string}
+ */
+export function formatDateHMS(stamp, withoutTime) {
+    return isUndefinedOrNull(withoutTime) || !withoutTime ? moment(stamp).format('HH:mm:ss') :'';
+}
+```
 
