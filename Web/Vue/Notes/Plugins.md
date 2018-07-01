@@ -84,10 +84,32 @@ export default {
 
 ```shell
 $ npm install vue-awesome --save-dev
-$ npm 
 ```
 
+`main.js`
 
+```javascript
+import Icon from 'vue-awesome'
+Vue.component('icon', Icon)
+```
+
+**usage**
+
+```html
+<!-- basic -->
+<icon name="beer"></icon>
+
+<!-- with options -->
+<icon name="sync" scale="2" spin></icon>
+<icon name="comment" flip="horizontal"></icon>
+<icon name="code-branch" label="Forked Repository"></icon>
+
+<!-- stacked icons -->
+<icon label="No Photos">
+  <icon name="camera"></icon>
+  <icon name="ban" scale="2" class="alert"></icon>
+</icon>
+```
 
 ## 旋转
 
@@ -99,4 +121,4 @@ $ npm
 
 - [Github - vue-awesome](https://github.com/Justineo/vue-awesome)
 
-- [Font Awesome](https://fontawesome.com/icons)
+- [Font Awesome](https://fontawesome.com/icons) 
