@@ -18,7 +18,7 @@ def on_message_print(client, user_data, message):
 
 # subscribe.callback(on_message_print, "/a", hostname="localhost")
 # subscribe.callback(on_message_print, "/Alert/#", hostname="202.118.26.74")
-subscribe.callback(on_message_print, "/systemStatus/#", hostname="202.118.26.74")
+subscribe.callback(on_message_print, "/systemStatus_test/#", hostname="202.118.26.74")
 
 # subscribe.callback(on_message_print, "/gateway/#", hostname="202.118.26.74")
 
