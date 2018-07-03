@@ -13,11 +13,12 @@ categories:
 Command + P		# MAC
 ```
 
-## 文件和代码模板(File and Code Templates)
+# 文件和代码模板
 
-[File and Code Templates](https://www.jetbrains.com/help/idea/file-and-code-templates.html)
+- [File and Code Templates](https://www.jetbrains.com/help/idea/file-and-code-templates.html)
+- [变量](https://www.jetbrains.com/help/webstorm/file-template-variables.html)
 
-## PyCharm
+## Python
 
 ```python
 #!/usr/bin python3
@@ -50,5 +51,17 @@ DESC:
 __author__ = "bovenson"
 __email__ = "szhkai@qq.com"
 __date__ = "${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}"
+```
+
+## Js
+
+```javascript
+/*
+* @author   bovenson
+* @email    szhkai@qq.com
+* @file     ${NAME}
+* @date     ${DATE}
+* @desc     DESCRIPTION
+**/
 ```
 
