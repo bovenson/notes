@@ -40,15 +40,21 @@ Masonry.prototype.init = function ({id, columns, gap, loadingDataCBF, parseCBF, 
       // 页面尺寸改变时实时触发
       window.onresize = function() {
           waterFall();
+          loadingOrNot();
       };
   
       window.onscroll = function() {
+        waterFall();
         loadingOrNot();
       };
   };
 
   function waterFall() {
     var boxWidth = box.offsetWidth;
+    if (!items || items.length === 0) { // 如果没有数据，尝试加载
+      loadingData();
+      return;
+    }
     var itemWidth = items[0].offsetWidth;
     if (gap && !columns) {
         columns = parseInt(boxWidth / (itemWidth + gap));
@@ -96,7 +102,28 @@ Masonry.prototype.init = function ({id, columns, gap, loadingDataCBF, parseCBF, 
           var html = parseCBF(item);
           box.insertAdjacentHTML('beforeend', html);
         });
-        waterFall();
+
+        // 等待所有 图片加载完毕
+        var imgTimer = setInterval(function () {
+          let notLoadedFlag = false;
+
+          for (var i = 0; i < document.images.length; ++i) {
+            var item = document.images[i];
+            if (box.contains(item)) {
+              if (item.complete && item.naturalHeight !== 0) {
+                continue;
+              } else {
+                notLoadedFlag = true;
+              }
+            }
+          }
+
+          if (!notLoadedFlag) { // 如果所有图片加载完毕, 清除定时器, 并计算瀑布流布局
+            clearInterval(imgTimer);
+            waterFall();
+          }
+        }, 50);
+
         that.loading = false;
         nextPage += 1;
       } else {
@@ -118,7 +145,7 @@ Masonry.prototype.init = function ({id, columns, gap, loadingDataCBF, parseCBF, 
         var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
         var viewHeight = document.documentElement.clientHeight;
         var lastElement = items[items.length-1];
-        var lastTop = lastElement.offsetTop + Math.floor(lastElement.offsetHeight); // 滚动到最后一个元素加载
+        var lastTop = lastElement.offsetTop; // 滚动到最后一个元素加载; 如果需要加载到最后一个元素的一半:  + Math.floor(lastElement.offsetHeight/2)
         if (lastTop < scrollTop + viewHeight) {   // 如果底部滚动到最后一个元素，返回true
           loadingData();
         }
@@ -129,12 +156,9 @@ Masonry.prototype.init = function ({id, columns, gap, loadingDataCBF, parseCBF, 
 }
 ```
 
-# 使用
+# usage
 
 ```javascript
-var masonry = new Masonry();
-masonry.init({id: 'waterFallBox', columns: 2, loadingDataCBF: loadingData, parseCBF: parseData, nextPage: 2});
-
 /**
  * 加载数据
  * @param {int} page 加载的页码
@@ -143,7 +167,7 @@ function loadingData (page) {
   return new Promise(function (resolve) {
         $.ajax({
             type: 'get',
-            url: '{*******}',
+            url: '/aggregation/topic_more',
             async: false,
             data: {
                 id: 10168,
@@ -155,7 +179,12 @@ function loadingData (page) {
             timeout: 5000,
             success: function(result,data){
                 if (data === 'success') {
-                    resolve(result.data.forum_list);
+                    let list = result.data.forum_list;
+                    if (list && list.length === 0) {    // 如果没有更多数据
+                        var emptyTip = document.getElementById('emptyTip');
+                        emptyTip.style.display = 'block';
+                    }
+                    resolve(list);
                 } else {
                     // TODO
                 }
@@ -192,5 +221,16 @@ function parseData (item) {
         html += '</div></div></div></div>';
   return html;
 }
+
+var masonry = new Masonry();
+masonry.init({id: 'waterFallBox', columns: 2, loadingDataCBF: loadingData, parseCBF: parseData, nextPage: 1});
 ```
 
+# 注意
+
+- 在添加执行`waterfall()`之前，需要确定所有`box`的子元素加载完毕，如果图片没有加载完毕，获取的宽高可能是不对的，如果有必要可能需要判断动态添加的`css`、`js`文件是否加载完毕，可以参考 [这里](https://stackoverflow.com/questions/20621084/how-to-get-list-of-network-requests-done-by-html)
+
+# 参考
+
+- [查看网络请求](https://stackoverflow.com/questions/20621084/how-to-get-list-of-network-requests-done-by-html)
+- [图片是否加载完毕](https://stackoverflow.com/questions/1977871/check-if-an-image-is-loaded-no-errors-in-javascript)
