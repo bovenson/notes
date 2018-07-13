@@ -1,11 +1,13 @@
 ---
-title: vim
-tags: Linux, vim
+title: Vim 使用
+tags: 
+	- Linux
+	- vim
+categories:
+	- Linux
 ---
 
-[TOC]
-
-# vim
+# 简介
 
 **三种模式**: 输入模式, 末行模式, 命令模式.
 
@@ -17,9 +19,9 @@ tags: Linux, vim
 | `:`     | 末行模式 / 指令列模式 |
 | `ESC`   | 命令模式 / 一般模式  |
 
-## 命令
+# 命令
 
-### 基础
+## 基础
 
 | 命令              | 说明                                       |
 | --------------- | ---------------------------------------- |
@@ -32,7 +34,7 @@ tags: Linux, vim
 | `.`             | Repeats the last change made in normal mode |
 | `5.`            | Repeats 5 times the last change made in normal mode |
 
-### 移动
+## 移动
 
 | 命令              | 说明                                        |
 | ----------------- | ------------------------------------------- |
@@ -53,7 +55,7 @@ tags: Linux, vim
 
 
 
-### 搜索
+## 搜索
 | 命令                                   | 说明                                       |
 | ------------------------------------ | ---------------------------------------- |
 | `/word`                              | Search *word* from top to bottom         |
@@ -72,7 +74,7 @@ tags: Linux, vim
 | `:bufdo /searchstr/`                 | Search in all open files                 |
 | `bufdo %s/something/somethingelse/g` | Search *something* in all the open buffers and replace it with*somethingelse* |
 
-### 剪切(删除)
+## 剪切(删除)
 
 ```shell
 #### 删除某行至文件结尾
@@ -103,7 +105,7 @@ G		# 转到文件结尾
 | n1,n2d | 剪切n1到n2行                 | 1,10d          |
 | n，$d   | 剪切从某行开始至文本末尾             | 8,$d: 删除第8行至末尾 |
 
-### 复制
+## 复制
 
 | 命令   | 说明                       | 示例   |
 | ---- | ------------------------ | ---- |
@@ -119,7 +121,7 @@ G		# 转到文件结尾
 
 
 
-### 粘贴
+## 粘贴
 
 | 命令   | 说明                                       |
 | ---- | ---------------------------------------- |
@@ -130,7 +132,7 @@ G		# 转到文件结尾
 
 
 
-### 替换
+## 替换
 
 利用`:substitute`命令, 可以将指定的字符替换成其他字符. 通常, 我们会使用命令的缩写形式`:s`, 格式如下:
 
@@ -138,7 +140,7 @@ G		# 转到文件结尾
 
 其中, range是指定范围, 也就是在那些行做替换. 而后是将字符串from替换成字符串to.
 
-#### 替换标记
+### 替换标记
 
 默认情况下, 替换命令仅将本行中第一个出现的字符替换成给定字符. 如果我们想要将所有的字符都替换成给定字符, 可以在命令中使用g(global)标记:
 
@@ -164,7 +166,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 # CTRL-Y 向下翻滚一行
 ```
 
-#### 指定范围
+## 指定范围
 
 - 默认当前行
 - $ : 至文档结尾
@@ -198,29 +200,29 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 `:/FORM/,/;/=/<>/g`
 
-#### 可视化选择复制
+## 可视化选择复制
 
 在可视化模式下, 首先选择替换范围, 然后输入 : 进入命令模式, 就可以利用s命令在选中的范围内进行文本替换.
 
-#### 精确替换
+## 精确替换
 
 在搜索sig时, 也将匹配sig, signature, signing等多个单词. 如果希望精确替换某个单词, 可以使用`\<`来匹配单词的开头, 并用`\>`匹配单词的结尾:
 
 `:s/\<term\>/replace/gc`
 
-#### 多项替换
+## 多项替换
 
 如果想将单词Kang和Kodos都替换为alien, 那么可以使用 | 进行多项替换:
 
 `%s/Kang\|Kodos/alien/gc`
 
-#### 变量替换
+## 变量替换
 
 使用以下命令可以将文字替换为变量的内容:
 
 `%s!\~!\= expand($HOME)!g`
 
-#### 示例
+## 示例
 
 | 命令                      | 说明                                       | 中文                           |
 | ----------------------- | ---------------------------------------- | :--------------------------- |
@@ -258,7 +260,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 
 
-### 大小写
+## 大小写
 
 | 命令                | 说明                                       |
 | ----------------- | ---------------------------------------- |
@@ -278,7 +280,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 
 
-### 读写文件
+## 读写文件
 
 | 命令                   | 说明                                       |
 | -------------------- | ---------------------------------------- |
@@ -289,7 +291,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 
 
-### 文件浏览器
+## 文件浏览器
 
 | 命令                       | 说明                                       |
 | ------------------------ | ---------------------------------------- |
@@ -304,7 +306,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `:grep expression *.php` | Returns a list of .php files contening *expression* |
 | `gf`                     | Open file name under cursor              |
 
-### 和 Unix 系统交互
+## 和 Unix 系统交互
 
 | 命令      | 说明                                       |
 | ------- | ---------------------------------------- |
@@ -313,7 +315,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `:sh`   | Temporary returns to Unix                |
 | `$exit` | Retourns to Vi                           |
 
-### 对齐
+## 对齐
 
 | 命令       | 说明                                      |
 | -------- | --------------------------------------- |
@@ -321,7 +323,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `!}fmt`  | Align all lines at the current position |
 | `5!!fmt` | Align the next 5 lines                  |
 
-### Tabs/Windows
+## Tabs/Windows
 
 | 命令                    | 说明                            |
 | --------------------- | ----------------------------- |
@@ -336,7 +338,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 
 
-### 分屏显示
+## 分屏显示
 
 | 命令                | 说明                                   |
 | ----------------- | ------------------------------------ |
@@ -356,7 +358,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 
 
-### 自动完成
+## 自动完成
 
 | 命令                               | 说明                             |
 | -------------------------------- | ------------------------------ |
@@ -365,9 +367,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `:set dictionary=dict`           | Define *dict* as a dictionnary |
 | `Ctrl+x Ctrl+k`                  | Complete with dictionnary      |
 
-
-
-### Marks
+## Marks
 
 | 命令        | 说明                                |
 | --------- | --------------------------------- |
@@ -375,17 +375,13 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `' {a-z}` | Move to position *{a-z}*          |
 | `''`      | Move to previous position         |
 
-
-
-### 缩写
+## 缩写
 
 | 命令                           | 说明                                       |
 | ---------------------------- | ---------------------------------------- |
 | `:ab mail mail@provider.org` | Define *mail* as abbreviation of *mail@provider.org* |
 
-
-
-### 文本缩进
+## 文本缩进
 
 #### 缩进多行
 
@@ -402,9 +398,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `=%`                | Indent the code between parenthesis |
 | `1GVG=`             | Indent the whole file               |
 
-
-
-### 语法高亮
+## 语法高亮
 
 | 命令                 | 说明                           |
 | ------------------ | ---------------------------- |
@@ -412,7 +406,11 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `:syntax off`      | Turn off syntax highlighting |
 | `:set syntax=perl` | Force syntax highlighting    |
 
+## 重复执行
 
+- `.`： 命令可以重复上次普通命令
+- `@`： 重复上次ex命令。
+- `@@`： 重复执行。
 
 ### 参考
 

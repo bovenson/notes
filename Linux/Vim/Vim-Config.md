@@ -34,8 +34,6 @@ set smartindent
 
 # 显示匹配
 set showmatch
-
-# 
 ```
 
 # 安装插件
