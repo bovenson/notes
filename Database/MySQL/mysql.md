@@ -99,6 +99,8 @@ mysql -u root -p -h 10.154.0.43 -P 3306
 - [参考1](https://stackoverflow.com/questions/6085455/restoring-deleted-root-user-and-password-for-mysql)
 - [参考2](http://www.kevssite.com/deleted-rootlocalhost-account-in-mysql/)
 
+## lower_case
+
 ## 错误
 
 ### Can't get hostname from your ip address

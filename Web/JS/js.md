@@ -115,3 +115,17 @@ export function formatDateHMS(stamp, withoutTime) {
 }
 ```
 
+# 定时器
+
+**设置定时器**
+
+```javascript
+var timer = window.setInterval(function () {}, 1000);
+```
+
+**清除定时器**
+
+```javascript
+window.clearInterval(timer);
+```
+
