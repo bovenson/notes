@@ -26,4 +26,7 @@ title: TODOS
   0.220772
   ```
 
-  
+- [ ] all() / any()
+
+- [ ] set() == set()
+
