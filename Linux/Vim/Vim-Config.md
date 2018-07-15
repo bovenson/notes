@@ -38,3 +38,22 @@ set showmatch
 
 # 安装插件
 
+**论坛**
+
+- [vimawesome](https://vimawesome.com/)
+
+## 插件管理器
+
+## Vundle
+
+**安装**
+
+```shell
+
+```
+
+
+
+**参考**
+
+- [Vundle](https://github.com/VundleVim/Vundle.vim/issues/383)
