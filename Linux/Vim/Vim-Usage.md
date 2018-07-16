@@ -9,7 +9,11 @@ categories:
 
 # 简介
 
-**三种模式**: 输入模式, 末行模式, 命令模式.
+**三种模式**: 
+
+- 输入模式（`Insert mode`）
+- 末行模式（`Last line mode`）
+- 命令模式（`Command mode`）
 
 **切换:**
 
@@ -386,7 +390,7 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 
 ## 文本缩进
 
-#### 缩进多行
+**缩进多行**
 
 - 按v进入visual状态，选择多行，用>或<缩进或缩出.
 
@@ -400,6 +404,18 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `<<`                | Un-indent                           |
 | `=%`                | Indent the code between parenthesis |
 | `1GVG=`             | Indent the whole file               |
+
+```shell
+# 缩进指定行
+# In command mode
+5>>
+
+# In Visual Mode
+j	# 下一行
+j	# 下一行
+j	# 下一行
+>	# 缩进
+```
 
 ## 语法高亮
 
