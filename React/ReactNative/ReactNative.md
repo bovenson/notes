@@ -74,9 +74,25 @@ export default class MainPage extends Component {
 }
 ```
 
-#### 参考
+### 参考
 
 - [参考一](https://stackoverflow.com/questions/39037705/how-to-use-onpress-on-a-custom-component)
+
+## 页面Focus/Blur事件
+
+```JavaScript
+componentDidMount() {
+    let that = this;
+    this.props.navigation.addListener('willFocus', function () {
+        that.setState({focused: true});
+    });
+    this.props.navigation.addListener('willBlur', function () {
+        that.setState({focused: false});
+    });
+}
+```
+
+
 
 # 问题
 

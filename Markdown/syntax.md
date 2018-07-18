@@ -73,3 +73,7 @@ $$
      \end{bmatrix}
 $$
 
+$$
+F(x) = \int_{-\infin}^{x} f(t) \mathrm{d}t
+$$
+
