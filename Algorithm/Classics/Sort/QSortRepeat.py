@@ -2,18 +2,18 @@ def qsort(arr, l, r):
     if l >= r:
         return
     i, j = l, r
-    base = arr[i]
+    pivot = arr[l]
     while i < j:
-        while i < j and arr[j] > base:  j -= 1
+        while i < j and arr[j] > pivot: j -= 1
         arr[i] = arr[j]
-        while i < j and arr[i] <= base: i += 1
+        while i < j and arr[i] <= pivot:    i += 1
         arr[j] = arr[i]
-    arr[j] = base
-    qsort(arr, l, j-1)
-    qsort(arr, j+1, r)
-
+    arr[i] = pivot
+    qsort(arr, l, i-1)
+    qsort(arr, i+1, r)
 
 if __name__ == '__main__':
-    ar = [0, 4, 2, 1, 3, 1, 5, 5, 9, 7, 6]
-    qsort(ar, 0, len(ar)-1)
-    print(ar)
+    a = [-1, 0, 5, 3, 2, 9, 8, 3, 2, -1, 9, 0]
+    qsort(a, 0, len(a)-1)
+    print(a)
+

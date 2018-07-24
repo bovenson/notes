@@ -22,9 +22,9 @@ def adjust(arr, l, size):
     # 取出当前元素
     k = l * 2 + 1
     while k < size:
-        if k + 1 < size and arr[k] > arr[k+1]:
+        if k + 1 < size and arr[k] < arr[k+1]:
             k += 1
-        if arr[l] < arr[k]:
+        if arr[l] > arr[k]:
             break
         t = arr[l]
         arr[l] = arr[k]
