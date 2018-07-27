@@ -9,30 +9,30 @@ tags: Java输入输出
 
 ## Scanner
 
-#### next 和 nextLine区别
+### next 和 nextLine区别
 
 - `next`: 一定要读取到有效字符后才可以结束输入，对输入有效字符之前遇到的空格键、Tab键或Enter键等结束符，next()方法会自动将其去掉，只有在输入有效字符之后，next()方法才将其后输入的空格键、Tab键或Enter键等视为分隔符或结束符。 **next()查找并返回来自此扫描器的下一个完整标记。完整标记的前后是与分隔模式匹配的输入信息，所以next方法不能得到带空格的字符串。**
 - `nextLine`: 结束符只是Enter键，即nextLine()方法返回的是Enter键之前的所有字符，它是可以得到带空格的字符串的。
 
-#### scanner
+### scanner
 
 ```java
 Scanner scanner;
 ```
 
-#### 判断标准输入是否为空(可能忽略空白符)
+### 判断标准输入是否为空(可能忽略空白符)
 
 ```java
 scanner.hasNext();
 ```
 
-#### 判断标准输入是否有下一行
+### 判断标准输入是否有下一行
 
 ```java
 scanner.hasNextLine();
 ```
 
-#### 判断标准输入是否还有字符(包括空白符)
+### 判断标准输入是否还有字符(包括空白符)
 
 功能上等同于`hasNextLine`
 
@@ -46,7 +46,7 @@ scanner.useDelimiter(WHITESPACE_PATTERN);
 return result;
 ```
 
-#### 读取一行
+### 读取一行
 
 ```java
 public static String readLine() {
@@ -60,7 +60,7 @@ public static String readLine() {
 }
 ```
 
-#### 读取一个字符
+### 读取一个字符
 
 ```java
 private static final Pattern WHITESPACE_PATTERN = Pattern.compile("\\p{javaWhitespace}+");
@@ -79,7 +79,7 @@ public static char readChar() {
 }
 ```
 
-#### 读取所有输入(返回String)
+### 读取所有输入(返回String)
 
 ```java
 static final Pattern EVERYTHIN_PATTERN = Pattern.compile("\\A");
@@ -95,7 +95,7 @@ public static String readAll() {
 }
 ```
 
-#### 读取下一个有效输入
+### 读取下一个有效输入
 
 ```java
 public static String readString() {
@@ -107,7 +107,7 @@ public static String readString() {
 }
 ```
 
-#### 读取int
+### 读取int
 
 ```java
 public static int readInt() {
@@ -122,27 +122,27 @@ public static int readInt() {
 }
 ```
 
-#### 读取double
+### 读取double
 
 类似读取int
 
-#### 读取float
+### 读取float
 
 类似读取int
 
-#### 读取long
+### 读取long
 
 类似读取int
 
-#### 读取short
+### 读取short
 
 类似读取int
 
-#### 读取byte
+### 读取byte
 
 类似读取int
 
-#### 读取boolean
+### 读取boolean
 
 ```java
 public static boolean readBoolean() {
@@ -159,7 +159,7 @@ public static boolean readBoolean() {
 }
 ```
 
-#### 读取所有有效输入(返回Sring[])
+### 读取所有有效输入(返回Sring[])
 
 不包含空白符.
 
@@ -180,7 +180,7 @@ public static String[] readAllStrings() {
 }
 ```
 
-#### 读取所有行
+### 读取所有行
 
 ```java
 public static String[] readAllLines() {
@@ -193,7 +193,7 @@ public static String[] readAllLines() {
 }
 ```
 
-#### 读取所有int
+### 读取所有int
 
 ```java
 public static int[] readAllInts() {
@@ -206,11 +206,11 @@ public static int[] readAllInts() {
 }
 ```
 
-#### 读取所有double
+### 读取所有double
 
 类似读取所有int
 
-#### 读取所有double
+### 读取所有double
 
 类似读取所有int
 

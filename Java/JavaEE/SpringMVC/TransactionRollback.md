@@ -1,6 +1,10 @@
 ---
 title: 事务回滚
-tags: 事务回滚 SpringMVC Transaction Rollback
+tags: 
+	- 事务回滚 
+	- SpringMVC 
+categories:
+	- JavaEE
 ---
 
 # 配置

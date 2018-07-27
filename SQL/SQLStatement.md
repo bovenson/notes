@@ -1,6 +1,25 @@
+---
+title: SQL语句
+tags:
+	- SQL
+categories:
+	- SQL
+---
+
 # 创建表
 
-# 示例
+**语法**
+
+```SQL
+CREATE TABLE 表名称 (
+    列名称1 数据类型,
+    列名称2 数据类型,
+    列名称3 数据类型,
+    ....
+)
+```
+
+**示例**
 
 ```sql
 CREATE TABLE `syscontroldb`.`sys_user` (
@@ -12,5 +31,14 @@ CREATE TABLE `syscontroldb`.`sys_user` (
   `status` INT(3) NOT NULL COMMENT '用户状态，0正常，1注销，2暂停' DEFAULT 1,
   PRIMARY KEY (`id`))
 COMMENT = '系统用户表';
+```
+
+# Join
+
+## left
+
+```sql
+# 别名
+SELECT a.id, b.id FROM zj_classify a left join zj_classify b on b.parent = a.id ;
 ```
 

@@ -29,9 +29,30 @@ notes.
 
 - [ ] `all() / any()`
 
-- [ ] `set() == set()`
+- [x] `set() == set()`
 
-- [ ] 整理MVC笔记
+  ```shell
+  >>> set([1, 2]) == set([1, 2])
+  True
+  >>> s1 = set([1, 2])
+  >>> s2 = set([1, 2])
+  >>> s1 == s2
+  True
+  >>> s1.add(3)
+  >>> s1 == s2
+  False
+  >>> l1 = [1, 2]
+  >>> l2 = [1, 2]
+  >>> l1 == l2
+  True
+  >>> l1.append(3)
+  >>> l1 == l2
+  False
+  ```
+
+- [x] 整理MVC笔记
 
 - [x] 整理函数式编程笔记
+
+
 
