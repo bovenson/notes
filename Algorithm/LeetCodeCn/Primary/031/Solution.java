@@ -19,6 +19,8 @@
 
 
 // Definition for a binary tree node.
+import java.lang.Max;
+
 class TreeNode {
     int val;
     TreeNode left;
@@ -29,34 +31,75 @@ class TreeNode {
 
 
 public class Solution {
-    void insertNode(TreeNode root, int val) {
+
+    /**
+     * 获取高度
+     */
+    int height(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return Math.max(height(node.left), height(node.right)) + 1;
+    }
+
+    void rightRotate(TreeNode node) {
+        TreeNode leftChild = node.left;
+        node.left = leftChild.right;
+        leftChild.right = node;
+    }
+
+    void leftRightRotate(TreeNode node) {
+        leftRotate(node.left);
+        rightRotate(node);
+    }
+
+    void leftRotate(TreeNode node) {
+        TreeNode rightChild = node.right;
+        node.right = rightChild.left;
+        rightChild.left = node;
+    }
+
+    void rightLeftRotate(TreeNode node) {
+        rightRotate(node.right);
+        leftRotate(node);
+    }
+
+    /**
+     * 插入节点
+     */
+    TreeNode insertNode(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);
         } 
-
-        TreeNode parent = root;
-        while (true) {
-            if (parent.val > val) {
-                if (parent.left == null) {
-                    break;
-                }
-                parent = parent.left;
-            } else {
-                if (parent.right == null) {
-                    break;
-                }
-                parent = parent.right;
+        if (root.val > val) {
+            root.left = insertNode(root.left, val);
+        } else {
+            root.right = insertNode(root.right, val);
+        }
+        int diff = height(root.left) - height(root.right);
+        if (diff >= 2) {
+            if (root.left.val > val) { // left left
+                rightRotate(root);
+            } else {    // left right
+                leftRightRotate(root);
+            }
+        } else if (diff <= -2){
+            if (root.right < val) {     // right right
+                leftRotate(root);
+            } else {    // right left
+                rightLeftRotate(root);
             }
         }
-        if (parent.val > val) {
-            parent.left = new TreeNode(val);
-        } else {
-            parent.right = new TreeNode(val);
-        }
-        while ()
     }
 
     public TreeNode sortedArrayToBST(int[] nums) {
-        
+        for (int i in nums) {
+            System.out.println(i);
+        }
+    }
+
+    public static void main(String args[]) {
+        int nums[] = [1, 2, 3];
+        sortedArrayToBST();
     }
 }
