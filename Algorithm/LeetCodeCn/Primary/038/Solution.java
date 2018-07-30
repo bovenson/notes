@@ -17,22 +17,46 @@ solution.reset();
 // 随机返回数组[1,2,3]打乱后的结果。
 solution.shuffle();
  * */
+import java.lang.Math;
 
 
 class Solution {
+    int ori[] = null;
+    private final int nums[];
 
     public Solution(int[] nums) {
-
+        this.ori = (int[])nums.clone();
+        this.nums = nums;
     }
 
     /** Resets the array to its original configuration and return it. */
     public int[] reset() {
-
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = ori[i];
+        }
+        return nums;
     }
 
     /** Returns a random shuffling of the array. */
     public int[] shuffle() {
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int swapI = (int) (Math.random() * (i + 1));
+            int t = nums[i];
+            nums[i] = nums[swapI];
+            nums[swapI] = t;
+        }
+        return nums;
+    }
 
+    public static void main(String args[]) {
+        int[] l = {1, 2, 3, 4};
+        Solution s = new Solution(l);
+        for (int i : s.reset()) {
+            System.out.println(i);
+        }
+        for (int i : s.shuffle()) {
+            System.out.println(i);
+        }
     }
 }
 
