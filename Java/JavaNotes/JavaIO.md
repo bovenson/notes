@@ -214,6 +214,12 @@ public static int[] readAllInts() {
 
 类似读取所有int
 
+# 标准输入输出
+
+```java
+
+```
+
 # 参考
 
 ```java

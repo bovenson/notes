@@ -1,8 +1,9 @@
+class Node {}
 public class LinkList {
     int val;
     Node next;
 
-    Node(int val) {
+    LinkList(int val) {
         this.val = val;
         next = null;
     }
