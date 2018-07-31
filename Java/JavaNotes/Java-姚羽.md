@@ -275,7 +275,7 @@ for (int a: arrA) {
 
 -   System类
 
-    包含3个类数据域`System.out`, `System.out`, `System.err`
+    包含3个类数据域`System.in`, `System.out`, `System.err`
 
 ### 字符的输入
 
@@ -302,25 +302,24 @@ for (int a: arrA) {
 
 ### 字符的输出
 
--   `OutputStreamWriter`将字符数据流转化为字节数据流输出
+- `OutputStreamWriter`将字符数据流转化为字节数据流输出
 
--   `OutputStreamWriter`使用`write()`方法,一般配合`BufferedWriter`
+- `OutputStreamWriter`使用`write()`方法,一般配合`BufferedWriter`
 
--   用`newLine()`函数写出系统规定的换行符
+- 用`newLine()`函数写出系统规定的换行符
 
--   打印数据流
+- 打印数据流
 
-    ​	`PrintStream`: 将所有输入的字符都转换为字节, 转换规则为所在平台预设的字符编码方式
+  -   `PrintStream`: 将所有输入的字符都转换为字节, 转换规则为所在平台预设的字符编码方式
+  -   ​`PrintWriter`: 以字符为向导, 若要输出的数据为字符, 最好使用`PrintWriter`
 
-    ​	`PrintWriter`: 以字符为向导, 若要输出的数据为字符, 最好使用`PrintWriter`
+- 重定向
 
--   重定向
-
-    ```shell
-    java PrintData >pnt			// 输出到打印机
-    java PrintData >out.txt		// 输出到文件
-    java PrintData <in.txt		// 从文件输入
-    ```
+  ```shell
+  java PrintData >pnt			// 输出到打印机
+  java PrintData >out.txt		// 输出到文件
+  java PrintData <in.txt		// 从文件输入
+  ```
 
 ## Java语言的方法
 
