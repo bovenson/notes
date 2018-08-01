@@ -62,7 +62,7 @@ notes.
 
   - [ ] 垃圾回收
 
-- [ ] SpringMVC
+- [x] SpringMVC
 
 - [ ] 剑指Offer
 
