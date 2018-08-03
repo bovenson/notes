@@ -4,9 +4,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "echo",
+      "label": "build hello world",
       "type": "shell",
-      "command": "echo Hello"
+      "command": "g++",
+      "args": [
+        "-g", "helloworld.cpp"
+    ]
     }
   ]
 }
