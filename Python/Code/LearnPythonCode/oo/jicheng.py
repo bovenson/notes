@@ -21,7 +21,7 @@ class B:
         print('B.f()')
 
 
-class C(A, B):
+class C(B, A):
     pass
 
 
@@ -30,3 +30,4 @@ c.f()
 
 cs = C()
 super(C, cs).f()
+print(C.mro())
