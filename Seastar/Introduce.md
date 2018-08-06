@@ -916,6 +916,21 @@ Reactor模式则并没有Queue来做缓冲，每当一个Event输入到Service H
 - 顺序锁
 - RCU
 
+## 附录十一：零切换
+
+这些名词外在体现千差万别，但其实核心都在于，Zero switch，避免上下文切换。上下文切换的影响包括但不限于Flush TLB、Flush L1、等待重新调度、CPU消耗。无论是Cache miss还是等待重新调用，都在很大程度上提升代码的延迟。
+
+使用mutex时，当加锁失败，线程会被切换出去（阻塞）。
+
+实现方式：
+
+- lockfree + busyloop
+- lockfree + yield
+
+## 附录十二：零复制
+
+
+
 # 参考
 
 - [Seastar Github](https://github.com/scylladb/seastar)
@@ -933,3 +948,5 @@ Reactor模式则并没有Queue来做缓冲，每当一个Event输入到Service H
 - [老司机乱谈『代码之美』](https://blog.csdn.net/wetest_tencent/article/details/53204724)
 - [用户态操作系统之一 Seastar简介](https://zhuanlan.zhihu.com/p/38771059)
 - [Reactor模式](https://www.jianshu.com/p/eef7ebe28673)
+- [微优化之五 Zero Copy](https://zhuanlan.zhihu.com/p/38785800)
+- [微优化之三 Zero Switch](https://zhuanlan.zhihu.com/p/38702469)
