@@ -6,24 +6,9 @@ categories:
 	- Seastar
 ---
 
-# Steps
-
-- 是什么
-- 干什么
-- 怎么干
-  - 特性
-  - 不足
-    - 怎么解决
-- 对比
-- 怎么优化
-
 # 简介
 
 **Seastar是支持高并发和低延迟的高性能异步编程库，用于在现代多核机器上编写高效复杂的服务器应用程序。**
-
-Seastar的灵感和第一用例是ScyllaDB，它是Apache Cassandra的重写。 
-
-Seastar提供了一个完整的异步编程框架，它使用两个概念 - future 和 continuations - 来统一表示和处理每种类型的异步事件，包括网络I / O，磁盘I / O和其他事件的复杂组合。 
 
 由于现代多核和多插槽机器在核心之间共享数据（原子指令，缓存线弹跳和内存防护）有严重的惩罚。Seastar程序使用**无共享编程模型**，即可用内存在核心之间划分每个核心在其自身的内存部分中处理数据，核心之间的通信通过显式消息传递发生（当然，这本身就是使用SMP的共享内存硬件发生的）。 
 
@@ -70,8 +55,8 @@ Seastar是一个用于编写异步服务器应用程序的框架，旨在解决�
 
 - 它是一个用于编写涉及网络和磁盘I / O的复杂异步应用程序的框架
 - 该框架的快速路径完全是单线程（每个核心）
-- 可扩展到许多核心
-- 并最大限度地减少核心之间昂贵的内存共享
+- 可扩展到更多核心
+- 最大限度地减少核心之间昂贵的内存共享
 - 它是一个C ++ 14库，为用户提供了复杂的编译时功能和完全的性能控制
 - 没有运行时开销
 
@@ -95,7 +80,7 @@ Seastar是一个用于编写异步服务器应用程序的框架，旨在解决�
       - 每个logic  core有自己的资源
         - CPU
         - Network
-        - Dist I/O
+        - Disk I/O
         - Memory
       - 多个core之间没有资源的竞争
       - 随着core数量增加，扩展性和性能也随之提升
@@ -113,6 +98,7 @@ Seastar是一个用于编写异步服务器应用程序的框架，旨在解决�
     - 没有cache lines频繁的miss
       - 提供独立的存储器给各个core
       - 避免当多个处理器访问同一个存储器产生的性能损失
+      - 没有大的堆栈污染缓存
     - 异步编程框架
 - 基于Seastar的程序在**每个CPU上运行一个线程** 
   - 默认情况下，Seastar应用程序将接管所有可用内核，每个内核启动一个线程
@@ -140,7 +126,7 @@ Seastar是一个用于编写异步服务器应用程序的框架，旨在解决�
 
 由于跨核心共享信息需要昂贵的锁定，因此Seastar使用无共享模型将所有请求分片到单个核心。 
 
-Seastar每个核心运行一个应用程序线程，并依赖于显式消息传递，而不是线程之间的共享内存。此设计避免了缓慢、不可扩展的锁定基元和缓存跳出。 
+Seastar每个核心运行一个应用程序线程，并依赖于显式消息传递，而不是线程之间的共享内存。此设计避免了缓慢、不可扩展的锁定和缓存跳出。 
 
 必须明确处理跨核心的任何资源共享。例如，当两个请求是同一会话的一部分，并且两个CPU各自获得依赖于相同会话状态的请求时，一个CPU必须显式地将请求转发给另一个。CPU可以处理任一响应。Seastar提供限制跨核通信需求的设施，但是当通信不可避免时，它提供高性能的**非阻塞通信原语**，以确保性能不会降低。 
 
@@ -186,7 +172,7 @@ Linux中常见的网络功能非常全面，成熟且高性能。但是，对于
 -  **时间共享** ：Linux是一个分时系统，因此必须依靠缓慢、昂贵的中断来通知内核有新的数据包需要处理。 
 - **线程模型** ：Linux内核的是高度线程化的，因此所有数据结构都受到锁的保护。虽然巨大的努力使Linux具有很大的可扩展性，但这并非没有限制，并且争用发生在大核心数量上。即使没有争用，锁定原语本身也相对较慢并且影响网络性能。 
 
-通过使用Seastar基本原语实现的用户空间TCP / IP堆栈，可以避免这些约束。Seastar本地网络享有零拷贝、零锁定和零上下文切换性能。 
+通过使用Seastar基本原语实现的用户空间TCP / IP堆栈，可以避免这些约束。**Seastar本地网络享有零拷贝、零锁定和零上下文切换性能。** 
 
 另一种用户空间网络工具包DPDK专为快速数据包处理而设计，通常每个数据包的CPU周期少于80个。它与Linux无缝集成，以利用高性能硬件。
 
@@ -225,11 +211,11 @@ Seastar专为面向未来的开发而设计：可以构建和运行相同的应�
 
 - 基本Future和Promise在C ++标准库和Boost中实现
 
-- 然而，Seastar对Future和Promise的优化实现是不同的。虽然标准实现针对的是粗粒度任务，可能会阻塞并需要很长时间才能完成，但Seastar的Future和Promise用于管理细粒度、无阻塞的任务。为了有效地满足这一要求：
+- 然而，Seastar对Future和Promise的优化实现是不同的。虽然标准实现针对的是粗粒度任务，可能会阻塞并需要很长时间才能完成，**但Seastar的Future和Promise用于管理细粒度、无阻塞的任务**。为了有效地满足这一要求：
 
   - 不需要锁定
   - 不分配内存 
-  - 支持连续 
+  - 支持Continuation
 
 - 示例
 
@@ -255,7 +241,7 @@ Seastar专为面向未来的开发而设计：可以构建和运行相同的应�
 
 ## 消息传递
 
-说到shared-nothing，没有跨核通讯是不太可能的，对于跨核的通讯，框架中使用了无锁队列来实现。要达到无锁，不能出现多读多写，所以这里任意2核心之间都需要一个队列，对于16 core的cpu，就需要16*16-16个队列（自己无需跟自己通讯）。
+说到shared-nothing，没有跨核通讯是不太可能的，对于跨核的通讯，框架中使用了无锁队列来实现。
 
 线程应用程序需要固有且昂贵的锁定操作，而Seastar模型可以完全避免跨CPU通信的锁定。
 
@@ -263,9 +249,9 @@ Seastar专为面向未来的开发而设计：可以构建和运行相同的应�
 
 例如，发送方核心C0和接收机核心C1之间的以下交互可以在不需要锁定的情况下进行。
 
-* C0：发送者 - >等待队列进入（通常是立即） - >入队请求，分配承诺。
-* C1：出队请求;执行它 - >将结果移动到请求对象 - >在响应队列上排队请求
-* C0：出队请求;提取响应，用它来兑现承诺;销毁请求。
+* C0：发送者 - >等待队列进入（通常是立即） - >入队请求，分配Promise。
+* C1：出队请求；执行 - >将结果移动到请求对象 - >在响应队列上排队请求
+* C0：出队请求；提取响应，用它来兑现承诺；销毁请求。
 
 每个实际队列，一个用于请求，一个用于满足请求的返回队列，是一个简单的指针队列。系统上每对CPU核心有一个请求队列和一个返回队列。由于核心不与自身配对，因此16核系统将具有240个请求队列和240个返回队列。
 
@@ -374,7 +360,7 @@ Seastar提供各种机制，可以在适当的时间内安全有效地保持对�
 Seastar借助以下概念，实现极致性能：
 
 - 协同微任务调度程序 （Cooperative micro-task scheduler）
-  - 每个核心运行一个协作任务调度程序，而不是运行线程
+  - 每个核心运行一个协同微任务调度程序，而不是运行线程
   - 每个任务通常都非常轻量级 - 只运行处理最后一个I / O操作的结果并提交一个新任务
 - 无共享SMP架构 （Share-nothing SMP architecture）
   - 每个核心独立于SMP系统中的其他核心运行。内存，数据结构和CPU时间不共享；相反，核心间通信使用显式消息传递。Seastar核心通常被称为分片。
@@ -444,8 +430,7 @@ Seastar无法自动分区数据。用户必须选择分区方法并将处理转�
 
 - 基于分片的异步编程框架 
   - 能够实现复杂的服务器逻辑 
-  - 保证网络和存储操作 
-  - 多核之间操作的异步性 
+  - 保证网络和存储操作、多核之间操作的异步性 
   - 达到**高性能和低延迟**的目标 
 
 - 对比传统数据栈
@@ -695,6 +680,8 @@ AFTER
 - 高速发包需要大量的申请和回收内存缓冲区，需要一个高效的内存池管理，算法和数据结构有很多，需要根据实际的应用场景择优选择
 - ring buffer，环形队列。发送者和接收者的需要一个无锁的结构提高并发的效率。简单的环形队列支持一个读者一个写着，多个生产者和消费者的工作队列学术界和工业界也有现成的成果和实现
 
+DPDK并没有实现一个完整的TCP/UDP/IP协议栈。
+
 ## 附录三：异步编程
 
 **使用异步编程的原因**
@@ -815,9 +802,26 @@ DMA(Direct Memory Access，直接内存存取 / 直接存储器访问) 是所有
 
 - 阻塞
 - 轮询
-- 
 
 ## 附录九：Reactor事件驱动
+
+在处理web请求时，通常有两种体系结构，分别为：thread-based architecture（基于线程）、event-driven architecture（事件驱动）。
+
+**基于线程**
+
+基于线程的体系结构通常会使用多线程来处理客户端的请求，每当接收到一个请求，便开启一个独立的线程来处理。这种方式虽然是直观的，但是仅适用于并发访问量不大的场景，因为线程需要占用一定的内存资源，且操作系统在线程之间的切换也需要一定的开销，当线程数过多时显然会降低web服务器的性能。并且，当线程在处理I/O操作，在等待输入的这段时间线程处于空闲的状态，同样也会造成cpu资源的浪费。一个典型的设计如下：
+
+![](imgs/10.png)
+
+**事件驱动**
+
+事件驱动体系结构是目前比较广泛使用的一种。这种方式会定义一系列的事件处理器来响应事件的发生，并且将服务端接受连接与对事件的处理分离。其中，事件是一种状态的改变。比如，tcp中socket的new incoming connection、ready for read、ready for write。
+
+**Reactor**
+
+reactor设计模式是event-driven architecture的一种实现方式，处理多个客户端并发的向服务端请求服务的场景。每种服务在服务端可能由多个方法组成。reactor会解耦并发请求的服务并分发给对应的事件处理器来处理。目前，许多流行的开源框架都用到了reactor模式，如：netty、node.js等，包括java的nio。
+
+ ![](imgs/11.png)
 
 Reactor是事件驱动机制，和普通函数调用的不同之处在于：应用程序不是主动调用某个API完成处理，Reactor逆置了事件处理流程，应用程序需要提供相应的接口并注册到Reactor上。如果相应的事件发生，Reactor将主动调用应用程序注册接口（PS：又将这些接口称为回调函数）。
 
@@ -832,6 +836,43 @@ Reactor应用于编写高性能网络服务器技术之一，优点如下：
 
 - 面向对象
 - 函数式编程
+
+在Reactor中，这些被拆分的小线程或者子过程对应的是handler，每一种handler会出处理一种event。这里会有一个全局的管理者selector，我们需要把channel注册感兴趣的事件，那么这个selector就会不断在channel上检测是否有该类型的事件发生，如果没有，那么主线程就会被阻塞，否则就会调用相应的事件处理函数即handler来处理。
+
+Reactor模式首先是事件驱动的，有一个或多个并发输入源，有一个Service Handler，有多个Request Handlers；这个Service Handler会同步的将输入的请求（Event）多路复用的分发给相应的Request Handler。
+
+![](imgs/08.png)
+
+Reactor模式则并没有Queue来做缓冲，每当一个Event输入到Service Handler之后，该Service Handler会主动轮询，根据不同的Event类型将其分发给对应的Request Handler来处理。
+
+**Reactor模式结构**
+
+![](imgs/09.png)
+
+- **Handle：**
+  - handle在linux中一般称为文件描述符，而在window称为句柄，两者的含义一样。handle是事件的发源地。比如一个网络socket、磁盘文件等。而发生在handle上的事件可以有connection、ready for read、ready for write等。
+  - 即操作系统中的句柄，是对资源在操作系统层面上的一种抽象，它可以是打开的文件、一个连接(Socket)、Timer等。由于Reactor模式一般使用在网络编程中，因而这里一般指Socket Handle，即一个网络连接（Connection，在Java NIO中的Channel）。这个Channel注册到Synchronous Event Demultiplexer中，以监听Handle中发生的事件，对ServerSocketChannnel可以是CONNECT事件，对SocketChannel可以是READ、WRITE、CLOSE事件等。
+- **Synchronous Event Demultiplexer：**
+  - 同步事件分离器，本质上是系统调用。比如linux中的select、poll、epoll等。比如，select方法会一直阻塞直到handle上有事件发生时才会返回。
+  - 阻塞等待一系列的Handle中的事件到来，如果阻塞等待返回，即表示在返回的Handle中可以不阻塞的执行返回的事件类型。这个模块一般使用操作系统的select来实现。在Java NIO中用Selector来封装，当Selector.select()返回时，可以调用Selector的selectedKeys()方法获取Set\<SelectionKey\>，一个SelectionKey表达一个有事件发生的Channel以及该Channel上的事件类型。上图的“Synchronous Event Demultiplexer ---notifies--> Handle”的流程如果是对的，那内部实现应该是select()方法在事件到来后会先设置Handle的状态，然后返回。不了解内部实现机制，因而保留原图。
+- **Initiation Dispatcher：**
+  - 初始分发器，也是reactor角色，提供了注册、删除与转发event handler的方法。当Synchronous Event Demultiplexer检测到handle上有事件发生时，便会通知initiation dispatcher调用特定的event handler的回调方法。
+  - 用于管理Event Handler，即EventHandler的容器，用以注册、移除EventHandler等；另外，它还作为Reactor模式的入口调用Synchronous Event Demultiplexer的select方法以阻塞等待事件返回，当阻塞等待返回时，根据事件发生的Handle将其分发给对应的Event Handler处理，即回调EventHandler中的handle_event()方法。
+- **Event Handler：**
+  - 事件处理器，其会定义一些回调方法或者称为钩子函数，当handle上有事件发生时，回调方法便会执行，一种事件处理机制。
+  - 定义事件处理方法：handle_event()，以供InitiationDispatcher回调使用。
+- **Concrete Event Handler：**
+  - 具体的事件处理器，实现了Event Handler。在回调方法中会实现具体的业务逻辑。
+  - 事件EventHandler接口，实现特定事件处理逻辑。
+
+**处理流程**
+
+- 当应用向Initiation Dispatcher注册Concrete Event Handler时，应用会标识出该事件处理器希望Initiation Dispatcher在某种类型的事件发生发生时向其通知，事件与handle关联
+- Initiation Dispatcher要求注册在其上面的Concrete Event Handler传递内部关联的handle，该handle会向操作系统标识
+- 当所有的Concrete Event Handler都注册到 Initiation Dispatcher上后，应用会调用handle_events方法来启动Initiation Dispatcher的事件循环，这时Initiation Dispatcher会将每个Concrete Event Handler关联的handle合并，并使用Synchronous Event Demultiplexer来等待这些handle上事件的发生
+- 当与某个事件源对应的handle变为ready时，Synchronous Event Demultiplexer便会通知 Initiation Dispatcher。比如tcp的socket变为ready for reading
+- Initiation Dispatcher会触发事件处理器的回调方法。当事件发生时， Initiation Dispatcher会将被一个“key”（表示一个激活的handle）定位和分发给特定的Event Handler的回调方法
+- Initiation Dispatcher调用特定的Concrete Event Handler的回调方法来响应其关联的handle上发生的事件
 
 ## 附录十：节约CPU
 
@@ -891,3 +932,4 @@ Reactor应用于编写高性能网络服务器技术之一，优点如下：
 - [Reactor模式](https://blog.csdn.net/loophome/article/details/50543382)
 - [老司机乱谈『代码之美』](https://blog.csdn.net/wetest_tencent/article/details/53204724)
 - [用户态操作系统之一 Seastar简介](https://zhuanlan.zhihu.com/p/38771059)
+- [Reactor模式](https://www.jianshu.com/p/eef7ebe28673)
