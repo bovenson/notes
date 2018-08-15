@@ -1,0 +1,3 @@
+/home/bovenson/Git/notes/C++/Code/CMake/test/CMakeFiles/edit_cache.dir
+/home/bovenson/Git/notes/C++/Code/CMake/test/CMakeFiles/rebuild_cache.dir
+/home/bovenson/Git/notes/C++/Code/CMake/test/CMakeFiles/Hello.dir
