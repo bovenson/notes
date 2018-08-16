@@ -131,11 +131,11 @@ $ sudo awk '/^[^#]/' squid.conf > squid-simple.conf
 # 编辑配置文件
 $ sudo vim squid-simple.conf
 ## 在这里添加几行
-## acl localnet src 0.0.0.0/0.0.0.0
-## acl localnet src 0.0.0.0/8
-## auth_param basic program /usr/lib/squid3/basic_ncsa_auth /etc/squid3/squid_passwd
-## acl ncsa_users proxy_auth REQUIRED
-## http_access allow ncsa_users
+acl localnet src 0.0.0.0/0.0.0.0
+acl localnet src 0.0.0.0/8
+auth_param basic program /usr/lib/squid3/basic_ncsa_auth /etc/squid3/squid_passwd
+acl ncsa_users proxy_auth REQUIRED
+http_access allow ncsa_users
 ```
 
 # 启动或重启容器
@@ -196,6 +196,10 @@ bovenson@ThinkCentre:~/Tmp$ wget www.so.com
 已发出 Proxy 请求，正在等待回应... 407 Proxy Authentication Required
 2018-04-15 00:42:01 错误 407：Proxy Authentication Required。
 ```
+
+# 注意事项
+
+- 如果需要，把上文中Squid路径由`/usr/lib/squid3`修改为`/usr/lib/squid`
 
 # 参考
 
