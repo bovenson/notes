@@ -13,9 +13,9 @@ categories:
 ```shell
 #### Base
 # 备份
-sudo mv /etc/yum.repo.d/CentOS-Base.repo /etc/yum.repo.d/CentOS-Base.repo.bak
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 # 阿里源
-sudo wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 
 #### epel
 # epel(RHEL 7)
