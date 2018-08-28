@@ -88,6 +88,27 @@ void displayRes (vector<int> v, int res) {
     }
 }
 
+int findMin (vector<int> v) {
+    if (v.size() == 0) {
+        return 0;
+    }
+    int l = 0, r = v.size() - 1;
+    if (v[l] <= v[r]) {
+        return l;
+    }
+    while (l <= r) {
+        int mid = (r - l) / 2 + l;
+        if (v[mid-1] > v[mid]) {
+            return mid;
+        } else if (v[l] > v[mid] && v[mid] < v[r]) {
+            r = mid - 1;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return -1;
+}
+
 int main() {
     vector<int> e = {};
     vector<int> o = {0};
@@ -125,5 +146,24 @@ int main() {
     res = rightBoundary(v, 2);
     displayRes(v, res);
     
+    // find min
+    cout << endl << "FIND MIN" << endl;
+    cout << "v :";display(v);
+    displayRes(v, findMin(v));
+    vector<int> v1 = {1, 2, 3, 4, -3, -1};
+    vector<int> v2 = {1, -1};
+    vector<int> v3 = {};
+    vector<int> v4 = {1};
+    vector<int> v5 = {1, 1, 2, 3, 1, 1};
+    cout << "v1: "; display(v1);
+    displayRes(v1, findMin(v1));
+    cout << "v2: "; display(v2);
+    displayRes(v2, findMin(v2));
+    cout << "v3: "; display(v3);
+    displayRes(v3, findMin(v3));
+    cout << "v4: "; display(v4);
+    displayRes(v4, findMin(v4));
+    cout << "v5: "; display(v5);
+    displayRes(v5, findMin(v5));
     return 0;
 }
