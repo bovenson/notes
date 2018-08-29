@@ -343,6 +343,8 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `:tab ball`           | Puts all open files in tabs   |
 | `:new abc.txt`        | Edit *abc.txt* in new window  |
 
+## 多文件
+
 
 
 ## 分屏显示
