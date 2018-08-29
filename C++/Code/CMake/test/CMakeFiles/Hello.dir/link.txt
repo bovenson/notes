@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/Hello.dir/t.cpp.o  -o Hello -rdynamic 
