@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/digitslut.h
+
+/Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/src/main.cpp
+iostream
+-
+sstream
+/Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/src/sstream
+sys/timeb.h
+-
+limits
+-
+sse2.cpp
+/Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/src/sse2.cpp
+stdlib.h
+-
+cstring
+-
+
+/Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/src/sse2.cpp
+cassert
+-
+emmintrin.h
+-
+stdint.h
+-
+digitslut.h
+/Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/src/digitslut.h
+intrin.h
+/Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/src/intrin.h
+

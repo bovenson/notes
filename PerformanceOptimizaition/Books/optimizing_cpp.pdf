@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>504 - GATEWAY TIMEOUT</title>
+
+				<!-- Add Slide Outs -->
+				<script src="http://code.jquery.com/jquery-1.9.1.js"></script>        
+				<script src="http://suspended.hostgator.com/js/simple-expand.min.js"></script>
+        
+        <style type="text/css">
+        body{padding:0;margin:0;font-family:helvetica;}
+        #container{margin:20px auto;width:868px;}
+        #container #top504{background-image:url('http://suspended.hostgator.com/images/404top.jpg');background-repeat:no-repeat;width:868px;height:168px;}
+        #container #mid504{background-image:url('http://suspended.hostgator.com/images/404mid.gif');background-repeat:repeat-y;width:868px;}
+        #container #mid504 #gatorbottom{position:relative;left:39px;float:left;}
+        #container #mid504 #xxx{float:left;padding:30px 207px 10px; margin: auto auto -10px auto}
+        #container #mid504 #content{float:left;text-align:center;width:868px;}
+        #container #mid504 #content #errorcode{font-size:30px;font-weight:800;}
+        #container #mid504 #content #banner{margin:20px 0 0 ;}
+        #container #mid504 #content #hostedby{font-weight:800;font-size:25px;font-style:italic;margin:20px 0 0;}
+        #container #mid504 #content #coupon{color:#AB0000;font-size:22px;font-style:italic;}
+        #container #mid504 #content #getstarted a{color:#AB0000;font-size:31px;font-style:italic;font-weight:800;}
+        #container #mid504 #content #getstarted {margin:0 0 35px;}
+        #container #bottom504{background-image:url('http://suspended.hostgator.com/images/404bottom.gif');background-repeat:no-repeat;width:868px;height:14px;}
+        #container #mid504 #content #faq_container {margin: 5px 0 5px 0; padding: 10px 0 10px 0; clear:both;}
+        #container #mid504 #content #accordion{font-size: 90%; width: 650px; min-height: 100px; margin: 0 auto; text-align: center;}
+        #container #mid504 #content #accordion ul {text-align: left;}
+        #container #mid504 #content #accordion ol {text-align: left;}
+        #container #mid504 #content #accordion li {font-size: 90%;}
+        #container #mid504 #content #accordion p {font-size: 95%; text-align: left;}
+        #container #mid504 #content #accordion h3 {font-weight: bold;}
+		  #container #mid504 #content #accordion h4 {font-weight: bold; font-style: italic;}
+		  .content {display:none;}
+		  .first {color: #ff6600;}
+		  .second {color: #3b5998;}
+		  .third {color: #198c19;}
+		  .code { background-color: #e5e5e5; border: 2px solid #ede1d1; padding: 5px 5px 5px 5px; text-align: left;}
+		  .shell{border: 2px solid gray; background-color: black; color: white; text-align: left;}
+        </style>
+        
+</head>
+<body>
+<div id="container">
+        <div id="top504"></div>
+        <div id="mid504">
+
+                <div id="gatorbottom"><img src="http://suspended.hostgator.com/images/gatorbottom.png" alt="" /></div>
+                <div id="xxx"><img src="http://suspended.hostgator.com/images/w.png" alt="" /></div>
+        <div id="content">
+           <div id="errorcode">ERROR 504 - GATEWAY TIMEOUT</div>
+           <div id="faq_container">
+					 <div id="accordion">
+					 	<div id="why">
+						 <h3><a class="expander" href=#>Why am I seeing this page?</a></h3>
+							<div class="content">
+									<p>The server that your request has reached is acting as a gateway or proxy to fulfil the request made by your client. 
+									<p><strong>Web Browser</strong><em> => </em><strong>Web Front-End</strong><em> => </em><strong>Web Back-End</strong></p>
+									<p>This server <em>(Web Front-End)</em> received an invalid response from an upstream <em>(Web Back-End)</em> server it accessed to fulfil the request.</p>
+									<p>In most cases this will not mean that the upstream server is down, but rather that the upstream server and the gateway/proxy do not agree on the protocol for exchanging data.</p>
+									<p>This problem is most commonly caused when there is a problem with IP communications between the Web Front and Back-Ends. Before you attempt to resolve this problem you should clear your browser cache completely.</p>
+									<p>Our support staff will be happy to assist you in resolving this issue. Please contact our Live Support or reply to any Tickets you may have received from our technicians for further assistance.</p>
+							</div>
+						</div>
+						</div>
+			</div>
+                <div id="banner">
+
+                        <object width="728" height="90"><param name="movie" value="http://suspended.hostgator.com/images/hg728x90.swf">
+
+                                <embed src="http://suspended.hostgator.com/images/hg728x90.swf?clickTAG=http://secure.hostgator.com/cgi-bin/affiliates/clickthru.cgi?id=offer404" width="728" height="90"></embed>
+                        </object>
+                </div>
+
+                <div id="hostedby">This site is hosted by HostGator!</div>
+
+                <div id="getstarted"><a href="http://www.hostgator.com/?utm_source=internal&utm_medium=link&utm_campaign=offer404" title="HostGator Web Hosting" >CLICK HERE TO GET STARTED</a></div>
+
+                <div id="Customize">
+                        <h3><a href="https://support.hostgator.com/articles/cpanel/custom-error-pages">Want to customize this page?</a></h3>
+                </div>
+
+        </div>
+
+        <div style="clear:left;"></div>
+        </div>
+        <div id="bottom504"></div>
+</div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('.expander').simpleexpand();
+            prettyPrint();
+        });
+    </script>
+
+</body>
+
+</html>
+

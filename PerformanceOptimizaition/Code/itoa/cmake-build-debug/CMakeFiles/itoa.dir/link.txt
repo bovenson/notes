@@ -1,0 +1,1 @@
+/usr/local/Cellar/gcc@5/5.5.0_2/bin/g++-5  -g -O3 -Wno-sign-compare -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/itoa.dir/src/main.cpp.o  -o itoa 

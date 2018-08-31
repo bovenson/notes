@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/local/Cellar/gcc@5/5.5.0_2/bin/gcc-5 -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc@5/5.5.0_2/bin/g++-5 -G "CodeBlocks - Unix Makefiles" /Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/bovenson/Git/notes/PerformanceOptimizaition/Code/itoa/cmake-build-debug
