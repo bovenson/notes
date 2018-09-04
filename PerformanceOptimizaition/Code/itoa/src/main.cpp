@@ -100,7 +100,6 @@ std::string toStringA(long long num) {
 //};
 
 int main() {
-  long long repeat = 100000000;
   char *buff = new char[100];
   int numCount = 1000000;
 
@@ -138,25 +137,26 @@ int main() {
     }
   }
 
-  char *buffcc = new char[100];
+  long long repeat = 100000000;
+  char *buffcc = new char[20];
   long long timeStamp = getSystemTime();
   for (int i=0; i < repeat; ++i) {
-    u64toa_sse2(123123132, buffcc);
+    u64toa_sse2(1212121312, buffcc);
   }
+  std::cout << "Time 0: " << getSystemTime() - timeStamp << std::endl;
 
-  std::cout << "Time 0:" << getSystemTime() - timeStamp << std::endl;
   timeStamp = getSystemTime();
   for (int i=0; i < repeat; ++i) {
-    char *buffc = new char[100];
-    u64toa_sse2(123123132, buffc);
-    // string(buffc, 100);
+    char *buffc = new char[20];
+    u64toa_sse2(1212121312, buffc);
     delete buffc;
   }
-  std::cout << "Time 1:" << getSystemTime() - timeStamp << std::endl;
+  std::cout << "Time 1: " << getSystemTime() - timeStamp << std::endl;
+
   timeStamp = getSystemTime();
   for (int i=0; i < repeat; ++i) {
-    toStringA(123123132);
+    toStringA(1212121312);
   }
-  std::cout << "Time 2:" << getSystemTime() - timeStamp << std::endl;
+  std::cout << "Time 2: " << getSystemTime() - timeStamp << std::endl;
   return 0;
 }
