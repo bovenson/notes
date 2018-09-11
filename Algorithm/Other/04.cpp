@@ -3,7 +3,7 @@
 
 using namespace std;
 
-bool solve(int n, bool[][] &arr) {
+bool solve(int n, bool arr[][n]) {
     return true;
 }
 

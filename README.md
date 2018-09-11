@@ -88,6 +88,9 @@ notes.
     - [ ] new & malloc
     - [ ] 堆 & 栈
     - [ ] struct & class
+      - [ ] sizeof(...struct)
+    - [ ] 指针 & 引用
+    - [ ] 友元
   - [ ] 特性
     - [ ] STL
       - [ ] 算法
@@ -127,3 +130,4 @@ notes.
 - [ ] 网络
   - [ ] TCP/IP
   - [ ] HTTP
+
