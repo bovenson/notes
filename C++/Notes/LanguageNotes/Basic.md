@@ -57,3 +57,151 @@ int main() {
 
 ## struct in c VS struct in c++
 
+# 特殊语法
+
+## 临时对象的产生和运用
+
+```shell
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+template <class T>
+void print(const T& v) {
+    cout << v << " ";
+}
+
+template <class T>
+class Print {
+public:
+    void operator()(const T& v) {
+        cout << v << " ";
+    }
+};
+
+int main() {
+    int val[] = {0, 1, 2, 3, 4, 5, 6};
+    vector<int> vec(val, val+7);
+    for_each(vec.begin(), vec.end(), print<int>);
+    cout << endl;
+    for_each(vec.begin(), vec.end(), Print<int>());	// Print<int>() 是一个临时对象
+    cout << endl;
+    return 0;
+}
+
+/** Output
+0 1 2 3 4 5 6 
+0 1 2 3 4 5 6 
+*/
+```
+
+## 静态常量整数成员可在class内部直接初始化
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+class A {
+public:
+    static const int a = 1;
+    // static int f = 1;    // ISO C++ forbids in-class initialization of non-const static member 'A::f'; 非const static int, 必须类外定义
+    // static const double b = 1.1; // constexpr' needed for in-class initialization of static data member 'const double A::b' of non-integral type
+    static const double c;
+    // static const string d = "d"; // in-class initialization of static data member 'const string A::d' of non-literal type
+    static const string e;
+};
+
+const double A::c = 1.2;
+// const static double A::c = 1.2;  // may not be used when defining (as opposed to declaring) a static data member
+const string A::e = "e";
+
+int main () {
+    return 0;
+}
+```
+
+**不仅只是int，整数类型都可以**
+
+- char
+- long
+- ...
+
+## 操作符重载
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+class INT {
+private:
+    int m_i;
+    friend ostream& operator<<(ostream& os, const INT& i);
+public:
+    INT(int i) : m_i(i) {}
+
+    INT& operator++ () {
+        ++(this->m_i);
+        return *this;
+    }
+
+    const INT operator++(int) {
+        INT temp = *this;
+        ++(*this);
+        return temp;
+    }
+
+    INT& operator--() {
+        --(this->m_i);
+        return *this;
+    }
+
+    const INT operator--(int) {
+        INT temp = *this;
+        --(*this);
+        return temp;
+    }
+
+    int& operator*() const {    // ? 将const int 转为non-const lvalue
+        return (int&)m_i;
+    }
+
+    void operator()() const {   // 如果不加const, 对于 const INT 无法使用该操作符
+        cout << m_i << endl;
+    }
+
+};
+
+ostream& operator<<(ostream& os, const INT& i) {
+    os << '[' << i.m_i << ']';
+    return os;
+}
+
+int main() {
+    INT I(5);
+    cout << I << endl;
+    I();
+    (I++)();
+    (++I)();
+    cout << I << endl;
+    (I--)();
+    (--I)();
+    cout << *I << endl;
+    return 0;
+}
+
+/** Output
+[5]
+5
+5
+7
+[7]
+7
+5
+5
+*/
+```
+
