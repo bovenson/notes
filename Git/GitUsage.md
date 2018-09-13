@@ -413,9 +413,6 @@ Git也允许手动建立追踪关系。
   07c50471 (bovenson 2017-09-12 18:47:01 +0800 15) }
   ```
 
-  ​
-
-
 
 ## 忽略文件
 
@@ -547,6 +544,28 @@ $ git config --global user.name "John Doe"
 $ git config --global user.email johndoe@example.com
 ```
 
+# 打标签
+
+```shell
+$ git tag -s "tag_name" -m "comments"
+# push 到远端
+$ git push origin <tag_name>	# one
+$ git push --tags				# all
+```
+
+## gpg问题
+
+```shell
+# 指定gpg程序
+$ git config --global gpg.program gpg2
+# 生成 secret key
+$ gpg2 --gen-key
+# 查看key
+$ gpg2 --list-keys
+```
+
+
+
 # 中文乱码
 
 [参考](https://gist.github.com/nightire/5069597#file-git-windows-md)
@@ -619,5 +638,15 @@ git diff 51d036ca9b9e62bbc4b4c3b3797d5499dd0a8b5c a935927dacec250c9643bdb64bf148
 
 ```shell
 git reset --hard 07deff6907565f08f1013201e78d3fae1609937f
+```
+
+# Problems
+
+## ssh认证问题
+
+```shell
+$ git push
+sign_and_send_pubkey: signing failed: agent refused operation
+$ ssh-add		# 本地客户端运行
 ```
 

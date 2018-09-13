@@ -1,11 +1,16 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
-int m, n;
-
 int main() {
-    cin >> m >> n;
-    for (int i=0; i < m; ++i)
+    int n, m, p, q;
+    cin >> n >> m;
+    bool g[n][n];
+    memset(g, 0, sizeof(bool) * n * n);
+    for (int i = 0; i < m; ++i) {
+        cin >> p >> q;
+        g[p][q] = g[q][p] = true;
+    }
     return 0;
 }

@@ -28,6 +28,16 @@ abccde
 
 # 路径
 
+## 获取绝对路径
+
+```shell
+$ readlink -f ../../ctr-score
+/home/work/sunzhenkai/Git/ctr-score
+$ link=`readlink -f ../../ctr-score`
+$ echo $link
+/home/work/sunzhenkai/Git/ctr-score
+```
+
 ## 打印当前目录下所有文件
 
 ```shell
