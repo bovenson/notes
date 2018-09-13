@@ -1,0 +1,20 @@
+{
+  "files.associations": {
+    "*.tpl": "html",
+    "map": "cpp",
+    "set": "cpp",
+    "string": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp",
+    "iosfwd": "cpp",
+    "__tree": "cpp",
+    "__split_buffer": "cpp",
+    "bitset": "cpp",
+    "__hash_table": "cpp",
+    "utility": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "ostream": "cpp"
+  }
+}
