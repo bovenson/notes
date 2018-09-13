@@ -1,6 +1,12 @@
 # Description
 notes.
 
+
+# More
+
+- [gitee](https://gitee.com/bovenson)
+- [cnblogs](https://www.cnblogs.com/bovenson)
+
 # TODO
 
 - [ ] ~~`Python`中`set`原理及效率~~
@@ -132,4 +138,7 @@ notes.
   - [ ] HTTP
 
 - [ ] 架构
+
   - [ ] protocolBuffer
+
+
