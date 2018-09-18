@@ -8,6 +8,7 @@ title: Kafka
   - Rebalance
     - Why
       - 是Kafka集群的一个保护设置，用于剔除掉无法消费或过慢的消费者
+      - 负载均衡
     - When
       - new consumer
       - consumer offline / exit / dead / unsubscribe
@@ -21,6 +22,8 @@ title: Kafka
       - 关闭 auto commit，手动管理offset和心跳
     - Rebalance Listener
       - [Ref](https://www.learningjournal.guru/courses/kafka/kafka-foundation-training/rebalance-listener/)
+    - more
+      - [Ref](https://www.cnblogs.com/huxi2b/p/6223228.html)
 
 - 名词
 
@@ -38,6 +41,7 @@ title: Kafka
     - 每个Consumer属于一个特定的ConsumerGroup
     - 一条消息可以发送到多个不同的ConsumerGroup
     - 一个ConsumerGroup中的一条消息只被一个Consumer处理
+    - 仅是用来对消费者进行分组来消费topic的消息
   - Partition
     - 物理上的概念
     - 一个topic可以分为多个partition
