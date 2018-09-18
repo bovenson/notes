@@ -6,6 +6,19 @@ title: Kafka
   - 介绍
     - [Ref](https://blog.csdn.net/lp284558195/article/details/80297208)
   - Rebalance
+    - Why
+      - 是Kafka集群的一个保护设置，用于剔除掉无法消费或过慢的消费者
+    - When
+      - new consumer
+      - consumer offline / exit / dead / unsubscribe
+      - 消费者订阅的topic出现分区数量变化
+    - 影响
+      - 重复消费
+      - Rebalance扩散到整个ConsumerGroup，一个Consumer的退出，导致Group进行Rebalance，影响面大
+      - 频繁的Rebalance导致重复消费及Rebalance占用大量时间
+      - 数据不能及时消费，会累计lag（消费滞后），在Kafka的TTL之后会丢弃数据
+    - improve
+      - 关闭 auto commit，手动管理offset和心跳
     - Rebalance Listener
       - [Ref](https://www.learningjournal.guru/courses/kafka/kafka-foundation-training/rebalance-listener/)
 
@@ -20,10 +33,11 @@ title: Kafka
     - 发布到Kafka集群的每条消息都需要指定一个topic
   - Producer
   - Consumer
+    - 一个Consumer可以消费一个或多个partition
   - ConsumerGroup
     - 每个Consumer属于一个特定的ConsumerGroup
     - 一条消息可以发送到多个不同的ConsumerGroup
-    - 一个ConsumerGroup只能有一个Consumer消费该消息
+    - 一个ConsumerGroup中的一条消息只被一个Consumer处理
   - Partition
     - 物理上的概念
     - 一个topic可以分为多个partition
@@ -36,7 +50,6 @@ title: Kafka
       - `.index`文件
       - `.log`文件
     - [Ref](https://blog.csdn.net/lp284558195/article/details/80297208)
-
   - Offset
     - 发布到partition的消息被追加到log文件的尾部
     - 每条消息在文件中的位置成为offset
@@ -66,3 +79,7 @@ title: Kafka
   - 业务数据收集
   - page view
   - ...
+
+- Ref
+  - [Ref 1](https://sq.163yun.com/blog/article/185482391401111552)
+  - [Ref 2](https://blog.csdn.net/lp284558195/article/details/80297208)
