@@ -215,3 +215,18 @@ STL中序列式容器包括：
   - merge
   - sort
   - reverse
+
+## priority_queue
+
+- empty
+- size
+- top
+- push
+- emplace
+  - c++11
+- pop
+- swap
+  - c++11
+
+# 关联式容器
+
