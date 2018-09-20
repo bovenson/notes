@@ -35,6 +35,11 @@ title: Kafka
     - Kafka根据Topic对消息进行归类
     - 发布到Kafka集群的每条消息都需要指定一个topic
   - Producer
+    - 参数
+      - Topic
+      - Partition（Optional）
+      - Key（Optional）
+      - Value
   - Consumer
     - 一个Consumer可以消费一个或多个partition
   - ConsumerGroup
@@ -44,10 +49,11 @@ title: Kafka
     - 仅是用来对消费者进行分组来消费topic的消息
   - Partition
     - 物理上的概念
-    - 一个topic可以分为多个partition
+    - 一个topic的信息可以划分到多个partition
     - 每个partition内部是有序的
     - 每个partition在存储层面是append log文件
     - 顺序写磁盘，效率非常高，这是Kafka高吞吐量的重要保证
+    - partition是broker属性，不影响producer
   - Segment
     - partition细分的物理该概念
     - 包括：
@@ -56,7 +62,7 @@ title: Kafka
     - [Ref](https://blog.csdn.net/lp284558195/article/details/80297208)
   - Offset
     - 发布到partition的消息被追加到log文件的尾部
-    - 每条消息在文件中的位置成为offset
+    - 每条消息在partition文件中的位置成为offset
     - offset是一个整形数字，唯一标记一条消息
   - Leader & Follower
     - 为了提高消息可靠性，Kafka为每个topic的partition设置N个副本
@@ -87,3 +93,4 @@ title: Kafka
 - Ref
   - [Ref 1](https://sq.163yun.com/blog/article/185482391401111552)
   - [Ref 2](https://blog.csdn.net/lp284558195/article/details/80297208)
+  - [Ref 3](http://www.infoq.com/cn/articles/kafka-analysis-part-4)

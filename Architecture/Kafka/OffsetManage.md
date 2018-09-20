@@ -96,6 +96,46 @@ public class ManualConsumer{
 - 使用异步提交
 - 当出现异常或退出时，使用同步提交
 
+# Offset backend storage
+
+Offset记录位置是根据Kafka broker版本和Kafka client版本决定。
+
+| Kafka version\Kafka deriver version |          `<0.9`           |          `>=0.9`          |
+| :---------------------------------- | :-----------------------: | :-----------------------: |
+| `<0.9`                              | Offset Storage: Zookeeper | Offset Storage: Zookeeper |
+| `>=0.9`                             | Offset Storage: Zookeeper |   Offset Storage: Kafka   |
+
+如果Broker存储Offset，处理方式：
+
+- Kafka把Offset作为Message存储在topic `__consumer_offsets` 中
+- 每个consumer定期向这个topic 提交Message，Message包括
+  - current offset
+  - consumer group
+  - partition number
+  - topic
+
+在kafka 0.11.x 版本配合 cppkafka client，可以断定，offset 后端存储是kafka broker进行管理，依据：
+
+- 可以查询到 `__consumer_offsets` 主题，且有offsets信息
+
+```shell
+$ ./kafka-console-consumer.sh --consumer.config /tmp/consumer.config --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" --topic __consumer_offsets --zookeeper *:2181/feeds/infra/feeds-kafka-srv --from-beginning
+[consumer,test,0]::[OffsetMetadata[332,NO_METADATA],CommitTime 1537347025096,ExpirationTime 1537433425096]
+...
+```
+
+- 对应zookeeper节点中没有对应offsets信息
+  - 路径格式：`/consumers/{CONSUMER_GROUP_ID}/offsets/{TOPIC_NAME}/{PARTITION_NUMBER}`
+
+Ref
+
+- [Ref 1](https://cwiki.apache.org/confluence/display/KAFKA/Offset+Management)
+- [Ref 2](https://elang2.github.io/myblog/posts/2017-09-20-Kafak-And-Zookeeper-Offsets.html)
+- [Ref 3](https://stackoverflow.com/questions/41137281/offsets-stored-in-zookeeper-or-kafka/41150833)
+- [Ref 4](https://stackoverflow.com/questions/33925866/kafka-how-to-read-from-consumer-offsets-topic)
+
 # 参考
 
 - [Kafka Foundation](https://www.learningjournal.guru/courses/kafka/kafka-foundation-training/offset-management/)
+- [Ref 1](https://stackoverflow.com/questions/27499277/number-of-commits-and-offset-in-each-partition-of-a-kafka-topic)
+- [Ref 2](https://elang2.github.io/myblog/posts/2017-09-20-Kafak-And-Zookeeper-Offsets.html)
