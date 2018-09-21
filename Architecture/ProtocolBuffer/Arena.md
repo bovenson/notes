@@ -38,4 +38,51 @@ message对象的存活时间和arena一样长，而且，不应该手动`delete`
 - `Arena()`
   - 创建一个新的arena，使用默认参数
 - `Arena(const ArenaOptions& options)`
-  - 
+
+## Allocation methods
+
+- `template<typename T> static T* CreateMessage(Arena *arena)` 
+
+  - 在Arena中创建一个新的 protobuf 消息对象
+  - 如果 arena 不为 `NULL`，则返回的消息对象在该 arena 中分配，它的内部存储、子消息会同样被分配在该arena，它们的生命周期和该arena一样。该对象禁止手动 delete/free。
+  - 如果 arena 为 `NULL`，则返回的消息分配在堆上，调用者拥有该对象。
+
+- `template<typename T> static T* Create(Arena* arena, args...)`
+
+  - 和`CreateMessage()`类似，但是允许在arena中创建任意class类型的对象，比如：
+
+    ```c++
+    // C++ 类
+    class MyCustomClass {
+        MyCustomClass(int arg1, int arg2);
+        // ...
+    };
+    
+    // 创建实例
+    void func() {
+        // ...
+        google::protobuf::Arena arena;
+        MyCustomClass* c = google::protobuf::Arena::Create<MyCustomClass>(&arena, constructor_arg1, constructor_arg2);
+        // ...
+    }
+    ```
+
+- `template<typename T> static T* CreateArray(Arena* arena, size_t n)`
+
+  - 如果 `arena` 是 `NULL` ，该方法分配n个T类型对象的raw storage，并返回。arena拥有返回的内存，在arena销毁时释放该内存。
+  - 如果 `arena` 是 `NULL`，该方法在堆上分配内存，调用者拥有该段内存。
+  - T 必须有一个简单构造函数，在arena上构造array时，不会调用构造函数。
+
+## Owned list methods
+
+下面的方法运行指定特定的对象或析构函数 '属于' 一个arena，确保在arena被删除时，这些对象也会被释放。
+
+- `template<typename T> void Own(T* object)`
+  - 添加object至arena拥有的堆对象列表
+  - 当arena销毁时，会遍历该列表使用 delete 关键词释放列表中每个对象。
+- `template<typename T> void OwnDestructor(T* object)`
+  - 添加对象的析构函数至arena的析构函数列表
+  - arena销毁时，会遍历执行该列表中的析构函数
+
+# Generated message class
+
