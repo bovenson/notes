@@ -35,3 +35,7 @@ message对象的存活时间和arena一样长，而且，不应该手动`delete`
 
 ## Constructors
 
+- `Arena()`
+  - 创建一个新的arena，使用默认参数
+- `Arena(const ArenaOptions& options)`
+  - 
