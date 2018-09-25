@@ -141,4 +141,11 @@ notes.
 
   - [ ] protocolBuffer
 
-
+- [ ] Linux
+  - [x] grep
+  - [ ] sort
+  - [ ] wc
+  - [ ] uniq
+  - [ ] cut
+  - [x] sed
+  - [x] awk

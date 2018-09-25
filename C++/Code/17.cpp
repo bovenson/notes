@@ -1,18 +1,3 @@
-# Sort
-
-```c++
-# 1
-template <class RandomAccessIterator> 
-  void sort (RandomAccessIterator first, RandomAccessIterator last);
-
-# 2
-template <class RandomAccessIterator, class Compare>
-  void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
-```
-
-## **数组排序**
-
-```c++
 #include <iostream>
 #include <stdlib.h>
 
@@ -43,12 +28,3 @@ int main() {
     display(arrj, 8);
     return 0;
 }
-
-/** Output
--1 0 1 2 2 3 4 9 
-9 4 3 2 2 1 0 -1
-*/
-```
-
-## 二位数组排序
-
