@@ -1,7 +1,8 @@
 - consumer 和 consumer group的关系？
   - 一个用户属于一个 consumer group
 - consumer group 和 topic 的关系？
-  - 没关系
+  - consumer group保存自己的offset
+  - 不同consumer group消费同一topic时，会消费同样的内容，各个group保存自己的offset
 - topic 和 partition 的关系？
   - topic 和 partition 不在一个抽象层次
   - 一个 topic 的消息会被划分到多个partition（如果partion数量被设定 > 1）
