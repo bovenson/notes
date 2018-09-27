@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+using namespace std;
+
+struct A {
+public:
+    int a, b;
+};
+
+int cmp(const void *pa, const void *pb) {
+    return ((A*)pa)->a - ((A*)pb)->a;
+}
+
+int main() {
+    A a[20];
+    for (int i = 0; i < 20; i++) {
+        a[i].a = i;
+        a[i].b = 20 -i;
+    }
+    qsort(a, 20, sizeof(a[0]), cmp);
+    for (int i = 0; i < 20; i++) {
+        cout << a[i].a << " " << a[i].b << endl;
+    }
+    return 0;
+}
