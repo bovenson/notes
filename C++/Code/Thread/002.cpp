@@ -36,6 +36,10 @@ int main() {
     sleep(1);
     std::thread nfthc(&A::f, &a, "hello");
 
+    sleep(5);
+    nth.join();
+
+    cout << "All DOEN" << endl;
     while (true) {}
     return 0;
 }

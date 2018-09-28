@@ -91,18 +91,21 @@ notes.
     - [ ] 面向对象
     - [ ] 模板与范型编程
     - [ ] 抛出异常
-    - [ ] new & malloc
+    - [x] new & malloc
     - [ ] 堆 & 栈
     - [ ] struct & class
       - [ ] sizeof(...struct)
     - [ ] 指针 & 引用
     - [ ] 友元
+    - [ ] move
+    - [ ] `* & &&`
+    - [x] `push_back emplace_back`
   - [ ] 特性
-    - [ ] STL
-      - [ ] 算法
-      - [ ] 容器
-        - [ ] stack
-      - [ ] 迭代器
+    - [x] STL
+      - [x] 算法
+      - [x] 容器
+        - [x] stack
+      - [x] 迭代器
 
 - [ ] 操作系统
 

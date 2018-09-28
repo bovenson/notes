@@ -32,9 +32,9 @@ public:
                 } else {
                     res[ptr].push_back(string(1, m[digits[i]][j]));
                 }
-                ptr = 1 - ptr;
-                res[ptr].clear();
             }
+            ptr = 1 - ptr;
+            res[ptr].clear();
         }
         return res[1-ptr];
     }
