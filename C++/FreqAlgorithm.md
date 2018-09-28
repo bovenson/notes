@@ -156,3 +156,15 @@ int main() {
 */
 ```
 
+# 数据结构初始化
+
+## map
+
+```c++
+// Initializer list
+std::map <int, std::string> x { 
+  { 42, "foo" }, 
+  { 3, "bar" } 
+};
+```
+

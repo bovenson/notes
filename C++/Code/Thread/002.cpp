@@ -1,5 +1,6 @@
 #include <iostream>
-#include <pthread.h>
+#include <unistd.h>
+#include <thread>
 #include <unistd.h>
 
 using namespace std;
@@ -7,13 +8,34 @@ using namespace std;
 class A {
 public:
     void f(string str) {
-        cout << str << endl;
+        cout << "A::f() " << str << endl;
+        sleep(3);
+    }
+
+    void fn() {
+        cout << "A::fn()" << endl;
         sleep(3);
     }
 };
 
+void f(string str) {
+    cout << "f(string str)" << str << endl;
+    sleep(3);
+}
+
+void fn() {
+    cout << "fn()" << endl;
+    sleep(3);
+}
+
 int main() {
     A a;
-    std::thread nth(&A::f, &a);
+    std::thread nth(f, "Hello");
+    sleep(1);
+    std::thread nfth(fn);
+    sleep(1);
+    std::thread nfthc(&A::f, &a, "hello");
+
+    while (true) {}
     return 0;
 }
