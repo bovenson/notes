@@ -36,6 +36,15 @@ $$
 
 ```c++
 // 两点式计算直线方程
-
+void pointToLine(int lax, int lay, int lbx, int lby, int &a, int &b, int &c) {
+    // 获取直线方程
+    a = lby - lay;
+    b = lax - lbx;
+    c = b * lay - a * lax;
+    cout << a << " " << b << " " << c << endl;
+}
 ```
 
+## 参考
+
+- [Ref 1](https://www.geeksforgeeks.org/program-find-line-passing-2-points/)
