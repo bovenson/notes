@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.tpl": "html",
-    "string": "cpp"
+    "string": "cpp",
+    "algorithm": "cpp"
   }
 }
