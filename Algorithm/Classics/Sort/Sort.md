@@ -11,6 +11,8 @@ categories:
 
 ## 分类
 
+### 是否比较
+
 **比较排序**
 
 -   冒泡排序
@@ -26,7 +28,12 @@ categories:
 -   基数排序
 -   桶排序
 
-**各排序算法对比**
+### 内/外部排序
+
+- 内部排序：待排序记录存放在计算机存储器中
+- 外部排序：需要借助外部空间进行排序
+
+## 对比
 
 ![](img/sort-01.jpg)
 
@@ -326,6 +333,61 @@ if __name__ == "__main__":
     print(ShellSort(arr))
 ```
 
+# 堆排序
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+void swap(int &a, int &b) {
+    int t = a;
+    a = b;
+    b = t;
+}
+
+void heapify(int arr[], int n, int cur) {
+    int next;
+    while (2 * cur + 1 < n) {
+        next = 2 * cur + 1;
+        
+        if (next + 1 < n && arr[next] < arr[next+1]) 
+            ++next;
+        
+        if (arr[cur] < arr[next]) {
+            swap(arr[cur], arr[next]);
+        } else {
+            break;
+        }
+        
+        cur = next;
+    }
+}
+
+void heapSort(int arr[], int n) {
+    for (int i = n / 2 - 1; i >= 0; --i) {
+        heapify(arr, n, i);
+    }
+    for (int i = n-1; i > 0; --i) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+    int arr[] = {1, -1, 0, 19, 5, 8, 3, 2, 1}, n = 9;
+    heapSort(arr, n);
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+/** Output
+-1 0 1 1 2 3 5 8 19
+*/
+```
+
 
 
 # 参考
@@ -333,3 +395,4 @@ if __name__ == "__main__":
 -   [参考一](https://www.cnblogs.com/eniac12/p/5329396.html)
 -   [参考二](https://www.cnblogs.com/onepixel/articles/7674659.html)
 -   [参考三](https://www.cnblogs.com/chengxiao/p/6104371.html)
+

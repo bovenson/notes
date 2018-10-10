@@ -12,7 +12,7 @@ int arr[10010];
 
 bool solve(int cur, int n, int c1, int c2, int mx) {
     if (c1 > n - 1 || c2 > n - 1) return false;
-    if (cur == n) {
+    if (cur >= n) {
         if (c1 == c2 && c1 == n - 1) return true;
         else return false;
     }
