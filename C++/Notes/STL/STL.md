@@ -97,3 +97,48 @@ SGI以`malloc()`和`free()`完成内存的配置和释放。
 
 ### 第二级配置器`__default_alloc_template`
 
+# 分类
+
+## 序列式容器
+
+- vector
+  - 连续线性空间存储
+- list
+  - 双链表实现
+- deque
+  - 双向开口
+  - **分段连续空间存储**
+- stack
+  - 先进后出
+  - deque作为缺省底部实现
+  - 不允许遍历
+- queue
+  - 先进先出
+  - deque作为缺省底部实现
+  - 不允许遍历
+- priority_queue
+  - 底部实现是堆
+  - 默认大根堆，所有每次pop都是最大的元素
+- slist
+  - 单链表实现
+
+## 关联式容器
+
+- set
+- map
+- multiset
+- multimap
+- hashtable
+- hash_set
+- hash_map
+- hash_multiset
+- hash_multimap
+
+# 对比
+
+## list VS slist
+
+- 共有操作时间复杂度相同
+- slist使用单链表，更节省空间
+- slist特别提供了`inert_after` 和 `erase_after`
+- slist不提供 `push_back()` ，只提供 `push_front`
