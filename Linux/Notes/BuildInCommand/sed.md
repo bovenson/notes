@@ -57,7 +57,7 @@ msg		msgmsg_backup	new_msg
 # replace string with another string
 
 ```shell
-sed -i s/head/heap/g' Heap.cpp
+sed -i 's/head/heap/g' Heap.cpp
 # sed -i '' 's/head/heap/g' Heap.cpp	# 不保留文件备份
 ```
 
