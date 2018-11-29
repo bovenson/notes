@@ -154,259 +154,307 @@ $ g++ -DHAVE_CONFIG_H -I. -I./src  -I./src -std=c++11 -D_GNU_SOURCE -I../nark-bo
 
 ## 结果
 
-```shell
+### **测试结果说明**
 
- ++++++++++++++++++++ 4 byte && map_grow ++++++++++++++++++++
+key为4byte, map_grow操作，不同hash map实现的耗时对比。
+
+```shell
+ ++++++++++++++++++++4 byte && map_grow++++++++++++++++++++	
    'SPARSE_HASH_MAP' :  175.0
     'DENSE_HASH_MAP' :  37.6
  'STANDARD HASH_MAP' :  78.9
       'STANDARD MAP' :  457.2
           'NARK MAP' :  43.8
+```
 
- ++++++++++++++++++++ 4 byte && map_predict/grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  71.2
-    'DENSE_HASH_MAP' :  16.2
- 'STANDARD HASH_MAP' :  50.3
-      'STANDARD MAP' :  450.0
-          'NARK MAP' :  37.8
+### 测试结果
 
- ++++++++++++++++++++ 4 byte && map_replace ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  28.4
-    'DENSE_HASH_MAP' :  8.5
- 'STANDARD HASH_MAP' :  16.2
-      'STANDARD MAP' :  254.3
-          'NARK MAP' :  16.8
+#### **random fetch(find)**
 
- ++++++++++++++++++++ 4 byte && map_fetch_random ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  145.0
-    'DENSE_HASH_MAP' :  20.8
- 'STANDARD HASH_MAP' :  72.5
-      'STANDARD MAP' :  1431.9
-          'NARK MAP' :  53.1
+```shell
+++++++++++++++++++++4 byte  && map_fetch_random++++++++++++++++++++
+   'SPARSE_HASH_MAP': 145.0
+    'DENSE_HASH_MAP': 20.8
+ 'STANDARD HASH_MAP': 72.5
+      'STANDARD MAP': 1431.9
+          'NARK MAP': 53.1
 
- ++++++++++++++++++++ 4 byte && map_fetch_sequential ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  41.2
-    'DENSE_HASH_MAP' :  5.0
- 'STANDARD HASH_MAP' :  15.6
-      'STANDARD MAP' :  269.1
-          'NARK MAP' :  15.2
+++++++++++++++++++++8 byte  && map_fetch_random++++++++++++++++++++
+   'SPARSE_HASH_MAP': 141.4
+    'DENSE_HASH_MAP': 29.7
+ 'STANDARD HASH_MAP': 74.0
+      'STANDARD MAP': 1414.0
+          'NARK MAP': 60.5
 
- ++++++++++++++++++++ 4 byte && map_fetch_empty ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  16.3
-    'DENSE_HASH_MAP' :  4.2
- 'STANDARD HASH_MAP' :  15.2
-      'STANDARD MAP' :  3.9
-          'NARK MAP' :  13.4
+++++++++++++++++++++16 byte  && map_fetch_random++++++++++++++++++++
+   'SPARSE_HASH_MAP': 147.5
+    'DENSE_HASH_MAP': 47.4
+ 'STANDARD HASH_MAP': 100.9
+      'STANDARD MAP': 1207.7
+          'NARK MAP': 81.6
 
- ++++++++++++++++++++ 4 byte && map_remove ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  49.9
-    'DENSE_HASH_MAP' :  9.8
- 'STANDARD HASH_MAP' :  36.2
-      'STANDARD MAP' :  231.8
-          'NARK MAP' :  23.7
+++++++++++++++++++++256 byte  && map_fetch_random++++++++++++++++++++
+   'SPARSE_HASH_MAP': 183.7
+    'DENSE_HASH_MAP': 118.0
+ 'STANDARD HASH_MAP': 169.5
+      'STANDARD MAP': 650.8
+          'NARK MAP': 149.7
+```
 
- ++++++++++++++++++++ 4 byte && map_toggle ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  164.0
-    'DENSE_HASH_MAP' :  46.8
- 'STANDARD HASH_MAP' :  75.8
-      'STANDARD MAP' :  79.8
-          'NARK MAP' :  35.6
+#### **map_remove(erase)**
 
- ++++++++++++++++++++ 4 byte && map_iterate ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  6.9
-    'DENSE_HASH_MAP' :  5.2
- 'STANDARD HASH_MAP' :  3.8
-      'STANDARD MAP' :  23.0
-          'NARK MAP' :  1.7
+```shell
+++++++++++++++++++++4 byte  && map_remove++++++++++++++++++++
+   'SPARSE_HASH_MAP': 49.9
+    'DENSE_HASH_MAP': 9.8
+ 'STANDARD HASH_MAP': 36.2
+      'STANDARD MAP': 231.8
+          'NARK MAP': 23.7
 
- ++++++++++++++++++++ 8 byte && map_grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  225.0
-    'DENSE_HASH_MAP' :  57.2
- 'STANDARD HASH_MAP' :  81.7
-      'STANDARD MAP' :  470.8
-          'NARK MAP' :  62.1
+++++++++++++++++++++8 byte  && map_remove++++++++++++++++++++
+   'SPARSE_HASH_MAP': 54.3
+    'DENSE_HASH_MAP': 11.3
+ 'STANDARD HASH_MAP': 37.8
+      'STANDARD MAP': 227.4
+          'NARK MAP': 26.3
 
- ++++++++++++++++++++ 8 byte && map_predict/grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  117.9
-    'DENSE_HASH_MAP' :  18.1
- 'STANDARD HASH_MAP' :  51.2
-      'STANDARD MAP' :  475.4
-          'NARK MAP' :  48.4
+++++++++++++++++++++16 byte  && map_remove++++++++++++++++++++
+   'SPARSE_HASH_MAP': 64.9
+    'DENSE_HASH_MAP': 27.3
+ 'STANDARD HASH_MAP': 44.1
+      'STANDARD MAP': 212.1
+          'NARK MAP': 34.6
 
- ++++++++++++++++++++ 8 byte && map_replace ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  31.7
-    'DENSE_HASH_MAP' :  8.3
- 'STANDARD HASH_MAP' :  15.9
-      'STANDARD MAP' :  276.5
-          'NARK MAP' :  20.1
+++++++++++++++++++++256 byte  && map_remove++++++++++++++++++++
+   'SPARSE_HASH_MAP': 305.1
+    'DENSE_HASH_MAP': 239.2
+ 'STANDARD HASH_MAP': 97.3
+      'STANDARD MAP': 182.3
+          'NARK MAP': 110.7
+```
 
- ++++++++++++++++++++ 8 byte && map_fetch_random ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  141.4
-    'DENSE_HASH_MAP' :  29.7
- 'STANDARD HASH_MAP' :  74.0
-      'STANDARD MAP' :  1414.0
-          'NARK MAP' :  60.5
+#### **fetch empty**
 
- ++++++++++++++++++++ 8 byte && map_fetch_sequential ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  44.7
-    'DENSE_HASH_MAP' :  7.6
- 'STANDARD HASH_MAP' :  18.7
-      'STANDARD MAP' :  266.7
-          'NARK MAP' :  17.3
+```shell
+++++++++++++++++++++4 byte  && map_fetch_empty++++++++++++++++++++
+   'SPARSE_HASH_MAP': 16.3
+    'DENSE_HASH_MAP': 4.2
+ 'STANDARD HASH_MAP': 15.2
+      'STANDARD MAP': 3.9
+          'NARK MAP': 13.4
 
- ++++++++++++++++++++ 8 byte && map_fetch_empty ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  16.8
-    'DENSE_HASH_MAP' :  6.4
- 'STANDARD HASH_MAP' :  16.4
-      'STANDARD MAP' :  4.3
-          'NARK MAP' :  15.0
+++++++++++++++++++++8 byte  && map_fetch_empty++++++++++++++++++++
+   'SPARSE_HASH_MAP': 16.8
+    'DENSE_HASH_MAP': 6.4
+ 'STANDARD HASH_MAP': 16.4
+      'STANDARD MAP': 4.3
+          'NARK MAP': 15.0
 
- ++++++++++++++++++++ 8 byte && map_remove ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  54.3
-    'DENSE_HASH_MAP' :  11.3
- 'STANDARD HASH_MAP' :  37.8
-      'STANDARD MAP' :  227.4
-          'NARK MAP' :  26.3
+++++++++++++++++++++16 byte  && map_fetch_empty++++++++++++++++++++
+   'SPARSE_HASH_MAP': 17.4
+    'DENSE_HASH_MAP': 7.2
+ 'STANDARD HASH_MAP': 22.4
+      'STANDARD MAP': 4.3
+          'NARK MAP': 20.8
 
- ++++++++++++++++++++ 8 byte && map_toggle ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  178.8
-    'DENSE_HASH_MAP' :  51.4
- 'STANDARD HASH_MAP' :  79.1
-      'STANDARD MAP' :  78.0
-          'NARK MAP' :  43.8
+++++++++++++++++++++256 byte  && map_fetch_empty++++++++++++++++++++
+   'SPARSE_HASH_MAP': 39.5
+    'DENSE_HASH_MAP': 29.1
+ 'STANDARD HASH_MAP': 66.0
+      'STANDARD MAP': 25.1
+          'NARK MAP': 55.1
+```
 
- ++++++++++++++++++++ 8 byte && map_iterate ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  6.5
-    'DENSE_HASH_MAP' :  5.5
- 'STANDARD HASH_MAP' :  3.9
-      'STANDARD MAP' :  29.2
-          'NARK MAP' :  2.3
+#### **map_fetch_sequential**
 
- ++++++++++++++++++++ 16 byte && map_grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  320.1
-    'DENSE_HASH_MAP' :  103.3
- 'STANDARD HASH_MAP' :  105.9
-      'STANDARD MAP' :  400.5
-          'NARK MAP' :  78.6
+```shell
+++++++++++++++++++++4 byte  && map_fetch_sequential++++++++++++++++++++
+   'SPARSE_HASH_MAP': 41.2
+    'DENSE_HASH_MAP': 5.0
+ 'STANDARD HASH_MAP': 15.6
+      'STANDARD MAP': 269.1
+          'NARK MAP': 15.2
 
- ++++++++++++++++++++ 16 byte && map_predict/grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  181.9
-    'DENSE_HASH_MAP' :  31.3
- 'STANDARD HASH_MAP' :  63.1
-      'STANDARD MAP' :  364.3
-          'NARK MAP' :  65.1
+++++++++++++++++++++8 byte  && map_fetch_sequential++++++++++++++++++++
+   'SPARSE_HASH_MAP': 44.7
+    'DENSE_HASH_MAP': 7.6
+ 'STANDARD HASH_MAP': 18.7
+      'STANDARD MAP': 266.7
+          'NARK MAP': 17.3
 
- ++++++++++++++++++++ 16 byte && map_replace ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  40.9
-    'DENSE_HASH_MAP' :  21.3
- 'STANDARD HASH_MAP' :  22.3
-      'STANDARD MAP' :  211.3
-          'NARK MAP' :  30.9
+++++++++++++++++++++16 byte  && map_fetch_sequential++++++++++++++++++++
+   'SPARSE_HASH_MAP': 55.0
+    'DENSE_HASH_MAP': 19.2
+ 'STANDARD HASH_MAP': 24.8
+      'STANDARD MAP': 245.5
+          'NARK MAP': 23.0
 
- ++++++++++++++++++++ 16 byte && map_fetch_random ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  147.5
-    'DENSE_HASH_MAP' :  47.4
- 'STANDARD HASH_MAP' :  100.9
-      'STANDARD MAP' :  1207.7
-          'NARK MAP' :  81.6
+++++++++++++++++++++256 byte  && map_fetch_sequential++++++++++++++++++++
+   'SPARSE_HASH_MAP': 163.4
+    'DENSE_HASH_MAP': 120.7
+ 'STANDARD HASH_MAP': 124.6
+      'STANDARD MAP': 220.9
+          'NARK MAP': 69.7
+```
 
- ++++++++++++++++++++ 16 byte && map_fetch_sequential ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  55.0
-    'DENSE_HASH_MAP' :  19.2
- 'STANDARD HASH_MAP' :  24.8
-      'STANDARD MAP' :  245.5
-          'NARK MAP' :  23.0
+#### **map_grow**
 
- ++++++++++++++++++++ 16 byte && map_fetch_empty ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  17.4
-    'DENSE_HASH_MAP' :  7.2
- 'STANDARD HASH_MAP' :  22.4
-      'STANDARD MAP' :  4.3
-          'NARK MAP' :  20.8
+```shell
+++++++++++++++++++++4 byte  && map_grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 175.0
+    'DENSE_HASH_MAP': 37.6
+ 'STANDARD HASH_MAP': 78.9
+      'STANDARD MAP': 457.2
+          'NARK MAP': 43.8
 
- ++++++++++++++++++++ 16 byte && map_remove ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  64.9
-    'DENSE_HASH_MAP' :  27.3
- 'STANDARD HASH_MAP' :  44.1
-      'STANDARD MAP' :  212.1
-          'NARK MAP' :  34.6
+++++++++++++++++++++8 byte  && map_grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 225.0
+    'DENSE_HASH_MAP': 57.2
+ 'STANDARD HASH_MAP': 81.7
+      'STANDARD MAP': 470.8
+          'NARK MAP': 62.1
 
- ++++++++++++++++++++ 16 byte && map_toggle ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  197.1
-    'DENSE_HASH_MAP' :  74.7
- 'STANDARD HASH_MAP' :  95.8
-      'STANDARD MAP' :  77.9
-          'NARK MAP' :  67.0
+++++++++++++++++++++16 byte  && map_grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 320.1
+    'DENSE_HASH_MAP': 103.3
+ 'STANDARD HASH_MAP': 105.9
+      'STANDARD MAP': 400.5
+          'NARK MAP': 78.6
 
- ++++++++++++++++++++ 16 byte && map_iterate ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  6.6
-    'DENSE_HASH_MAP' :  6.8
- 'STANDARD HASH_MAP' :  6.5
-      'STANDARD MAP' :  18.3
-          'NARK MAP' :  2.4
+++++++++++++++++++++256 byte  && map_grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 1319.9
+    'DENSE_HASH_MAP': 598.2
+ 'STANDARD HASH_MAP': 260.9
+      'STANDARD MAP': 298.9
+          'NARK MAP': 245.9
+```
 
- ++++++++++++++++++++ 256 byte && map_grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  1319.9
-    'DENSE_HASH_MAP' :  598.2
- 'STANDARD HASH_MAP' :  260.9
-      'STANDARD MAP' :  298.9
-          'NARK MAP' :  245.9
+#### **map_iterate**
 
- ++++++++++++++++++++ 256 byte && map_predict/grow ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  936.3
-    'DENSE_HASH_MAP' :  282.0
- 'STANDARD HASH_MAP' :  165.5
-      'STANDARD MAP' :  301.6
-          'NARK MAP' :  236.2
+```shell
+++++++++++++++++++++4 byte  && map_iterate++++++++++++++++++++
+   'SPARSE_HASH_MAP': 6.9
+    'DENSE_HASH_MAP': 5.2
+ 'STANDARD HASH_MAP': 3.8
+      'STANDARD MAP': 23.0
+          'NARK MAP': 1.7
 
- ++++++++++++++++++++ 256 byte && map_replace ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  169.7
-    'DENSE_HASH_MAP' :  137.5
- 'STANDARD HASH_MAP' :  90.3
-      'STANDARD MAP' :  221.8
-          'NARK MAP' :  90.1
+++++++++++++++++++++8 byte  && map_iterate++++++++++++++++++++
+   'SPARSE_HASH_MAP': 6.5
+    'DENSE_HASH_MAP': 5.5
+ 'STANDARD HASH_MAP': 3.9
+      'STANDARD MAP': 29.2
+          'NARK MAP': 2.3
 
- ++++++++++++++++++++ 256 byte && map_fetch_random ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  183.7
-    'DENSE_HASH_MAP' :  118.0
- 'STANDARD HASH_MAP' :  169.5
-      'STANDARD MAP' :  650.8
-          'NARK MAP' :  149.7
+++++++++++++++++++++16 byte  && map_iterate++++++++++++++++++++
+   'SPARSE_HASH_MAP': 6.6
+    'DENSE_HASH_MAP': 6.8
+ 'STANDARD HASH_MAP': 6.5
+      'STANDARD MAP': 18.3
+          'NARK MAP': 2.4
 
- ++++++++++++++++++++ 256 byte && map_fetch_sequential ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  163.4
-    'DENSE_HASH_MAP' :  120.7
- 'STANDARD HASH_MAP' :  124.6
-      'STANDARD MAP' :  220.9
-          'NARK MAP' :  69.7
+++++++++++++++++++++256 byte  && map_iterate++++++++++++++++++++
+   'SPARSE_HASH_MAP': 21.6
+    'DENSE_HASH_MAP': 36.7
+ 'STANDARD HASH_MAP': 13.3
+      'STANDARD MAP': 60.5
+          'NARK MAP': 11.4
+```
 
- ++++++++++++++++++++ 256 byte && map_fetch_empty ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  39.5
-    'DENSE_HASH_MAP' :  29.1
- 'STANDARD HASH_MAP' :  66.0
-      'STANDARD MAP' :  25.1
-          'NARK MAP' :  55.1
+#### **map_predict/grow**
 
- ++++++++++++++++++++ 256 byte && map_remove ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  305.1
-    'DENSE_HASH_MAP' :  239.2
- 'STANDARD HASH_MAP' :  97.3
-      'STANDARD MAP' :  182.3
-          'NARK MAP' :  110.7
+```shell
+++++++++++++++++++++4 byte  && map_predict/grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 71.2
+    'DENSE_HASH_MAP': 16.2
+ 'STANDARD HASH_MAP': 50.3
+      'STANDARD MAP': 450.0
+          'NARK MAP': 37.8
 
- ++++++++++++++++++++ 256 byte && map_toggle ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  529.6
-    'DENSE_HASH_MAP' :  284.9
- 'STANDARD HASH_MAP' :  260.3
-      'STANDARD MAP' :  171.5
-          'NARK MAP' :  145.0
+++++++++++++++++++++8 byte  && map_predict/grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 117.9
+    'DENSE_HASH_MAP': 18.1
+ 'STANDARD HASH_MAP': 51.2
+      'STANDARD MAP': 475.4
+          'NARK MAP': 48.4
 
- ++++++++++++++++++++ 256 byte && map_iterate ++++++++++++++++++++
-   'SPARSE_HASH_MAP' :  21.6
-    'DENSE_HASH_MAP' :  36.7
- 'STANDARD HASH_MAP' :  13.3
-      'STANDARD MAP' :  60.5
-          'NARK MAP' :  11.4
+++++++++++++++++++++16 byte  && map_predict/grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 181.9
+    'DENSE_HASH_MAP': 31.3
+ 'STANDARD HASH_MAP': 63.1
+      'STANDARD MAP': 364.3
+          'NARK MAP': 65.1
+
+++++++++++++++++++++256 byte  && map_predict/grow++++++++++++++++++++
+   'SPARSE_HASH_MAP': 936.3
+    'DENSE_HASH_MAP': 282.0
+ 'STANDARD HASH_MAP': 165.5
+      'STANDARD MAP': 301.6
+          'NARK MAP': 236.2
+```
+
+#### **map_replace**
+
+```shell
+++++++++++++++++++++4 byte  && map_replace++++++++++++++++++++
+   'SPARSE_HASH_MAP': 28.4
+    'DENSE_HASH_MAP': 8.5
+ 'STANDARD HASH_MAP': 16.2
+      'STANDARD MAP': 254.3
+          'NARK MAP': 16.8
+
+++++++++++++++++++++8 byte  && map_replace++++++++++++++++++++
+   'SPARSE_HASH_MAP': 31.7
+    'DENSE_HASH_MAP': 8.3
+ 'STANDARD HASH_MAP': 15.9
+      'STANDARD MAP': 276.5
+          'NARK MAP': 20.1
+
+++++++++++++++++++++16 byte  && map_replace++++++++++++++++++++
+   'SPARSE_HASH_MAP': 40.9
+    'DENSE_HASH_MAP': 21.3
+ 'STANDARD HASH_MAP': 22.3
+      'STANDARD MAP': 211.3
+          'NARK MAP': 30.9
+
+++++++++++++++++++++256 byte  && map_replace++++++++++++++++++++
+   'SPARSE_HASH_MAP': 169.7
+    'DENSE_HASH_MAP': 137.5
+ 'STANDARD HASH_MAP': 90.3
+      'STANDARD MAP': 221.8
+          'NARK MAP': 90.1
+```
+
+#### **map_toggle**
+
+```shell
+++++++++++++++++++++4 byte  && map_toggle++++++++++++++++++++
+   'SPARSE_HASH_MAP': 164.0
+    'DENSE_HASH_MAP': 46.8
+ 'STANDARD HASH_MAP': 75.8
+      'STANDARD MAP': 79.8
+          'NARK MAP': 35.6
+
+++++++++++++++++++++8 byte  && map_toggle++++++++++++++++++++
+   'SPARSE_HASH_MAP': 178.8
+    'DENSE_HASH_MAP': 51.4
+ 'STANDARD HASH_MAP': 79.1
+      'STANDARD MAP': 78.0
+          'NARK MAP': 43.8
+
+++++++++++++++++++++16 byte  && map_toggle++++++++++++++++++++
+   'SPARSE_HASH_MAP': 197.1
+    'DENSE_HASH_MAP': 74.7
+ 'STANDARD HASH_MAP': 95.8
+      'STANDARD MAP': 77.9
+          'NARK MAP': 67.0
+
+++++++++++++++++++++256 byte  && map_toggle++++++++++++++++++++
+   'SPARSE_HASH_MAP': 529.6
+    'DENSE_HASH_MAP': 284.9
+ 'STANDARD HASH_MAP': 260.3
+      'STANDARD MAP': 171.5
+          'NARK MAP': 145.0
 ```
 
 # 参考
@@ -477,11 +525,29 @@ for _i in range(len(size_list)):
 # print(res[0][0][0])
 # print(res[-1][-1][-2])
 
-for _i in range(len(size_list)):
-    for _k in range(len(item_list)):
-        print('\n', '+' * 20, size_list[_i], 'byte', '&&', item_list[_k], '+' * 20)
-        for _j in range(len(map_list)):
-            print(repr(map_list[_j]).rjust(20), ': ', '{0:.1f}'.format(res[_i][_j][_k]))
+def print_all():
+    with open('all.txt', 'w+') as f:
+        for _i in range(len(size_list)):
+            for _k in range(len(item_list)):
+                f.write('\n' + '+' * 20 + str(size_list[_i]) + ' byte ' + ' && ' + str(item_list[_k]) + '+' * 20)
+                for _j in range(len(map_list)):
+                    f.write(repr(map_list[_j]).rjust(20) + ': ' + '{0:.1f}'.format(res[_i][_j][_k]))
+    
+
+# print oper
+def print_oper(oper):
+    _k = item_list.index(oper)
+    _file_name = os.path.join('.', 'analysis', (oper + '.txt').replace('/', ''))
+    with open(_file_name, 'w+') as f:
+        for _i in range(len(size_list)):
+            f.write('\n' + '+' * 20 + str(size_list[_i]) + ' byte ' + ' && ' + str(item_list[_k]) + '+' * 20 + '\n')
+            for _j in range(len(map_list)):
+                f.write(repr(map_list[_j]).rjust(20) + ': ' + '{0:.1f}'.format(res[_i][_j][_k]) + '\n')
+
+
+
+for _oper in item_list:
+    print_oper(_oper)
 ```
 
 ## time_hash_map示例输出
