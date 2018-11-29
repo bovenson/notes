@@ -144,6 +144,14 @@ gcc version 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC)
 
 实验共进行8组，结果参见链接 ^[8]^，示例结果参考附录，统计对应变量去除最大、最小值后的平均值，统计程序 ^[9]^ 见附录。
 
+## 编译
+
+**编译命令**如下。
+
+```shell
+$ g++ -DHAVE_CONFIG_H -I. -I./src  -I./src -std=c++11 -D_GNU_SOURCE -I../nark-bone/src -I../nark-hashmap/src -Wall -W -Wwrite-strings -Woverloaded-virtual -Wshadow -g -O2 -MT time_hash_map-time_hash_map.o -MD -MP -MF .deps/time_hash_map-time_hash_map.Tpo -c -o time_hash_map-time_hash_map.o `test -f 'src/time_hash_map.cc' || echo './'`src/time_hash_map.cc
+```
+
 ## 结果
 
 ```shell
