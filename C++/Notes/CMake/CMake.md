@@ -103,6 +103,39 @@ aux_source_directory(. DIR_LIB_SRCS)
 add_library(MathFunctions ${DIR_LIB_SRCS})
 ```
 
+## `link_directories`
+
+指定连接器查找库的文件夹。此命令的相对路径被解释为相对于当前源目录。
+
+**格式**
+
+```shell
+link_directories(directory1 directory2 ...)
+```
+
+**示例** 
+
+```cmake
+link_directories(${PROJECT_BINARY_DIR}/third_party/googletest/)
+```
+
+## `include_directories`
+
+将给定的目录添加到编译器用来搜索包含文件的目录中。相对路径被解释为相对于当前源目录。
+
+**格式**
+
+```cmake
+include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])
+```
+
+**示例**
+
+```cmake
+include_directories(${PROJECT_SOURCE_DIR}/third_party/glog/)
+include_directories(${PROJECT_SOURCE_DIR}/third_party/hdfs/)
+```
+
 # 示例
 
 ```shell

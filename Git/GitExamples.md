@@ -147,5 +147,9 @@ git rebase -i commit_id	# commit-id 为要删除的commit的下一个commit号
 git log	# 查看
 ```
 
-# 搭建Git服务器
+# 检出远程分支为本地分支
+
+```shell
+$ git chekcout -b local_branch_name remotes/origin_or_something/branch_name
+```
 

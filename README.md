@@ -9,6 +9,14 @@ notes.
 
 # TODO
 
+- [ ] [实现Tensorflow多机并行线性加速](https://zhuanlan.zhihu.com/p/29149294)
+
+- [ ] [参数服务器——分布式机器学习的新杀器](https://t.cj.sina.com.cn/articles/view/6464244551/1814c8b47001006smv)
+
+- [ ]  [对分网络与推荐系统](https://www.douban.com/note/19702921/)
+
+-----
+
 - [x] ~~`Python`中`set`原理及效率~~
 
 - [x] ~~切片操作的效率(对比遍历)~~
@@ -170,6 +178,7 @@ notes.
 
 - [ ] 并行程序设计导论
 - [ ] 计算广告
+- [ ] 深入理解计算机系统
 
 # Task
 
@@ -193,4 +202,4 @@ notes.
   - [ ] 分布式系统
   - [ ] 高并发
     - [ ] 模型
-- [ ] map benchmark
+- [x] map benchmark

@@ -15,6 +15,14 @@ tmpfs           788M  2.9M  785M    1% /run
 tmpfs           3.9G  8.8M  3.9G    1% /dev/shm
 ...
 
+# 查看文件/文件夹空间占用
 $ du -h --max-depth=1 .
+```
+
+# 查看网络信息
+
+```shell
+# sar命令
+$ sar -n DEV 1 1
 ```
 
