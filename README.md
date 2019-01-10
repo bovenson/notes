@@ -9,11 +9,19 @@ notes.
 
 # TODO
 
-- [ ] [实现Tensorflow多机并行线性加速](https://zhuanlan.zhihu.com/p/29149294)
+- [ ] see [深度学习中embedding层的理解](https://blog.csdn.net/program_developer/article/details/80852710)
 
-- [ ] [参数服务器——分布式机器学习的新杀器](https://t.cj.sina.com.cn/articles/view/6464244551/1814c8b47001006smv)
+- [ ] see xdl源码
 
-- [ ]  [对分网络与推荐系统](https://www.douban.com/note/19702921/)
+- [ ] see params server
+
+- [ ] see yarn
+
+- [ ] read [实现Tensorflow多机并行线性加速](https://zhuanlan.zhihu.com/p/29149294)
+
+- [ ] read [参数服务器——分布式机器学习的新杀器](https://t.cj.sina.com.cn/articles/view/6464244551/1814c8b47001006smv)
+
+- [ ]  read [对分网络与推荐系统](https://www.douban.com/note/19702921/)
 
 -----
 

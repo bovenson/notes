@@ -28,6 +28,6 @@ categories:
 # 参考
 
 - [[1]实现Tensorflow多机并行线性加速](https://zhuanlan.zhihu.com/p/29149294)
-
 - [[2]十分钟了解分布式计算:Petuum](https://www.cnblogs.com/wei-li/p/Petuum.html)
 - [[3]参数服务器——分布式机器学习的新杀器](https://t.cj.sina.com.cn/articles/view/6464244551/1814c8b47001006smv)
+- [4] https://www.zybuluo.com/Dounm/note/517675

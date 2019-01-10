@@ -43,7 +43,8 @@ $ cat msg
 }
 
 # 直接修改源文件并且不保存备份
-$ sed -i '' '/localhost/p; s/localhost/dev.worker/' msgmsg_backup
+$ sed -i '/localhost/p; s/localhost/dev.worker/' msgmsg_backup
+# $ sed -i '' '/localhost/p; s/localhost/dev.worker/' msgmsg_backup	# os x
 $ cat msgmsg_backup
 {
 'localhost' => ['domain_name' => 'default', 'domain_type' => 'mobile'],
@@ -52,6 +53,18 @@ $ cat msgmsg_backup
 
 $ ls
 msg		msgmsg_backup	new_msg
+
+#### Other Examples
+## 正则替换
+$ cat script/config.sh
+workers=6666
+threads_compute=10
+threads=101
+$ sed -i "s/workers=[0-9]*/workers=9/" ./script/config.sh
+$ cat script/config.sh
+workers=9
+threads_compute=10
+threads=101
 ```
 
 # replace string with another string

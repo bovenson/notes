@@ -20,8 +20,6 @@ docker ps	# need root
 
 ```
 
-
-
 ## 停止运行容器
 
 ```shell
