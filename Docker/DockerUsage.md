@@ -81,8 +81,6 @@ $ docker rename CONTAINER NEW_NAME
 $ docker update --restart=always container_name/container_id	# --restart=no
 ```
 
-
-
 # 镜像
 
 ## 加载镜像
