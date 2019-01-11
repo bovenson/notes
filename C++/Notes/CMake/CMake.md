@@ -121,7 +121,7 @@ link_directories(${PROJECT_BINARY_DIR}/third_party/googletest/)
 
 ## `include_directories`
 
-将给定的目录添加到编译器用来搜索包含文件的目录中。相对路径被解释为相对于当前源目录。
+将给定的目录添加到编译器用来搜索头文件的目录中。相对路径被解释为相对于当前源目录。
 
 **格式**
 

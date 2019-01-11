@@ -1,4 +1,4 @@
-# 判断Mac OS
+# 判断OS
 
 ```cmake
 if (APPLE)
