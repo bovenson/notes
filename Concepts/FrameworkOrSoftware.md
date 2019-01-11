@@ -1,0 +1,9 @@
+# Mohout
+
+Apache Mahout是Apache Software Foundation （ASF）旗下的一个开源项目，提供了一些经典的机器学习的算法，皆在帮助开发人员更加方便快捷地创建智能应用程序。目前已经有了三个公共发型版本，通ApacheMahout库，Mahout可以有效地扩展到云中。Mahout包括许多实现，包括聚类、分类、推荐引擎、频繁子项挖掘。
+
+Apache Mahout的主要目标是建立可伸缩的机器学习算法。这种可伸缩性是针对大规模的数据集而言的。Apache Mahout的算法运行在Apache Hadoop平台下，它通过Mapreduce模式实现。但是，Apache Mahout并非严格要求算法的实现基于Hadoop平台，单个节点或非Hadoop平台也可以。Apache Mahout核心库的非分布式算法也具有良好的性能。
+
+Mahout 是一个机器学习 Java 类库的集合，用于完成各种各样的任务，如分类、评价性的聚类和模式挖掘等。
+
+Mahout开源项目就是一个Hadoop云平台的算法库，已经实现了多种经典算法，并一直在扩充中，其目标就是致力于创建一个可扩容的云平台算法库。

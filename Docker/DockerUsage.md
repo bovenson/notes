@@ -6,6 +6,18 @@
 
 Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 [Linux](http://baike.baidu.com/item/Linux) 机器上，也可以实现[虚拟化](http://baike.baidu.com/item/%E8%99%9A%E6%8B%9F%E5%8C%96)。容器是完全使用[沙箱](http://baike.baidu.com/item/%E6%B2%99%E7%AE%B1/393318)机制，相互之间不会有任何接口。
 
+# 容器
+
+## 从镜像创建新容器
+
+```shell
+$ docker run -d --restart=always ubuntu:16.04
+```
+
+## 启动容器
+
+$ docker start container_id/container_name
+
 ## 查看运行的容器
 
 使用`docker ps`命令可以查看所有正在运行中的容器列表，使用`docker inspect`命令我们可以查看更详细的关于某一个容器的信息。
@@ -14,19 +26,13 @@ Docker 是一个开源的应用容器引擎，让开发者可以打包他们的�
 docker ps	# need root
 ```
 
-### 示例
-
-```shell
-
-```
-
 ## 停止运行容器
 
 ```shell
 docker stop container-name
 ```
 
-### 示例
+**示例**
 
 为了显示更直观, 删除部分内容并使用省略号代替.
 
@@ -52,9 +58,7 @@ CONTAINER ID        IMAGE             ...
 7effd23c7005        elk_kibana        ...
 ```
 
-#### 停止所有运行的容器
-
-上续.
+**停止所有运行的容器**
 
 ```shell
 root@VirtualBox:/home/conpot# docker ps -q
@@ -66,13 +70,33 @@ root@VirtualBox:/home/conpot# docker stop $(docker ps -q)
 root@VirtualBox:/home/conpot# docker ps -q
 ```
 
-## 镜像管理
+## 重命名容器
 
-### 加载镜像
+```shell
+$ docker rename CONTAINER NEW_NAME
+```
+## 更新容器设置
+
+```shell
+$ docker update --restart=always container_name/container_id	# --restart=no
+```
+
+
+
+# 镜像
+
+## 加载镜像
 
 ```shell
 docker load < docker_app_file
 ```
 
+# 执行命令
 
+```shell
+$ docker exec -it /bin/bash
+```
 
+# 参考
+
+- [[1] Docker容器的创建、启动、和停止](http://www.cnblogs.com/linjiqin/p/8608975.html)
