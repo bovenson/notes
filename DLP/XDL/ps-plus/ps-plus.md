@@ -143,17 +143,19 @@ ps::Status st = service.Start();
 - int
 - bool
 
-# scheduler_impl
+# scheduler
 
-## attributes
+## scheduler_impl
+
+### attributes
 
 - main_thread_
 - vp_string_
 - service_
 
-## methods
+### methods
 
-### Start
+#### Start
 
 ```flow
 start=>start: Start
@@ -166,7 +168,7 @@ end=>end: End
 start->MainThreadReset->MetaThreadReset->ServiceStart->return->end
 ```
 
-### Main
+#### Main
 
 ```flow
 start=>start: Start
@@ -179,7 +181,7 @@ end=>end: end
 start->WaitForServers->LockM_->set->MainLoop->end
 ```
 
-### WaitForServers
+#### WaitForServers
 
 ```flow
 LockM_=>operation: lock m_
@@ -188,7 +190,7 @@ return=>operation: do while true when lack of server node
 LockM_->return
 ```
 
-### MainLoop
+#### MainLoop
 
 ```flow
 start=>start: Start
@@ -211,7 +213,21 @@ SyncReset->OPCB
 OPCB->end
 ```
 
+## scheduler_service
 
+### methods
+
+#### Start
+
+```flow
+start=>start: Start
+SeaLibReset=>operation: seastar_lib.reset(new SeastarServerClientLib)
+RegisterFunctions=>operation: seastar_lib.registerFunc(...)
+SeastarStart=>operation: seastar_lib.Start()
+end=>end: End
+
+start->SeaLibReset->RegisterFunctions->SeastarStart->end
+```
 
 # message
 
@@ -235,7 +251,42 @@ OPCB->end
 - GetManager
 - OpenWriteAny
 
+# seastar
+
+## methods
+
+### Start
+
+```flow
+start=>start: Start
+AllocateCpu=>operation: AllocateCpu
+ToCmdOptions=>operation: ToCmdOptions
+ResetThread=>operation: thread_.reset(...)
+Sleep=>operation: Sleep(2)
+End=>end: End
+
+start->AllocateCpu->ToCmdOptions->ResetThread->Sleep->End
+```
+
+# flows
+
+## scheduler start
+
+```flow
+Start=>start: Start
+MainServiceStart=>operation: main.cc > SchedulerImpl service > service.Start()
+SchedulerServiceStart=>operation: scheduler_impl.cc > SchedulerService service > service.Start()
+SeastarStart=>operation: scheduler_service.cc > SeastarServerClientLib seastar_lib_ > seastar_lib_.Start()
+DefineContext=>operation: seastar_server_client_lib.cc > ServerClientNetworkContext context_
+CreateInstanceInContext=>operation: server_client_network_context.hh > CreateInstance()
+RunDeprecated=>operation: server_client_network_context.hh > run_deprecated(...) > this->GetClient.start(...)
+End=>end: End
+
+Start->MainServiceStart->SchedulerServiceStart->SeastarStart->DefineContext->CreateInstanceInContext->RunDeprecated->End
+```
+
 # question
 
-- scheduler palcementer (放置)?
+- scheduler palcementer (放置) ?
 - internal
+- udf ?

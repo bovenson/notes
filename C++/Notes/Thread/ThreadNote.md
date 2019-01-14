@@ -489,6 +489,32 @@ fb() done
   */
   ```
 
+## 线程+lambda
+
+```shell
+$ cat 07.cpp 
+#include <iostream>
+#include <unistd.h>
+#include <thread>
+
+using namespace std;
+
+int main() {
+    thread th([]() {
+        int i = 0;
+        while (true) {
+            cout << "- " << i++ << " -" << endl;
+            sleep(2);
+        }
+    });
+    th.join();
+    return 0;
+}
+$ g++ 07.cpp -lpthread && ./a.out 
+- 0 -
+- 1 -
+```
+
 # 参考
 
 - [线程管理](http://www.cplusplus.com/forum/beginner/196573/)
