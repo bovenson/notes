@@ -127,3 +127,115 @@ ps::scheduler::SchedulerImpl service(
 ps::Status st = service.Start();
 ```
 
+# common
+
+## option_parser
+
+参数工具，支持：
+
+- addOption
+- parseArgs
+- getOptionValue
+
+操作。参数类型包括：
+
+- string
+- int
+- bool
+
+# scheduler_impl
+
+## attributes
+
+- main_thread_
+- vp_string_
+- service_
+
+## methods
+
+### Start
+
+```flow
+start=>start: Start
+MainThreadReset=>operation: main_thread_reset
+MetaThreadReset=>operation: meta_thread_reset
+ServiceStart=>operation: ServiceStart
+return=>operation: return
+end=>end: End
+
+start->MainThreadReset->MetaThreadReset->ServiceStart->return->end
+```
+
+### Main
+
+```flow
+start=>start: Start
+WaitForServers=>operation: for WaitForServers util n server
+LockM_=>operation: Lock mutex m_
+set=>operation: set op_code_, op_checkpoint_, op_cb_
+MainLoop=>operation: MainLoop
+end=>end: end
+
+start->WaitForServers->LockM_->set->MainLoop->end
+```
+
+### WaitForServers
+
+```flow
+LockM_=>operation: lock m_
+return=>operation: do while true when lack of server node
+
+LockM_->return
+```
+
+### MainLoop
+
+```flow
+start=>start: Start
+switch=>condition: op_code_ == kSave
+InternalSave=>operation: InternalSave
+InternalRestore=>operation: InternalRestore
+OPCB=>operation: op_cb_(st)
+SyncJudge=>condition: sync_ == true ?
+SyncReset=>operation: sync_reset
+end=>end: End
+
+start->switch
+switch(yes)->InternalSave
+switch(no)->InternalRestore
+InternalSave->OPCB
+InternalRestore->SyncJudge
+SyncJudge(yes)->SyncReset
+SyncJudge(no)->OPCB
+SyncReset->OPCB
+OPCB->end
+```
+
+
+
+# message
+
+## streaming_model_writer
+
+### struct
+
+- DenseModel
+- SparseModel
+- HashModel
+
+### methods
+
+- WriteDenseModel
+- WriteSparseModel
+- WriteHashModel
+
+## streaming_model_manager
+
+- OpenWriter
+- GetManager
+- OpenWriteAny
+
+# question
+
+- scheduler palcementer (放置)?
+- internal

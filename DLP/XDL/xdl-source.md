@@ -107,7 +107,7 @@ cpp->pybind->python
     - _create_session
     - run
 - variable
-  - VarType [class]
+  - VarType [class]	
   - Variable [class]
   - methods
     - variable_info
