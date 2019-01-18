@@ -26,3 +26,10 @@ $ du -h --max-depth=1 .
 $ sar -n DEV 1 1
 ```
 
+# 查看系统配置
+
+```shell
+$ lscpu	# 硬件信息
+$ uname -a	# 系统信息
+```
+

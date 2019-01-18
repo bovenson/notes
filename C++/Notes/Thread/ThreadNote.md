@@ -492,6 +492,7 @@ fb() done
 ## 线程+lambda
 
 ```shell
+#### example 1
 $ cat 07.cpp 
 #include <iostream>
 #include <unistd.h>
@@ -513,6 +514,33 @@ int main() {
 $ g++ 07.cpp -lpthread && ./a.out 
 - 0 -
 - 1 -
+
+#### example 2
+$ cat 13.cpp
+#include <iostream>
+#include <future>
+#include <thread>
+#include <chrono>
+
+using namespace std;
+
+int main() {
+    std::promise<bool> p;
+    thread th([&]() {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        cout << "set value true" << endl;
+        p.set_value(true);
+    });
+    th.detach();
+    cout << "th detach" << endl;
+    p.get_future().wait();
+    cout << "exit" << endl;
+    return 0;
+}
+$ g++ 13.cpp -lpthread -std=c++11 && ./a.out
+th detach
+set value true
+exit
 ```
 
 # 参考
