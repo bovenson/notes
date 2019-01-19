@@ -49,3 +49,29 @@ $ g++ 010.cpp && ./a.out
 
 ```
 
+# parameter pack
+
+- https://en.cppreference.com/w/cpp/language/parameter_pack
+- https://blog.csdn.net/zt_xcyk/article/details/73912606
+
+```c++
+template<typename... Arguments>
+void SampleFunction(Arguments... parameters);
+
+// equals to
+
+template<typename T, typename U>
+void SampleFunction(T param1, U param2);
+```
+
+
+
+# 完美转发
+
+无论是T&&、左值引用、右值引用，std::forward都会依照原来的类型完美转发。
+
+- https://blog.csdn.net/ink_cherry/article/details/74573225
+
+# 省略号语法
+
+- http://www.cplusplus.com/articles/EhvU7k9E/
