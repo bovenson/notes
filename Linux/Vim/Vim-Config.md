@@ -34,6 +34,9 @@ set smartindent
 
 # 显示匹配
 set showmatch
+
+# 按键映射
+inoremap jj <Esc>
 ```
 
 # 安装插件

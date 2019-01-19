@@ -6,8 +6,6 @@ categories:
 	- Python
 ---
 
-
-
 # 简介
 
 Matplotlib
@@ -121,3 +119,15 @@ plt.show()
 ```
 
 ![](img/03.png)
+
+## Sample 4 - set size && save picture
+
+```python
+#### way 1
+from matplotlib.pyplot import figure
+figure(figsize=(20, 10), dpi=80,)
+
+#### way 2
+plt.figure(figsize=(15, 10), dpi=80)
+```
+
