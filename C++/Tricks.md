@@ -64,7 +64,38 @@ template<typename T, typename U>
 void SampleFunction(T param1, U param2);
 ```
 
+```shell
+bovenson@Dell:~/Git/notes/C++/Code/Learn$ cat 005.cpp 
+#include <iostream>
 
+using namespace std;
+
+void fa(int a, int b) {
+    cout << a << " " << b << endl;
+}
+
+template<typename... Args>
+void f(Args... args) {
+    fa((args)...);
+    fa(args...);
+    fa(std::forward<Args>(args)...);
+    // fa(std::forward<Args>((args)...)); // ERROR
+}
+
+
+int main() {
+    f<int, int>(1, 2);	 // OK
+    f(1, 2);			// OK
+    return 0;
+}
+bovenson@Dell:~/Git/notes/C++/Code/Learn$ g++ 005.cpp  && ./a.out 
+1 2
+1 2
+1 2
+1 2
+1 2
+1 2
+```
 
 # 完美转发
 
