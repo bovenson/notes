@@ -97,6 +97,33 @@ bovenson@Dell:~/Git/notes/C++/Code/Learn$ g++ 005.cpp  && ./a.out
 1 2
 ```
 
+```shell
+MBP:Learn sunzhenkai$ cat 16.cpp
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+template <typename... T>
+void f(T... args) {
+    std::vector<int> v = { args... };
+    for (auto item : v) {
+        std::cout << item << std::endl;
+    }
+}
+
+int main() {
+    f(1, 2, 3, 4, 5);
+    return 0;
+}
+MBP:Learn sunzhenkai$ g++ 16.cpp -std=c++11 && ./a.out
+1
+2
+3
+4
+5
+```
+
 # 完美转发
 
 无论是T&&、左值引用、右值引用，std::forward都会依照原来的类型完美转发。
@@ -106,3 +133,32 @@ bovenson@Dell:~/Git/notes/C++/Code/Learn$ g++ 005.cpp  && ./a.out
 # 省略号语法
 
 - http://www.cplusplus.com/articles/EhvU7k9E/
+
+# Amazing
+
+```c++
+MBP:Learn sunzhenkai$ cat 15.cpp
+#include <iostream>
+
+using namespace std;
+
+class A { };
+
+class B {
+    public:
+    B(A a) {}
+};
+
+void fun(B b) {
+    cout << "OK? OK!" << endl;
+}
+
+int main() {
+    A a;
+    fun(a);
+    return 0;
+}
+MBP:Learn sunzhenkai$ g++ 15.cpp && ./a.out
+OK? OK!
+```
+
