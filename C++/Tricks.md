@@ -49,3 +49,60 @@ $ g++ 010.cpp && ./a.out
 
 ```
 
+# parameter pack
+
+- https://en.cppreference.com/w/cpp/language/parameter_pack
+- https://blog.csdn.net/zt_xcyk/article/details/73912606
+
+```c++
+template<typename... Arguments>
+void SampleFunction(Arguments... parameters);
+
+// equals to
+
+template<typename T, typename U>
+void SampleFunction(T param1, U param2);
+```
+
+```shell
+bovenson@Dell:~/Git/notes/C++/Code/Learn$ cat 005.cpp 
+#include <iostream>
+
+using namespace std;
+
+void fa(int a, int b) {
+    cout << a << " " << b << endl;
+}
+
+template<typename... Args>
+void f(Args... args) {
+    fa((args)...);
+    fa(args...);
+    fa(std::forward<Args>(args)...);
+    // fa(std::forward<Args>((args)...)); // ERROR
+}
+
+
+int main() {
+    f<int, int>(1, 2);	 // OK
+    f(1, 2);			// OK
+    return 0;
+}
+bovenson@Dell:~/Git/notes/C++/Code/Learn$ g++ 005.cpp  && ./a.out 
+1 2
+1 2
+1 2
+1 2
+1 2
+1 2
+```
+
+# 完美转发
+
+无论是T&&、左值引用、右值引用，std::forward都会依照原来的类型完美转发。
+
+- https://blog.csdn.net/ink_cherry/article/details/74573225
+
+# 省略号语法
+
+- http://www.cplusplus.com/articles/EhvU7k9E/
