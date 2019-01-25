@@ -10,3 +10,9 @@ elseif (UNIX)
 endif()
 ```
 
+# 生成共享库
+
+```cmake
+add_library(name SHARED src)
+```
+
