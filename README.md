@@ -13,13 +13,13 @@ notes.
 
 - [ ] see xdl源码
 
-- [ ] see params server
+- [x] see params server
 
 - [ ] see yarn
 
 - [ ] read [实现Tensorflow多机并行线性加速](https://zhuanlan.zhihu.com/p/29149294)
 
-- [ ] read [参数服务器——分布式机器学习的新杀器](https://t.cj.sina.com.cn/articles/view/6464244551/1814c8b47001006smv)
+- [x] read [参数服务器——分布式机器学习的新杀器](https://t.cj.sina.com.cn/articles/view/6464244551/1814c8b47001006smv)
 
 - [ ]  read [对分网络与推荐系统](https://www.douban.com/note/19702921/)
 
@@ -187,6 +187,7 @@ notes.
 - [ ] 并行程序设计导论
 - [ ] 计算广告
 - [ ] 深入理解计算机系统
+- [ ] C++性能优化指南
 
 # Task
 
