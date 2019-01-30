@@ -98,6 +98,8 @@ target_link_libraries(Demo MathFunctions)
 
 ## `add_library`
 
+将指定的源文件生成链接文件，然后添加到工程中去
+
 ```cmake
 aux_source_directory(. DIR_LIB_SRCS)
 add_library(MathFunctions ${DIR_LIB_SRCS})
@@ -135,6 +137,17 @@ include_directories([AFTER|BEFORE] [SYSTEM] dir1 [dir2 ...])
 include_directories(${PROJECT_SOURCE_DIR}/third_party/glog/)
 include_directories(${PROJECT_SOURCE_DIR}/third_party/hdfs/)
 ```
+
+# 变量
+
+## 常用变量
+
+- PROJECT_BINARY_DIR
+  - Full path to build directory for project.
+- PROJECT_SOURCE_DIR
+  - Top level source directory for the current project.
+- CMAKE_CURRENT_SOURCE_DIR
+  - This the full path to the source directory that is currently being processed by cmake.
 
 # 示例
 

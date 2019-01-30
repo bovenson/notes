@@ -566,7 +566,10 @@ $ gpg2 --list-keys
 
 # Submodules
 
-
+```shell
+#### add submodule
+$ git add submodule git@git..../... local/path
+```
 
 ## 参考
 

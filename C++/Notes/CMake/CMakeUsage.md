@@ -1,3 +1,15 @@
+# 设置cmake最小版本
+
+```cmake
+cmake_minimum_required(VERSION 2.8)
+```
+
+# 设置项目名称
+
+```cmake
+project("...")
+```
+
 # 判断OS
 
 ```cmake
@@ -14,5 +26,30 @@ endif()
 
 ```cmake
 add_library(name SHARED src)
+```
+
+# 生成可执行文件
+
+```cmake
+
+```
+
+# 包含cmake文件
+
+```cmake
+include(path/to/cmake)
+```
+
+# 打印消息
+
+```cmake
+MESSAGE("msg...")
+```
+
+# 指定compiler
+
+```cmake
+set(CMAKE_C_COMPILER "gcc-5")
+set(CMAKE_CXX_COMPILER "g++-5")
 ```
 
