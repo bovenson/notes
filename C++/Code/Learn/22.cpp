@@ -29,6 +29,7 @@ Logger::Logger(const char* fname, int line, int serverity) {
     this->fname_ = fname;
     this->line_ = line;
     this->serverity_ = serverity;
+    std::cout << "INTE " << line << std::endl;
 }
 
 
@@ -49,5 +50,7 @@ void Logger::GenerateLogMsg() {
 
 int main() {
     LOG(DEBUG) << "HELLO LOG";
+    LOG(DEBUG) << 1;
+    LOG(DEBUG) << 1LL;
     return 0;
 }
