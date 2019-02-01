@@ -36,3 +36,7 @@ DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
 logging.basicConfig(level=logging.DEBUG, filename="i.log", format=LOG_FORMAT, datefmt=DATE_FORMAT)
 ```
 
+# 问题
+
+- 无法输出到文件/打印日志？
+  - 要确保在调用`logging.basicConfig`之前没有使用`logging`
