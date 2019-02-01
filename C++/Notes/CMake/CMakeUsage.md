@@ -53,3 +53,9 @@ set(CMAKE_C_COMPILER "gcc-5")
 set(CMAKE_CXX_COMPILER "g++-5")
 ```
 
+# 编译类型
+
+```shell
+set(CMAKE_BUILD_TYPE=Release)	# or Debug
+```
+
