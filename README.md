@@ -9,6 +9,8 @@ notes.
 
 # TODO
 
+- [ ] 贫血
+
 - [ ] see [深度学习中embedding层的理解](https://blog.csdn.net/program_developer/article/details/80852710)
 
 - [ ] see xdl源码
