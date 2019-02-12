@@ -1,5 +1,5 @@
 ---
-title: C++ Tricks
+ title: C++ Tricks
 tags:
 	- C++
 	- Tricks
