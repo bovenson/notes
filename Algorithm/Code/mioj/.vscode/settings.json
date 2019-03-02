@@ -1,0 +1,8 @@
+{
+    "C_Cpp.default.cppStandard": "c++11",
+    "files.associations": {
+        "vector": "cpp"
+    },
+    "C_Cpp.default.intelliSenseMode": "gcc-x64",
+    "C_Cpp.default.cStandard": "c11"
+}

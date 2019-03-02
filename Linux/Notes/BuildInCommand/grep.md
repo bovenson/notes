@@ -38,3 +38,17 @@ grep（global search regular expression(RE) and print out the line，全面搜�
 | -y                | 此参数效果跟“-i”相同                             |
 | -o                | 只输出文件中匹配到的部分                             |
 
+# 示例
+
+```shell
+### 1
+# 在目录下查找文本
+$ grep -rnw '/path/to/somewhere/' -e 'pattern'
+
+##
+# -r or -R is recursive,
+# -n is line number, and
+# -w stands for match the whole word.
+# -l (lower-case L) can be added to just give the file name of matching files.
+```
+
