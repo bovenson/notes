@@ -16,7 +16,9 @@ $ docker run -d --restart=always ubuntu:16.04
 
 ## 启动容器
 
+```shell
 $ docker start container_id/container_name
+```
 
 ## 查看运行的容器
 
@@ -81,6 +83,12 @@ $ docker rename CONTAINER NEW_NAME
 $ docker update --restart=always container_name/container_id	# --restart=no
 ```
 
+## 执行命令
+
+```shell
+$ docker exec -it /bin/bash
+```
+
 # 镜像
 
 ## 加载镜像
@@ -89,10 +97,23 @@ $ docker update --restart=always container_name/container_id	# --restart=no
 docker load < docker_app_file
 ```
 
-# 执行命令
+## Search
 
 ```shell
-$ docker exec -it /bin/bash
+$ docker search ubuntu
+```
+
+## 下载
+
+```shell
+$ docker pull
+```
+
+## 查看下载的容器
+
+```shell
+$ docker images
+$ docker images ubuntu	# 查看单个镜像
 ```
 
 # 参考
