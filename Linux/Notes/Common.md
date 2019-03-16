@@ -33,3 +33,25 @@ $ lscpu	# 硬件信息
 $ uname -a	# 系统信息
 ```
 
+# 搜索文件名
+
+```shell
+$ find . -name "foo*"
+```
+
+# 搜索指定路径下文件中的字符串
+
+```shell
+$ grep -r "word" /path/to/search
+```
+
+# 替换目录下所有字符串
+
+```shell
+$ find . -type f -exec sed -i 's/foo/bar/g' {} +
+$ find . -type f -exec sed -i '' 's/foo/bar/g' {} +		# mac os x
+
+$ find . -type f -name '*.h' -exec sed -i 's/foo/bar/g' {} +	
+$ find . -type f -not -name '*.h' -exec sed -i '' 's/foo/bar/g' {} + # exclude
+```
+
