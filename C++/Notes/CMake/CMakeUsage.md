@@ -31,7 +31,7 @@ add_library(name SHARED src)
 # 生成可执行文件
 
 ```cmake
-
+add_executable(MAIN src/main.cpp)
 ```
 
 # 包含cmake文件
@@ -57,5 +57,12 @@ set(CMAKE_CXX_COMPILER "g++-5")
 
 ```shell
 set(CMAKE_BUILD_TYPE=Release)	# or Debug
+```
+
+# 指定FLAGS
+
+```shell
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 ```
 

@@ -21,3 +21,11 @@ project("pybindcpp")
 add_executable(HELLO src/pybindcpp.cpp)
 ```
 
+**编译**
+
+```shell
+$ mkdir build && cd build
+$ cmake ..
+$ make
+```
+

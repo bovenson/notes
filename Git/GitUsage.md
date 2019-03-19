@@ -15,7 +15,7 @@
   $ git config --global user.email "szhkai@qq.com"
   ```
 
-  ​
+  
 
 ## GIT的版本库结构图 
 
@@ -569,6 +569,12 @@ $ gpg2 --list-keys
 ```shell
 #### add submodule
 $ git submodule add git@git..../... local/path
+
+#### 递归clone
+$ git clone ... --recursive
+
+#### 更新/下载子模块
+git submodule update --init --recursive
 ```
 
 ## 参考
