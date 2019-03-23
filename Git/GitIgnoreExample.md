@@ -56,6 +56,8 @@ local.properties
 
 # idea 
 .idea/
+
+**/target/**
 ```
 
 # Python

@@ -637,6 +637,20 @@ do
 done
 # 输出
 This is a string
+
+# 示例3
+## from 0 to 10 by step 2
+$ for i in `seq 0 2 10`; do echo $i; done
+0
+2
+4
+6
+8
+10
+## PS
+# seq [选项]... 尾数
+# seq [选项]... 首数 尾数
+# seq [选项]... 首数 增量 尾数
 ```
 
 ## while 语句
@@ -671,20 +685,6 @@ while read FILM
 do
     echo "是的！$FILM 是一部好电影"
 done
-
-# 示例3
-## from 0 to 10 by step 2
-$ for i in `seq 0 2 10`; do echo $i; done
-0
-2
-4
-6
-8
-10
-## PS
-# seq [选项]... 尾数
-# seq [选项]... 首数 尾数
-# seq [选项]... 首数 增量 尾数
 ```
 
 ## 无限循环
