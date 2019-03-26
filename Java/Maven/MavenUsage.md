@@ -50,3 +50,9 @@ $ mvn package
 </build>
 ```
 
+# 搜索依赖包
+
+```shell
+ $ mvn dependency:tree | grep recommend-service-common
+```
+
