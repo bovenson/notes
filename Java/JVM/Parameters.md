@@ -1,0 +1,6 @@
+```shell
+-Xmx 
+-Xms 
+-Xmn 
+```
+

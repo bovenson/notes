@@ -77,3 +77,12 @@ Created on $today.year/$today.month/$today.day.
 
 - 添加 Scope - Copyright Profile
 - 右键 -> generate -> copyright
+
+# 注释符在行首的问题
+
+```shell
+Setting -> Editor -> Code Style -> Comment Code
+	- 取消 Line comment in first column
+	- 勾选 Add a space at comment start 
+```
+
