@@ -25,7 +25,11 @@ abccde
 # 循环
 
 ```shell
+#### while
+$ while true; do echo "HELLO"; sleep 1; done
 
+#### for
+$ for i in {1..10}; do echo -n "This is a test in loop $i "; date ; sleep 5; done
 ```
 
 # 参数
@@ -228,3 +232,20 @@ $1 1>/etc/null 2>&1 &
   `mstart gedit`
 
 **这样就可以在后台启动一个程序,且不会在控制台打印程序的输出信息.**
+
+## 间隔执行命令
+
+```shell
+#### watch
+$ watch -n 1 date		# 每秒打印日期
+
+#### while 循环
+$ while true; do date; sleep 1; done	# 每秒打印日期
+```
+
+### 统计
+
+```shell
+$ recommend-service-user]$ cat recommend-service-user.stdout.log.20190416 | grep "remote address" | awk 'match($0, /[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/){ print substr($0, RSTART, RLENGTH) }' | sort | uniq -c | sort -rn
+```
+

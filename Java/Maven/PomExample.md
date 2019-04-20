@@ -1,3 +1,89 @@
+# scala
+
+```xml
+<!-- properties -->
+<properties>
+  <scala.version>2.12.7</scala.version>
+  <scala.compat.version>2.12</scala.compat.version>
+  <encoding>UTF-8</encoding>
+</properties>
+
+<!-- dependencies -->
+<dependencies>
+  <dependency>
+    <groupId>org.scala-lang</groupId>
+    <artifactId>scala-library</artifactId>
+    <version>${scala.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>org.scala-lang.modules</groupId>
+    <artifactId>scala-xml_${scala.compat.version}</artifactId>
+    <version>1.1.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.scala-lang.modules</groupId>
+    <artifactId>scala-parser-combinators_${scala.compat.version}</artifactId>
+    <version>1.1.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.scala-lang.modules</groupId>
+    <artifactId>scala-swing_${scala.compat.version}</artifactId>
+    <version>2.0.3</version>
+  </dependency>
+</dependencies>
+
+<!-- plugins -->
+<plugins>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+      <source>1.8</source>
+      <target>1.8</target>
+      <fork>true</fork>
+      <verbose>true</verbose>
+      <encoding>UTF-8</encoding>
+      <compilerArguments>
+        <sourcepath>
+          ${project.basedir}/src/main/java
+        </sourcepath>
+        <sourcepath>
+          ${project.basedir}/src/main/scala
+        </sourcepath>
+      </compilerArguments>
+    </configuration>
+  </plugin>
+  <plugin>
+    <groupId>net.alchim31.maven</groupId>
+    <artifactId>scala-maven-plugin</artifactId>
+  </plugin>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>2.4</version>
+    <configuration>
+      <descriptorRefs>
+        <descriptorRef>jar-with-dependencies</descriptorRef>
+      </descriptorRefs>
+      <archive>
+        <manifest>
+          <mainClass>com.*.Class</mainClass>
+        </manifest>
+      </archive>
+    </configuration>
+    <executions>
+      <execution>
+        <phase>package</phase>
+        <goals>
+          <goal>single</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+</plugins>
+```
+
+# example
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
