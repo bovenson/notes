@@ -556,12 +556,31 @@ $ git push --tags				# all
 ## gpg问题
 
 ```shell
+# 安装 gpg 程序
+$ brew install gnupg	# mac os
+
 # 指定gpg程序
-$ git config --global gpg.program gpg2
+$ git config --global gpg.program $(which gpg)	# mac os
+$ git config --global gpg.program gpg2					# ubuntu
 # 生成 secret key
 $ gpg2 --gen-key
 # 查看key
 $ gpg2 --list-keys
+# $ gpg --list-keys		# gpg for mac, gpg2 for ubuntu
+/Users/sunzhenkai/.gnupg/pubring.kbx
+------------------------------------
+pub   rsa2048 2019-04-23 [SC] [expires: 2021-04-22]
+      E214F599*...*
+uid           [ultimate] sunzhenkai <szhkai@qq.com>
+sub   rsa2048 2019-04-23 [E] [expires: 2021-04-22]
+
+$ git config --global user.signingkey E214F599*...*
+
+#### for mac
+# firstly, uninstall pinentry & gnupg
+$ brew install pinentry-mac
+$ brew install gnugp2
+$ git config --global gpg.program $(which gpg)
 ```
 
 # Submodules

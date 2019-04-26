@@ -10,7 +10,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 ubuntu              16.04               9361ce633ff1        3 days ago          118MB
 
 # 创建container
-$ docker run -it --name Ubuntu1604 ubuntu:16.04 /bin/bash
+$ docker run -it --name szk-ubuntu1604 ubuntu:16.04 /bin/bash
 # 更新
 root@307052e95732:/# apt update
 # 替换软件源
@@ -36,6 +36,7 @@ root@307052e95732:/#
 ## ip
 root@307052e95732:/# apt install -y net-tools iputils-ping iproute2	
 ## java
+
 root@307052e95732:/# apt install maven
 ```
 

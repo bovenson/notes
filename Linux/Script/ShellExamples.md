@@ -30,6 +30,12 @@ $ while true; do echo "HELLO"; sleep 1; done
 
 #### for
 $ for i in {1..10}; do echo -n "This is a test in loop $i "; date ; sleep 5; done
+
+### 循环加1
+$ a=0; while true; do ((a=a+1)) && echo $a; sleep 1; done
+1
+2
+3
 ```
 
 # 参数
