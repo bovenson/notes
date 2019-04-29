@@ -249,9 +249,15 @@ $ watch -n 1 date		# 每秒打印日期
 $ while true; do date; sleep 1; done	# 每秒打印日期
 ```
 
-### 统计
+## 统计
 
 ```shell
 $ recommend-service-user]$ cat recommend-service-user.stdout.log.20190416 | grep "remote address" | awk 'match($0, /[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/){ print substr($0, RSTART, RLENGTH) }' | sort | uniq -c | sort -rn
+```
+
+## 读取文件并按行处理
+
+```shell
+$ while read p; do host $p; done < file-name
 ```
 
