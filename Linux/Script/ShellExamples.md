@@ -258,6 +258,9 @@ $ recommend-service-user]$ cat recommend-service-user.stdout.log.20190416 | grep
 ## 读取文件并按行处理
 
 ```shell
+## 01
 $ while read p; do host $p; done < file-name
+## 02
+$ cat 03 | while read line; do host $line; done
 ```
 
