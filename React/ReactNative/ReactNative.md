@@ -145,6 +145,24 @@ react-native log-android
 </dict>
 ```
 
+## Android 允许Http请求
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.loveproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+      ...
+      android:usesCleartextTraffic="true">
+      ...
+    </application>
+</manifest>
+```
+
+
+
 ## React Native version mismatch
 
 ```javascript
