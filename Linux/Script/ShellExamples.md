@@ -7,6 +7,8 @@ categories:
 	- Linux
 ---
 
+[TOC]
+
 # 字符串
 
 ## 拼接
@@ -262,5 +264,11 @@ $ recommend-service-user]$ cat recommend-service-user.stdout.log.20190416 | grep
 $ while read p; do host $p; done < file-name
 ## 02
 $ cat 03 | while read line; do host $line; done
+```
+
+# 判断
+
+```shell
+$ if [ -f 01 -a "${a}" = "abc" -a "${b}" = "bcd" ]; then echo "YES"; else echo "NO"; fi
 ```
 
