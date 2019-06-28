@@ -367,7 +367,27 @@ replace with Teacher (y/n/a/q/l/^E/^Y)?	# 提示
 | `:­nly`           | Close all windows, excepted current  |
 | `:b 2`            | Open #2 in this window               |
 
+### 调整窗口大小
 
+```shell
+## 高度
+:resize 60
+:res 60
+:res +5
+:res -5
+
+## 宽度
+:vertical resize 80
+:vertical resize +5
+:vertical resize -5
+
+## hot key
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+
+## ps
+default <Leader> is \
+```
 
 ## 自动完成
 
@@ -574,24 +594,6 @@ func! Rungdb()
 	exec "!g++ % -g -o %<"
 	exec "!gdb ./%<"
 endfunc
-```
-
-# 插件
-
-## vbundle
-
-### 参考
-
-- [vbundle](http://www.jianshu.com/p/0e85e7c9e543)
-
-## Java
-
- 
-
-# 操作示例
-
-```shell
-
 ```
 
 

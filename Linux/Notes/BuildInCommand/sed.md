@@ -1,4 +1,14 @@
-# dexample
+---
+tltie: Linux - Sed
+tags: 
+   - Sed
+categories:
+   - Linux
+---
+
+
+
+# example
 
 ```shell
 $ cat msg
