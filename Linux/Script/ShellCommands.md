@@ -6,6 +6,8 @@ categories:
 	- Linux
 ---
 
+[TOC]
+
 # test
 
 Shell中的 test 命令用于检查某个条件是否成立，它可以进行表达式、数值、字符和文件的测试。
