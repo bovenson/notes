@@ -58,3 +58,12 @@ startsecs=5
 stopwaitsecs=10
 ```
 
+## 导出环境
+
+```shell
+# 导出
+$ pip freeze > requirements
+# 安装
+$ pip install -r requirements
+```
+

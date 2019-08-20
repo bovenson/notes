@@ -684,3 +684,9 @@ sign_and_send_pubkey: signing failed: agent refused operation
 $ ssh-add		# 本地客户端运行
 ```
 
+## 大文件
+
+```shell
+$ git filter-branch -f --prune-empty --index-filter "git rm -rf --cached --ignore-unmatch recommend/keywords.txt" --tag-name-filter cat -- --all
+```
+
