@@ -104,6 +104,7 @@ I       显示或者不显示隐藏文件
 f       打开和关闭文件过滤器
 q       关闭 NERDTree
 A       全屏显示 NERDTree，或者关闭全屏
+cd		  设置当前工作路径
 ```
 
 # vim-javacomplete2
@@ -119,7 +120,20 @@ Plugin 'artur-shaik/vim-javacomplete2'
 # YouCompleteMe
 
 ```shell
+# 1 下载
+## .vimrc
+Plugin 'Valloric/YouCompleteMe'
+## vim
+:PluginInstall
+
+# 2 Mac OS
+## 2.1 依赖
+$ brew install mono
+$ brew install go
+## 2.2 编译
+$ cd ~/.vim/bundle/YouCompleteMe
 $ git submodule update --init --recursive
-$ ./install.py --clang-completer	# for mac
+$ ./install.py --all --clangd-completer
+>>>>>>> 98a9767a38c105ecb8de64b526d47bbb856d5719
 ```
 
