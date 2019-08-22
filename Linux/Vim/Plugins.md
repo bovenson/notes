@@ -116,3 +116,10 @@ Plugin 'artur-shaik/vim-javacomplete2'
 
 
 
+# YouCompleteMe
+
+```shell
+$ git submodule update --init --recursive
+$ ./install.py --clang-completer	# for mac
+```
+

@@ -86,7 +86,13 @@ $ docker update --restart=always container_name/container_id	# --restart=no
 ## 执行命令
 
 ```shell
-$ docker exec -it /bin/bash
+$ docker exec -it [container] /bin/bash
+```
+
+## 列出所有容器
+
+```shell
+$ docker ps -a
 ```
 
 # 镜像
