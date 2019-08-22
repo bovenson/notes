@@ -21,3 +21,14 @@ for item in instance.tags.all():
     # DO SOMETHING
 ```
 
+# Filter
+
+## Datetime
+
+```shell
+# 比当前更早
+User.objects.filter(join_date__lte=datetime.now()).order_by('-join_date')
+# 比三天前更早
+User.objects.filter(join_date__lte=datetime.now()-timedelta(days=3)).order_by('-join_date')
+```
+
