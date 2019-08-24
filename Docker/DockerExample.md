@@ -15,10 +15,10 @@ $ docker run -it --name szk-ubuntu1604 ubuntu:16.04 /bin/bash
 root@307052e95732:/# apt update
 # 替换软件源
 root@307052e95732:/# cd /etc/apt/
-root@307052e95732:/etc/apt# apt install vim
+root@307052e95732:/etc/apt# apt install nano
 root@307052e95732:/etc/apt# apt install apt-transport-https
 root@307052e95732:/etc/apt# mv sources.list sources.list.back
-root@307052e95732:/etc/apt# vim sources.list	# 写入tuna源配置信息
+root@307052e95732:/etc/apt# nano sources.list	# 写入tuna源配置信息
 root@307052e95732:/etc/apt# apt update
 root@307052e95732:/etc/apt# exit
 

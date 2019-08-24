@@ -132,6 +132,7 @@ $ brew install mono
 $ brew install go
 ## 2.2 编译
 $ cd ~/.vim/bundle/YouCompleteMe
+$ git submodule update --init --recursive
 $ ./install.py --all --clangd-completer
 ```
 
