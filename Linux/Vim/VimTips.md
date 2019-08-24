@@ -9,7 +9,39 @@ categories:
 # Tips
 
 ```shell
-;  重复上一个动作
+# 命令
+;  			重复上一个动作
+:!! 		重复上一条命令
+:shell	运行shell
+
+# 窗口
+:tabnew			新建窗口
+:resize/res 60/+5/-5	调整窗口高度 
+## 宽度
+:vertical resize 80
+
+# 复制粘贴
+## 复制一个当前单次
+byw		b: 到单次首; y: yank; w: for word
+## command mode 粘贴内容
+C-r"  ": default register
+
+# 目录
+## NERDTree
+r       刷新光标所在的目录
+C       将根路径设置为光标所在的目录
+u       设置上级目录为根路径
+cd		  设置当前工作路径
+
+# 查找
+## 文件内查找
+/{pattern}
+## 跨文件查找
+:vimgrep /{pattern}/g [file]	# :vimgrep /foo/bar/g **
+:cn[f]		下一个匹配[文件]
+:cp[f]		上一个匹配[文件]
+:cr/cla   回到开始/结束
+:copen		打开匹配列表
 ```
 
 # 行内移动
@@ -47,5 +79,17 @@ L      移动光标到屏幕底部
 ma     打标签，标签名为a
 `a     跳转到标签a
 `.     跳转到上次编辑的地方
+```
+
+# Commands
+
+```shell
+# run shell commands
+## 1
+C-z			vim 后台运行
+fg 			调回vim
+
+## 2
+:!{cmd}
 ```
 
