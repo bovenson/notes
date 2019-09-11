@@ -72,7 +72,7 @@ __date__ = "${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}"
 ```shell
 Copyright (c) $today.year. XiaoMi Inc. All Rights Reserved.
 Authors: Sun Zhenkai <sunzhenkai@xiaomi.com>.
-Created on $today.year/$today.month/$today.day.
+Created on $today.year/$today.month/$today.day $today.hour24:$today.minute:$today.second.
 ```
 
 - 添加 Scope - Copyright Profile
