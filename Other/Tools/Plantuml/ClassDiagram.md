@@ -1,32 +1,18 @@
-# Class Define
+# Setup
 
-```java
-class ClassName {
-  	String id
-}
-```
+**下载**
 
-# Setting
+http://plantuml.com/zh/download
 
-## in file
-
-### hide empty members
+**启动**
 
 ```shell
-hide empty members
+$ java -jar /path/to/plantuml.jar
 ```
 
-### set scale
+**Deps**
 
 ```shell
-scale 1.5
+# mac
+$ brew install graphviz
 ```
-
-## in commend line
-
-### reset PLANTUML_LIMIT_SIZE
-
-```shell
-java -DPLANTUML_LIMIT_SIZE=8192 -jar /path/to/plantuml.jar ...
-```
-
