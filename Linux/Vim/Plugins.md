@@ -135,6 +135,5 @@ $ brew install go
 $ cd ~/.vim/bundle/YouCompleteMe
 $ git submodule update --init --recursive
 $ ./install.py --all --clangd-completer
->>>>>>> 98a9767a38c105ecb8de64b526d47bbb856d5719
 ```
 
