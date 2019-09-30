@@ -88,22 +88,6 @@ JVM基于栈来执行class字节码。线程创建后，会产生程序计数器
 
 - Java虚拟机的多线程是通过线程轮流切换并分配处理器执行时间的方式来实现的
 
-# 调优
-
-| 参数                               | 说明 | 示例    |
-| ---------------------------------- | ---- | ------- |
-| -Xmx                               |      | -Xmx58g |
-| -Xms                               |      | -Xms58g |
-| +UseCompressedOops                 |      | -       |
-| -XX:MaxPermSize=256M               |      |         |
-| -XX:SurvivorRatio=20               |      |         |
-| -XX:+UseParNewGC                   |      |         |
-| -XX:MaxTenuringThreshold=1         |      |         |
-| -XX:+UseConcMarkSweepGC            |      |         |
-| -XX:+UseCMSCompactAtFullCollection |      |         |
-
-
-
 # 参考
 
 - [Java virtual machine](https://en.wikipedia.org/wiki/Java_virtual_machine)
