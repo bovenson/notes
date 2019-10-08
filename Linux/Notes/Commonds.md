@@ -79,5 +79,91 @@ $ 3,$d	删除第三行至结尾数据
 ```shell
 # 示例
 $ cut -d ' ' -f3,5	# 打印第3，5列
+$ echo "localhost:8080" | cut -d ':' -f1	# 提取host
+localhost
+```
+
+**tr**
+
+```shell
+# tr: translate characters, 转换和删除字符
+# 格式
+tr [-Ccsu] string1 string2	# 替换 string1 中字符为 string2 中位置对应的字符
+tr [-Ccu] -d string1
+tr [-Ccu] -s string1
+tr [-Ccu] -ds string1 string2
+# 参数
+-d	删除指令字符
+-c	反选指令字符串
+-C  类似-c,反选指令集中字符
+
+# class
+[:class:]  Represents all characters belonging to the defined character class.  alnum        <alphanumeric characters>
+alpha        <alphabetic characters>
+blank        <whitespace characters>
+cntrl        <control characters>
+digit        <numeric characters>
+graph        <graphic characters>
+ideogram     <ideographic characters>
+lower        <lower-case alphabetic characters>
+phonogram    <phonographic characters>
+print        <printable characters>
+punct        <punctuation characters>
+rune         <valid characters>
+space        <space characters>
+special      <special characters>
+upper        <upper-case characters>
+xdigit       <hexadecimal characters>
+
+# 示例
+$ echo "What a cute dog" | tr a-z A-Z
+WHAT A CUTE DOG
+$ $ echo "What a cute dog" | tr [:lower:] [:upper:]
+WHAT A CUTE DOG
+```
+
+**sort**
+
+```shell
+# 排序
+# 格式
+sort [-bcCdfghiRMmnrsuVz] [-k field1[,field2]] [-S memsize] [-T dir] [-t char] [-o output] [file ...]
+
+# 参数
+-u	删除重复key
+-s	稳定排序
+-b	忽略开头空白符
+-d	字典序输出
+-i  忽略不可打印字符
+-R	乱序输出
+-n	数字排序
+-t	指定分隔符
+-k	指定排序字段
+
+# 示例
+$ cat t2
+10.0.0.1:8080
+10.0.0.2:8080
+10.0.0.1:8090
+10.0.0.3:8070
+10.0.0.1:8060
+$ cat t2 | sort -t ':' -k 1
+10.0.0.1:8060
+10.0.0.1:8080
+10.0.0.1:8090
+10.0.0.2:8080
+10.0.0.3:8070
+$ cat t2 | sort -t ':' -k 2
+10.0.0.1:8060
+10.0.0.3:8070
+10.0.0.1:8080
+10.0.0.2:8080
+10.0.0.1:8090
+```
+
+**uniq**
+
+```shell
+# 删除重复行，一般与sort结合使用
 ```
 
