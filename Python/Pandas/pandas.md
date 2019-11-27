@@ -170,10 +170,6 @@ DataFrame.dropna(axis=0, how='any', thresh=None, subset=None, inplace=False)
 
 
 
-
-
-
-
 # 示例程序
 
 ```python

@@ -95,12 +95,29 @@ $ docker exec -it [container] /bin/bash
 $ docker ps -a
 ```
 
+## 删除容器
+
+```shell
+$ docker docker rm container-name
+```
+
 # 镜像
+
+## 导出镜像
+
+```shell
+$ docker save busybox > busybox.tar
+$ docker save -o fedora-all.tar fedora
+$ docker save -o fedora-latest.tar fedora:latest
+# 压缩
+$ docker save myimage:latest | gzip > myimage_latest.tar.gz
+```
 
 ## 加载镜像
 
 ```shell
-docker load < docker_app_file
+$ docker load -i docker-output.tar
+$ docker load < docker-output.tar
 ```
 
 ## Search
