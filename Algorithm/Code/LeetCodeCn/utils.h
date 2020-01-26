@@ -1,5 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <string>
+#include <map>
+#include <set>
+#include <string.h>
 
 using namespace std;
 
