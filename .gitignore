@@ -1,3 +1,6 @@
+# gcc
+*.gch
+
 **/nohup.log
 data.pkl
 a.out
@@ -38,6 +41,7 @@ gradlew.bat
 #.swp
 *.*~
 ~*.*
+*.swp
 
 # wps
 .~*
