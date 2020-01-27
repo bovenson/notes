@@ -17,6 +17,12 @@ void printVector(vector<T> v) {
 }
 
 template <typename T>
+void printVector(vector<vector<T>> v) {
+    for (auto &vt: v) 
+        printVector(vt);
+}
+
+template <typename T>
 void swapT(T& a, T& b) {
     a ^= b;
     b ^= a;
