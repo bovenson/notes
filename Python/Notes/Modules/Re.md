@@ -1,12 +1,10 @@
 [TOC]
 
-# Python re 模块
-
-## 替换字符串内字符
+# replace
 
 `re.sub(pattern, repl, string, count=0, flags=0)`
 
-## 从字符串中提取特定内容
+# search
 
 ### 提取数字
 
