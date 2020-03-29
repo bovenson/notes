@@ -141,3 +141,36 @@ class ArticleCategorySerializer(serializers.ModelSerializer):
         return ret
 ```
 
+# Context
+
+send context infomation to serializers from view set
+
+```shell
+# send: serializer = AlbumSerializer(qs, many=True, context={'request': request})
+class AlbumViewSet(viewsets.ModelViewSet):
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
+    authentication_classes = [TokenAuth]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+    def list(self, request, *args, **kwargs):
+        qs = Album.objects.filter(Q(author=self.request.user) | Q(albumsubscribe__subscriber=self.request.user))
+        serializer = AlbumSerializer(qs, many=True, context={'request': request})
+        return Response(serializer.data)
+
+# obtain: self.context['request']
+class AlbumSerializer(serializers.ModelSerializer):
+    photos = AlbumPhotoSerializer(many=True, allow_null=True, read_only=True)
+
+    class Meta:
+        model = Album
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response['ownership'] = 'creator' if self.context['request'].user == instance.author else 'subscribe'
+        return response
+```
+
