@@ -66,7 +66,6 @@ private ResponseResult apiUserLogin(String account,
                                     HttpServletRequest request,
                                     HttpServletResponse response) {
   Enumeration names = request.getParameterNames();
-  logger.debug("I am here.");
   while (names.hasMoreElements()) {
     String name = (String)names.nextElement();
     String value = request.getParameter(name);

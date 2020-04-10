@@ -93,3 +93,16 @@ fg 			调回vim
 :!{cmd}
 ```
 
+# 查找替换
+
+```shell
+# 搜索
+[ESC]
+/word
+n: next; N: previous
+
+# 替换
+:%s/foo/bar/g
+:5,10s/foo/bar/gc   # with confirm
+```
+
