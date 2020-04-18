@@ -36,7 +36,7 @@ cd		  设置当前工作路径
 # 查找
 ## 文件内查找
 /{pattern}
-## 跨文件查找
+## 跨文件查找:q
 :vimgrep /{pattern}/g [file]	# :vimgrep /foobar/g **
 :cn[f]		下一个匹配[文件]
 :cp[f]		上一个匹配[文件]
