@@ -60,5 +60,3 @@ categories:
 | -XX:MaxTenuringThreshold=1         |                              |         |
 | -XX:+UseConcMarkSweepGC            |                              |         |
 | -XX:+UseCMSCompactAtFullCollection |                              |         |
-
-# 

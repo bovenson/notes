@@ -5,6 +5,7 @@
 #include <map>
 #include <set>
 #include <string.h>
+#include <fstream>
 
 using namespace std;
 
@@ -35,3 +36,14 @@ void reverse(vector<T> &v, int a, int b) {
         swapT(v[a], v[b]);
 }
 
+std::vector<std::vector<int>> read2DNum(std::string &f) {
+    std::vector<std::vector<int>> v;
+    ifstream in;
+    in.open(f);
+    std::string s;
+    while (getline(in, s)) {
+
+        std::cout << s << std::endl;
+    }
+    return v;
+}
