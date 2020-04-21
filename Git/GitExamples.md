@@ -153,3 +153,17 @@ git log	# 查看
 $ git chekcout -b local_branch_name remotes/origin_or_something/branch_name
 ```
 
+# Unstage all staged file
+
+```shell
+## unstage all file
+$ git reset
+```
+
+# Remove file or directory from repository
+
+```shell
+$ git rm --cached related-path/to/file
+$ git rm --cached -r related-path/to/directory
+```
+
