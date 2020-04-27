@@ -6,6 +6,8 @@
 #include <set>
 #include <string.h>
 #include <fstream>
+#include <iterator>
+#include <sstream>
 
 using namespace std;
 

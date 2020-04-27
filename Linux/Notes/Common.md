@@ -55,3 +55,16 @@ $ find . -type f -name '*.h' -exec sed -i 's/foo/bar/g' {} +
 $ find . -type f -not -name '*.h' -exec sed -i '' 's/foo/bar/g' {} + # exclude
 ```
 
+# 传文件
+
+```shell
+# python
+$ python -m SimpleHTTPServer
+
+# nc
+## receiver
+$ nc -l <port>
+## sender
+$ nc <receiver-host> <reveiver-port>
+```
+
