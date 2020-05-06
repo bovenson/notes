@@ -44,3 +44,15 @@ https://github.com/apache/thrift/releases
   $ sudo ./b2 install
 ```
 
+# Compile
+
+**'tr1/functional' file not found**
+
+```shell
+#if __cplusplus >= 201103L
+#include <functional>
+#else
+#include <tr1/functional>
+#endif
+```
+
