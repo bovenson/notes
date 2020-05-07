@@ -59,7 +59,10 @@ $ find . -type f -not -name '*.h' -exec sed -i '' 's/foo/bar/g' {} + # exclude
 
 ```shell
 # python
+## sender
 $ python -m SimpleHTTPServer
+## receiver
+$ wget <sender-host>:8000/path/to/file
 
 # nc
 ## receiver
