@@ -49,3 +49,13 @@ std::vector<std::vector<int>> read2DNum(std::string &f) {
     }
     return v;
 }
+
+std::vector<int> readVec(const char *f) {
+    std::vector<int> res;
+    ifstream in(f);
+    int number;
+    while(in >> number) {
+        res.push_back(number);
+    }
+    return res;
+}
