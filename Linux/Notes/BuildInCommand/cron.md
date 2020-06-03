@@ -139,7 +139,7 @@ crontab -e	# 编辑某个用户的cron服务
 $ crontab -e
 # 进入编辑器; 编辑配置文件
 
-### 从文件添加
+### 从文件添加; 注意: 会清空原有任务
 $ cat cron-task-conf-file.cron
 * * * * * /home//home/public/Git/notes/Linux/Codes/cron-test-01.sh
 $ crontab cron-task-conf-file.cron
