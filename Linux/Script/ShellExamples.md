@@ -42,6 +42,74 @@ $ a=0; while true; do ((a=a+1)) && echo $a; sleep 1; done
 
 # 参数
 
+## getopts
+
+```shell
+# opts
+:前缀	忽略错误
+:后缀	参数后必须有值
+
+# example
+:abc:de:	忽略参数错误，-c、-e后必须有值
+```
+
+**示例**
+
+```shell
+#!/bin/bash
+
+# define usage info
+usage() {
+    cat <<EOF
+Usage: $0 [-a] [-b name] msg
+EOF
+}
+
+while getopts ":ab:Bc:" opt; do
+    case $opt in
+        a) echo "found -a" ; a="hello" ;;
+        b) echo "found -b and value is: $OPTARG" ;;
+        c) echo "found -c and value is: $OPTARG" ;;
+        *) usage ;;
+    esac
+done
+
+shift $(($OPTIND - 1))
+
+echo "MSG: $1"
+
+if [ -n "${a}" ] ; then         # or [ ! -z "${a}" ]
+    echo "-a exists : ${a}"
+else
+    echo "-a not exists"
+fi
+```
+
+```shell
+#!/bin/bash
+
+usage() {
+    cat <<EOF
+Usage: $0 [-h host] [-p port]
+       $0 [-a host:port]
+EOF
+}
+
+while getopts "h:p:a:" opt; do
+    case $opt in
+        h) rhost="$OPTARG" ;;
+        p) rport="$OPTARG" ;;
+        a) raddress="$OPTARG" ;;
+        *) usage ; exit 1 ;;
+    esac
+done
+
+if [[ ( -z "$raddress" ) && ( -z "$rhost" || -z "$rport" ) ]]; then
+    usage
+    exit 1
+fi
+```
+
 # 路径
 
 ## 获取绝对路径
@@ -131,14 +199,20 @@ FULLPATH: /home/bovenson/Tmp/a/b/c
 
 ```shell
 #### bash 获取执行的脚本所在的路径
+# 1
+"$(dirname "$0")"
+
+# 2
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ```
-
-
 
 ## 更改PWD为文件所在路径
 
 ```shell
+# 1
+cd "$(dirname "$0")"
+
+# 2
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #### 有问题的版本
@@ -270,5 +344,28 @@ $ cat 03 | while read line; do host $line; done
 
 ```shell
 $ if [ -f 01 -a "${a}" = "abc" -a "${b}" = "bcd" ]; then echo "YES"; else echo "NO"; fi
+```
+
+## 复杂表达式
+
+```shell
+# bash
+if [[ ( -z "$raddress" ) && ( -z "$rhost" || -z "$rport" ) ]]; then
+	do something ...
+fi
+```
+
+# 网络
+
+## 代理
+
+```shell
+# set
+export http_proxy='http://proxyServerSddress:proxyPort'    
+export https_proxy='https://proxyServerSddress:proxyPort'
+
+# unset
+unset http_proxy
+unset https_proxy
 ```
 
