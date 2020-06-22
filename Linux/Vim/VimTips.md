@@ -106,3 +106,25 @@ n: next; N: previous
 :5,10s/foo/bar/gc   # with confirm
 ```
 
+# 多行注释
+
+**注释**
+
+```shell
+Esc
+Ctrl + v
+Shift + i (I)
+# select multi lines
+# input comments
+Esc
+```
+
+**取消注释**
+
+```shell
+Esc
+Ctrl + v
+# select 
+d / x
+```
+

@@ -71,3 +71,10 @@ $ nc -l <port>
 $ nc <receiver-host> <reveiver-port>
 ```
 
+# 设置代理
+
+```shell
+$ export http_proxy=http://user:password@[host/domain]:port
+$ export https_proxy=https://user:password@[host/domain]:port
+```
+
