@@ -9,9 +9,9 @@ if __name__ == '__main__':
     while True:
         drive.forward()
         time.sleep(10)
-        # drive.backward()
+        drive.backward()
         time.sleep(10)
-        # drive.turn_left()
+        drive.turn_left()
         time.sleep(10)
-        # drive.turn_right()
+        drive.turn_right()
         time.sleep(10)
