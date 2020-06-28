@@ -167,3 +167,12 @@ $ cat t2 | sort -t ':' -k 2
 # 删除重复行，一般与sort结合使用
 ```
 
+**date**
+
+```shell
+# format
+date +"%Y%m%d"
+# minus
+-d "-1 days"
+```
+

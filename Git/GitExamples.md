@@ -167,3 +167,25 @@ $ git rm --cached related-path/to/file
 $ git rm --cached -r related-path/to/directory
 ```
 
+# 删除文件
+
+```shell
+# tracked file: reset; untracked file: clean.
+
+# 删除更改
+$ git reset --hard
+
+# [当前目录] 删除所有没有跟踪的文件(新文件且未被ignored) 
+$ git clean -f -d
+$ git clean -fd
+
+# [当前目录] 删除所有没有跟踪的文件, 包括被ignored文件
+$ git clean -f -x -d
+$ git clean -fxd
+
+# [当前仓库] 删除所有没有跟踪的文件, 包括被ignored文件
+$ git clean -fxd :/
+```
+
+
+
