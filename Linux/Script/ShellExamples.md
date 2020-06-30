@@ -24,6 +24,13 @@ echo $a$b
 abccde
 ```
 
+## 替换
+
+```shell
+# sed
+echo $LINE | sed -e "s/12345678/\"${replace}\"/g"
+```
+
 # 循环
 
 ```shell
