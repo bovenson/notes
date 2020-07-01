@@ -54,5 +54,37 @@ https://github.com/apache/thrift/releases
 #else
 #include <tr1/functional>
 #endif
+
+ #if __cplusplus >= 201103L
+ typedef std::function<void(boost::shared_ptr<Runnable>)> ExpireCallback;
+ #else
+ typedef std::tr1::function<void(boost::shared_ptr<Runnable>)> ExpireCallback;
+ #endif
+```
+
+**flags**
+
+```shell
+ -Wno-c++11-narrowing
+```
+
+**ordered comparison between pointer and zero**
+
+```shell
+writerThreadId_ > (void *)0
+```
+
+**reference to 'shared_ptr' is ambiguous**
+
+```shell
+shared_ptr -> boost::shared_ptr
+```
+
+# Version
+
+```shell
+thrift 0.8.0
+	- openssl 1.0.2
+	- libevent 2.0.22
 ```
 
