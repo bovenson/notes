@@ -4,5 +4,3 @@
 # macos
 $ brew install govendor
 ```
-
-# 
