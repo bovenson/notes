@@ -20,6 +20,11 @@ void printVector(vector<T> v) {
 }
 
 template <typename T>
+void pV(std::vector<T> v) {
+    printVector(v);
+}
+
+template <typename T>
 void printVector(vector<vector<T>> v) {
     for (auto &vt: v) 
         printVector(vt);
@@ -50,12 +55,30 @@ std::vector<std::vector<int>> read2DNum(std::string &f) {
     return v;
 }
 
-std::vector<int> readVec(const char *f) {
-    std::vector<int> res;
+template <typename T>
+std::vector<T> readVec(const char *f) {
+    std::vector<T> res;
     ifstream in(f);
-    int number;
+    T number;
     while(in >> number) {
         res.push_back(number);
+    }
+    return res;
+}
+
+template <typename T>
+T r() {
+    T t;
+    cin >> t;
+    return t;
+}
+
+template <typename T>
+std::vector<T> rV() {
+    std::vector<T> res;
+    T t;
+    while (cin >> t) {
+        res.push_back(t);
     }
     return res;
 }
