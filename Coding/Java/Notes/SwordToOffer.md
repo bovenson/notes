@@ -232,7 +232,7 @@ Java的同步原语为java.lang.Object类的几个方法：
 - 使用JDK提供的不变类(immutable class)作为Map的键可以避免为我们自己的类实现hashCode()和equals()方法。
 - 编程的时候接口优于实现。
 - 底层的集合实际上是空的情况下，返回长度是0的集合或者是数组，不要返回null。
-- ![](imgs/01.png)
+- ![](imgs/06.png)
 
 ## Set
 
