@@ -1,6 +1,0 @@
-```shell
--Xmx 
--Xms 
--Xmn 
-```
-
