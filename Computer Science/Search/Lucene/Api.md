@@ -58,3 +58,97 @@
 - 创建[`IndexWriter`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/index/IndexWriter.html)，并通过`addDocument`添加`Document`
 - 调用 [QueryParser.parse()](https://lucene.apache.org/core/8_5_2/queryparser/org/apache/lucene/queryparser/classic/QueryParserBase.html#parse(java.lang.String)) 从字符串构造请求
 - 创建 [`IndexSearcher`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/search/IndexSearcher.html) ，将构造的请求对象通过[`search()`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/search/IndexSearcher.html#search-org.apache.lucene.search.Query-int-)方法传入
+
+# Hints, Tips and Traps
+
+[`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html)、 [`CharFilter`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/CharFilter.html)、 [`Tokenizer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Tokenizer.html)、 [`TokenFilter`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/TokenFilter.html)的关系很容易迷惑。
+
+- [`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html) 是分析链的工厂，`Analyzer`不处理文本，它构造用于处理文本的`CharFilter`、`Tokenizer`或者`TokenFilter`。Analyzer有两个任务：创建[`TokenStream`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/TokenStream.html)，用于接受reader、产生tokens、包装或者预处理Reader对象。
+- CharFilter是Reader的子类，它支持偏移量跟踪。
+- [`Tokenizer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Tokenizer.html)仅负责将输入文本分解为tokens。
+- [`TokenFilter `](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/TokenFilter.html)修改令牌流(stream of tokens)及其内容。
+- [`Tokenizer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Tokenizer.html)是 [`TokenStream`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/TokenStream.html)，但[`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html) 不是。
+- [`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html) “具有字段识别能力”，但 [`Tokenizer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Tokenizer.html)则不能。 [`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html)在构造`TokenStream`时可能会考虑字段名称。
+
+如果想要使用特定的`CharFilter`、`Tokenizer`、`TokenFilter`组合，最简单的事情是使用[`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html)的匿名类，提供[`Analyzer.createComponents(String)`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html#createComponents-java.lang.String-)、 [`Analyzer.initReader(String, java.io.Reader)`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html#initReader-java.lang.String-java.io.Reader-)。Lucene提供很多Analyzer提供有用的分析链，其中最常用的是[StandardAnalyzer](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html)。[analyzers-common](https://lucene.apache.org/core/8_5_2/analyzers-common/overview-summary.html)库为多种语言提供了analyzers，同时允许配置自定义Analyzer。
+
+除了StandardAnalyzer，Lucene包含多种组件，包括分析组件，他们在analysis文件夹下。其中一些支持特定语言，另一些集成外部组件。common文件夹有一些值得注意的通用分析器，包括 [PerFieldAnalyzerWrapper](https://lucene.apache.org/core/8_5_2/analyzers-common/org/apache/lucene/analysis/miscellaneous/PerFieldAnalyzerWrapper.html)，多数`Analyzer`在所有的[`Field`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/document/Field.html)上执行相同的操作。PerFieldAnalyzerWrapper可用于将不同的分析器与不同的字段关联。
+
+分析器是构造索引缓慢的主要原因之一。
+
+benchmark对测试分析进程效率非常有帮助。
+
+# Invoking the Analyzer
+
+应用程序通常不需要调用分析器，交由Lucene来做。
+
+- 索引构建阶段， [`addDocument(doc)`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/index/IndexWriter.html#addDocument-java.lang.Iterable-)时对索引有效的分析器会被调用，应用于添加的文档的每个索引字段。
+- 搜索阶段，QueryParser有可能在解析阶段调用Analyzer，有些搜索可能不会有分析操作。
+
+应用可以这样执行分析器，用于测试或者其他目的。
+
+```java
+Version matchVersion = Version.LUCENE_XY; // Substitute desired Lucene version for XY
+Analyzer analyzer = new StandardAnalyzer(matchVersion); // or any other analyzer
+TokenStream ts = analyzer.tokenStream("myfield", new StringReader("some text goes here"));
+// The Analyzer class will construct the Tokenizer, TokenFilter(s), and CharFilter(s),
+//   and pass the resulting Reader to the Tokenizer.
+OffsetAttribute offsetAtt = ts.addAttribute(OffsetAttribute.class);
+
+try {
+  ts.reset(); // Resets this stream to the beginning. (Required)
+  while (ts.incrementToken()) {
+    // Use AttributeSource.reflectAsString(boolean)
+    // for token stream debugging.
+    System.out.println("token: " + ts.reflectAsString(true));
+
+    System.out.println("token start offset: " + offsetAtt.startOffset());
+    System.out.println("  token end offset: " + offsetAtt.endOffset());
+  }
+  ts.end();   // Perform end-of-stream operations, e.g. set the final offset.
+} finally {
+  ts.close(); // Release resources associated with this stream.
+}
+```
+
+# Indexing Analysis vs. Search Analysis
+
+选择正确的分析器对于搜索质量至关重要，也会影响索引、搜索性能。对于应用程序来说，正确的分析器取决于输入文本以及解决什么样的问题，这里有一些经验指导：
+
+- 测试
+- 过多的分析器可能会影响索引性能
+- 索引、搜索过程从相同的分析器开始，否则搜索的时候可能不知道目的是什么...
+- 在某些情况下，需要使用其他分析器进行索引和搜索
+  - 某些搜索需要过滤更多停用词
+
+# 构造自己的分析器和分析组件
+
+构造自己的分析器是最直接的，自定义分析器应该是[`Analyzer`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html)的子类，它可以使用现有的分析组件CharFilter、Tokenizer、TokenFilter、自定义组件。
+
+# 字段剖面边界
+
+对相同的field多次调用 [`document.add(field)`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/document/Document.html#add-org.apache.lucene.index.IndexableField-) ，我们说每次调用创建会为该字段创建一个剖面(section)，实际上针对这些切面，会单独调用[`tokenStream(field,reader)`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html#tokenStream-java.lang.String-java.io.Reader-) 。但是默认的Analyzer行为是把这些剖面当做一个大的剖面，这允许词组搜索和相似搜索可以无缝跨越这些剖面(sections)的边界。比如，像这样添加`f`字段。
+
+```java
+document.add(new Field("f","first ends",...);
+document.add(new Field("f","starts two",...);
+indexWriter.addDocument(document);
+```
+
+然后，词组搜索`ends starts`会找到那篇文章。如果需要，可以通过在连续的字段剖面之间引入位置间隙来修改此行为，只需覆盖[`Analyzer.getPositionIncrementGap(fieldName)`](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/Analyzer.html#getPositionIncrementGap-java.lang.String-)即可。
+
+```java
+Version matchVersion = Version.LUCENE_XY; // Substitute desired Lucene version for XY
+Analyzer myAnalyzer = new StandardAnalyzer(matchVersion) {
+  public int getPositionIncrementGap(String fieldName) {
+    return 10;
+  }
+};
+```
+
+
+
+# Reference
+
+- [lucene analysis](https://lucene.apache.org/core/8_5_2/core/org/apache/lucene/analysis/package-summary.html#package.description)
+

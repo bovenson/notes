@@ -690,3 +690,23 @@ $ ssh-add		# 本地客户端运行
 $ git filter-branch -f --prune-empty --index-filter "git rm -rf --cached --ignore-unmatch recommend/keywords.txt" --tag-name-filter cat -- --all
 ```
 
+# 多Git仓库配置
+
+```shell
+# gen rsa file
+$ ssh-keygen -t rsa -C "user@something" 	# output: .ssh/id_rsa_something & .ssh/id_rsa_something.pub 
+
+$ vim ~/.ssh/config
+Host something
+		HostName git.something
+		IdentityFile ~/.ssh/id_rsa_something
+		User user@something
+		
+# active
+$ ssh-agent bash
+ssh-add ~/.ssh/id_rsa_something
+
+# check
+$ ssh -T git@something
+```
+

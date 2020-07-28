@@ -86,3 +86,10 @@ Setting -> Editor -> Code Style -> Comment Code
 	- 勾选 Add a space at comment start 
 ```
 
+# Hide File & Directory
+
+- Open Settings
+  - **File | Settings | Editor | File Types** 
+  - **IntelliJ IDEA | Preferences | Editor | File Types** for OS X
+- Modify Config
+  - Add patterns for ignoring files

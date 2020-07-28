@@ -187,5 +187,11 @@ $ git clean -fxd
 $ git clean -fxd :/
 ```
 
+# 配置当前工程用户信息
 
+```shell
+$ git config user.name "*" 
+$ git config user.email "*" 
+$ cat .git/config
+```
 
