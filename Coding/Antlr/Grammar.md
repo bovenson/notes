@@ -25,11 +25,13 @@ expr, simpleDeclarator, d2, header_file // rule names
 
 ## 常量
 
-ANTLR不区分字符和字符串，所有的字符串常量，都适用单引号包裹。
+ANTLR不区分字符和字符串，所有的字符串常量，都使用单引号包裹，常量字符串中不包含正则表达式。常量字符串支持
 
 ## Actions
 
-Actions是用目标语言编写的代码块。可以在一个语法中多次使用action，但是格式总是一样的：花括号包围的任意文本。
+Actions是用目标语言编写的代码块。可以在一个语法中多次使用action，格式为大括号包围的任意文本。字符串和注释中的大括号无须转义。如果左右大括号能够平衡匹配，也无须对大括号进行转义。
+
+Actions可以出现在：以@header 和 @members命名的action中、解析和语法规则中、exception catching specifications, attribute sections for parser rules (return values, arguments, and locals) and some rule element options (currently predicates)。
 
 ## Keywords
 
@@ -106,7 +108,7 @@ Tokens 是用于定于grammar需要的token类型，和语法分析器规则无�
 tokens { Token1, ..., TokenN }
 ```
 
-通常情况下，tokens部分定义用于grammar中的actions。
+通常情况下，tokens部分定义用于grammar中actions需要使用的token类型。
 
 ```g4
 // explicitly define keyword token types to avoid implicit definition warnings
@@ -284,4 +286,64 @@ s : field
  	}
 ;
 ```
+
+## 规则元素标签
+
+可以使用=符号来为规则元素设置标签，以向规则上下文对象中添加字段。
+
+```g4
+stat: 'return' value=e ';' # Return
+ 	| 'break' ';' # Break
+ 	;
+```
+
+这里的value是定义在其他位置的规则e的返回值的标签。便签编程对应解析树节点的字段。在这个实例中，value是 Return 选项的标签，因此value标签成为了ReturnContext的字段。
+
+使用 += （标签列表）符号可以方便地跟踪多个token。比如，下面的创建了一个Token对象列表，来匹配简单的数组构造方法。
+
+```g4
+array : '{' el+=INT (',' el+=INT)* '}' ;
+```
+
+ANTLR在对应的规则上下文类中生成对应的列表字段。
+
+```g4
+	public static class ArrayContext extends ParserRuleContext {
+ 	public List<Token> el = new ArrayList<Token>();
+ 	...
+ 	}
+```
+
+这种标签列表同样适用于引用。
+
+```g4
+ 	elist : exprs+=e (',' exprs+=e)* ;
+```
+
+ANTLR生成一个字段，来保存上下文对象列表。
+
+```java
+ 	public static class ElistContext extends ParserRuleContext {
+ 	public List<EContext> exprs = new ArrayList<EContext>();
+ 	...
+ 	}
+```
+
+## 规则元素
+
+规则元素指定解析器在给定时刻应执行的操作，就像编程语言中的语句一样。这些元素可以是rule、token、string literal，比如表达式、ID、'return'。下面是规则元素的完整列表。
+
+| 语法       | 描述                                                         |
+| ---------- | ------------------------------------------------------------ |
+| T          | 匹配当前输入位置的token T，Tokens总是以大写字母开头。        |
+| 'literal'  | 在当前输入位置，匹配字符常量，字符串文字只是带有固定字符串的标记。 |
+| r          | 在当前输入位置匹配规则r，相当于函数调用一样触发该规则。解析规则名总是以小写字母开头。 |
+| r [«args»] | 当前输入位置匹配规则r，并像函数调用一样传入参数列表。中括号里面的参数，使用目标语言语法。 |
+| {«action»} | 在前一个选项元素之后和后一个选项元素之前立即执行action。该action符合目标语言语法。ANTLR逐字复制这些action代码至生产的类中，除了属性占位符和token引用，比如 $x，$x.y。 |
+| {«p»}?     | 判断语义断言«p»。                                            |
+| .          | 匹配任意单个Token，EOF除外。点操作被成为通配符。             |
+
+当需要匹配一个或者多个token之外的任意内容是，可以使用 ~ 操作符。这个操作符很少在解析器中使用，但是可用。`~INT` 匹配除了INT之外的任意Token。`~','` 匹配除了逗号的任意token。`~(INT|ID)` 匹配除了INT和ID的任意Token。
+
+Token, string literal, semantic predicate rule elements 可以带选项。
 
