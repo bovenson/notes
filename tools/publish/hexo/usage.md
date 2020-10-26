@@ -113,3 +113,16 @@ $ hexo generate
 
     ![](usage/003.png)
 
+# 静态资源
+
+```yaml
+# _config.yml 中开启/添加如下配置
+post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
+
+# 放置: 在文档相同路径下，创建和项目相同名称文件夹，静态资源放置于此
+# 引用示例: ![](doc/img.jpg) OR ![](img.jpg)
+```
+
