@@ -1,4 +1,0 @@
-set (A VALUEA)
-
-MESSAGE (STATUS "${A}")
-MESSAGE (STATUS "${B}")

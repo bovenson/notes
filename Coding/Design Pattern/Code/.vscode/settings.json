@@ -1,5 +1,0 @@
-{    
-    "files.exclude": {  // 忽略文件
-        "**/output": true
-    }
-}

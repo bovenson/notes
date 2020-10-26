@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "*.tpl": "html",
-    "stack": "cpp",
-    "iostream": "cpp",
-    "ostream": "cpp",
-    "algorithm": "cpp"
-  }
-}

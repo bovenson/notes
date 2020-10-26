@@ -1,3 +1,0 @@
-/*
- * Simplest Seastar 
- * */
