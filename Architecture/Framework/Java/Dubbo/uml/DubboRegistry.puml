@@ -1,0 +1,53 @@
+Node: 节点
+Registry: 注册服务，包含服务发现服务节点、注册服务相关接口
+
+@startuml
+
+hide empty members
+
+interface RegistryService {
+    void register(URL url)
+    void unregister(URL url)
+    void subscribe(URL url, NotifyListener listener)
+    void unsubcribe(URL url, NotifyListener listener)
+    List<URL> lookup(URL url)
+}
+
+interface Node {
+    URL getUrl()
+    boolean isAvalibale()
+    void destroy()
+}
+
+interface Registry {
+}
+
+RegistryService <|-- Registry
+Node <|-- Registry
+
+abstract AbstractRegistry {
+}
+
+Registry <|-- AbstractRegistry
+
+abstract FailbackRegistry {
+    void doRegister(URL url)
+    void doUnregister(URL url)
+    void doSubscribe(URL url, NotifyListener listener)
+    void doUnsubscribe(URL url, NotifyListener listener)
+}
+
+AbstractRegistry <|.. FailbackRegistry
+
+class ConsulRegistry {
+
+}
+
+FailbackRegistry <|.. ConsulRegistry
+
+class Holder {
+    URL url
+    NotifyListener notifyListener
+}
+
+@enduml
