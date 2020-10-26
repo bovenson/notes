@@ -45,3 +45,22 @@ Java的Executors库提供四种线程池：
   - 有界，有界缓存的等待队列
   - 基于数组的阻塞队列，同LinkedBlockingQueue类似，内部维持着一个定长数据缓冲队列（该队列由数组构成）
   - ArrayBlockingQueue在生产者放入数据和消费者获取数据，都是共用同一个锁对象，由此也意味着两者无法真正并行运行，这点尤其不同于LinkedBlockingQueue；按照实现原理来分析，ArrayBlockingQueue完全可以采用分离锁，从而实现生产者和消费者操作的完全并行运行。Doug Lea之所以没这样去做，也许是因为ArrayBlockingQueue的数据写入和获取操作已经足够轻巧，以至于引入独立的锁机制，除了给代码带来额外的复杂性外，其在性能上完全占不到任何便宜。 ArrayBlockingQueue和LinkedBlockingQueue间还有一个明显的不同之处在于，前者在插入或删除元素时不会产生或销毁任何额外的对象实例，而后者则会生成一个额外的Node对象。这在长时间内需要高效并发地处理大批量数据的系统中，其对于GC的影响还是存在一定的区别
+
+# Usage
+
+## Create
+
+```java
+ExecutorService executorService = Executors.newFixedThreadPool(512);
+```
+
+## Usage
+
+### Submit Single Task & Wait
+
+```shell
+ExecutorService executorService = Executors.newFixedThreadPool(512);
+Future<Void> f = executorService.submit(() -> { [do someting] });
+f.get(1100, TimeUnit.MILLISECONDS);
+```
+

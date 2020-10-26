@@ -290,3 +290,33 @@ String fileName = file.getName();			// 文件名
 String fileParent = file.getParent();		// 文件所在目录(除去文件名的路径)
 String filePath = file.getAbsolutePath();	// 包含文件名及路径的路径
 ```
+
+## 读取文件
+
+```java
+// buffered reader
+File file = new File("name.ext");
+BufferedReader br = new BufferedReader(new FileReader(file));
+String st;
+while((st = br.readLine()) != null){
+  // do something
+}
+
+// scanner
+File file = new File("name.ext");
+Scanner sc = new Scanner(file);
+while(sc.hasNextLine()){
+  // do something
+}
+
+// read from resource
+ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+InputStream is = classloader.getResourceAsStream("name.ext");
+InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+BufferedReader br = new BufferedReader(streamReader);
+String st;
+while((st = br.readLine()) != null){
+  // do something
+}
+```
+

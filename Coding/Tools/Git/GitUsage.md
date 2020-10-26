@@ -694,19 +694,31 @@ $ git filter-branch -f --prune-empty --index-filter "git rm -rf --cached --ignor
 
 ```shell
 # gen rsa file
-$ ssh-keygen -t rsa -C "user@something" 	# output: .ssh/id_rsa_something & .ssh/id_rsa_something.pub 
+$ ssh-keygen -t rsa -C "<email>" 	# output: .ssh/id_rsa_<name> & .ssh/id_rsa_<name>.pub 
 
 $ vim ~/.ssh/config
 Host something
-		HostName git.something
-		IdentityFile ~/.ssh/id_rsa_something
-		User user@something
+		HostName <git host name>
+		IdentityFile ~/.ssh/id_rsa_<name>
+		User <email>
 		
 # active
 $ ssh-agent bash
-ssh-add ~/.ssh/id_rsa_something
+ssh-add ~/.ssh/id_rsa_<name>
 
 # check
-$ ssh -T git@something
+$ ssh -T git@<git host name>
+
+
+# example
+ssh-keygen -t rsa -C "szhkai@qq.com"	# save as .ssh/id_rsa_gitee & .ssh/id_rsa_gitee.pub
+
+Host gitee
+	HostName gitee.com
+	IdentityFile ~/.ssh/id_rsa_gitee
+	User szhkai@qq.com
+	
+ssh-add ~/.ssh/id_rsa_gitee
+ssh -T git@gitee.com
 ```
 

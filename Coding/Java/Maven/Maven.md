@@ -1,6 +1,4 @@
----
-title: Maven笔记
----
+[toc]
 
 # 简介
 
@@ -397,6 +395,10 @@ maven可以管理项目间关系：
   - 依赖包信息
   - groupId, artifactId：定义相应的Maven coordinates
   - version：依赖项目的版本号
+
+### dependencyManagement
+
+dependencyManagement用于统一版本管理，在多模块项目中，如果父项目中dependencyManagement指定了依赖版本和scoope，那么在子模块中可以省略。
 
 # 其他
 

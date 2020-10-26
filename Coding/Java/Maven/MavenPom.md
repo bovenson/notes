@@ -148,7 +148,7 @@ Maven的本地资源库是用来存储所有项目的依赖关系(插件jar和�
     </dependency>
     ```
 
-    ​
+    
 
 # Maven依赖关系中Scope的作用
 

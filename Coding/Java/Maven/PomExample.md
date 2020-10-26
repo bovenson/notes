@@ -1,3 +1,5 @@
+[toc]
+
 # scala
 
 ```xml
