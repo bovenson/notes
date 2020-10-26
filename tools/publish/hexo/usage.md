@@ -1,7 +1,7 @@
 ---
-title: Hexo Usage
+title: hexo usage
 categories:
-	- [Tools, Publish]
+	- [tools, publish]
 tags:
 	- Hexo
 ---
