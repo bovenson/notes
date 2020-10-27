@@ -20,5 +20,5 @@ update: 2020/10/27 19:00:00
 
 ---
 
-[github](https://github.com/bovenson)，[cnblogs](https://www.cnblogs.com/bovenson)，[zhihu](https://www.zhihu.com/people/sunzhenkai)，[douban](https://www.douban.com/people/bovenson/)
+[GitHub](https://github.com/bovenson)，[博客园](https://www.cnblogs.com/bovenson)，[知乎](https://www.zhihu.com/people/sunzhenkai)，[豆瓣](https://www.douban.com/people/bovenson/)，[微博](http://weibo.com/szhkai)
 
