@@ -8,7 +8,7 @@ date: 2020/10/27 19:00:00
 update: 2020/10/27 19:00:00
 ---
 
-男，山东菏泽，先后就读于山东科技大学、东北大学计算机相关专业，于2019年1月从事软件研发。
+男，山东菏泽人，现居北京，先后就读于山东科技大学、东北大学计算机相关专业，于2019年从事软件研发相关工作。
 
 ---
 
@@ -20,5 +20,5 @@ update: 2020/10/27 19:00:00
 
 ---
 
-[github](https://github.com/bovenson)，[cnblogs](https://www.cnblogs.com/bovenson)，[zhihu](https://www.zhihu.com/people/sunzhenkai)
+[github](https://github.com/bovenson)，[cnblogs](https://www.cnblogs.com/bovenson)，[zhihu](https://www.zhihu.com/people/sunzhenkai)，[douban](https://www.douban.com/people/bovenson/)
 
