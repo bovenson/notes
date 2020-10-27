@@ -14,7 +14,6 @@ update: 2020/10/27 19:00:00
 
 - [ ] microservices
 - [ ] cloud native
-- [ ] 
 
 ## basic
 
