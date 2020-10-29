@@ -32,11 +32,34 @@ update: 2020/10/27 19:00:00
 
 ## 库
 
+### Java
+
 - [ ] netty
+
+### C++
+
+- [ ] seastar
 
 ## 中间件
 
+### 数据库
+
 - [ ] redis
+- [ ] memcached
+- [ ] rocksdb
+
+### 消息
+
+- [ ] kafka
+- [ ] RocketMQ
+- [ ] RabbitMQ
+- [ ] ActiveMQ
+- [ ] Apollo
+- [ ] ZeroMQ
+
+### 其他
+
+- [ ] elastic search
 
 ## 机器学习
 

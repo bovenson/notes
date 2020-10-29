@@ -108,7 +108,7 @@ $ hexo generate
 
   - 在 Hexo `source` 目录下，创建CNAME文件，写入自定义域名 
 
-  - 在仓库设置中配置 `GitHub Pages` 中的`Custom domain` 中输入自定义域名 **[可能该操作]**
+  - 在仓库设置中配置 `GitHub Pages` 中的`Custom domain` 中输入自定义域名 **[可能无需该操作]**
 
     ![](usage/002.png)
 
