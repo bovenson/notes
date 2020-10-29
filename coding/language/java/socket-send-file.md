@@ -259,6 +259,24 @@ public class FileTransferClient {
 }
 ```
 
+# 使用
+
+```java
+// 启动服务端
+FileTransferServer server = new FileTransferServer(2221, "/tmp");
+server.start();
+
+// 客户端传送文件
+String host = "127.0.0.1";
+int port = 2221;
+String path = "receiver";
+Socket socket = new Socket(host, port);
+FileTransferClient client = new FileTransferClient(socket);
+client.delete(path);
+client.send(path, new File("/Users/wii/Downloads/cat.jpg"));
+client.close();
+```
+
 # 更多
 
 - 优化
