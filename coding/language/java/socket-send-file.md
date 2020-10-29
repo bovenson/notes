@@ -208,6 +208,8 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import com.google.gson.Gson;
+
 public class FileTransferClient {
   	private static final Gson GSON = new Gson();
     Socket socket;
