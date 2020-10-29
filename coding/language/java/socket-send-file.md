@@ -242,7 +242,7 @@ public class FileTransferClient {
 
     public void close() throws IOException {
         FileTransferInfo info = new FileTransferInfo().type(FileTransferInfo.TYPE_CLOSE);
-        dos.writeUTF(.GSON.toJson(info));
+        dos.writeUTF(GSON.toJson(info));
         dos.flush();
         System.out.println(dis.readUTF());
         dis.close();
