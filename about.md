@@ -22,9 +22,9 @@ Bovenson/Wii，男，山东菏泽，现居北京，于2019年从事软件研发�
 
 ---
 
-未来逐渐完善全栈开发能力，着力于一体化机器学习训练平台架构。
+未来逐渐完善全栈开发能力，着力于一体化机器学习训练平台架构研发。
 
 ---
 
-[GitHub](https://github.com/bovenson)，[博客园](https://www.cnblogs.com/bovenson)，[知乎](https://www.zhihu.com/people/sunzhenkai)，[豆瓣](https://www.douban.com/people/bovenson/)，[微博](http://weibo.com/szhkai)，[网易云音乐](https://music.163.com/#/user/home?id=12132022)，<a href="Mailto:szhkai@qq.com">邮箱 szhkai@qq.com</a>
+[GitHub](https://github.com/bovenson)，[笔记](https://github.com/bovenson/notes)，[博客园](https://www.cnblogs.com/bovenson)，[知乎](https://www.zhihu.com/people/sunzhenkai)，[豆瓣](https://www.douban.com/people/bovenson/)，[微博](http://weibo.com/szhkai)，[网易云音乐](https://music.163.com/#/user/home?id=12132022)，<a href="Mailto:szhkai@qq.com">邮箱 szhkai@qq.com</a>
 
