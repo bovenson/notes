@@ -16,29 +16,42 @@ update: 2020/10/27 19:00:00
 - [ ] 云原生
 - [ ] DevOps
 
-## 基础
+## 编程基础
+
+- [ ] 数据结构
+
+- [ ] 算法
 
 - [ ] java
   - [ ] jvm
   - [ ] 锁
 - [ ] 设计模式
 
-## 框架
+## 机器学习
 
+## 工具
+
+- [ ] tensorflow
+- [ ] xdl
+- [ ] paddlepaddle
+- [ ] pytorch
+- [ ] mxnet
+- [ ] caffe
+
+## 库 / 框架
+
+### C++
+
+- [ ] seastar
+
+### Java
+
+- [ ] netty
 - [ ] Spring
 - [ ] Spring MVC
 - [ ] Spring Boot
 - [ ] dubbo
 
-## 库
-
-### Java
-
-- [ ] netty
-
-### C++
-
-- [ ] seastar
 
 ## 中间件
 
@@ -47,6 +60,11 @@ update: 2020/10/27 19:00:00
 - [ ] redis
 - [ ] memcached
 - [ ] rocksdb
+
+### 实时流
+
+- [ ] Flink
+- [ ] Spark Streaming
 
 ### 消息
 
@@ -60,14 +78,6 @@ update: 2020/10/27 19:00:00
 ### 其他
 
 - [ ] elastic search
-
-## 机器学习
-
-## 工具
-
-- [ ] tensorflow
-- [ ] xdl
-- [ ] paddlepaddle
 
 # 兴趣
 
