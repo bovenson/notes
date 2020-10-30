@@ -1,9 +1,13 @@
 #include <iostream>
 #include "utils.h"
 
+using namespace std;
+
 int main() {
-    int a = 1, b = 2;
-    swapT(a, b);
-    cout << a << " " << b;
+    int a = r<int>();
+    cout << a << endl;
+
+    vector<int> arr = rV<int>();
+    pV(arr);
     return 0;
 }

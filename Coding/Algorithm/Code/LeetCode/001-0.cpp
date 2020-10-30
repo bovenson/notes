@@ -7,12 +7,13 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        map<int, int> m;
+        unordered_map<int, int> m;
+        m.reserve(nums.size());
         for (int i = 0; i < nums.size(); ++i) {
             int num = nums[i];
-            std::map<int, int>::iterator it = m.find(target - num);
+            std::unordered_map<int, int>::iterator it = m.find(target - num);
             if (it == m.end()) {
-                m[num] = i;
+                m.emplace(nums[i], i);
             } else {
                 return {it->second, i};
             }
