@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "knex": "^0.14.6",
+    "knex": "^2.4.0",
     "mysql": "^2.15.0"
   },
   "devDependencies": {},
